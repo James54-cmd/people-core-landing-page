@@ -272,9 +272,9 @@ h1:focus {
 
 .timeline-line {
     position: absolute;
-    left: 23px; /* Center of the 48px wide icon wrapper */
-    top: 24px;
-    bottom: 48px;
+    left: 27px; /* Center of the 56px wide icon wrapper */
+    top: 28px;
+    bottom: 28px;
     width: 2px;
     background-color: rgba(0,0,0,0.06);
     border-radius: 2px;
@@ -286,8 +286,8 @@ h1:focus {
     left: 0;
     width: 100%;
     background-color: var(--mud-palette-primary);
-    transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 2px;
+    /* transition removed to allow real-time instant scroll syncing */
 }
 
 .timeline-item {
@@ -295,6 +295,7 @@ h1:focus {
     display: flex;
     align-items: flex-start;
     cursor: pointer;
+    min-height: 40vh; /* Force height so the left column stays sticky while user scrolls right column */
 }
 
 .timeline-icon-wrapper {

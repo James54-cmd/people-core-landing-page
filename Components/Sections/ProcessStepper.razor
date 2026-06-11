@@ -1,7 +1,9 @@
 @using MudBlazor
+@inject IJSRuntime JSRuntime
+@implements IDisposable
 @rendermode InteractiveServer
 
-<section class="py-16 py-md-32 process-section" style="background: radial-gradient(circle at -20% 50%, #E8F4FB 0%, #F7F9FB 60%); position: relative; overflow: hidden;">
+<section class="py-16 py-md-32 process-section" style="background: radial-gradient(circle at -20% 50%, #E8F4FB 0%, #F7F9FB 60%); position: relative;">
     <MudContainer MaxWidth="MaxWidth.Large">
         <MudGrid Spacing="10">
             
@@ -18,14 +20,7 @@
                         How it works
                     </MudText>
                     
-                    <div class="d-flex gap-4 fade-in-up delay-200 position-relative z-index-2">
-                        <MudButton Variant="Variant.Outlined" Color="Color.Dark" Size="Size.Large" OnClick="PreviousStep" Disabled="@(ActiveStep == 0)" Style="border-radius: 12px; padding: 14px 28px; font-weight: 600; font-family: 'Figtree', sans-serif; border: 2px solid rgba(0,0,0,0.1);">
-                            Previous
-                        </MudButton>
-                        <MudButton Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" OnClick="NextStep" Disabled="@(ActiveStep == Steps.Count - 1)" EndIcon="@Icons.Material.Filled.ArrowForward" Style="border-radius: 12px; padding: 14px 36px; font-weight: 600; font-family: 'Figtree', sans-serif; box-shadow: 0 12px 32px rgba(30,159,224,0.4);">
-                            Next Step
-                        </MudButton>
-                    </div>
+                    
                 </div>
             </MudItem>
 
@@ -33,7 +28,7 @@
             <MudItem xs="12" md="7" Class="position-relative pt-md-16">
                 <div class="timeline-container fade-in-up delay-300">
                     <div class="timeline-line">
-                        <div class="timeline-progress" style="height: @((ActiveStep * 100) / (Steps.Count - 1))%;"></div>
+                        <div class="timeline-progress"></div>
                     </div>
 
                     @for (int i = 0; i < Steps.Count; i++)
@@ -43,7 +38,7 @@
                         bool isActive = index <= ActiveStep;
                         bool isCurrent = index == ActiveStep;
 
-                        <div class="timeline-item @(isActive ? "active" : "") @(isCurrent ? "current" : "")" @onclick="() => SetStep(index)">
+                        <div class="timeline-item timeline-item-scroll @(isActive ? "active" : "") @(isCurrent ? "current" : "")" data-index="@index" @onclick="() => SetStep(index)">
                             <div class="timeline-icon-wrapper">
                                 <div class="pulse-ring @(isCurrent ? "active-pulse" : "")"></div>
                                 <MudIcon Icon="@step.Icon" Class="timeline-icon" />
@@ -69,22 +64,59 @@
 
 @code {
     private int ActiveStep = 0;
+    private DotNetObjectReference<ProcessStepper>? objRef;
 
-    private void NextStep()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            objRef = DotNetObjectReference.Create(this);
+            await JSRuntime.InvokeVoidAsync("initProcessScrollObserver", objRef, ".timeline-item-scroll");
+        }
+    }
+
+    [JSInvokable]
+    public void UpdateActiveStep(int index)
+    {
+        if (ActiveStep != index)
+        {
+            ActiveStep = index;
+            InvokeAsync(StateHasChanged);
+        }
+    }
+
+    private async Task NextStep()
     {
         if (ActiveStep < Steps.Count - 1)
+        {
             ActiveStep++;
+            await ScrollToStep(ActiveStep);
+        }
     }
 
-    private void PreviousStep()
+    private async Task PreviousStep()
     {
         if (ActiveStep > 0)
+        {
             ActiveStep--;
+            await ScrollToStep(ActiveStep);
+        }
     }
 
-    private void SetStep(int index)
+    private async Task SetStep(int index)
     {
         ActiveStep = index;
+        await ScrollToStep(index);
+    }
+
+    private async Task ScrollToStep(int index)
+    {
+        await JSRuntime.InvokeVoidAsync("scrollToStep", index);
+    }
+
+    public void Dispose()
+    {
+        objRef?.Dispose();
     }
 
     private List<ProcessStep> Steps = new()
