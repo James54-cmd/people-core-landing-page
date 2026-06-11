@@ -604,8 +604,6 @@ h1:focus {
     position: relative;
     overflow: hidden;
     box-shadow: 0 40px 100px -20px rgba(11,92,140,0.5);
-    display: flex;
-    align-items: center;
 }
 
 /* Subtle background pattern/blob for the CTA */
@@ -635,4 +633,56 @@ h1:focus {
     .cta-banner {
         padding: 3rem 2rem;
     }
+}
+
+/* Global Typography */
+h1, h2, h3, h4, h5, h6,
+.mud-typography-h1, .mud-typography-h2, .mud-typography-h3, 
+.mud-typography-h4, .mud-typography-h5, .mud-typography-h6,
+.mud-typography-subtitle1, .mud-typography-subtitle2 {
+    font-family: 'Gilroy', sans-serif !important;
+    font-weight: 700 !important;
+}
+
+body, .mud-typography-body1, .mud-typography-body2, .mud-typography-button {
+    font-family: 'Figtree', sans-serif !important;
+}
+
+/* Footer Styles */
+.footer-link {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.footer-link:hover {
+    color: var(--mud-palette-primary);
+}
+
+.footer-input {
+    height: 48px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    padding: 0 16px;
+    font-family: 'Figtree', sans-serif;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+.footer-input:focus {
+    border-color: #ffffff;
+}
+
+.footer-legal-link {
+    color: #94a3b8;
+    font-size: 0.875rem;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: color 0.2s ease;
+}
+.footer-legal-link:hover {
+    color: #ffffff;
 }

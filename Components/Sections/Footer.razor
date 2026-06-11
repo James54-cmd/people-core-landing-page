@@ -1,0 +1,62 @@
+@using MudBlazor
+
+<footer class="footer-section pt-16 pt-md-24 pb-8 d-flex flex-column" style="background-color: #0b1121; min-height: 100vh; border-top: 1px solid #1e293b;">
+    <MudContainer MaxWidth="MaxWidth.Large" Class="d-flex flex-column flex-grow-1 justify-space-between">
+        
+        <!-- Top Row: Logo/Links & Subscribe -->
+        <MudGrid Spacing="6" Class="mb-16">
+            <!-- Left Side -->
+            <MudItem xs="12" md="6" Class="d-flex flex-column gap-8">
+                <!-- Logo -->
+                <div class="d-flex align-center gap-2">
+                    <MudIcon Icon="@Icons.Material.Filled.AllInclusive" Color="Color.Primary" Size="Size.Large" />
+                    <MudText Typo="Typo.h5" Style="font-weight: 800; letter-spacing: -1px; color: #ffffff;">
+                        People Core
+                    </MudText>
+                </div>
+                
+                <!-- Links -->
+                <div class="d-flex flex-wrap gap-6">
+                    @foreach(var link in new[] { "Features", "Solutions", "Pricing", "Company", "Careers" })
+                    {
+                        <a href="#" class="footer-link">@link</a>
+                    }
+                </div>
+            </MudItem>
+
+            <!-- Right Side: Subscribe -->
+            <MudItem xs="12" md="6" Class="d-flex flex-column align-start align-md-end gap-4">
+                <MudText Typo="Typo.subtitle2" Style="font-weight: 700; color: #ffffff;">Subscribe</MudText>
+                <div class="d-flex gap-2 w-100 justify-md-end">
+                    <div class="d-flex gap-2 w-100" style="max-width: 450px;">
+                        <input type="email" placeholder="Enter your email" class="footer-input flex-grow-1" />
+                        <MudButton Variant="Variant.Filled" Color="Color.Primary" Style="border-radius: 4px; padding: 0 24px; font-weight: 600; height: 48px; color: #fff;">Subscribe</MudButton>
+                    </div>
+                </div>
+                <MudText Typo="Typo.caption" Style="color: #94a3b8; font-size: 0.75rem;">
+                    By subscribing you agree to with our <a href="#" style="text-decoration: underline; color: #ffffff;">Privacy Policy</a>
+                </MudText>
+            </MudItem>
+        </MudGrid>
+
+        <!-- Huge Company Name -->
+        <div class="text-center flex-grow-1 d-flex align-center justify-center mb-16 fade-in-up">
+            <MudText Typo="Typo.h1" Style="font-size: clamp(4rem, 12vw, 12rem); font-weight: 900; letter-spacing: -4px; color: #ffffff; line-height: 1;">
+                People Core
+            </MudText>
+        </div>
+
+        <!-- Bottom Row: Legal & Copyright -->
+        <div class="d-flex flex-column flex-md-row justify-space-between align-center pt-8" style="border-top: 1px solid rgba(255,255,255,0.1);">
+            <div class="d-flex flex-wrap gap-4 gap-md-6 mb-4 mb-md-0">
+                <a href="#" class="footer-legal-link">Privacy Policy</a>
+                <a href="#" class="footer-legal-link">Terms of Service</a>
+                <a href="#" class="footer-legal-link">Cookies Settings</a>
+            </div>
+            <MudText Typo="Typo.body2" Style="color: #94a3b8;">
+                © 2026 People Core. All rights reserved.
+            </MudText>
+        </div>
+
+    </MudContainer>
+</footer>
