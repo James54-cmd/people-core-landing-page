@@ -483,3 +483,19 @@ h1:focus {
     background-color: rgba(0,0,0,0.04) !important;
     transform: translateY(-2px);
 }
+
+/* Security Section Styles */
+.logo-hover-effect {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.logo-hover-effect:hover {
+    transform: scale(1.05);
+    opacity: 0.7;
+}
+
+.hover-dark-fill:hover {
+    background-color: #111 !important;
+    color: #fff !important;
+}
