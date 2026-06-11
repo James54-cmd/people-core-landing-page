@@ -60,3 +60,24 @@ window.scrollToStep = (index) => {
         elements[index].scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 };
+
+// Smart Navbar Hide/Show Logic
+document.addEventListener("scroll", () => {
+    const navbar = document.querySelector('.custom-nav');
+    if (!navbar) return;
+
+    if (typeof window.lastScrollY === 'undefined') {
+        window.lastScrollY = window.scrollY;
+    }
+
+    const currentScrollY = window.scrollY;
+    
+    // Hide if scrolling down and past 100px. Show if scrolling up or near top.
+    if (currentScrollY > window.lastScrollY && currentScrollY > 100) {
+        navbar.classList.add('nav-hidden');
+    } else {
+        navbar.classList.remove('nav-hidden');
+    }
+
+    window.lastScrollY = currentScrollY;
+}, { passive: true });
