@@ -254,6 +254,174 @@ h1:focus {
     background: rgba(0,0,0,0.02);
 }
 
+/* Process Stepper Styles */
+.process-section {
+    z-index: 2;
+}
+
+@media (min-width: 960px) {
+    .sticky-header {
+        position: sticky;
+        top: 140px;
+    }
+}
+
+.timeline-container {
+    position: relative;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 23px; /* Center of the 48px wide icon wrapper */
+    top: 24px;
+    bottom: 48px;
+    width: 2px;
+    background-color: rgba(0,0,0,0.06);
+    border-radius: 2px;
+}
+
+.timeline-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--mud-palette-primary);
+    transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 2px;
+}
+
+.timeline-item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+}
+
+.timeline-icon-wrapper {
+    position: relative;
+    z-index: 2;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 32px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+}
+
+.timeline-icon {
+    font-size: 1.75rem;
+    color: #94a3b8;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* active = passed or current */
+.timeline-item.active .timeline-icon-wrapper {
+    border-color: var(--mud-palette-primary);
+}
+.timeline-item.active .timeline-icon {
+    color: var(--mud-palette-primary);
+}
+
+/* current = exactly the one being viewed */
+.timeline-item.current .timeline-icon-wrapper {
+    background: var(--mud-palette-primary);
+    border-color: var(--mud-palette-primary);
+    box-shadow: 0 0 0 8px rgba(30,159,224,0.15);
+}
+.timeline-item.current .timeline-icon {
+    color: #ffffff;
+}
+
+/* Pulse Animation for Current Step */
+.pulse-ring {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    border: 2px solid var(--mud-palette-primary);
+    opacity: 0;
+}
+
+.pulse-ring.active-pulse {
+    animation: pulseAnimation 2s infinite;
+}
+
+@keyframes pulseAnimation {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(1.8); opacity: 0; }
+}
+
+/* Elevated Cards */
+.timeline-content-wrapper {
+    flex-grow: 1;
+    padding-bottom: 48px;
+}
+
+.timeline-item:last-child .timeline-content-wrapper {
+    padding-bottom: 0;
+}
+
+.timeline-content-card {
+    padding: 1.5rem 2rem;
+    border-radius: 24px;
+    border: 1px solid transparent;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0.4;
+    transform: translateX(0) scale(0.98);
+    transform-origin: left center;
+}
+
+.timeline-item.active .timeline-content-card {
+    opacity: 1;
+}
+
+.timeline-item.current .timeline-content-card {
+    background: #ffffff;
+    border: 1px solid rgba(30,159,224,0.15);
+    box-shadow: 0 24px 48px rgba(0,0,0,0.06);
+    transform: translateX(12px) scale(1);
+}
+
+.step-title {
+    color: #111;
+    transition: color 0.3s ease;
+}
+
+.timeline-item.current .step-title {
+    color: var(--mud-palette-primary);
+}
+
+.step-desc {
+    color: #555;
+    max-width: 500px;
+}
+
+.huge-step-number {
+    position: absolute;
+    top: -80px;
+    left: -40px;
+    font-size: 16rem;
+    font-weight: 900;
+    font-family: 'Gilroy', sans-serif;
+    color: rgba(30,159,224,0.04);
+    z-index: 0;
+    pointer-events: none;
+    line-height: 1;
+    letter-spacing: -8px;
+    transition: all 0.5s ease;
+}
+
+.z-index-2 {
+    z-index: 2;
+}
+
 
 /* Custom Nav */
 .custom-nav {

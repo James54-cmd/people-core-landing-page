@@ -1,0 +1,120 @@
+@using MudBlazor
+@rendermode InteractiveServer
+
+<section class="py-16 py-md-32 process-section" style="background: radial-gradient(circle at -20% 50%, #E8F4FB 0%, #F7F9FB 60%); position: relative; overflow: hidden;">
+    <MudContainer MaxWidth="MaxWidth.Large">
+        <MudGrid Spacing="10">
+            
+            <!-- Left Column: Sticky Header -->
+            <MudItem xs="12" md="5" Style="position: relative;">
+                <div class="sticky-header pt-md-16">
+                    <div class="huge-step-number">
+                        0@(ActiveStep + 1)
+                    </div>
+                    <MudText Typo="Typo.subtitle2" Style="font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: #FFB400;" Class="mb-4 fade-in-up position-relative z-index-2">
+                        Process
+                    </MudText>
+                    <MudText Typo="Typo.h2" Color="Color.Dark" Style="font-family: 'Gilroy', sans-serif; font-size: clamp(3.5rem, 6vw, 4.5rem); font-weight: 800; letter-spacing: -2px; line-height: 1.05;" Class="mb-10 fade-in-up delay-100 position-relative z-index-2">
+                        How it works
+                    </MudText>
+                    
+                    <div class="d-flex gap-4 fade-in-up delay-200 position-relative z-index-2">
+                        <MudButton Variant="Variant.Outlined" Color="Color.Dark" Size="Size.Large" OnClick="PreviousStep" Disabled="@(ActiveStep == 0)" Style="border-radius: 12px; padding: 14px 28px; font-weight: 600; font-family: 'Figtree', sans-serif; border: 2px solid rgba(0,0,0,0.1);">
+                            Previous
+                        </MudButton>
+                        <MudButton Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" OnClick="NextStep" Disabled="@(ActiveStep == Steps.Count - 1)" EndIcon="@Icons.Material.Filled.ArrowForward" Style="border-radius: 12px; padding: 14px 36px; font-weight: 600; font-family: 'Figtree', sans-serif; box-shadow: 0 12px 32px rgba(30,159,224,0.4);">
+                            Next Step
+                        </MudButton>
+                    </div>
+                </div>
+            </MudItem>
+
+            <!-- Right Column: Timeline -->
+            <MudItem xs="12" md="7" Class="position-relative pt-md-16">
+                <div class="timeline-container fade-in-up delay-300">
+                    <div class="timeline-line">
+                        <div class="timeline-progress" style="height: @((ActiveStep * 100) / (Steps.Count - 1))%;"></div>
+                    </div>
+
+                    @for (int i = 0; i < Steps.Count; i++)
+                    {
+                        var index = i;
+                        var step = Steps[i];
+                        bool isActive = index <= ActiveStep;
+                        bool isCurrent = index == ActiveStep;
+
+                        <div class="timeline-item @(isActive ? "active" : "") @(isCurrent ? "current" : "")" @onclick="() => SetStep(index)">
+                            <div class="timeline-icon-wrapper">
+                                <div class="pulse-ring @(isCurrent ? "active-pulse" : "")"></div>
+                                <MudIcon Icon="@step.Icon" Class="timeline-icon" />
+                            </div>
+                            <div class="timeline-content-wrapper">
+                                <div class="timeline-content-card @(isCurrent ? "active-card" : "")">
+                                    <MudText Typo="Typo.h4" Style="font-family: 'Gilroy', sans-serif; font-weight: 800; line-height: 1.2; letter-spacing: -0.5px;" Class="mb-3 step-title">
+                                        @step.Title
+                                    </MudText>
+                                    <MudText Typo="Typo.body1" Style="font-family: 'Figtree', sans-serif; font-size: 1.125rem; line-height: 1.6;" Class="step-desc">
+                                        @step.Description
+                                    </MudText>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </MudItem>
+
+        </MudGrid>
+    </MudContainer>
+</section>
+
+@code {
+    private int ActiveStep = 0;
+
+    private void NextStep()
+    {
+        if (ActiveStep < Steps.Count - 1)
+            ActiveStep++;
+    }
+
+    private void PreviousStep()
+    {
+        if (ActiveStep > 0)
+            ActiveStep--;
+    }
+
+    private void SetStep(int index)
+    {
+        ActiveStep = index;
+    }
+
+    private List<ProcessStep> Steps = new()
+    {
+        new ProcessStep { 
+            Title = "Connect your data", 
+            Description = "Securely import employee records and sync seamlessly with your existing HR and IT systems, instantly removing manual data entry.", 
+            Icon = Icons.Material.Rounded.CloudSync 
+        },
+        new ProcessStep { 
+            Title = "Configure your workflows", 
+            Description = "Customize payroll schedules, attendance rules, and benefits packages perfectly tailored to your company's unique policies.", 
+            Icon = Icons.Material.Rounded.SettingsSuggest 
+        },
+        new ProcessStep { 
+            Title = "Train your team", 
+            Description = "Get staff up to speed quickly with our guided onboarding, interactive platform tutorials, and dedicated hands-on support.", 
+            Icon = Icons.Material.Rounded.ModelTraining 
+        },
+        new ProcessStep { 
+            Title = "Go live and scale", 
+            Description = "Launch your new operations smoothly and effortlessly grow your workforce with total confidence and automated compliance.", 
+            Icon = Icons.Material.Rounded.RocketLaunch 
+        }
+    };
+
+    public class ProcessStep
+    {
+        public string Title { get; set; } = "";
+        public string Description { get; set; } = "";
+        public string Icon { get; set; } = "";
+    }
+}
