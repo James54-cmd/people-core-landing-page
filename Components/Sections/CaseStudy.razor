@@ -1,0 +1,59 @@
+@using MudBlazor
+
+<section class="py-16 py-md-32" style="background-color: #ffffff; position: relative;">
+    <MudContainer MaxWidth="MaxWidth.Large">
+        
+        <!-- Text Header Container -->
+        <div style="max-width: 860px; margin: 0 auto 0 0;">
+            <!-- Eyebrow -->
+            <div class="d-flex align-center gap-2 mb-6 fade-in-up">
+                <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; font-weight: 600; color: #555;">
+                    Success
+                </MudText>
+                <MudIcon Icon="@Icons.Material.Filled.ChevronRight" Style="font-size: 1rem; color: #999;" />
+                <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; font-weight: 600; color: #111;">
+                    Case study
+                </MudText>
+            </div>
+
+            <!-- Heading -->
+            <MudText Typo="Typo.h2" Color="Color.Dark" Style="font-family: 'Gilroy', sans-serif; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; letter-spacing: -1.5px; line-height: 1.1;" Class="mb-10 fade-in-up delay-100">
+                How Chong Hua Hospital streamlined HR operations
+            </MudText>
+
+            <!-- Author Meta & Social Share -->
+            <div class="d-flex flex-column flex-sm-row justify-space-between align-start align-sm-center mb-12 gap-6 fade-in-up delay-200">
+                <!-- Author Info -->
+                <div class="d-flex align-center gap-4">
+                    <MudAvatar Color="Color.Surface" Style="width: 56px; height: 56px; border: 1px solid #e2e8f0; background: #f8fafc;">
+                        <MudIcon Icon="@Icons.Material.Rounded.Image" Color="Color.Default" Size="Size.Small" />
+                    </MudAvatar>
+                    <div>
+                        <MudText Typo="Typo.subtitle2" Style="font-family: 'Gilroy', sans-serif; font-weight: 700; color: #111; line-height: 1.2;">
+                            PeopleCore Team
+                        </MudText>
+                        <MudText Typo="Typo.caption" Style="font-family: 'Figtree', sans-serif; color: #666; font-size: 0.9rem;">
+                            15 Nov 2024 &bull; 8 min read
+                        </MudText>
+                    </div>
+                </div>
+
+                <!-- Social Icons -->
+                <div class="d-flex gap-2">
+                    <MudIconButton Icon="@Icons.Material.Filled.Link" Color="Color.Dark" Size="Size.Small" Class="social-icon-btn" />
+                    <MudIconButton Icon="@Icons.Custom.Brands.LinkedIn" Color="Color.Dark" Size="Size.Small" Class="social-icon-btn" />
+                    <MudIconButton Icon="@Icons.Custom.Brands.Twitter" Color="Color.Dark" Size="Size.Small" Class="social-icon-btn" />
+                    <MudIconButton Icon="@Icons.Custom.Brands.Facebook" Color="Color.Dark" Size="Size.Small" Class="social-icon-btn" />
+                </div>
+            </div>
+        </div>
+        
+        <!-- Huge Image -->
+        <div class="fade-in-up delay-300">
+            <div class="case-study-image-wrapper">
+                <MudIcon Icon="@Icons.Material.Rounded.Image" Style="font-size: 8rem; color: #cbd5e1; transition: all 0.5s ease;" Class="image-placeholder-icon" />
+            </div>
+        </div>
+
+    </MudContainer>
+</section>

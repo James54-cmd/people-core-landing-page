@@ -446,3 +446,40 @@ h1:focus {
 .custom-nav.nav-hidden {
     transform: translateX(-50%) translateY(-150%) !important;
 }
+
+/* Case Study Styles */
+.case-study-image-wrapper {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background-color: #f1f5f9;
+    border-radius: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.case-study-image-wrapper:hover {
+    transform: scale(1.02);
+    box-shadow: 0 48px 100px -24px rgba(30,159,224,0.15); /* Brand blue glow */
+    border-color: rgba(30,159,224,0.3);
+}
+
+.case-study-image-wrapper:hover .image-placeholder-icon {
+    transform: scale(1.1);
+    color: var(--mud-palette-primary);
+}
+
+.social-icon-btn {
+    opacity: 0.6;
+    transition: all 0.3s ease !important;
+}
+
+.social-icon-btn:hover {
+    opacity: 1;
+    background-color: rgba(0,0,0,0.04) !important;
+    transform: translateY(-2px);
+}
