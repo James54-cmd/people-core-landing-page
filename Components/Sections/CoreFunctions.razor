@@ -1,0 +1,123 @@
+@using MudBlazor
+@rendermode InteractiveServer
+
+<section class="py-16 py-md-24" style="background-color: #ffffff;">
+    <MudContainer MaxWidth="MaxWidth.Large">
+        
+        <!-- Header -->
+        <div class="d-flex flex-column align-center text-center mb-16 fade-in-up">
+            <MudText Typo="Typo.subtitle2" Style="font-weight: 700; text-transform: none; letter-spacing: 0.5px; color: #111;" Class="mb-4">
+                Capabilities
+            </MudText>
+            <MudText Typo="Typo.h2" Color="Color.Dark" Style="font-family: 'Gilroy', sans-serif; font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -1px; line-height: 1.1;" Class="mb-6">
+                Seven core functions
+            </MudText>
+            <MudText Typo="Typo.body1" Style="font-family: 'Figtree', sans-serif; font-size: 1.125rem; color: #444;">
+                Each module works independently or together seamlessly
+            </MudText>
+        </div>
+
+        <!-- Content Grid -->
+        <MudGrid Spacing="6" Class="align-center justify-center">
+            
+            <!-- Left Column -->
+            <MudItem xs="12" md="3" Class="d-flex flex-column gap-8 fade-in-up delay-100">
+                @for(int i = 0; i < 2; i++)
+                {
+                    var index = i;
+                    <div class="text-center d-flex flex-column align-center cursor-pointer feature-item @(SelectedIndex == index ? "selected" : "")" @onclick="() => SelectFeature(index)">
+                        <MudIcon Icon="@Features[index].Icon" Style="font-size: 2.5rem; color: #000;" Class="mb-6" />
+                        <MudText Typo="Typo.h5" Style="font-family: 'Gilroy', sans-serif; font-weight: 800; line-height: 1.3;" Class="mb-3">
+                            @((MarkupString)Features[index].Title.Replace("\n", "<br />"))
+                        </MudText>
+                        <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; color: #555; line-height: 1.6;">
+                            @Features[index].Description
+                        </MudText>
+                    </div>
+                }
+            </MudItem>
+
+            <!-- Center Column (Image) -->
+            <MudItem xs="12" md="6" Class="fade-in-up delay-200">
+                <div style="background-color: #f3f4f6; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; width: 100%; max-width: 560px; margin: 0 auto; border-radius: 24px; transition: all 0.5s ease; box-shadow: 0 24px 48px rgba(0,0,0,0.04);">
+                    @* Display a different icon/picture based on selection *@
+                    <MudIcon Icon="@Features[SelectedIndex].Image" Style="font-size: 8rem; color: #94a3b8; transition: all 0.5s ease;" />
+                </div>
+            </MudItem>
+
+            <!-- Right Column -->
+            <MudItem xs="12" md="3" Class="d-flex flex-column gap-8 fade-in-up delay-300">
+                @for(int i = 2; i < 4; i++)
+                {
+                    var index = i;
+                    <div class="text-center d-flex flex-column align-center cursor-pointer feature-item @(SelectedIndex == index ? "selected" : "")" @onclick="() => SelectFeature(index)">
+                        <MudIcon Icon="@Features[index].Icon" Style="font-size: 2.5rem; color: #000;" Class="mb-6" />
+                        <MudText Typo="Typo.h5" Style="font-family: 'Gilroy', sans-serif; font-weight: 800; line-height: 1.3;" Class="mb-3">
+                            @((MarkupString)Features[index].Title.Replace("\n", "<br />"))
+                        </MudText>
+                        <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; color: #555; line-height: 1.6;">
+                            @Features[index].Description
+                        </MudText>
+                    </div>
+                }
+            </MudItem>
+
+        </MudGrid>
+
+        <!-- Bottom Buttons -->
+        <div class="d-flex justify-center align-center gap-6 mt-16 fade-in-up delay-400">
+            <MudButton Variant="Variant.Outlined" Color="Color.Dark" Size="Size.Large" Style="border-radius: 0; padding: 12px 32px; font-weight: 500; font-family: 'Figtree', sans-serif; text-transform: none; border: 1px solid #777;">
+                Learn
+            </MudButton>
+            <MudButton Variant="Variant.Text" Color="Color.Dark" Size="Size.Large" EndIcon="@Icons.Material.Filled.ChevronRight" Style="font-weight: 500; font-family: 'Figtree', sans-serif; text-transform: none; padding: 12px 16px;">
+                Learn
+            </MudButton>
+        </div>
+        
+    </MudContainer>
+</section>
+
+@code {
+    private int SelectedIndex = 0;
+
+    private void SelectFeature(int index)
+    {
+        SelectedIndex = index;
+    }
+
+    private List<Feature> Features = new()
+    {
+        new Feature { 
+            Title = "Organizational\nmanagement", 
+            Description = "Structure your teams with clarity and control", 
+            Icon = Icons.Material.Filled.ViewInAr, 
+            Image = Icons.Material.Rounded.AccountTree 
+        },
+        new Feature { 
+            Title = "Payroll processing", 
+            Description = "Accurate compensation delivered on schedule", 
+            Icon = Icons.Material.Filled.ViewInAr, 
+            Image = Icons.Material.Rounded.Payments 
+        },
+        new Feature { 
+            Title = "Attendance and\nscheduling", 
+            Description = "Track hours and manage shifts with precision", 
+            Icon = Icons.Material.Filled.ViewInAr, 
+            Image = Icons.Material.Rounded.CalendarMonth 
+        },
+        new Feature { 
+            Title = "Benefits\nadministration", 
+            Description = "Simplify enrollment and manage employee benefits in one place", 
+            Icon = Icons.Material.Filled.ViewInAr, 
+            Image = Icons.Material.Rounded.HealthAndSafety 
+        }
+    };
+
+    public class Feature
+    {
+        public string Title { get; set; } = "";
+        public string Description { get; set; } = "";
+        public string Icon { get; set; } = "";
+        public string Image { get; set; } = "";
+    }
+}
