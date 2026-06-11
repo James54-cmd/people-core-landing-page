@@ -58,3 +58,194 @@ h1:focus {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
     text-align: start;
 }
+
+/* Custom Animations & Aesthetics */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+
+/* Hero Section Aesthetic */
+.hero-section {
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at 80% 20%, #E8F4FB 0%, #F7F9FB 100%);
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    padding: 10rem 0 4rem 0; /* Extra top padding for floating nav */
+}
+
+.hero-bg-blob {
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(30,159,224,0.15) 0%, rgba(30,159,224,0) 70%);
+    border-radius: 50%;
+    z-index: 0;
+    filter: blur(60px);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
+/* Diagonal Hero Layout */
+.hero-diagonal-layout {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.hero-headline {
+    z-index: 2;
+}
+
+.hero-image {
+    z-index: 1;
+    width: 100%;
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 32px 64px rgba(0,0,0,0.08);
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-description {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+@media (min-width: 960px) {
+    .hero-diagonal-layout {
+        min-height: 600px;
+        display: block; /* Switches to absolute positioning */
+        margin-top: 0;
+    }
+    
+    .hero-headline {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 55%;
+    }
+    
+    .hero-image {
+        position: absolute;
+        top: 50%;
+        left: 45%;
+        transform: translate(-50%, -50%);
+        width: 35%;
+    }
+    
+    .hero-description {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 45%;
+    }
+}
+
+/* Marquee / Flowy Brands */
+.marquee-wrapper {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    width: 100%;
+    background: #ffffff;
+    padding: 4rem 0;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Mask for smooth fade at edges */
+.marquee-wrapper::before, .marquee-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 150px;
+    height: 100%;
+    z-index: 2;
+}
+
+.marquee-wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, white, transparent);
+}
+
+.marquee-wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, white, transparent);
+}
+
+.marquee-content {
+    display: inline-flex;
+    animation: marquee 30s linear infinite;
+}
+
+.marquee-content:hover {
+    animation-play-state: paused;
+}
+
+.marquee-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4rem;
+    filter: grayscale(100%) opacity(0.5);
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+
+.marquee-item:hover {
+    filter: grayscale(0%) opacity(1);
+    transform: scale(1.05);
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Custom Nav */
+.custom-nav {
+    position: fixed !important;
+    top: 24px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: calc(100% - 48px) !important;
+    max-width: 1200px !important;
+    height: 72px;
+    border-radius: 16px !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0,0,0,0.05) !important;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06) !important;
+    z-index: 1000;
+}

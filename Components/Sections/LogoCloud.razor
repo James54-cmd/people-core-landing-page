@@ -1,0 +1,49 @@
+@using MudBlazor
+
+<section class="marquee-wrapper fade-in-up delay-400">
+    <MudContainer MaxWidth="MaxWidth.Medium" Class="mb-8">
+        <MudText Typo="Typo.subtitle1" Align="Align.Center" Style="font-weight: 600; color: #64748b; letter-spacing: 0.5px;">
+            Trusted by leading organizations across healthcare and enterprise
+        </MudText>
+    </MudContainer>
+
+    <div class="marquee-content">
+        <!-- Group 1 -->
+        @foreach (var brand in Brands)
+        {
+            <div class="marquee-item">
+                <MudText Typo="Typo.h5" Style="font-weight: 800; display: flex; align-items: center; gap: 8px; color: #334155;">
+                    <MudIcon Icon="@brand.Icon" Size="Size.Large" /> @brand.Name
+                </MudText>
+            </div>
+        }
+        <!-- Group 2 (Duplicate for seamless scroll) -->
+        @foreach (var brand in Brands)
+        {
+            <div class="marquee-item">
+                <MudText Typo="Typo.h5" Style="font-weight: 800; display: flex; align-items: center; gap: 8px; color: #334155;">
+                    <MudIcon Icon="@brand.Icon" Size="Size.Large" /> @brand.Name
+                </MudText>
+            </div>
+        }
+    </div>
+</section>
+
+@code {
+    private List<Brand> Brands = new()
+    {
+        new Brand { Name = "Webflow", Icon = Icons.Material.Filled.Web },
+        new Brand { Name = "Relume", Icon = Icons.Material.Filled.Widgets },
+        new Brand { Name = "Supabase", Icon = Icons.Material.Filled.Storage },
+        new Brand { Name = "Vercel", Icon = Icons.Material.Filled.CloudUpload },
+        new Brand { Name = "Stripe", Icon = Icons.Material.Filled.Payment },
+        new Brand { Name = "Webflow", Icon = Icons.Material.Filled.Web },
+        new Brand { Name = "Relume", Icon = Icons.Material.Filled.Widgets },
+    };
+
+    private class Brand
+    {
+        public string Name { get; set; } = "";
+        public string Icon { get; set; } = "";
+    }
+}

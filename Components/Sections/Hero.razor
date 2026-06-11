@@ -1,0 +1,38 @@
+@using MudBlazor
+
+<section class="hero-section">
+    <div class="hero-bg-blob"></div>
+    <MudContainer MaxWidth="MaxWidth.Large" Class="hero-content">
+        <div class="hero-diagonal-layout">
+            
+            <!-- Headline (Top Start) -->
+            <div class="hero-headline fade-in-up">
+                <MudText Typo="Typo.h1" Color="Color.Dark" Style="font-size: clamp(3rem, 6vw, 5rem); font-weight: 800; line-height: 1.05; letter-spacing: -2px;">
+                    Medium length<br />hero heading<br />goes here
+                </MudText>
+            </div>
+
+            <!-- Image (Center Overlap) -->
+            <div class="hero-image fade-in-up delay-200">
+                <MudIcon Icon="@Icons.Material.Rounded.Image" Style="font-size: 8rem; color: #cbd5e1;" />
+            </div>
+
+            <!-- Description & Buttons (Bottom End) -->
+            <div class="hero-description fade-in-up delay-300">
+                <MudText Typo="Typo.body1" Color="Color.Default" Style="font-size: 1.125rem; color: #555; line-height: 1.6;">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
+                </MudText>
+                
+                <div class="d-flex gap-4 mt-2">
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" Style="border-radius: 8px; padding: 14px 36px; font-weight: 600; text-transform: none; font-size: 1.1rem;">
+                        Button
+                    </MudButton>
+                    <MudButton Variant="Variant.Outlined" Color="Color.Dark" Size="Size.Large" Style="border-radius: 8px; padding: 14px 36px; font-weight: 600; text-transform: none; font-size: 1.1rem; border-color: rgba(0,0,0,0.2);">
+                        Button
+                    </MudButton>
+                </div>
+            </div>
+
+        </div>
+    </MudContainer>
+</section>
