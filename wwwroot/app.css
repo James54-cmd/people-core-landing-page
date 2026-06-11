@@ -499,3 +499,89 @@ h1:focus {
     background-color: #111 !important;
     color: #fff !important;
 }
+
+/* Testimonial Section Styles */
+@media (min-width: 960px) {
+    .sticky-testimonial-header {
+        position: sticky;
+        top: 140px;
+    }
+}
+
+.testimonial-flow-wrapper {
+    position: relative;
+    height: 700px;
+    width: 100%;
+    overflow: hidden;
+    /* Gradient mask to gracefully fade out the top and bottom of the flow */
+    mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+}
+
+.testimonial-flow-container {
+    display: flex;
+    gap: 2rem;
+    height: max-content;
+    /* 3D Isometric & Diagonal rotation */
+    transform: perspective(1200px) rotateX(15deg) rotateY(-10deg) rotateZ(-5deg) scale(1.1);
+    transform-style: preserve-3d;
+}
+
+.flow-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 50%;
+}
+
+/* Pause flow on hover */
+.testimonial-flow-container:hover .flow-up,
+.testimonial-flow-container:hover .flow-down {
+    animation-play-state: paused;
+}
+
+.flow-up {
+    animation: flowUpAnim 30s linear infinite;
+}
+
+.flow-down {
+    animation: flowDownAnim 35s linear infinite;
+}
+
+@keyframes flowUpAnim {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); } /* Scrolls exactly halfway through the duplicated content */
+}
+
+@keyframes flowDownAnim {
+    0% { transform: translateY(-50%); }
+    100% { transform: translateY(0); }
+}
+
+.testimonial-card-3d {
+    background: linear-gradient(145deg, #ffffff, #f8fafc);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 0;
+    padding: 2.5rem;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s ease;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.03);
+    /* Slight diagonal tilt */
+    transform: rotateZ(-2deg);
+}
+
+.testimonial-card-3d:hover {
+    transform: translateZ(30px) rotateX(4deg) rotateY(-4deg) rotateZ(0deg) scale(1.05);
+    box-shadow: -20px 40px 80px rgba(30,159,224,0.15);
+    border-color: rgba(30,159,224,0.3);
+}
+
+.card-content {
+    transition: transform 0.5s ease;
+    transform-style: preserve-3d;
+}
+
+.testimonial-card-3d:hover .card-content {
+    transform: translateZ(20px);
+}

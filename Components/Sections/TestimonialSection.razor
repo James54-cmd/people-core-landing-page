@@ -1,0 +1,64 @@
+@using MudBlazor
+
+<section class="py-16 py-md-32 text-left" style="background: linear-gradient(135deg, #F7F9FB 0%, #E8F4FB 100%); position: relative; overflow: hidden;">
+    <MudContainer MaxWidth="MaxWidth.Large">
+        <MudGrid Spacing="8" Class="align-center">
+            
+            <!-- Left Side: Sticky Text -->
+            <MudItem xs="12" md="4" Style="position: relative; z-index: 2;">
+                <div class="sticky-testimonial-header">
+                    <MudText Typo="Typo.h2" Color="Color.Dark" Style="font-family: 'Gilroy', sans-serif; font-size: clamp(3rem, 6vw, 4.5rem); font-weight: 800; letter-spacing: -2px; line-height: 1.05;" Class="mb-6 fade-in-up">
+                        What<br />leaders say
+                    </MudText>
+                    
+                    <MudText Typo="Typo.body1" Style="font-family: 'Figtree', sans-serif; font-size: 1.125rem; line-height: 1.6; color: #555; max-width: 400px;" Class="mb-10 fade-in-up delay-100">
+                        Hear from HR professionals who made the switch
+                    </MudText>
+
+                    <div class="d-flex align-center gap-4 fade-in-up delay-200">
+                        <MudButton Variant="Variant.Outlined" Color="Color.Dark" Size="Size.Large" Style="border-radius: 0; padding: 12px 32px; font-weight: 600; font-family: 'Figtree', sans-serif; border: 1px solid #111; transition: all 0.3s ease;" Class="hover-dark-fill">
+                            Read
+                        </MudButton>
+                        <MudButton Variant="Variant.Text" Color="Color.Dark" Size="Size.Large" EndIcon="@Icons.Material.Filled.ChevronRight" Style="font-weight: 600; font-family: 'Figtree', sans-serif; padding: 12px 16px;">
+                            More
+                        </MudButton>
+                    </div>
+                </div>
+            </MudItem>
+
+            <!-- Right Side: Flowing Diagonal 3D Grid -->
+            <MudItem xs="12" md="8" Class="position-relative">
+                <div class="testimonial-flow-wrapper">
+                    <div class="testimonial-flow-container">
+                        
+                        <!-- Column 1 (Flows Up) -->
+                        <div class="flow-column flow-up">
+                            <!-- Original Set -->
+                            <TestimonialCard Name="Maria Santos" Role="HR Director, Chong Hua Hospital" Quote="PeopleCore eliminated spreadsheets and gave us back our time. Our payroll process that took three days now runs in hours." />
+                            <TestimonialCard Name="James Reyes" Role="Operations Manager, Metro Enterprise" Quote="The platform is intuitive. Our team needed minimal training, and the support team responds quickly when we have questions." />
+                            <TestimonialCard Name="Angela Cruz" Role="Chief People Officer, TechFlow" Quote="We finally have visibility into our workforce. The analytics dashboard shows us trends we never saw before." />
+                            <!-- Duplicated Set for Infinite Flow -->
+                            <TestimonialCard Name="Maria Santos" Role="HR Director, Chong Hua Hospital" Quote="PeopleCore eliminated spreadsheets and gave us back our time. Our payroll process that took three days now runs in hours." />
+                            <TestimonialCard Name="James Reyes" Role="Operations Manager, Metro Enterprise" Quote="The platform is intuitive. Our team needed minimal training, and the support team responds quickly when we have questions." />
+                            <TestimonialCard Name="Angela Cruz" Role="Chief People Officer, TechFlow" Quote="We finally have visibility into our workforce. The analytics dashboard shows us trends we never saw before." />
+                        </div>
+
+                        <!-- Column 2 (Flows Down) -->
+                        <div class="flow-column flow-down">
+                            <!-- Original Set -->
+                            <TestimonialCard Name="Elena Reyes" Role="Compliance Officer, Regional Hospital" Quote="Compliance used to keep me up at night. Now the system handles it automatically and I sleep better." />
+                            <TestimonialCard Name="Marcus Villanueva" Role="Chief People Officer, Enterprise Solutions" Quote="The analytics dashboard showed us patterns in turnover we never would have caught otherwise. It changed how we approach retention." />
+                            <TestimonialCard Name="David Chen" Role="Operations Lead, Sunrise Healthcare" Quote="The seamless integration with our existing tools made the transition completely painless. Highly recommended." />
+                            <!-- Duplicated Set for Infinite Flow -->
+                            <TestimonialCard Name="Elena Reyes" Role="Compliance Officer, Regional Hospital" Quote="Compliance used to keep me up at night. Now the system handles it automatically and I sleep better." />
+                            <TestimonialCard Name="Marcus Villanueva" Role="Chief People Officer, Enterprise Solutions" Quote="The analytics dashboard showed us patterns in turnover we never would have caught otherwise. It changed how we approach retention." />
+                            <TestimonialCard Name="David Chen" Role="Operations Lead, Sunrise Healthcare" Quote="The seamless integration with our existing tools made the transition completely painless. Highly recommended." />
+                        </div>
+
+                    </div>
+                </div>
+            </MudItem>
+
+        </MudGrid>
+    </MudContainer>
+</section>
