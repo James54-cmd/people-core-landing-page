@@ -1,0 +1,36 @@
+@using MudBlazor
+
+<section class="cta-section py-16 py-md-24">
+    <MudContainer MaxWidth="MaxWidth.Large">
+        <div class="cta-banner fade-in-up">
+            <MudGrid Spacing="6" Class="align-center">
+                
+                <!-- Left: Headline -->
+                <MudItem xs="12" md="6">
+                    <MudText Typo="Typo.h1" Style="color: #ffffff; font-family: 'Gilroy', sans-serif; font-size: clamp(3rem, 6vw, 4.5rem); font-weight: 800; letter-spacing: -2px; line-height: 1.1;">
+                        Ready to<br />simplify HR<br />operations
+                    </MudText>
+                </MudItem>
+
+                <!-- Right: Description & Buttons -->
+                <MudItem xs="12" md="6">
+                    <div class="d-flex flex-column align-start justify-center" style="height: 100%;">
+                        <MudText Typo="Typo.body1" Style="color: rgba(255,255,255,0.9); font-family: 'Figtree', sans-serif; font-size: 1.125rem; line-height: 1.6; max-width: 400px;" Class="mb-8">
+                            See how PeopleCore transforms the way you manage people
+                        </MudText>
+                        
+                        <div class="d-flex flex-wrap gap-4">
+                            <MudButton Variant="Variant.Filled" Size="Size.Large" Style="background-color: #ffffff; color: #111; border-radius: 0; padding: 14px 32px; font-weight: 800; font-family: 'Gilroy', sans-serif; letter-spacing: 1px; transition: transform 0.2s ease;" Class="cta-btn-hover">
+                                REQUEST DEMO
+                            </MudButton>
+                            <MudButton Variant="Variant.Outlined" Size="Size.Large" Style="color: #ffffff; border-color: rgba(255,255,255,0.5); border-radius: 0; padding: 14px 32px; font-weight: 800; font-family: 'Gilroy', sans-serif; letter-spacing: 1px; transition: all 0.2s ease;" Class="cta-btn-outline-hover">
+                                EXPLORE
+                            </MudButton>
+                        </div>
+                    </div>
+                </MudItem>
+                
+            </MudGrid>
+        </div>
+    </MudContainer>
+</section>

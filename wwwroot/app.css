@@ -590,3 +590,49 @@ h1:focus {
 .testimonial-card-3d:hover .card-content {
     transform: translateZ(20px);
 }
+
+/* CTA Section */
+.cta-section {
+    position: relative;
+    background-color: #ffffff;
+}
+
+.cta-banner {
+    background: linear-gradient(90deg, #1E9FE0 0%, #0B5C8C 100%);
+    border-radius: 32px;
+    padding: 6rem 5rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 40px 100px -20px rgba(11,92,140,0.5);
+    display: flex;
+    align-items: center;
+}
+
+/* Subtle background pattern/blob for the CTA */
+.cta-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.cta-btn-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.cta-btn-outline-hover:hover {
+    border-color: #ffffff !important;
+    background-color: rgba(255,255,255,0.1) !important;
+}
+
+@media (max-width: 960px) {
+    .cta-banner {
+        padding: 3rem 2rem;
+    }
+}
