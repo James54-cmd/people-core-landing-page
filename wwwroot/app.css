@@ -83,10 +83,10 @@ h1:focus {
     position: relative;
     overflow: hidden;
     background: radial-gradient(circle at 80% 20%, #E8F4FB 0%, #F7F9FB 100%);
-    min-height: 80vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 10rem 0 4rem 0; /* Extra top padding for floating nav */
+    padding: 6rem 0 2rem 0; /* Reduced top padding now that mud-main-content is fixed */
 }
 
 .hero-bg-blob {
@@ -575,6 +575,11 @@ h1:focus {
     transform: translateZ(30px) rotateX(4deg) rotateY(-4deg) rotateZ(0deg) scale(1.05);
     box-shadow: -20px 40px 80px rgba(30,159,224,0.15);
     border-color: rgba(30,159,224,0.3);
+}
+
+/* Remove default MudBlazor padding so Hero goes to the very top */
+.mud-main-content {
+    padding-top: 0 !important;
 }
 
 .card-content {
