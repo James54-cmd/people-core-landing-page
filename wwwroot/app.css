@@ -174,7 +174,6 @@ h1:focus {
 /* Marquee / Flowy Brands */
 .marquee-wrapper {
     overflow: hidden;
-    white-space: nowrap;
     position: relative;
     width: 100%;
     background: #ffffff;
@@ -205,6 +204,7 @@ h1:focus {
 
 .marquee-content {
     display: inline-flex;
+    white-space: nowrap;
     animation: marquee 30s linear infinite;
 }
 
@@ -589,6 +589,53 @@ h1:focus {
 
 .testimonial-card-3d:hover .card-content {
     transform: translateZ(20px);
+}
+
+/* Mobile & Tablet Sideways 2D Testimonials */
+@media (max-width: 959px) {
+    .testimonial-flow-wrapper {
+        height: auto;
+        mask-image: none;
+        -webkit-mask-image: none;
+        margin-top: 2rem;
+    }
+    
+    .testimonial-flow-container {
+        transform: none;
+        overflow-x: auto;
+        padding-bottom: 2rem;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none; /* Hide scrollbar Firefox */
+    }
+    
+    .testimonial-flow-container::-webkit-scrollbar {
+        display: none; /* Hide scrollbar Chrome */
+    }
+    
+    .flow-column {
+        display: contents; /* Flattens columns into a single row */
+    }
+    
+    .flow-up, .flow-down {
+        animation: none;
+    }
+    
+    .testimonial-card-3d {
+        min-width: 300px;
+        max-width: 350px;
+        transform: none;
+        scroll-snap-align: center;
+        border-radius: 16px;
+    }
+    
+    .testimonial-card-3d:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    }
+    
+    .testimonial-card-3d:hover .card-content {
+        transform: none;
+    }
 }
 
 /* CTA Section */
