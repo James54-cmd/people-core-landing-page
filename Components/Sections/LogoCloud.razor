@@ -1,30 +1,30 @@
 @using MudBlazor
 @implements IDisposable
+@rendermode InteractiveServer
 
 <section class="logo-cloud-section fade-in-up">
     <MudContainer MaxWidth="MaxWidth.Large">
-        <MudText Typo="Typo.subtitle1" Align="Align.Center" Style="font-family: 'Figtree', sans-serif; font-weight: 600; color: #64748b; letter-spacing: 0.5px;" Class="mb-8">
+        <MudText Typo="Typo.subtitle1" Align="Align.Center" Style="font-family: 'Figtree', sans-serif; font-weight: 600; color: #424242; letter-spacing: 0.5px;" Class="mb-8">
             Trusted by leading organizations across industries
         </MudText>
 
         <div class="custom-carousel scale-up">
             <!-- Slides -->
-            <div class="carousel-viewport">
+            <div class="carousel-viewport" @ontouchstart="OnTouchStart" @ontouchend="OnTouchEnd">
                 @for (int i = 0; i < Industries.Count; i++)
                 {
                     var industry = Industries[i];
                     var isActive = i == activeIndex;
                     <div class="carousel-slide @(isActive ? "active" : "")">
                         <div class="carousel-label">
-                            <MudIcon Icon="@industry.Icon" Size="Size.Small" Style="color: #1E9FE0;" />
                             <span>@industry.Name</span>
                         </div>
-                        <img src="@industry.ImagePath" alt="@industry.Name partners" />
+                        <img src="@industry.ImagePath" alt="@industry.Name partners" draggable="false" />
                     </div>
                 }
             </div>
 
-            <!-- Navigation Arrows -->
+            <!-- Navigation Arrows (Hidden on Mobile) -->
             <button class="carousel-arrow carousel-arrow-left" @onclick="PrevSlide">
                 <MudIcon Icon="@Icons.Material.Filled.ChevronLeft" Size="Size.Large" />
             </button>
@@ -32,6 +32,11 @@
                 <MudIcon Icon="@Icons.Material.Filled.ChevronRight" Size="Size.Large" />
             </button>
 
+            <!-- Swipe Hint (Mobile Only) -->
+            <div class="swipe-hint">
+                <MudIcon Icon="@Icons.Material.Filled.Swipe" Size="Size.Small" />
+                <span>Swipe to explore</span>
+            </div>
         </div>
     </MudContainer>
 </section>
@@ -39,13 +44,14 @@
 @code {
     private int activeIndex = 0;
     private System.Timers.Timer? _timer;
+    private double? touchStartX;
 
     private List<Industry> Industries = new()
     {
-        new Industry { Name = "Institutions & Conglomerates", ImagePath = "image/institution/Picture13.png", Icon = Icons.Material.Filled.AccountBalance },
-        new Industry { Name = "Manufacturing & Technology", ImagePath = "image/manufacturing/Picture11.png", Icon = Icons.Material.Filled.Factory },
-        new Industry { Name = "Food, Retail & Services", ImagePath = "image/food/Picture12.png", Icon = Icons.Material.Filled.Storefront },
-        new Industry { Name = "Financial & Banking", ImagePath = "image/financial/Picture10.png", Icon = Icons.Material.Filled.AccountBalanceWallet },
+        new Industry { Name = "Medical, Construction, & Others", ImagePath = "image/institution/Picture13.png", Icon = Icons.Material.Filled.AccountBalance },
+        new Industry { Name = "Manufacturing", ImagePath = "image/manufacturing/Picture11.png", Icon = Icons.Material.Filled.Factory },
+        new Industry { Name = "Food, Retail & Distribution", ImagePath = "image/food/Picture12.png", Icon = Icons.Material.Filled.Storefront },
+        new Industry { Name = "Financial & Related Services", ImagePath = "image/financial/Picture10.png", Icon = Icons.Material.Filled.AccountBalanceWallet },
     };
 
     protected override void OnInitialized()
@@ -70,6 +76,32 @@
     {
         activeIndex = (activeIndex - 1 + Industries.Count) % Industries.Count;
         ResetTimer();
+    }
+
+    private void OnTouchStart(TouchEventArgs e)
+    {
+        touchStartX = e.Touches.FirstOrDefault()?.ClientX;
+    }
+
+    private void OnTouchEnd(TouchEventArgs e)
+    {
+        if (touchStartX == null) return;
+
+        var touchEndX = e.ChangedTouches.FirstOrDefault()?.ClientX;
+        if (touchEndX == null) return;
+
+        var diff = touchStartX.Value - touchEndX.Value;
+
+        if (diff > 50) // Swiped left
+        {
+            NextSlide();
+        }
+        else if (diff < -50) // Swiped right
+        {
+            PrevSlide();
+        }
+
+        touchStartX = null;
     }
 
     private void ResetTimer()

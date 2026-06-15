@@ -210,6 +210,7 @@ h1:focus {
     width: 100%;
     min-height: 460px;
     overflow: hidden;
+    touch-action: pan-y;
 }
 
 .carousel-slide {
@@ -240,10 +241,11 @@ h1:focus {
     gap: 10px;
     margin-bottom: 2rem;
     font-family: 'Figtree', sans-serif;
-    font-weight: 700;
-    font-size: 1.25rem;
-    color: #1e293b;
-    letter-spacing: 0.3px;
+    font-weight: 800;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    color: #424242;
+    letter-spacing: -1px;
+    line-height: 1.1;
     text-align: center;
 }
 
@@ -282,6 +284,43 @@ h1:focus {
 
 .carousel-arrow-left { left: 0; }
 .carousel-arrow-right { right: 0; }
+
+/* Swipe Hint */
+.swipe-hint {
+    display: none; /* hidden on desktop */
+}
+
+/* Mobile and Tablet responsiveness for Carousel */
+@media (max-width: 1024px) {
+    .logo-cloud-section {
+        padding: 3rem 0 2rem;
+    }
+    .custom-carousel {
+        padding: 0 1rem;
+    }
+    .carousel-viewport {
+        min-height: 280px;
+    }
+    .carousel-slide {
+        padding: 1rem;
+    }
+    .carousel-label {
+        margin-bottom: 1.5rem;
+    }
+    .carousel-arrow {
+        display: none !important; /* Hide chevrons on mobile */
+    }
+    .swipe-hint {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        color: #94a3b8;
+        font-family: 'Figtree', sans-serif;
+        font-size: 0.85rem;
+        margin-top: 1rem;
+    }
+}
 
 /* Bullets */
 .carousel-bullets {
