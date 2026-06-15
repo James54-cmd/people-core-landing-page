@@ -1,59 +1,108 @@
 @using MudBlazor
+@inject IJSRuntime JS
+@implements IAsyncDisposable
+@rendermode InteractiveServer
 
-<section class="py-16 py-md-32" style="background-color: #ffffff; position: relative;">
+<section class="differentiators-section py-16 py-md-24" style="background-color: #ffffff;">
     <MudContainer MaxWidth="MaxWidth.Large">
         
-        <!-- Text Header Container -->
-        <div style="max-width: 860px; margin: 0 auto 0 0;">
-            <!-- Eyebrow -->
-            <div class="d-flex align-center gap-2 mb-6 fade-in-up">
-                <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; font-weight: 600; color: #555;">
-                    Success
-                </MudText>
-                <MudIcon Icon="@Icons.Material.Filled.ChevronRight" Style="font-size: 1rem; color: #999;" />
-                <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; font-weight: 600; color: #111;">
-                    Case study
-                </MudText>
-            </div>
-
-            <!-- Heading -->
-            <MudText Typo="Typo.h2" Color="Color.Dark" Style="font-family: 'Gilroy', sans-serif; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; letter-spacing: -1.5px; line-height: 1.1;" Class="mb-10 fade-in-up delay-100">
-                How Chong Hua Hospital streamlined HR operations
-            </MudText>
-
-            <!-- Author Meta & Social Share -->
-            <div class="d-flex flex-column flex-sm-row justify-space-between align-start align-sm-center mb-12 gap-6 fade-in-up delay-200">
-                <!-- Author Info -->
-                <div class="d-flex align-center gap-4">
-                    <MudAvatar Color="Color.Surface" Style="width: 56px; height: 56px; border: 1px solid #e2e8f0; background: #f8fafc;">
-                        <MudIcon Icon="@Icons.Material.Rounded.Image" Color="Color.Default" Size="Size.Small" />
-                    </MudAvatar>
-                    <div>
-                        <MudText Typo="Typo.subtitle2" Style="font-family: 'Gilroy', sans-serif; font-weight: 700; color: #111; line-height: 1.2;">
-                            PeopleCore Team
-                        </MudText>
-                        <MudText Typo="Typo.caption" Style="font-family: 'Figtree', sans-serif; color: #666; font-size: 0.9rem;">
-                            15 Nov 2024 &bull; 8 min read
-                        </MudText>
-                    </div>
+        <!-- Gradient Card Container -->
+        <div style="position: relative; border-radius: 32px; overflow: hidden; padding: 4rem 2rem;">
+            
+            <!-- WebGL Gradient Background -->
+            <canvas id="gradient-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></canvas>
+            
+            <!-- Content overlay -->
+            <div style="position: relative; z-index: 1; max-width: 1000px; margin: 0 auto;">
+                
+                <!-- Top: Headline -->
+                <div class="text-center mb-16 framer-animate">
+                    <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; font-weight: 700; color: rgba(255,255,255,0.85); text-transform: uppercase; letter-spacing: 1px;" Class="mb-4">
+                        The PeopleCore Difference
+                    </MudText>
+                    <MudText Typo="Typo.h2" Style="font-family: 'Gilroy', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -1px; line-height: 1.1; color: #ffffff;">
+                        Why we're not just another HR tool
+                    </MudText>
                 </div>
 
-                <!-- Social Icons -->
-                <div class="d-flex gap-2">
-                    <MudIconButton Icon="@Icons.Material.Filled.Link" Color="Color.Dark" Size="Size.Small" Class="social-icon-btn" />
-                    <MudIconButton Icon="@Icons.Custom.Brands.LinkedIn" Color="Color.Dark" Size="Size.Small" Class="social-icon-btn" />
-                    <MudIconButton Icon="@Icons.Custom.Brands.Twitter" Color="Color.Dark" Size="Size.Small" Class="social-icon-btn" />
-                    <MudIconButton Icon="@Icons.Custom.Brands.Facebook" Color="Color.Dark" Size="Size.Small" Class="social-icon-btn" />
-                </div>
-            </div>
-        </div>
-        
-        <!-- Huge Image -->
-        <div class="fade-in-up delay-300">
-            <div class="case-study-image-wrapper">
-                <MudIcon Icon="@Icons.Material.Rounded.Image" Style="font-size: 8rem; color: #cbd5e1; transition: all 0.5s ease;" Class="image-placeholder-icon" />
+                <!-- Bottom: Horizontal Checklist -->
+                <MudGrid Spacing="6" Class="align-start justify-center">
+                    @for (int i = 0; i < Differentiators.Count; i++)
+                    {
+                        var item = Differentiators[i];
+                        <MudItem xs="12" sm="6" md="4" Class="framer-animate fade-in-up" Style="@($"animation-delay: {i * 100}ms;")">
+                            <div class="d-flex align-start gap-3">
+                                <MudIcon Icon="@item.Icon" Style="color: rgba(255,255,255,0.9); font-size: 1.5rem; margin-top: 2px; flex-shrink: 0;" />
+                                <div>
+                                    <MudText Typo="Typo.subtitle1" Style="font-family: 'Gilroy', sans-serif; font-weight: 700; color: #ffffff; margin-bottom: 4px; font-size: 1.1rem; line-height: 1.2;">
+                                        @item.Title
+                                    </MudText>
+                                    <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; color: rgba(255,255,255,0.75); line-height: 1.5; font-size: 0.9rem;">
+                                        @item.Description
+                                    </MudText>
+                                </div>
+                            </div>
+                        </MudItem>
+                    }
+                </MudGrid>
+
             </div>
         </div>
 
     </MudContainer>
 </section>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("initGradientShader", "gradient-canvas");
+        }
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        try
+        {
+            await JS.InvokeVoidAsync("eval", "window._gradientShaderCleanup && window._gradientShaderCleanup()");
+        }
+        catch { /* Component already disposed */ }
+    }
+
+    private class DiffItem 
+    {
+        public string Title { get; set; } = "";
+        public string Description { get; set; } = "";
+        public string Icon { get; set; } = "";
+    }
+
+    private List<DiffItem> Differentiators = new()
+    {
+        new DiffItem { 
+            Title = "Consumer-grade UI, Enterprise power", 
+            Description = "We don't believe B2B software should be ugly. PeopleCore features a stunning, intuitive interface that your employees will actually love using, without sacrificing the complex routing and logic your enterprise needs.",
+            Icon = Icons.Material.Filled.DesignServices
+        },
+        new DiffItem { 
+            Title = "Truly unified all-in-one suite", 
+            Description = "Unlike competitors that stitch together different apps acquired over the years, PeopleCore was built from the ground up as a single, unified database. Changes in HR instantly reflect in Payroll.",
+            Icon = Icons.Material.Filled.Hub
+        },
+        new DiffItem { 
+            Title = "Hyper-localized for the Philippines", 
+            Description = "Built with BIR, PhilHealth, Pag-IBIG, and SSS compliance native to its core. We automatically adapt to local holiday policies, 13th-month pay computations, and tax table updates.",
+            Icon = Icons.Material.Filled.Map
+        },
+        new DiffItem { 
+            Title = "Lightning-fast implementation", 
+            Description = "Legacy systems take 6-12 months to deploy. Our cloud-native architecture and guided onboarding process gets your organization live and running in weeks, not months.",
+            Icon = Icons.Material.Filled.ElectricBolt
+        },
+        new DiffItem { 
+            Title = "Transparent, no-surprise pricing", 
+            Description = "No hidden implementation fees, no surprise modules you have to unlock later. You get full access to the core suite with a straightforward per-employee pricing model.",
+            Icon = Icons.Material.Filled.PriceCheck
+        }
+    };
+}
