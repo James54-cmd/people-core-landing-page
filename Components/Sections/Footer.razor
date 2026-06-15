@@ -1,18 +1,18 @@
 @using MudBlazor
 
-<footer class="footer-section pt-16 pt-md-24 pb-8 d-flex flex-column" style="background-color: #0b1121; min-height: 100vh; border-top: 1px solid #1e293b;">
-    <MudContainer MaxWidth="MaxWidth.Large" Class="d-flex flex-column flex-grow-1 justify-space-between">
+<footer class="footer-section pt-16 pt-md-24 pb-8 d-flex flex-column" style="background-color: #122656; border-top: 1px solid #1e293b; position: relative; overflow: hidden;">
+    <!-- Faded Background Watermark -->
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 150vw; height: 150vw; max-width: 1000px; max-height: 1000px; background: url('image/logo_withou_words.png') no-repeat center center; background-size: contain; opacity: 0.05; pointer-events: none; filter: brightness(0) invert(1); z-index: 0;"></div>
+
+    <MudContainer MaxWidth="MaxWidth.Large" Class="d-flex flex-column flex-grow-1 justify-space-between" Style="position: relative; z-index: 1;">
         
         <!-- Top Row: Logo/Links & Subscribe -->
         <MudGrid Spacing="6" Class="mb-16">
             <!-- Left Side -->
             <MudItem xs="12" md="6" Class="d-flex flex-column gap-8">
                 <!-- Logo -->
-                <div class="d-flex align-center gap-2">
-                    <MudIcon Icon="@Icons.Material.Filled.AllInclusive" Color="Color.Primary" Size="Size.Large" />
-                    <MudText Typo="Typo.h5" Style="font-weight: 800; letter-spacing: -1px; color: #ffffff;">
-                        People Core
-                    </MudText>
+                <div class="d-flex align-center">
+                    <img src="image/logo_with_words.png" alt="People Core" style="height: 64px; width: auto; filter: brightness(0) invert(1);" />
                 </div>
                 
                 <!-- Links -->
@@ -38,13 +38,6 @@
                 </MudText>
             </MudItem>
         </MudGrid>
-
-        <!-- Huge Company Name -->
-        <div class="text-center flex-grow-1 d-flex align-center justify-center mb-16 fade-in-up">
-            <MudText Typo="Typo.h1" Style="font-size: clamp(4rem, 12vw, 12rem); font-weight: 900; letter-spacing: -4px; color: #ffffff; line-height: 1;">
-                People Core
-            </MudText>
-        </div>
 
         <!-- Bottom Row: Legal & Copyright -->
         <div class="d-flex flex-column flex-md-row justify-space-between align-center pt-8" style="border-top: 1px solid rgba(255,255,255,0.1);">
