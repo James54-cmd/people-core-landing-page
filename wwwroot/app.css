@@ -213,6 +213,21 @@ h1:focus {
     touch-action: pan-y;
 }
 
+.custom-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    z-index: 1000;
+    background-color: transparent !important;
+}
+
+.adaptive-blend {
+    mix-blend-mode: difference;
+    color: white;
+}
+
 .carousel-slide {
     position: absolute;
     top: 0;
