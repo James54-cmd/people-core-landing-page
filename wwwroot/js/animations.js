@@ -99,8 +99,10 @@ window.initFramerAnimations = () => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('in-view');
             } else {
-                // Fade out when out of view
-                entry.target.classList.remove('in-view');
+                // Only fade out if leaving from the bottom to prevent top-edge flickering
+                if (entry.boundingClientRect.top > 0) {
+                    entry.target.classList.remove('in-view');
+                }
             }
         });
     }, observerOptions);
