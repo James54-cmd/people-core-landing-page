@@ -63,20 +63,37 @@ h1:focus {
 .fade-in-up {
     opacity: 0;
     transform: translateY(30px);
-    animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: opacity, transform;
 }
 
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.fade-in-up.in-view {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .delay-100 { animation-delay: 100ms; }
 .delay-200 { animation-delay: 200ms; }
 .delay-300 { animation-delay: 300ms; }
 .delay-400 { animation-delay: 400ms; }
+
+/* Framer Motion-like Scroll Animations */
+.framer-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: opacity, transform;
+}
+
+.framer-animate.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.framer-animate.delay-100 { transition-delay: 100ms; }
+.framer-animate.delay-200 { transition-delay: 200ms; }
+.framer-animate.delay-300 { transition-delay: 300ms; }
+.framer-animate.delay-400 { transition-delay: 400ms; }
 
 /* Hero Section Aesthetic */
 .hero-section {

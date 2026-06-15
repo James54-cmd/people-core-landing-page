@@ -81,3 +81,61 @@ document.addEventListener("scroll", () => {
 
     window.lastScrollY = currentScrollY;
 }, { passive: true });
+
+// Framer Motion-like scroll animations (Fade in and Fade out)
+window.initFramerAnimations = () => {
+    // Avoid multiple observers if called multiple times
+    if (window._framerObserverInitialized) return;
+    window._framerObserverInitialized = true;
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -50px 0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+            } else {
+                // Fade out when out of view
+                entry.target.classList.remove('in-view');
+            }
+        });
+    }, observerOptions);
+
+    const targetSelectors = '.framer-animate, .fade-in-up';
+
+    // Observe initial elements
+    document.querySelectorAll(targetSelectors).forEach(el => observer.observe(el));
+
+    // Observe dynamically added elements (Blazor compatibility)
+    const mutationObserver = new MutationObserver((mutations) => {
+        mutations.forEach(mutation => {
+            mutation.addedNodes.forEach(node => {
+                if (node.nodeType === 1) { // ELEMENT_NODE
+                    if (node.classList.contains('framer-animate') || node.classList.contains('fade-in-up')) {
+                        observer.observe(node);
+                    }
+                    // Also check children
+                    const children = node.querySelectorAll(targetSelectors);
+                    if (children && children.length) {
+                        children.forEach(child => observer.observe(child));
+                    }
+                }
+            });
+        });
+    });
+
+    if (document.body) {
+        mutationObserver.observe(document.body, { childList: true, subtree: true });
+    }
+};
+
+// Auto-initialize robustly for Blazor
+if (document.readyState === 'loading') {
+    document.addEventListener("DOMContentLoaded", () => window.initFramerAnimations());
+} else {
+    window.initFramerAnimations();
+}
