@@ -241,7 +241,7 @@ h1:focus {
     gap: 10px;
     margin-bottom: 2rem;
     font-family: 'Figtree', sans-serif;
-    font-weight: 800;
+    font-weight: 600;
     font-size: clamp(2.5rem, 5vw, 3.5rem);
     color: #424242;
     letter-spacing: -1px;
