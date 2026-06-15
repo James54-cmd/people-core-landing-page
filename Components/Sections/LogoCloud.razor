@@ -1,49 +1,93 @@
 @using MudBlazor
+@implements IDisposable
 
-<section class="marquee-wrapper fade-in-up delay-400">
-    <MudContainer MaxWidth="MaxWidth.Medium" Class="mb-8">
-        <MudText Typo="Typo.subtitle1" Align="Align.Center" Style="font-family: 'Figtree', sans-serif; font-weight: 600; color: #64748b; letter-spacing: 0.5px;">
-            Trusted by leading organizations across healthcare and enterprise
+<section class="logo-cloud-section fade-in-up">
+    <MudContainer MaxWidth="MaxWidth.Large">
+        <MudText Typo="Typo.subtitle1" Align="Align.Center" Style="font-family: 'Figtree', sans-serif; font-weight: 600; color: #64748b; letter-spacing: 0.5px;" Class="mb-8">
+            Trusted by leading organizations across industries
         </MudText>
-    </MudContainer>
 
-    <div class="marquee-content">
-        <!-- Group 1 -->
-        @foreach (var brand in Brands)
-        {
-            <div class="marquee-item">
-                <MudText Typo="Typo.h5" Style="font-family: 'Figtree', sans-serif; font-weight: 800; display: flex; align-items: center; gap: 8px; color: #334155;">
-                    <MudIcon Icon="@brand.Icon" Size="Size.Large" /> @brand.Name
-                </MudText>
+        <div class="custom-carousel scale-up">
+            <!-- Slides -->
+            <div class="carousel-viewport">
+                @for (int i = 0; i < Industries.Count; i++)
+                {
+                    var industry = Industries[i];
+                    var isActive = i == activeIndex;
+                    <div class="carousel-slide @(isActive ? "active" : "")">
+                        <div class="carousel-label">
+                            <MudIcon Icon="@industry.Icon" Size="Size.Small" Style="color: #1E9FE0;" />
+                            <span>@industry.Name</span>
+                        </div>
+                        <img src="@industry.ImagePath" alt="@industry.Name partners" />
+                    </div>
+                }
             </div>
-        }
-        <!-- Group 2 (Duplicate for seamless scroll) -->
-        @foreach (var brand in Brands)
-        {
-            <div class="marquee-item">
-                <MudText Typo="Typo.h5" Style="font-family: 'Figtree', sans-serif; font-weight: 800; display: flex; align-items: center; gap: 8px; color: #334155;">
-                    <MudIcon Icon="@brand.Icon" Size="Size.Large" /> @brand.Name
-                </MudText>
-            </div>
-        }
-    </div>
+
+            <!-- Navigation Arrows -->
+            <button class="carousel-arrow carousel-arrow-left" @onclick="PrevSlide">
+                <MudIcon Icon="@Icons.Material.Filled.ChevronLeft" Size="Size.Large" />
+            </button>
+            <button class="carousel-arrow carousel-arrow-right" @onclick="NextSlide">
+                <MudIcon Icon="@Icons.Material.Filled.ChevronRight" Size="Size.Large" />
+            </button>
+
+        </div>
+    </MudContainer>
 </section>
 
 @code {
-    private List<Brand> Brands = new()
+    private int activeIndex = 0;
+    private System.Timers.Timer? _timer;
+
+    private List<Industry> Industries = new()
     {
-        new Brand { Name = "Webflow", Icon = Icons.Material.Filled.Web },
-        new Brand { Name = "Relume", Icon = Icons.Material.Filled.Widgets },
-        new Brand { Name = "Supabase", Icon = Icons.Material.Filled.Storage },
-        new Brand { Name = "Vercel", Icon = Icons.Material.Filled.CloudUpload },
-        new Brand { Name = "Stripe", Icon = Icons.Material.Filled.Payment },
-        new Brand { Name = "Webflow", Icon = Icons.Material.Filled.Web },
-        new Brand { Name = "Relume", Icon = Icons.Material.Filled.Widgets },
+        new Industry { Name = "Institutions & Conglomerates", ImagePath = "image/institution/Picture13.png", Icon = Icons.Material.Filled.AccountBalance },
+        new Industry { Name = "Manufacturing & Technology", ImagePath = "image/manufacturing/Picture11.png", Icon = Icons.Material.Filled.Factory },
+        new Industry { Name = "Food, Retail & Services", ImagePath = "image/food/Picture12.png", Icon = Icons.Material.Filled.Storefront },
+        new Industry { Name = "Financial & Banking", ImagePath = "image/financial/Picture10.png", Icon = Icons.Material.Filled.AccountBalanceWallet },
     };
 
-    private class Brand
+    protected override void OnInitialized()
+    {
+        _timer = new System.Timers.Timer(5000);
+        _timer.Elapsed += async (sender, e) =>
+        {
+            activeIndex = (activeIndex + 1) % Industries.Count;
+            await InvokeAsync(StateHasChanged);
+        };
+        _timer.AutoReset = true;
+        _timer.Start();
+    }
+
+    private void NextSlide()
+    {
+        activeIndex = (activeIndex + 1) % Industries.Count;
+        ResetTimer();
+    }
+
+    private void PrevSlide()
+    {
+        activeIndex = (activeIndex - 1 + Industries.Count) % Industries.Count;
+        ResetTimer();
+    }
+
+    private void ResetTimer()
+    {
+        _timer?.Stop();
+        _timer?.Start();
+    }
+
+    public void Dispose()
+    {
+        _timer?.Stop();
+        _timer?.Dispose();
+    }
+
+    private class Industry
     {
         public string Name { get; set; } = "";
+        public string ImagePath { get; set; } = "";
         public string Icon { get; set; } = "";
     }
 }

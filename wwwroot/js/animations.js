@@ -108,7 +108,7 @@ window.initFramerAnimations = () => {
         });
     }, observerOptions);
 
-    const targetSelectors = '.framer-animate, .fade-in-up';
+    const targetSelectors = '.framer-animate, .fade-in-up, .scale-up';
 
     // Observe initial elements
     document.querySelectorAll(targetSelectors).forEach(el => observer.observe(el));
@@ -118,7 +118,7 @@ window.initFramerAnimations = () => {
         mutations.forEach(mutation => {
             mutation.addedNodes.forEach(node => {
                 if (node.nodeType === 1) { // ELEMENT_NODE
-                    if (node.classList.contains('framer-animate') || node.classList.contains('fade-in-up')) {
+                    if (node.classList.contains('framer-animate') || node.classList.contains('fade-in-up') || node.classList.contains('scale-up')) {
                         observer.observe(node);
                     }
                     // Also check children

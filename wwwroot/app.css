@@ -188,65 +188,141 @@ h1:focus {
     }
 }
 
-/* Marquee / Flowy Brands */
-.marquee-wrapper {
-    overflow: hidden;
+/* Logo Cloud / Industry Partners */
+.logo-cloud-section {
     position: relative;
     width: 100%;
     background: #ffffff;
-    padding: 4rem 0;
+    padding: 5rem 0 4rem;
     border-top: 1px solid rgba(0,0,0,0.05);
     border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-/* Mask for smooth fade at edges */
-.marquee-wrapper::before, .marquee-wrapper::after {
-    content: "";
+.custom-carousel {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 3rem;
+}
+
+.carousel-viewport {
+    position: relative;
+    width: 100%;
+    min-height: 460px;
+    overflow: hidden;
+}
+
+.carousel-slide {
     position: absolute;
     top: 0;
-    width: 150px;
-    height: 100%;
-    z-index: 2;
-}
-
-.marquee-wrapper::before {
     left: 0;
-    background: linear-gradient(to right, white, transparent);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 2rem;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
 }
 
-.marquee-wrapper::after {
-    right: 0;
-    background: linear-gradient(to left, white, transparent);
+.carousel-slide.active {
+    opacity: 1;
+    pointer-events: auto;
 }
 
-.marquee-content {
-    display: inline-flex;
-    white-space: nowrap;
-    animation: marquee 30s linear infinite;
-}
-
-.marquee-content:hover {
-    animation-play-state: paused;
-}
-
-.marquee-item {
+.carousel-label {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 4rem;
-    filter: grayscale(100%) opacity(0.5);
-    transition: all 0.4s ease;
+    gap: 10px;
+    margin-bottom: 2rem;
+    font-family: 'Figtree', sans-serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: #1e293b;
+    letter-spacing: 0.3px;
+    text-align: center;
+}
+
+.carousel-slide img {
+    width: 100%;
+    max-width: 960px;
+    height: auto;
+    object-fit: contain;
+    max-height: 380px;
+}
+
+/* Arrows */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(245,247,250,0.95);
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    color: #64748b;
+    transition: all 0.3s ease;
+    z-index: 2;
 }
 
-.marquee-item:hover {
-    filter: grayscale(0%) opacity(1);
-    transform: scale(1.05);
+.carousel-arrow:hover {
+    color: #1E9FE0;
+    background: #fff;
+    border-color: #1E9FE0;
 }
 
-@keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+.carousel-arrow-left { left: 0; }
+.carousel-arrow-right { right: 0; }
+
+/* Bullets */
+.carousel-bullets {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 1.5rem;
+}
+
+.carousel-bullet {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid #cbd5e1;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+.carousel-bullet.active {
+    background: #1E9FE0;
+    border-color: #1E9FE0;
+}
+
+.carousel-bullet:hover {
+    border-color: #1E9FE0;
+}
+
+/* Scale Up Animation (hooks into existing IntersectionObserver) */
+.scale-up {
+    opacity: 0;
+    transform: scale(0.85);
+    transition: opacity 0.7s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: opacity, transform;
+}
+
+.scale-up.in-view {
+    opacity: 1;
+    transform: scale(1);
 }
 
 /* Feature Item Selectable */
