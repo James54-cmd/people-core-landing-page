@@ -1,0 +1,59 @@
+@using MudBlazor
+
+<section class="faq-section py-16 py-md-24" style="background-color: #f8fafc;">
+    <MudContainer MaxWidth="MaxWidth.Large">
+        <MudGrid Spacing="6" Class="align-start">
+            
+            <!-- Left: Headline -->
+            <MudItem xs="12" md="5" Class="framer-animate">
+                <MudText Typo="Typo.h2" Style="font-family: 'Gilroy', sans-serif; font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 800; color: #0b1121; line-height: 1.1; letter-spacing: -1px; position: sticky; top: 120px;">
+                    All your questions,<br />answered
+                </MudText>
+            </MudItem>
+
+            <!-- Right: Accordion -->
+            <MudItem xs="12" md="7" Class="framer-animate delay-200">
+                <MudExpansionPanels Elevation="0" Style="background-color: transparent;" DisableBorders="true" Class="faq-panels-container">
+                    
+                    @foreach(var item in FaqItems)
+                    {
+                        <MudExpansionPanel Class="faq-panel">
+                            <TitleContent>
+                                <div class="d-flex align-center gap-4 py-2">
+                                    <div class="faq-number">@item.Number</div>
+                                    <MudText Typo="Typo.h6" Style="font-family: 'Figtree', sans-serif; font-weight: 600; color: #0b1121; font-size: 1.125rem;">
+                                        @item.Question
+                                    </MudText>
+                                </div>
+                            </TitleContent>
+                            <ChildContent>
+                                <MudText Typo="Typo.body1" Style="font-family: 'Figtree', sans-serif; color: #64748b; line-height: 1.6; padding-left: 60px; padding-bottom: 24px; font-size: 1rem;">
+                                    @item.Answer
+                                </MudText>
+                            </ChildContent>
+                        </MudExpansionPanel>
+                    }
+
+                </MudExpansionPanels>
+            </MudItem>
+            
+        </MudGrid>
+    </MudContainer>
+</section>
+
+@code {
+    public class FaqItem 
+    {
+        public string Number { get; set; } = "";
+        public string Question { get; set; } = "";
+        public string Answer { get; set; } = "";
+    }
+
+    private List<FaqItem> FaqItems = new()
+    {
+        new FaqItem { Number = "01", Question = "Can I manage multiple branches?", Answer = "Yes. View all your locations from your People Core admin dashboard, allowing centralized control over payroll and HR policies across different regions." },
+        new FaqItem { Number = "02", Question = "Is there a free trial?", Answer = "Absolutely. We offer a 14-day free trial so you can explore all features before committing. No credit card required." },
+        new FaqItem { Number = "03", Question = "Does People Core work with GCash or Maya?", Answer = "Yes, we integrate seamlessly with major local payment providers including GCash and Maya to make payroll disbursements instant and hassle-free." },
+        new FaqItem { Number = "04", Question = "Can my staff access it too?", Answer = "Yes! Every employee gets access to a self-service portal where they can view payslips, request time off, and update their personal information." }
+    };
+}
