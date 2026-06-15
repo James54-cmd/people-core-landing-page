@@ -1,34 +1,34 @@
 @using MudBlazor
 
 <section class="hero-section">
+    <!-- Background Video -->
+    <video autoplay loop muted playsinline 
+           style="position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; transform: translate(-50%, -50%); z-index: 0; pointer-events: none; object-fit: cover;">
+        <source src="video/bgcinematic.mp4" type="video/mp4" />
+    </video>
+
     <div class="hero-bg-blob"></div>
     <MudContainer MaxWidth="MaxWidth.Large" Class="hero-content">
         <div class="hero-diagonal-layout">
             
             <!-- Headline (Top Start) -->
             <div class="hero-headline fade-in-up">
-                <MudText Typo="Typo.h1" Color="Color.Dark" Style="font-size: clamp(3rem, 6vw, 5rem); font-weight: 800; line-height: 1.05; letter-spacing: -2px;">
-                    Medium length<br />hero heading<br />goes here
+                <MudText Typo="Typo.h1" Style="color: white; font-size: clamp(3rem, 6vw, 5rem); font-weight: 800; line-height: 1.05; letter-spacing: -2px;">
+                    Unified HR & Payroll<br />built for modern<br />organizations
                 </MudText>
             </div>
 
-            <!-- Image (Center Overlap) -->
-            <div class="hero-image fade-in-up delay-200">
-                <MudIcon Icon="@Icons.Material.Rounded.Image" Style="font-size: 8rem; color: #cbd5e1;" />
-            </div>
+
 
             <!-- Description & Buttons (Bottom End) -->
             <div class="hero-description fade-in-up delay-300">
-                <MudText Typo="Typo.body1" Color="Color.Default" Style="font-size: 1.125rem; color: #555; line-height: 1.6;">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
+                <MudText Typo="Typo.body1" Style="font-size: 1.125rem; color: white; line-height: 1.6;">
+                    Empower your workforce with a unified HR and payroll platform designed to simplify people management and drive organizational success.
                 </MudText>
                 
                 <div class="d-flex gap-4 mt-2">
-                    <MudButton Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" Style="border-radius: 8px; padding: 14px 36px; font-weight: 600; text-transform: none; font-size: 1.1rem;">
-                        Button
-                    </MudButton>
-                    <MudButton Variant="Variant.Outlined" Color="Color.Dark" Size="Size.Large" Style="border-radius: 8px; padding: 14px 36px; font-weight: 600; text-transform: none; font-size: 1.1rem; border-color: rgba(0,0,0,0.2);">
-                        Button
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" EndIcon="@Icons.Material.Filled.ArrowForward" Style="border-radius: 8px; padding: 14px 36px; font-weight: 600; text-transform: none; font-size: 1.1rem;">
+                        Get Started
                     </MudButton>
                 </div>
             </div>
