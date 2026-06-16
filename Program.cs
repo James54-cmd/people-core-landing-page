@@ -5,8 +5,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
-    .AddInteractiveServerComponents();
+    .AddInteractiveServerComponents(options => options.DetailedErrors = true);
 builder.Services.AddMudServices();
+
+if (!builder.Environment.IsDevelopment())
+{
+    builder.WebHost.UseStaticWebAssets();
+}
 
 var app = builder.Build();
 
