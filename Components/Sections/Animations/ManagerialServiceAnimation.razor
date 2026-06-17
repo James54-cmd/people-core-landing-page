@@ -5,22 +5,24 @@
 
     <div class="mgr-canvas">
         <svg class="connections" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path class="mgr-line" d="M 15 12 L 15 25 L 50 25 L 50 35" />
-            <path class="mgr-line" d="M 50 12 L 50 35" />
-            <path class="mgr-line" d="M 85 12 L 85 25 L 50 25 L 50 35" />
-            
-            <path class="mgr-line" d="M 50 35 L 50 45 L 35 45 L 35 60" /> 
-            <path class="mgr-line" d="M 50 35 L 50 45 L 75 45 L 75 60" /> 
-            
-            <path class="mgr-line" d="M 50 35 L 50 85" />
+            <!-- Employees converge down into the Manager Portal -->
+            <path class="mgr-line" d="M 18 12 L 18 28 L 50 28 L 50 44" />
+            <path class="mgr-line" d="M 50 12 L 50 44" />
+            <path class="mgr-line" d="M 82 12 L 82 28 L 50 28 L 50 44" />
+
+            <!-- Manager Portal down to HR Processing -->
+            <path class="mgr-line" d="M 50 44 L 50 84" />
+
+            <!-- Branch to the manager's mobile device -->
+            <path class="mgr-line" d="M 65 53 L 82 53" />
         </svg>
 
-        <!-- Downward Pulses -->
+        <!-- Approval pulse: Manager -> HR -->
         <div class="mgr-particle mp1"></div>
         <div class="mgr-particle mp2"></div>
         <div class="mgr-particle mp3"></div>
 
-        <!-- Employees -->
+        <!-- Employees (submit requests / receive notifications) -->
         <div class="mgr-emp e1 mgr-glass-card">
             <MudIcon Icon="@Icons.Material.Filled.Person" Style="font-size: 1.2rem; color: #3b82f6;" />
             <div class="emp-glow emp-glow-1"></div>
@@ -34,7 +36,7 @@
             <div class="emp-glow emp-glow-3"></div>
         </div>
 
-        <!-- Pending Approvals Queue Title -->
+        <!-- Pending Approvals counter (manager's inbox) -->
         <div class="mgr-queue-title">
             <MudIcon Icon="@Icons.Material.Filled.Inbox" Style="font-size: 1.2rem; color: #64748b;" />
             <span>Pending Approvals</span>
@@ -87,7 +89,7 @@
             </div>
         </div>
 
-        <!-- Manager Portals -->
+        <!-- Manager Portal (review + approve hub) -->
         <div class="mgr-portal mgr-glass-card">
             <div class="portal-header">
                 <div class="d-flex align-center gap-1">
@@ -101,12 +103,13 @@
             </div>
             <div class="fake-ui-line w-75"></div>
             <div class="fake-ui-line w-50"></div>
-            
+
             <div class="mgr-action-pop">
                 <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Style="font-size: 1.5rem; color: #10b981; background: white; border-radius: 50%; box-shadow: 0 4px 10px rgba(16,185,129,0.3);" />
             </div>
         </div>
 
+        <!-- Manager's mobile (approve on the go) -->
         <div class="mgr-mobile mgr-glass-card">
             <MudIcon Icon="@Icons.Material.Filled.Smartphone" Style="font-size: 1.5rem; color: #64748b;" />
             <div class="mgr-bell">
@@ -115,7 +118,7 @@
             </div>
         </div>
 
-        <!-- HR Processing -->
+        <!-- HR Processing (final step) -->
         <div class="mgr-hr-panel mgr-glass-card">
             <div class="hr-icon-bg">
                 <MudIcon Icon="@Icons.Material.Filled.BusinessCenter" Style="font-size: 1.2rem; color: #10b981;" />
@@ -127,7 +130,7 @@
             </div>
         </div>
 
-        <!-- Employee Notification Feedbacks -->
+        <!-- Notifications back to employees -->
         <div class="mgr-feedback fb1 mgr-glass-card">
             <MudIcon Icon="@Icons.Material.Filled.DoneAll" Style="font-size: 1rem; color: #10b981;" />
             <span>Approved</span>
@@ -141,7 +144,7 @@
             <span>Approved</span>
         </div>
 
-        <!-- Paperless Workflow Badge -->
+        <!-- Paperless Workflow finale -->
         <div class="mgr-paperless-badge mgr-glass-card">
             <MudIcon Icon="@Icons.Material.Filled.CloudDone" Style="font-size: 1.2rem; color: #3b82f6;" />
             <span>Paperless Workflow</span>
@@ -188,45 +191,46 @@
     }
     @@keyframes drawMgrLines { 0%, 3% { stroke-dashoffset: 200; } 6%, 100% { stroke-dashoffset: 0; } }
     @@keyframes syncMgrGlow {
-        0%, 10% { stroke: rgba(148, 163, 184, 0.3); filter: none; }
-        11%, 14% { stroke: #3b82f6; filter: drop-shadow(0 0 4px rgba(59,130,246,0.5)); }
-        15%, 33% { stroke: rgba(148, 163, 184, 0.3); filter: none; }
-        34%, 37% { stroke: #8b5cf6; filter: drop-shadow(0 0 4px rgba(139,92,246,0.5)); }
-        38%, 56% { stroke: rgba(148, 163, 184, 0.3); filter: none; }
-        57%, 60% { stroke: #f59e0b; filter: drop-shadow(0 0 4px rgba(245,158,11,0.5)); }
-        61%, 81% { stroke: rgba(148, 163, 184, 0.3); filter: none; }
-        82%, 85% { stroke: #10b981; filter: drop-shadow(0 0 4px rgba(16,185,129,0.5)); }
-        86%, 100% { stroke: rgba(148, 163, 184, 0.3); filter: none; }
+        0%, 4% { stroke: rgba(148, 163, 184, 0.3); filter: none; }
+        5%, 14% { stroke: #3b82f6; filter: drop-shadow(0 0 4px rgba(59,130,246,0.5)); }
+        15%, 27% { stroke: rgba(148, 163, 184, 0.3); filter: none; }
+        28%, 37% { stroke: #8b5cf6; filter: drop-shadow(0 0 4px rgba(139,92,246,0.5)); }
+        38%, 50% { stroke: rgba(148, 163, 184, 0.3); filter: none; }
+        51%, 60% { stroke: #f59e0b; filter: drop-shadow(0 0 4px rgba(245,158,11,0.5)); }
+        61%, 72% { stroke: rgba(148, 163, 184, 0.3); filter: none; }
+        73%, 84% { stroke: #10b981; filter: drop-shadow(0 0 4px rgba(16,185,129,0.5)); }
+        85%, 100% { stroke: rgba(148, 163, 184, 0.3); filter: none; }
     }
 
+    /* Approval pulse travelling Manager Portal -> HR */
     .mgr-particle { position: absolute; width: 6px; height: 6px; background: #10b981; border-radius: 50%; box-shadow: 0 0 10px #10b981; z-index: 10; transform: translate(-50%, -50%); opacity: 0; left: 50%; }
     .mp1 { animation: pAnim1 var(--mgr-duration) linear infinite; }
     .mp2 { animation: pAnim2 var(--mgr-duration) linear infinite; }
     .mp3 { animation: pAnim3 var(--mgr-duration) linear infinite; }
-    @@keyframes pAnim1 { 0%, 13% { opacity: 0; top: 35%; } 14% { opacity: 1; top: 35%; } 15% { opacity: 1; top: 80%; } 16%, 81% { opacity: 0; top: 80%; } 82% { opacity: 1; top: 35%; } 84% { opacity: 1; top: 80%; } 85%, 100% { opacity: 0; top: 80%; } }
-    @@keyframes pAnim2 { 0%, 36% { opacity: 0; top: 35%; } 37% { opacity: 1; top: 35%; } 38% { opacity: 1; top: 80%; } 39%, 81% { opacity: 0; top: 80%; } 82% { opacity: 1; top: 35%; } 84% { opacity: 1; top: 80%; } 85%, 100% { opacity: 0; top: 80%; } }
-    @@keyframes pAnim3 { 0%, 59% { opacity: 0; top: 35%; } 60% { opacity: 1; top: 35%; } 61% { opacity: 1; top: 80%; } 62%, 81% { opacity: 0; top: 80%; } 82% { opacity: 1; top: 35%; } 84% { opacity: 1; top: 80%; } 85%, 100% { opacity: 0; top: 80%; } }
+    @@keyframes pAnim1 { 0%, 13% { opacity: 0; top: 53%; } 14% { opacity: 1; top: 53%; } 15% { opacity: 1; top: 84%; } 16%, 83% { opacity: 0; top: 84%; } 84% { opacity: 1; top: 53%; } 85% { opacity: 1; top: 84%; } 86%, 100% { opacity: 0; top: 84%; } }
+    @@keyframes pAnim2 { 0%, 36% { opacity: 0; top: 53%; } 37% { opacity: 1; top: 53%; } 38% { opacity: 1; top: 84%; } 39%, 83% { opacity: 0; top: 84%; } 84% { opacity: 1; top: 53%; } 85% { opacity: 1; top: 84%; } 86%, 100% { opacity: 0; top: 84%; } }
+    @@keyframes pAnim3 { 0%, 59% { opacity: 0; top: 53%; } 60% { opacity: 1; top: 53%; } 61% { opacity: 1; top: 84%; } 62%, 83% { opacity: 0; top: 84%; } 84% { opacity: 1; top: 53%; } 85% { opacity: 1; top: 84%; } 86%, 100% { opacity: 0; top: 84%; } }
 
     .mgr-emp { padding: 10px; border-radius: 50%; }
-    .e1 { left: 15%; top: 10%; } .e2 { left: 50%; top: 10%; } .e3 { left: 85%; top: 10%; }
+    .e1 { left: 18%; top: 12%; } .e2 { left: 50%; top: 12%; } .e3 { left: 82%; top: 12%; }
     .emp-glow { position: absolute; inset: -4px; border-radius: 50%; border: 2px solid #10b981; opacity: 0; }
     .emp-glow-1 { animation: eGlow1 var(--mgr-duration) ease-out infinite; }
     .emp-glow-2 { animation: eGlow2 var(--mgr-duration) ease-out infinite; }
     .emp-glow-3 { animation: eGlow3 var(--mgr-duration) ease-out infinite; }
-    @@keyframes eGlow1 { 0%, 17% { opacity: 0; transform: scale(0.8); } 18% { opacity: 1; transform: scale(1.2); } 21%, 86% { opacity: 0; transform: scale(1.5); } 87% { opacity: 0; transform: scale(0.8); } 88% { opacity: 1; transform: scale(1.2); } 91%, 100% { opacity: 0; transform: scale(1.5); } }
-    @@keyframes eGlow2 { 0%, 40% { opacity: 0; transform: scale(0.8); } 41% { opacity: 1; transform: scale(1.2); } 44%, 86% { opacity: 0; transform: scale(1.5); } 87% { opacity: 0; transform: scale(0.8); } 88% { opacity: 1; transform: scale(1.2); } 91%, 100% { opacity: 0; transform: scale(1.5); } }
-    @@keyframes eGlow3 { 0%, 63% { opacity: 0; transform: scale(0.8); } 64% { opacity: 1; transform: scale(1.2); } 67%, 86% { opacity: 0; transform: scale(1.5); } 87% { opacity: 0; transform: scale(0.8); } 88% { opacity: 1; transform: scale(1.2); } 91%, 100% { opacity: 0; transform: scale(1.5); } }
+    @@keyframes eGlow1 { 0%, 18% { opacity: 0; transform: scale(0.8); } 19% { opacity: 1; transform: scale(1.2); } 22%, 87% { opacity: 0; transform: scale(1.5); } 88% { opacity: 1; transform: scale(1.2); } 91%, 100% { opacity: 0; transform: scale(1.5); } }
+    @@keyframes eGlow2 { 0%, 41% { opacity: 0; transform: scale(0.8); } 42% { opacity: 1; transform: scale(1.2); } 45%, 87% { opacity: 0; transform: scale(1.5); } 88% { opacity: 1; transform: scale(1.2); } 91%, 100% { opacity: 0; transform: scale(1.5); } }
+    @@keyframes eGlow3 { 0%, 64% { opacity: 0; transform: scale(0.8); } 65% { opacity: 1; transform: scale(1.2); } 68%, 87% { opacity: 0; transform: scale(1.5); } 88% { opacity: 1; transform: scale(1.2); } 91%, 100% { opacity: 0; transform: scale(1.5); } }
 
-    .mgr-queue-title { position: absolute; left: 50%; top: 25%; transform: translate(-50%, -50%); display: flex; align-items: center; gap: 8px; font-family: 'Figtree', sans-serif; font-size: 0.8rem; font-weight: 800; color: #475569; z-index: 2; animation: queueFade var(--mgr-duration) cubic-bezier(0.4, 0, 0.2, 1) infinite; }
-    @@keyframes queueFade { 0%, 76% { opacity: 1; transform: translate(-50%, -50%); } 78%, 86% { opacity: 0; transform: translate(-50%, -60%); } 88%, 100% { opacity: 1; transform: translate(-50%, -50%); } }
+    .mgr-queue-title { position: absolute; left: 50%; top: 30%; transform: translate(-50%, -50%); display: flex; align-items: center; gap: 8px; font-family: 'Figtree', sans-serif; font-size: 0.8rem; font-weight: 800; color: #475569; z-index: 2; animation: queueFade var(--mgr-duration) cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+    @@keyframes queueFade { 0%, 86% { opacity: 1; transform: translate(-50%, -50%); } 88%, 96% { opacity: 0; transform: translate(-50%, -60%); } 98%, 100% { opacity: 1; transform: translate(-50%, -50%); } }
     .queue-badge-wrapper { position: relative; width: 22px; height: 22px; }
     .q-badge { position: absolute; inset: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 800; color: white; }
     .qb-0 { background: #cbd5e1; animation: qb0 var(--mgr-duration) step-end infinite; }
     .qb-1 { background: #ef4444; opacity: 0; animation: qb1 var(--mgr-duration) step-end infinite; }
     .qb-3 { background: #ef4444; opacity: 0; animation: qb3 var(--mgr-duration) step-end infinite; }
-    @@keyframes qb0 { 0%, 4% { opacity: 1; } 5%, 10% { opacity: 0; } 11%, 27% { opacity: 1; } 28%, 33% { opacity: 0; } 34%, 50% { opacity: 1; } 51%, 56% { opacity: 0; } 57%, 74% { opacity: 1; } 75%, 83% { opacity: 0; } 84%, 100% { opacity: 1; } }
-    @@keyframes qb1 { 0%, 4% { opacity: 0; } 5%, 10% { opacity: 1; } 11%, 27% { opacity: 0; } 28%, 33% { opacity: 1; } 34%, 50% { opacity: 0; } 51%, 56% { opacity: 1; } 57%, 100% { opacity: 0; } }
-    @@keyframes qb3 { 0%, 74% { opacity: 0; } 75%, 83% { opacity: 1; } 84%, 100% { opacity: 0; } }
+    @@keyframes qb0 { 0%, 4% { opacity: 1; } 5%, 11% { opacity: 0; } 12%, 27% { opacity: 1; } 28%, 34% { opacity: 0; } 35%, 50% { opacity: 1; } 51%, 57% { opacity: 0; } 58%, 71% { opacity: 1; } 72%, 81% { opacity: 0; } 82%, 100% { opacity: 1; } }
+    @@keyframes qb1 { 0%, 4% { opacity: 0; } 5%, 11% { opacity: 1; } 12%, 27% { opacity: 0; } 28%, 34% { opacity: 1; } 35%, 50% { opacity: 0; } 51%, 57% { opacity: 1; } 58%, 100% { opacity: 0; } }
+    @@keyframes qb3 { 0%, 71% { opacity: 0; } 72%, 81% { opacity: 1; } 82%, 100% { opacity: 0; } }
 
     .mgr-req-card { display: flex; flex-direction: column; align-items: center; padding: 10px 14px; gap: 6px; width: 110px; border-radius: 12px; font-family: 'Figtree', sans-serif; z-index: 10; }
     .req-icon { font-size: 1.4rem; }
@@ -237,100 +241,98 @@
     .b-approved { background: #dcfce7; color: #16a34a; }
     .req-details { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 0.6rem; color: #64748b; font-weight: 600; margin-top: 4px; height: 0; overflow: hidden; opacity: 0; transition: all 0.3s; }
 
+    /* Flow: employee (top) -> manager portal (review/approve) -> HR (down) */
     .req-leave { animation: rLeave var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; z-index: 8; }
     @@keyframes rLeave {
-        0%, 1% { left: 15%; top: 10%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-        2%, 3% { left: 15%; top: 20%; opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
-        5%, 8% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(0.9); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
-        10% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(1.15); box-shadow: 0 20px 40px rgba(59,130,246,0.15); border-color: rgba(59,130,246,0.3); }
-        12%, 13% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(0.95); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
-        14% { left: 50%; top: 80%; opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
-        15%, 70% { left: 50%; top: 85%; opacity: 0; transform: translate(-50%, -50%) scale(0); }
-        /* Phase 4 */
-        71% { left: 15%; top: 10%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-        72%, 73% { left: 15%; top: 20%; opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
-        75%, 76% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(0.9); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
-        78%, 81% { left: 15%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 20px 40px rgba(59,130,246,0.15); border-color: rgba(59,130,246,0.3); }
-        83% { left: 15%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(0.95); }
-        84% { left: 50%; top: 80%; opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
-        85%, 100% { left: 50%; top: 85%; opacity: 0; transform: translate(-50%, -50%) scale(0); }
+        0%, 1% { left: 18%; top: 12%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+        2%, 3% { left: 18%; top: 18%; opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+        5%, 7% { left: 50%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(0.95); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
+        9% { left: 50%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(1.12); box-shadow: 0 20px 40px rgba(59,130,246,0.15); border-color: rgba(59,130,246,0.3); }
+        11%, 12% { left: 50%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(0.96); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
+        14% { left: 50%; top: 84%; opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
+        15%, 70% { left: 50%; top: 84%; opacity: 0; transform: translate(-50%, -50%) scale(0); }
+        /* Phase 4: batch */
+        71% { left: 18%; top: 12%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+        72%, 73% { left: 25%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        78%, 81% { left: 25%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(1.05); box-shadow: 0 20px 40px rgba(59,130,246,0.15); border-color: rgba(59,130,246,0.3); }
+        83% { left: 25%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(0.95); }
+        84% { left: 50%; top: 84%; opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
+        85%, 100% { left: 50%; top: 84%; opacity: 0; transform: translate(-50%, -50%) scale(0); }
     }
     .det-leave { animation: dLeave var(--mgr-duration) ease infinite; }
-    @@keyframes dLeave { 0%, 7% { height: 0; opacity: 0; margin-top: 0; } 9%, 11% { height: 26px; opacity: 1; margin-top: 4px; } 12%, 100% { height: 0; opacity: 0; margin-top: 0; } }
+    @@keyframes dLeave { 0%, 6% { height: 0; opacity: 0; margin-top: 0; } 8%, 10% { height: 26px; opacity: 1; margin-top: 4px; } 11%, 100% { height: 0; opacity: 0; margin-top: 0; } }
     .bpl-anim { animation: bplFade var(--mgr-duration) step-end infinite; }
     .bal-anim { opacity: 0; animation: balFade var(--mgr-duration) step-end infinite; }
-    @@keyframes bplFade { 0%, 10% { opacity: 1; } 11%, 70% { opacity: 0; } 71%, 81% { opacity: 1; } 82%, 100% { opacity: 0; } }
-    @@keyframes balFade { 0%, 10% { opacity: 0; } 11%, 15% { opacity: 1; } 16%, 70% { opacity: 0; } 71%, 81% { opacity: 0; } 82%, 85% { opacity: 1; } 86%, 100% { opacity: 0; } }
+    @@keyframes bplFade { 0%, 9% { opacity: 1; } 10%, 71% { opacity: 0; } 72%, 80% { opacity: 1; } 81%, 100% { opacity: 0; } }
+    @@keyframes balFade { 0%, 10% { opacity: 0; } 11%, 15% { opacity: 1; } 16%, 80% { opacity: 0; } 81%, 85% { opacity: 1; } 86%, 100% { opacity: 0; } }
 
     .req-ot { animation: rOt var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; z-index: 7; }
     @@keyframes rOt {
-        0%, 23% { left: 50%; top: 10%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-        25%, 26% { left: 50%; top: 20%; opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
-        28%, 31% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(0.9); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
-        33% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(1.15); box-shadow: 0 20px 40px rgba(139,92,246,0.15); border-color: rgba(139,92,246,0.3); }
-        35%, 36% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(0.95); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
-        37% { left: 50%; top: 80%; opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
-        38%, 70% { left: 50%; top: 85%; opacity: 0; transform: translate(-50%, -50%) scale(0); }
-        /* Phase 4 */
-        71% { left: 50%; top: 10%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-        72%, 73% { left: 50%; top: 20%; opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
-        75%, 76% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(0.9); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
-        78%, 81% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 20px 40px rgba(139,92,246,0.15); border-color: rgba(139,92,246,0.3); }
-        83% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(0.95); }
-        84% { left: 50%; top: 80%; opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
-        85%, 100% { left: 50%; top: 85%; opacity: 0; transform: translate(-50%, -50%) scale(0); }
+        0%, 23% { left: 50%; top: 12%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+        25%, 26% { left: 50%; top: 18%; opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+        28%, 30% { left: 50%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(0.95); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
+        32% { left: 50%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(1.12); box-shadow: 0 20px 40px rgba(139,92,246,0.15); border-color: rgba(139,92,246,0.3); }
+        34%, 35% { left: 50%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(0.96); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
+        37% { left: 50%; top: 84%; opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
+        38%, 70% { left: 50%; top: 84%; opacity: 0; transform: translate(-50%, -50%) scale(0); }
+        /* Phase 4: batch */
+        71% { left: 50%; top: 12%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+        72%, 73% { left: 50%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        78%, 81% { left: 50%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(1.05); box-shadow: 0 20px 40px rgba(139,92,246,0.15); border-color: rgba(139,92,246,0.3); }
+        83% { left: 50%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(0.95); }
+        84% { left: 50%; top: 84%; opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
+        85%, 100% { left: 50%; top: 84%; opacity: 0; transform: translate(-50%, -50%) scale(0); }
     }
     .det-ot { animation: dOt var(--mgr-duration) ease infinite; }
-    @@keyframes dOt { 0%, 30% { height: 0; opacity: 0; margin-top: 0; } 32%, 34% { height: 26px; opacity: 1; margin-top: 4px; } 35%, 100% { height: 0; opacity: 0; margin-top: 0; } }
+    @@keyframes dOt { 0%, 29% { height: 0; opacity: 0; margin-top: 0; } 31%, 33% { height: 26px; opacity: 1; margin-top: 4px; } 34%, 100% { height: 0; opacity: 0; margin-top: 0; } }
     .bpo-anim { animation: bpoFade var(--mgr-duration) step-end infinite; }
     .bao-anim { opacity: 0; animation: baoFade var(--mgr-duration) step-end infinite; }
-    @@keyframes bpoFade { 0%, 33% { opacity: 1; } 34%, 70% { opacity: 0; } 71%, 81% { opacity: 1; } 82%, 100% { opacity: 0; } }
-    @@keyframes baoFade { 0%, 33% { opacity: 0; } 34%, 38% { opacity: 1; } 39%, 70% { opacity: 0; } 71%, 81% { opacity: 0; } 82%, 85% { opacity: 1; } 86%, 100% { opacity: 0; } }
+    @@keyframes bpoFade { 0%, 32% { opacity: 1; } 33%, 71% { opacity: 0; } 72%, 80% { opacity: 1; } 81%, 100% { opacity: 0; } }
+    @@keyframes baoFade { 0%, 32% { opacity: 0; } 33%, 38% { opacity: 1; } 39%, 80% { opacity: 0; } 81%, 85% { opacity: 1; } 86%, 100% { opacity: 0; } }
 
     .req-travel { animation: rTravel var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; z-index: 6; }
     @@keyframes rTravel {
-        0%, 46% { left: 85%; top: 10%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-        48%, 49% { left: 85%; top: 20%; opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
-        51%, 54% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(0.9); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
-        56% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(1.15); box-shadow: 0 20px 40px rgba(245,158,11,0.15); border-color: rgba(245,158,11,0.3); }
-        58%, 59% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(0.95); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
-        60% { left: 50%; top: 80%; opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
-        61%, 70% { left: 50%; top: 85%; opacity: 0; transform: translate(-50%, -50%) scale(0); }
-        /* Phase 4 */
-        71% { left: 85%; top: 10%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-        72%, 73% { left: 85%; top: 20%; opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
-        75%, 76% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(0.9); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
-        78%, 81% { left: 85%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 20px 40px rgba(245,158,11,0.15); border-color: rgba(245,158,11,0.3); }
-        83% { left: 85%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(0.95); }
-        84% { left: 50%; top: 80%; opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
-        85%, 100% { left: 50%; top: 85%; opacity: 0; transform: translate(-50%, -50%) scale(0); }
+        0%, 46% { left: 82%; top: 12%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+        48%, 49% { left: 82%; top: 18%; opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+        51%, 53% { left: 50%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(0.95); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
+        55% { left: 50%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(1.12); box-shadow: 0 20px 40px rgba(245,158,11,0.15); border-color: rgba(245,158,11,0.3); }
+        57%, 58% { left: 50%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(0.96); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
+        60% { left: 50%; top: 84%; opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
+        61%, 70% { left: 50%; top: 84%; opacity: 0; transform: translate(-50%, -50%) scale(0); }
+        /* Phase 4: batch */
+        71% { left: 82%; top: 12%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+        72%, 73% { left: 75%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        78%, 81% { left: 75%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(1.05); box-shadow: 0 20px 40px rgba(245,158,11,0.15); border-color: rgba(245,158,11,0.3); }
+        83% { left: 75%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(0.95); }
+        84% { left: 50%; top: 84%; opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
+        85%, 100% { left: 50%; top: 84%; opacity: 0; transform: translate(-50%, -50%) scale(0); }
     }
     .det-travel { animation: dTravel var(--mgr-duration) ease infinite; }
-    @@keyframes dTravel { 0%, 53% { height: 0; opacity: 0; margin-top: 0; } 55%, 57% { height: 26px; opacity: 1; margin-top: 4px; } 58%, 100% { height: 0; opacity: 0; margin-top: 0; } }
+    @@keyframes dTravel { 0%, 52% { height: 0; opacity: 0; margin-top: 0; } 54%, 56% { height: 26px; opacity: 1; margin-top: 4px; } 57%, 100% { height: 0; opacity: 0; margin-top: 0; } }
     .bpt-anim { animation: bptFade var(--mgr-duration) step-end infinite; }
     .bat-anim { opacity: 0; animation: batFade var(--mgr-duration) step-end infinite; }
-    @@keyframes bptFade { 0%, 56% { opacity: 1; } 57%, 70% { opacity: 0; } 71%, 81% { opacity: 1; } 82%, 100% { opacity: 0; } }
-    @@keyframes batFade { 0%, 56% { opacity: 0; } 57%, 61% { opacity: 1; } 62%, 70% { opacity: 0; } 71%, 81% { opacity: 0; } 82%, 85% { opacity: 1; } 86%, 100% { opacity: 0; } }
+    @@keyframes bptFade { 0%, 55% { opacity: 1; } 56%, 71% { opacity: 0; } 72%, 80% { opacity: 1; } 81%, 100% { opacity: 0; } }
+    @@keyframes batFade { 0%, 55% { opacity: 0; } 56%, 61% { opacity: 1; } 62%, 80% { opacity: 0; } 81%, 85% { opacity: 1; } 86%, 100% { opacity: 0; } }
 
-    .mgr-portal { left: 35%; top: 60%; width: 150px; padding: 12px; display: flex; flex-direction: column; gap: 8px; animation: portalHighlight var(--mgr-duration) ease infinite; }
+    .mgr-portal { left: 50%; top: 53%; width: 160px; padding: 12px; display: flex; flex-direction: column; gap: 8px; animation: portalHighlight var(--mgr-duration) ease infinite; z-index: 4; }
     @@keyframes portalHighlight {
-        0%, 7% { border-color: rgba(255,255,255,1); box-shadow: 0 10px 30px rgba(15,23,42,0.05); transform: translate(-50%, -50%) scale(1); }
-        8%, 12% { border-color: #3b82f6; box-shadow: 0 15px 40px rgba(59,130,246,0.2); transform: translate(-50%, -50%) scale(1.05); }
-        13%, 30% { border-color: rgba(255,255,255,1); box-shadow: 0 10px 30px rgba(15,23,42,0.05); transform: translate(-50%, -50%) scale(1); }
-        31%, 35% { border-color: #8b5cf6; box-shadow: 0 15px 40px rgba(139,92,246,0.2); transform: translate(-50%, -50%) scale(1.05); }
-        36%, 53% { border-color: rgba(255,255,255,1); box-shadow: 0 10px 30px rgba(15,23,42,0.05); transform: translate(-50%, -50%) scale(1); }
-        54%, 58% { border-color: #f59e0b; box-shadow: 0 15px 40px rgba(245,158,11,0.2); transform: translate(-50%, -50%) scale(1.05); }
-        59%, 78% { border-color: rgba(255,255,255,1); box-shadow: 0 10px 30px rgba(15,23,42,0.05); transform: translate(-50%, -50%) scale(1); }
-        79%, 83% { border-color: #10b981; box-shadow: 0 15px 40px rgba(16,185,129,0.2); transform: translate(-50%, -50%) scale(1.05); }
-        84%, 100% { border-color: rgba(255,255,255,1); box-shadow: 0 10px 30px rgba(15,23,42,0.05); transform: translate(-50%, -50%) scale(1); }
+        0%, 5% { border-color: rgba(255,255,255,1); box-shadow: 0 10px 30px rgba(15,23,42,0.05); transform: translate(-50%, -50%) scale(1); }
+        6%, 11% { border-color: #3b82f6; box-shadow: 0 15px 40px rgba(59,130,246,0.2); transform: translate(-50%, -50%) scale(1.04); }
+        12%, 29% { border-color: rgba(255,255,255,1); box-shadow: 0 10px 30px rgba(15,23,42,0.05); transform: translate(-50%, -50%) scale(1); }
+        30%, 35% { border-color: #8b5cf6; box-shadow: 0 15px 40px rgba(139,92,246,0.2); transform: translate(-50%, -50%) scale(1.04); }
+        36%, 52% { border-color: rgba(255,255,255,1); box-shadow: 0 10px 30px rgba(15,23,42,0.05); transform: translate(-50%, -50%) scale(1); }
+        53%, 58% { border-color: #f59e0b; box-shadow: 0 15px 40px rgba(245,158,11,0.2); transform: translate(-50%, -50%) scale(1.04); }
+        59%, 76% { border-color: rgba(255,255,255,1); box-shadow: 0 10px 30px rgba(15,23,42,0.05); transform: translate(-50%, -50%) scale(1); }
+        77%, 82% { border-color: #10b981; box-shadow: 0 15px 40px rgba(16,185,129,0.2); transform: translate(-50%, -50%) scale(1.04); }
+        83%, 100% { border-color: rgba(255,255,255,1); box-shadow: 0 10px 30px rgba(15,23,42,0.05); transform: translate(-50%, -50%) scale(1); }
     }
 
     .portal-header { display: flex; align-items: center; justify-content: space-between; }
     .portal-title { font-family: 'Figtree', sans-serif; font-size: 0.65rem; font-weight: 800; color: #334155; }
     .fake-ui-line { height: 4px; background: #e2e8f0; border-radius: 2px; }
     .w-75 { width: 75%; } .w-50 { width: 50%; }
-    
-    .mgr-mobile { left: 75%; top: 60%; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+
+    .mgr-mobile { left: 82%; top: 53%; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
 
     .mgr-bell { position: relative; display: flex; align-items: center; justify-content: center; }
     .bell-ring { position: absolute; inset: -4px; border-radius: 50%; border: 2px solid #ef4444; opacity: 0; animation: bRing var(--mgr-duration) ease-out infinite; }
@@ -341,9 +343,9 @@
         28%, 29% { opacity: 1; transform: scale(1.2); }
         30%, 50% { opacity: 0; transform: scale(1.5); }
         51%, 52% { opacity: 1; transform: scale(1.2); }
-        53%, 74% { opacity: 0; transform: scale(1.5); }
-        75%, 76% { opacity: 1; transform: scale(1.2); }
-        77%, 100% { opacity: 0; transform: scale(1.5); }
+        53%, 72% { opacity: 0; transform: scale(1.5); }
+        73%, 74% { opacity: 1; transform: scale(1.2); }
+        75%, 100% { opacity: 0; transform: scale(1.5); }
     }
 
     .mgr-action-pop { position: absolute; right: -12px; top: -15px; opacity: 0; animation: aPop var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
@@ -354,12 +356,12 @@
         33%, 34% { opacity: 1; transform: scale(1.2); }
         35%, 55% { opacity: 0; transform: scale(0.5); }
         56%, 57% { opacity: 1; transform: scale(1.2); }
-        58%, 80% { opacity: 0; transform: scale(0.5); }
-        81%, 82% { opacity: 1; transform: scale(1.2); }
-        83%, 100% { opacity: 0; transform: scale(0.5); }
+        58%, 79% { opacity: 0; transform: scale(0.5); }
+        80%, 81% { opacity: 1; transform: scale(1.2); }
+        82%, 100% { opacity: 0; transform: scale(0.5); }
     }
 
-    .mgr-hr-panel { left: 50%; top: 85%; width: 180px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; animation: hrHighlight var(--mgr-duration) ease infinite; z-index: 25; }
+    .mgr-hr-panel { left: 50%; top: 84%; width: 180px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; animation: hrHighlight var(--mgr-duration) ease infinite; z-index: 25; }
     @@keyframes hrHighlight {
         0%, 14% { background: rgba(255, 255, 255, 0.95); }
         15%, 17% { background: #ecfdf5; box-shadow: 0 0 15px rgba(16,185,129,0.3); }
@@ -386,40 +388,41 @@
         88%, 100% { opacity: 0; transform: translateX(-5px); }
     }
 
+    /* Notification: HR completion flies back up to the originating employee */
     .mgr-feedback { display: flex; align-items: center; gap: 6px; padding: 8px 12px; font-family: 'Figtree', sans-serif; font-size: 0.7rem; font-weight: 800; color: #0f172a; border: 1px solid rgba(16,185,129,0.3); z-index: 20; }
     .fb1 { animation: flyFb1 var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
     .fb2 { animation: flyFb2 var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
     .fb3 { animation: flyFb3 var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
-    
+
     @@keyframes flyFb1 {
-        0%, 15% { left: 50%; top: 85%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-        16% { left: 50%; top: 85%; opacity: 1; transform: translate(-50%, -50%) scale(0.8); }
-        18% { left: 15%; top: 10%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 10px 20px rgba(16,185,129,0.2); }
-        20%, 85% { left: 15%; top: 10%; opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-        86% { left: 50%; top: 85%; opacity: 1; transform: translate(-50%, -50%) scale(0.8); }
-        88% { left: 15%; top: 10%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 10px 20px rgba(16,185,129,0.2); }
-        90%, 100% { left: 15%; top: 10%; opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+        0%, 16% { left: 50%; top: 84%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+        17% { left: 50%; top: 84%; opacity: 1; transform: translate(-50%, -50%) scale(0.8); }
+        19% { left: 18%; top: 12%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 10px 20px rgba(16,185,129,0.2); }
+        21%, 85% { left: 18%; top: 12%; opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+        86% { left: 50%; top: 84%; opacity: 1; transform: translate(-50%, -50%) scale(0.8); }
+        88% { left: 18%; top: 12%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 10px 20px rgba(16,185,129,0.2); }
+        90%, 100% { left: 18%; top: 12%; opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
     }
     @@keyframes flyFb2 {
-        0%, 38% { left: 50%; top: 85%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-        39% { left: 50%; top: 85%; opacity: 1; transform: translate(-50%, -50%) scale(0.8); }
-        41% { left: 50%; top: 10%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 10px 20px rgba(16,185,129,0.2); }
-        43%, 85% { left: 50%; top: 10%; opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-        86% { left: 50%; top: 85%; opacity: 1; transform: translate(-50%, -50%) scale(0.8); }
-        88% { left: 50%; top: 10%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 10px 20px rgba(16,185,129,0.2); }
-        90%, 100% { left: 50%; top: 10%; opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+        0%, 39% { left: 50%; top: 84%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+        40% { left: 50%; top: 84%; opacity: 1; transform: translate(-50%, -50%) scale(0.8); }
+        42% { left: 50%; top: 12%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 10px 20px rgba(16,185,129,0.2); }
+        44%, 85% { left: 50%; top: 12%; opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+        86% { left: 50%; top: 84%; opacity: 1; transform: translate(-50%, -50%) scale(0.8); }
+        88% { left: 50%; top: 12%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 10px 20px rgba(16,185,129,0.2); }
+        90%, 100% { left: 50%; top: 12%; opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
     }
     @@keyframes flyFb3 {
-        0%, 61% { left: 50%; top: 85%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-        62% { left: 50%; top: 85%; opacity: 1; transform: translate(-50%, -50%) scale(0.8); }
-        64% { left: 85%; top: 10%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 10px 20px rgba(16,185,129,0.2); }
-        66%, 85% { left: 85%; top: 10%; opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-        86% { left: 50%; top: 85%; opacity: 1; transform: translate(-50%, -50%) scale(0.8); }
-        88% { left: 85%; top: 10%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 10px 20px rgba(16,185,129,0.2); }
-        90%, 100% { left: 85%; top: 10%; opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+        0%, 62% { left: 50%; top: 84%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+        63% { left: 50%; top: 84%; opacity: 1; transform: translate(-50%, -50%) scale(0.8); }
+        65% { left: 82%; top: 12%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 10px 20px rgba(16,185,129,0.2); }
+        67%, 85% { left: 82%; top: 12%; opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+        86% { left: 50%; top: 84%; opacity: 1; transform: translate(-50%, -50%) scale(0.8); }
+        88% { left: 82%; top: 12%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 10px 20px rgba(16,185,129,0.2); }
+        90%, 100% { left: 82%; top: 12%; opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
     }
 
-    .mgr-paperless-badge { display: flex; align-items: center; gap: 8px; padding: 10px 16px; left: 50%; top: 72%; font-family: 'Figtree', sans-serif; font-size: 0.8rem; font-weight: 800; color: #0f172a; box-shadow: 0 15px 35px rgba(59,130,246,0.15); animation: paperPop var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+    .mgr-paperless-badge { display: flex; align-items: center; gap: 8px; padding: 10px 16px; left: 50%; top: 68%; font-family: 'Figtree', sans-serif; font-size: 0.8rem; font-weight: 800; color: #0f172a; box-shadow: 0 15px 35px rgba(59,130,246,0.15); z-index: 30; animation: paperPop var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
     @@keyframes paperPop { 0%, 88% { opacity: 0; transform: translate(-50%, 15px) scale(0.8); } 90%, 96% { opacity: 1; transform: translate(-50%, -50%) scale(1); } 98%, 100% { opacity: 0; transform: translate(-50%, -15px) scale(0.8); } }
 
     @@media (max-width: 767px) {
@@ -427,7 +430,7 @@
         .mgr-req-card { width: 95px; padding: 6px 8px; }
         .req-title { font-size: 0.55rem; }
         .req-badge-wrapper { width: 55px; }
-        .mgr-portal { left: 35%; width: 120px; }
+        .mgr-portal { width: 140px; }
         .portal-title { font-size: 0.55rem; }
         .mgr-hr-panel { width: 150px; }
         .hr-title { font-size: 0.65rem; }
