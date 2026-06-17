@@ -6,6 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="/" />
     <link rel="stylesheet" href="css/page-loader.css" />
+    <script>
+        (function () {
+            var path = window.location.pathname;
+            var isHome = path === '/' || path === '/index.html';
+            var hasLoadedBefore = false;
+            try {
+                hasLoadedBefore = sessionStorage.getItem('peoplecore-loaded');
+            } catch (e) {}
+            if (!isHome || hasLoadedBefore) {
+                document.documentElement.classList.add('no-loader');
+            }
+        })();
+    </script>
     <link rel="stylesheet" href="@Assets["lib/bootstrap/dist/css/bootstrap.min.css"]" />
     <link rel="stylesheet" href="@Assets["app.css"]" />
     <link rel="stylesheet" href="@Assets["PeopleCoreLandingPage.styles.css"]" />

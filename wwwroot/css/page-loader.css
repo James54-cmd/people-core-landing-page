@@ -139,3 +139,8 @@
     text-transform: uppercase;
     margin-top: 6px;
 }
+
+/* Hide loader immediately if no-loader is set on the root element */
+.no-loader .page-loader {
+    display: none !important;
+}
