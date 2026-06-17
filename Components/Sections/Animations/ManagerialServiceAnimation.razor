@@ -5,109 +5,117 @@
 
     <div class="mgr-canvas">
         <svg class="connections" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <!-- Employees to Queue -->
             <path class="mgr-line" d="M 15 12 L 15 25 L 50 25 L 50 35" />
             <path class="mgr-line" d="M 50 12 L 50 35" />
             <path class="mgr-line" d="M 85 12 L 85 25 L 50 25 L 50 35" />
             
-            <!-- Queue to Portals -->
-            <path class="mgr-line" d="M 50 35 L 50 48 L 35 48 L 35 60" /> <!-- To Manager -->
-            <path class="mgr-line" d="M 50 48 L 75 48 L 75 60" /> <!-- To Mobile -->
+            <path class="mgr-line" d="M 50 35 L 50 45 L 35 45 L 35 60" /> 
+            <path class="mgr-line" d="M 50 35 L 50 45 L 75 45 L 75 60" /> 
             
-            <!-- Queue to HR (Direct down) -->
             <path class="mgr-line" d="M 50 35 L 50 85" />
-            
-            <!-- HR to Employee 1 Feedback (Diagonal for smooth flight path) -->
-            <path class="mgr-line mgr-feedback-path" d="M 50 85 L 5 85 L 5 12 L 15 12" />
         </svg>
 
-        <!-- Sync Particles (Step 8) -->
+        <!-- Downward Pulses -->
         <div class="mgr-particle mp1"></div>
         <div class="mgr-particle mp2"></div>
         <div class="mgr-particle mp3"></div>
 
-        <!-- Employees (Step 1) -->
+        <!-- Employees -->
         <div class="mgr-emp e1 mgr-glass-card">
-            <MudIcon Icon="@Icons.Material.Filled.Person" Style="font-size: 1rem; color: #3b82f6;" />
-            <div class="emp-glow"></div>
+            <MudIcon Icon="@Icons.Material.Filled.Person" Style="font-size: 1.2rem; color: #3b82f6;" />
+            <div class="emp-glow emp-glow-1"></div>
         </div>
         <div class="mgr-emp e2 mgr-glass-card">
-            <MudIcon Icon="@Icons.Material.Filled.Person" Style="font-size: 1rem; color: #64748b;" />
+            <MudIcon Icon="@Icons.Material.Filled.Person" Style="font-size: 1.2rem; color: #8b5cf6;" />
+            <div class="emp-glow emp-glow-2"></div>
         </div>
         <div class="mgr-emp e3 mgr-glass-card">
-            <MudIcon Icon="@Icons.Material.Filled.Person" Style="font-size: 1rem; color: #64748b;" />
+            <MudIcon Icon="@Icons.Material.Filled.Person" Style="font-size: 1.2rem; color: #f59e0b;" />
+            <div class="emp-glow emp-glow-3"></div>
         </div>
 
-        <!-- Requests Stack (Step 1 & 2 & 4) -->
+        <!-- Pending Approvals Queue Title -->
         <div class="mgr-queue-title">
-            <MudIcon Icon="@Icons.Material.Filled.Inbox" Style="font-size: 1rem; color: #3b82f6;" />
+            <MudIcon Icon="@Icons.Material.Filled.Inbox" Style="font-size: 1.2rem; color: #64748b;" />
             <span>Pending Approvals</span>
-            <div class="queue-badge">
-                <span class="badge-num-3">3</span>
-                <span class="badge-num-2">2</span>
+            <div class="queue-badge-wrapper">
+                <div class="q-badge qb-0">0</div>
+                <div class="q-badge qb-1">1</div>
+                <div class="q-badge qb-3">3</div>
             </div>
         </div>
 
-        <!-- Request: Travel (Bottom) -->
-        <div class="mgr-req-card req-travel mgr-glass-card">
-            <MudIcon Icon="@Icons.Material.Filled.FlightTakeoff" Class="req-icon" />
-            <span class="req-title">Travel Order</span>
-            <div class="req-badge b-pending">Pending</div>
-        </div>
-
-        <!-- Request: Overtime (Middle) -->
-        <div class="mgr-req-card req-ot mgr-glass-card">
-            <MudIcon Icon="@Icons.Material.Filled.Schedule" Class="req-icon" />
-            <span class="req-title">Overtime</span>
-            <div class="req-badge b-pending">Pending</div>
-        </div>
-
-        <!-- Request: Leave (Top / Active) -->
+        <!-- Request: Leave (Employee A) -->
         <div class="mgr-req-card req-leave mgr-glass-card">
             <MudIcon Icon="@Icons.Material.Filled.EventAvailable" Class="req-icon" Style="color: #3b82f6;" />
             <span class="req-title">Leave Request</span>
             <div class="req-badge-wrapper">
-                <div class="req-badge b-pending bp-anim">Pending</div>
-                <div class="req-badge b-approved ba-anim">Approved</div>
+                <div class="req-badge b-pending bpl-anim">Pending</div>
+                <div class="req-badge b-approved bal-anim">Approved</div>
             </div>
-            <!-- Expanded Details (Step 4) -->
-            <div class="req-details">
+            <div class="req-details det-leave">
                 <span>3 Days</span>
                 <span>Vacation Leave</span>
             </div>
         </div>
 
-        <!-- Manager Portals (Step 3 & 5) -->
+        <!-- Request: Overtime (Employee B) -->
+        <div class="mgr-req-card req-ot mgr-glass-card">
+            <MudIcon Icon="@Icons.Material.Filled.Schedule" Class="req-icon" Style="color: #8b5cf6;" />
+            <span class="req-title">Overtime</span>
+            <div class="req-badge-wrapper">
+                <div class="req-badge b-pending bpo-anim">Pending</div>
+                <div class="req-badge b-approved bao-anim">Approved</div>
+            </div>
+            <div class="req-details det-ot">
+                <span>4 Hours</span>
+                <span>Weekend Shift</span>
+            </div>
+        </div>
+
+        <!-- Request: Travel (Employee C) -->
+        <div class="mgr-req-card req-travel mgr-glass-card">
+            <MudIcon Icon="@Icons.Material.Filled.FlightTakeoff" Class="req-icon" Style="color: #f59e0b;" />
+            <span class="req-title">Travel Order</span>
+            <div class="req-badge-wrapper">
+                <div class="req-badge b-pending bpt-anim">Pending</div>
+                <div class="req-badge b-approved bat-anim">Approved</div>
+            </div>
+            <div class="req-details det-travel">
+                <span>New York</span>
+                <span>Client Meeting</span>
+            </div>
+        </div>
+
+        <!-- Manager Portals -->
         <div class="mgr-portal mgr-glass-card">
             <div class="portal-header">
                 <div class="d-flex align-center gap-1">
-                    <MudIcon Icon="@Icons.Material.Filled.SupervisorAccount" Style="font-size: 1.2rem; color: #f59e0b;" />
+                    <MudIcon Icon="@Icons.Material.Filled.SupervisorAccount" Style="font-size: 1.2rem; color: #475569;" />
                     <span class="portal-title">Manager Portal</span>
                 </div>
                 <div class="mgr-bell">
-                    <MudIcon Icon="@Icons.Material.Filled.Notifications" Style="font-size: 1rem; color: #f59e0b;" />
+                    <MudIcon Icon="@Icons.Material.Filled.Notifications" Style="font-size: 1rem; color: #ef4444;" />
                     <div class="bell-ring"></div>
                 </div>
             </div>
-            <!-- Fake UI Lines -->
             <div class="fake-ui-line w-75"></div>
             <div class="fake-ui-line w-50"></div>
             
-            <!-- Floating Checkmark Action -->
             <div class="mgr-action-pop">
-                <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Style="font-size: 1.5rem; color: #10b981;" />
+                <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Style="font-size: 1.5rem; color: #10b981; background: white; border-radius: 50%; box-shadow: 0 4px 10px rgba(16,185,129,0.3);" />
             </div>
         </div>
 
         <div class="mgr-mobile mgr-glass-card">
             <MudIcon Icon="@Icons.Material.Filled.Smartphone" Style="font-size: 1.5rem; color: #64748b;" />
             <div class="mgr-bell">
-                <MudIcon Icon="@Icons.Material.Filled.Notifications" Style="font-size: 0.8rem; color: #f59e0b;" />
+                <MudIcon Icon="@Icons.Material.Filled.Notifications" Style="font-size: 0.8rem; color: #ef4444;" />
                 <div class="bell-ring"></div>
             </div>
         </div>
 
-        <!-- HR Processing (Step 6) -->
+        <!-- HR Processing -->
         <div class="mgr-hr-panel mgr-glass-card">
             <div class="hr-icon-bg">
                 <MudIcon Icon="@Icons.Material.Filled.BusinessCenter" Style="font-size: 1.2rem; color: #10b981;" />
@@ -119,13 +127,21 @@
             </div>
         </div>
 
-        <!-- Feedback Notification (Step 7) -->
-        <div class="mgr-feedback mgr-glass-card">
+        <!-- Employee Notification Feedbacks -->
+        <div class="mgr-feedback fb1 mgr-glass-card">
             <MudIcon Icon="@Icons.Material.Filled.DoneAll" Style="font-size: 1rem; color: #10b981;" />
-            <span>Request Approved</span>
+            <span>Approved</span>
+        </div>
+        <div class="mgr-feedback fb2 mgr-glass-card">
+            <MudIcon Icon="@Icons.Material.Filled.DoneAll" Style="font-size: 1rem; color: #10b981;" />
+            <span>Approved</span>
+        </div>
+        <div class="mgr-feedback fb3 mgr-glass-card">
+            <MudIcon Icon="@Icons.Material.Filled.DoneAll" Style="font-size: 1rem; color: #10b981;" />
+            <span>Approved</span>
         </div>
 
-        <!-- Paperless Workflow Badge (Step 8) -->
+        <!-- Paperless Workflow Badge -->
         <div class="mgr-paperless-badge mgr-glass-card">
             <MudIcon Icon="@Icons.Material.Filled.CloudDone" Style="font-size: 1.2rem; color: #3b82f6;" />
             <span>Paperless Workflow</span>
@@ -136,7 +152,7 @@
 
 <style>
     :root {
-        --mgr-duration: 10s;
+        --mgr-duration: 20s;
     }
     .mgr-container {
         position: relative; width: 100%; height: 100%; min-height: 540px; border-radius: 24px;
@@ -149,15 +165,14 @@
     }
     .mgr-canvas {
         position: relative; width: 100%; height: 100%; max-width: 560px;
-        animation: canvasFade var(--mgr-duration) cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        animation: canvasFade var(--mgr-duration) ease-in-out infinite;
     }
     @@keyframes canvasFade {
-        0%, 2% { opacity: 0; transform: scale(0.97); }
-        6%, 95% { opacity: 1; transform: scale(1); }
-        98%, 100% { opacity: 0; transform: scale(0.97); }
+        0%, 1% { opacity: 0; transform: scale(0.97); }
+        3%, 97% { opacity: 1; transform: scale(1); }
+        99%, 100% { opacity: 0; transform: scale(0.97); }
     }
 
-    /* Shared Glass Card */
     .mgr-glass-card {
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
@@ -166,154 +181,252 @@
         border-radius: 12px; position: absolute; transform: translate(-50%, -50%); z-index: 5;
     }
 
-    /* Connections */
     .connections { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
     .mgr-line {
         fill: none; stroke: rgba(148, 163, 184, 0.3); stroke-width: 1.5; stroke-linecap: round; stroke-dasharray: 200; stroke-dashoffset: 200;
         animation: drawMgrLines var(--mgr-duration) ease-out infinite, syncMgrGlow var(--mgr-duration) linear infinite;
     }
-    .mgr-feedback-path { stroke-dasharray: 400; stroke-dashoffset: 400; animation: drawMgrFeedback var(--mgr-duration) ease-out infinite, syncMgrGlow var(--mgr-duration) linear infinite; }
-    
-    @@keyframes drawMgrLines { 0%, 10% { stroke-dashoffset: 200; } 20%, 100% { stroke-dashoffset: 0; } }
-    @@keyframes drawMgrFeedback { 0%, 65% { stroke-dashoffset: 400; } 75%, 100% { stroke-dashoffset: 0; } }
+    @@keyframes drawMgrLines { 0%, 3% { stroke-dashoffset: 200; } 6%, 100% { stroke-dashoffset: 0; } }
     @@keyframes syncMgrGlow {
-        0%, 84% { stroke: rgba(148, 163, 184, 0.3); filter: none; }
-        86%, 92% { stroke: #3b82f6; filter: drop-shadow(0 0 4px rgba(59,130,246,0.5)); }
-        95%, 100% { stroke: rgba(148, 163, 184, 0.3); filter: none; }
+        0%, 10% { stroke: rgba(148, 163, 184, 0.3); filter: none; }
+        11%, 14% { stroke: #3b82f6; filter: drop-shadow(0 0 4px rgba(59,130,246,0.5)); }
+        15%, 33% { stroke: rgba(148, 163, 184, 0.3); filter: none; }
+        34%, 37% { stroke: #8b5cf6; filter: drop-shadow(0 0 4px rgba(139,92,246,0.5)); }
+        38%, 56% { stroke: rgba(148, 163, 184, 0.3); filter: none; }
+        57%, 60% { stroke: #f59e0b; filter: drop-shadow(0 0 4px rgba(245,158,11,0.5)); }
+        61%, 81% { stroke: rgba(148, 163, 184, 0.3); filter: none; }
+        82%, 85% { stroke: #10b981; filter: drop-shadow(0 0 4px rgba(16,185,129,0.5)); }
+        86%, 100% { stroke: rgba(148, 163, 184, 0.3); filter: none; }
     }
 
-    /* Sync Particles */
-    .mgr-particle { position: absolute; width: 6px; height: 6px; background: #3b82f6; border-radius: 50%; box-shadow: 0 0 10px #3b82f6; z-index: 10; transform: translate(-50%, -50%); opacity: 0; }
+    .mgr-particle { position: absolute; width: 6px; height: 6px; background: #10b981; border-radius: 50%; box-shadow: 0 0 10px #10b981; z-index: 10; transform: translate(-50%, -50%); opacity: 0; left: 50%; }
     .mp1 { animation: pAnim1 var(--mgr-duration) linear infinite; }
     .mp2 { animation: pAnim2 var(--mgr-duration) linear infinite; }
     .mp3 { animation: pAnim3 var(--mgr-duration) linear infinite; }
-    
-    @@keyframes pAnim1 { 86% { opacity: 0; left: 15%; top: 12%; } 87% { opacity: 1; left: 15%; top: 12%; } 89% { opacity: 1; left: 50%; top: 35%; } 92% { opacity: 1; left: 35%; top: 60%; } 94%, 100% { opacity: 0; left: 35%; top: 60%; } }
-    @@keyframes pAnim2 { 86% { opacity: 0; left: 85%; top: 12%; } 87% { opacity: 1; left: 85%; top: 12%; } 89% { opacity: 1; left: 50%; top: 35%; } 92% { opacity: 1; left: 75%; top: 60%; } 94%, 100% { opacity: 0; left: 75%; top: 60%; } }
-    @@keyframes pAnim3 { 86% { opacity: 0; left: 35%; top: 60%; } 87% { opacity: 1; left: 35%; top: 60%; } 91% { opacity: 1; left: 50%; top: 85%; } 94%, 100% { opacity: 0; left: 50%; top: 85%; } }
+    @@keyframes pAnim1 { 0%, 13% { opacity: 0; top: 35%; } 14% { opacity: 1; top: 35%; } 15% { opacity: 1; top: 80%; } 16%, 81% { opacity: 0; top: 80%; } 82% { opacity: 1; top: 35%; } 84% { opacity: 1; top: 80%; } 85%, 100% { opacity: 0; top: 80%; } }
+    @@keyframes pAnim2 { 0%, 36% { opacity: 0; top: 35%; } 37% { opacity: 1; top: 35%; } 38% { opacity: 1; top: 80%; } 39%, 81% { opacity: 0; top: 80%; } 82% { opacity: 1; top: 35%; } 84% { opacity: 1; top: 80%; } 85%, 100% { opacity: 0; top: 80%; } }
+    @@keyframes pAnim3 { 0%, 59% { opacity: 0; top: 35%; } 60% { opacity: 1; top: 35%; } 61% { opacity: 1; top: 80%; } 62%, 81% { opacity: 0; top: 80%; } 82% { opacity: 1; top: 35%; } 84% { opacity: 1; top: 80%; } 85%, 100% { opacity: 0; top: 80%; } }
 
-    /* Employees */
-    .mgr-emp { padding: 8px; border-radius: 50%; animation: empPop var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
-    .e1 { left: 15%; top: 12%; } .e2 { left: 50%; top: 12%; } .e3 { left: 85%; top: 12%; }
-    @@keyframes empPop { 0%, 2% { transform: translate(-50%, -50%) scale(0); opacity: 0; } 6%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; } }
-    .emp-glow { position: absolute; inset: -4px; border-radius: 50%; border: 2px solid #10b981; opacity: 0; animation: eGlow var(--mgr-duration) ease-out infinite; }
-    @@keyframes eGlow { 0%, 75% { opacity: 0; transform: scale(0.8); } 77% { opacity: 1; transform: scale(1.1); } 82%, 100% { opacity: 0; transform: scale(1.3); } }
+    .mgr-emp { padding: 10px; border-radius: 50%; }
+    .e1 { left: 15%; top: 10%; } .e2 { left: 50%; top: 10%; } .e3 { left: 85%; top: 10%; }
+    .emp-glow { position: absolute; inset: -4px; border-radius: 50%; border: 2px solid #10b981; opacity: 0; }
+    .emp-glow-1 { animation: eGlow1 var(--mgr-duration) ease-out infinite; }
+    .emp-glow-2 { animation: eGlow2 var(--mgr-duration) ease-out infinite; }
+    .emp-glow-3 { animation: eGlow3 var(--mgr-duration) ease-out infinite; }
+    @@keyframes eGlow1 { 0%, 17% { opacity: 0; transform: scale(0.8); } 18% { opacity: 1; transform: scale(1.2); } 21%, 86% { opacity: 0; transform: scale(1.5); } 87% { opacity: 0; transform: scale(0.8); } 88% { opacity: 1; transform: scale(1.2); } 91%, 100% { opacity: 0; transform: scale(1.5); } }
+    @@keyframes eGlow2 { 0%, 40% { opacity: 0; transform: scale(0.8); } 41% { opacity: 1; transform: scale(1.2); } 44%, 86% { opacity: 0; transform: scale(1.5); } 87% { opacity: 0; transform: scale(0.8); } 88% { opacity: 1; transform: scale(1.2); } 91%, 100% { opacity: 0; transform: scale(1.5); } }
+    @@keyframes eGlow3 { 0%, 63% { opacity: 0; transform: scale(0.8); } 64% { opacity: 1; transform: scale(1.2); } 67%, 86% { opacity: 0; transform: scale(1.5); } 87% { opacity: 0; transform: scale(0.8); } 88% { opacity: 1; transform: scale(1.2); } 91%, 100% { opacity: 0; transform: scale(1.5); } }
 
-    /* Request Cards */
-    .mgr-req-card {
-        display: flex; flex-direction: column; align-items: center; padding: 10px 14px; gap: 6px;
-        width: 105px; border-radius: 12px; font-family: 'Figtree', sans-serif;
-    }
-    .req-icon { font-size: 1.2rem; color: #64748b; }
+    .mgr-queue-title { position: absolute; left: 50%; top: 25%; transform: translate(-50%, -50%); display: flex; align-items: center; gap: 8px; font-family: 'Figtree', sans-serif; font-size: 0.8rem; font-weight: 800; color: #475569; z-index: 2; animation: queueFade var(--mgr-duration) cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+    @@keyframes queueFade { 0%, 76% { opacity: 1; transform: translate(-50%, -50%); } 78%, 86% { opacity: 0; transform: translate(-50%, -60%); } 88%, 100% { opacity: 1; transform: translate(-50%, -50%); } }
+    .queue-badge-wrapper { position: relative; width: 22px; height: 22px; }
+    .q-badge { position: absolute; inset: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 800; color: white; }
+    .qb-0 { background: #cbd5e1; animation: qb0 var(--mgr-duration) step-end infinite; }
+    .qb-1 { background: #ef4444; opacity: 0; animation: qb1 var(--mgr-duration) step-end infinite; }
+    .qb-3 { background: #ef4444; opacity: 0; animation: qb3 var(--mgr-duration) step-end infinite; }
+    @@keyframes qb0 { 0%, 4% { opacity: 1; } 5%, 10% { opacity: 0; } 11%, 27% { opacity: 1; } 28%, 33% { opacity: 0; } 34%, 50% { opacity: 1; } 51%, 56% { opacity: 0; } 57%, 74% { opacity: 1; } 75%, 83% { opacity: 0; } 84%, 100% { opacity: 1; } }
+    @@keyframes qb1 { 0%, 4% { opacity: 0; } 5%, 10% { opacity: 1; } 11%, 27% { opacity: 0; } 28%, 33% { opacity: 1; } 34%, 50% { opacity: 0; } 51%, 56% { opacity: 1; } 57%, 100% { opacity: 0; } }
+    @@keyframes qb3 { 0%, 74% { opacity: 0; } 75%, 83% { opacity: 1; } 84%, 100% { opacity: 0; } }
+
+    .mgr-req-card { display: flex; flex-direction: column; align-items: center; padding: 10px 14px; gap: 6px; width: 110px; border-radius: 12px; font-family: 'Figtree', sans-serif; z-index: 10; }
+    .req-icon { font-size: 1.4rem; }
     .req-title { font-size: 0.65rem; font-weight: 800; color: #334155; white-space: nowrap; }
-    .req-badge-wrapper { position: relative; height: 16px; width: 50px; display: flex; justify-content: center; }
-    .req-badge { position: absolute; font-size: 0.55rem; font-weight: 800; text-transform: uppercase; padding: 2px 6px; border-radius: 4px; }
+    .req-badge-wrapper { position: relative; height: 18px; width: 68px; display: flex; justify-content: center; }
+    .req-badge { position: absolute; font-size: 0.55rem; font-weight: 800; text-transform: uppercase; padding: 2px 6px; border-radius: 4px; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
     .b-pending { background: #f1f5f9; color: #64748b; }
     .b-approved { background: #dcfce7; color: #16a34a; }
-    
     .req-details { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 0.6rem; color: #64748b; font-weight: 600; margin-top: 4px; height: 0; overflow: hidden; opacity: 0; transition: all 0.3s; }
 
-    /* Title & Badge */
-    .mgr-queue-title {
-        position: absolute; left: 50%; top: 22%; transform: translate(-50%, -50%);
-        display: flex; align-items: center; gap: 6px; font-family: 'Figtree', sans-serif; font-size: 0.75rem; font-weight: 800; color: #334155;
-        animation: queueFade var(--mgr-duration) cubic-bezier(0.4, 0, 0.2, 1) infinite; z-index: 2;
-    }
-    .queue-badge { position: relative; background: #ef4444; color: white; font-size: 0.6rem; padding: 2px 6px; border-radius: 10px; font-weight: 800; width: 18px; height: 16px; display: flex; align-items: center; justify-content: center; }
-    .badge-num-3 { position: absolute; opacity: 1; animation: hideNum var(--mgr-duration) ease infinite; }
-    .badge-num-2 { position: absolute; opacity: 0; animation: showNum var(--mgr-duration) ease infinite; }
-    @@keyframes hideNum { 0%, 65% { opacity: 1; } 68%, 100% { opacity: 0; } }
-    @@keyframes showNum { 0%, 65% { opacity: 0; } 68%, 100% { opacity: 1; } }
-    @@keyframes queueFade { 
-        0%, 15% { opacity: 0; transform: translate(-50%, 10px); } 
-        18%, 35% { opacity: 1; transform: translate(-50%, 0); } 
-        38%, 65% { opacity: 0; transform: translate(-50%, -10px); } 
-        68%, 94% { opacity: 1; transform: translate(-50%, 0); } 
-        96%, 100% { opacity: 0; transform: translate(-50%, -10px); } 
-    }
-
-    /* Stack & Fan Out Animations */
-    .req-travel { animation: rTravel var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
-    .req-ot { animation: rOt var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
-    .req-leave { animation: rLeave var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
-    
-    @@keyframes rTravel {
-        0%, 5% { left: 85%; top: 12%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-        8%, 15% { left: 85%; top: 12%; opacity: 1; transform: translate(-50%, -50%) scale(1); }
-        20%, 35% { left: 50%; top: 35%; transform: translate(-50%, -50%) translateY(10px) scale(0.9); opacity: 1; }
-        40%, 65% { left: 85%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(0.9); }
-        70%, 94% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) translateY(5px) scale(0.9); }
-        96%, 100% { left: 50%; top: 35%; opacity: 0; transform: translate(-50%, -50%) translateY(5px) scale(0.5); }
-    }
-    @@keyframes rOt {
-        0%, 5% { left: 50%; top: 12%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-        8%, 15% { left: 50%; top: 12%; opacity: 1; transform: translate(-50%, -50%) scale(1); }
-        20%, 35% { left: 50%; top: 35%; transform: translate(-50%, -50%) translateY(5px) scale(0.95); opacity: 1; }
-        40%, 65% { left: 15%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(0.9); }
-        70%, 94% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) translateY(0) scale(0.95); }
-        96%, 100% { left: 50%; top: 35%; opacity: 0; transform: translate(-50%, -50%) translateY(0) scale(0.5); }
-    }
+    .req-leave { animation: rLeave var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; z-index: 8; }
     @@keyframes rLeave {
-        0%, 5% { left: 15%; top: 12%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-        8%, 15% { left: 15%; top: 12%; opacity: 1; transform: translate(-50%, -50%) scale(1); }
-        20%, 35% { left: 50%; top: 35%; transform: translate(-50%, -50%) scale(1); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
-        40%, 58% { left: 50%; top: 35%; transform: translate(-50%, -50%) scale(1.15); box-shadow: 0 20px 40px rgba(59,130,246,0.15); border-color: rgba(59,130,246,0.3); }
-        62% { left: 50%; top: 60%; transform: translate(-50%, -50%) scale(0.9); opacity: 1; } /* Stops at portal */
-        66%, 100% { left: 50%; top: 85%; transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+        0%, 1% { left: 15%; top: 10%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+        2%, 3% { left: 15%; top: 20%; opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+        5%, 8% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(0.9); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
+        10% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(1.15); box-shadow: 0 20px 40px rgba(59,130,246,0.15); border-color: rgba(59,130,246,0.3); }
+        12%, 13% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(0.95); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
+        14% { left: 50%; top: 80%; opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
+        15%, 70% { left: 50%; top: 85%; opacity: 0; transform: translate(-50%, -50%) scale(0); }
+        /* Phase 4 */
+        71% { left: 15%; top: 10%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+        72%, 73% { left: 15%; top: 20%; opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+        75%, 76% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(0.9); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
+        78%, 81% { left: 15%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 20px 40px rgba(59,130,246,0.15); border-color: rgba(59,130,246,0.3); }
+        83% { left: 15%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(0.95); }
+        84% { left: 50%; top: 80%; opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
+        85%, 100% { left: 50%; top: 85%; opacity: 0; transform: translate(-50%, -50%) scale(0); }
+    }
+    .det-leave { animation: dLeave var(--mgr-duration) ease infinite; }
+    @@keyframes dLeave { 0%, 7% { height: 0; opacity: 0; margin-top: 0; } 9%, 11% { height: 26px; opacity: 1; margin-top: 4px; } 12%, 100% { height: 0; opacity: 0; margin-top: 0; } }
+    .bpl-anim { animation: bplFade var(--mgr-duration) step-end infinite; }
+    .bal-anim { opacity: 0; animation: balFade var(--mgr-duration) step-end infinite; }
+    @@keyframes bplFade { 0%, 10% { opacity: 1; } 11%, 70% { opacity: 0; } 71%, 81% { opacity: 1; } 82%, 100% { opacity: 0; } }
+    @@keyframes balFade { 0%, 10% { opacity: 0; } 11%, 15% { opacity: 1; } 16%, 70% { opacity: 0; } 71%, 81% { opacity: 0; } 82%, 85% { opacity: 1; } 86%, 100% { opacity: 0; } }
+
+    .req-ot { animation: rOt var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; z-index: 7; }
+    @@keyframes rOt {
+        0%, 23% { left: 50%; top: 10%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+        25%, 26% { left: 50%; top: 20%; opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+        28%, 31% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(0.9); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
+        33% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(1.15); box-shadow: 0 20px 40px rgba(139,92,246,0.15); border-color: rgba(139,92,246,0.3); }
+        35%, 36% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(0.95); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
+        37% { left: 50%; top: 80%; opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
+        38%, 70% { left: 50%; top: 85%; opacity: 0; transform: translate(-50%, -50%) scale(0); }
+        /* Phase 4 */
+        71% { left: 50%; top: 10%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+        72%, 73% { left: 50%; top: 20%; opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+        75%, 76% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(0.9); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
+        78%, 81% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 20px 40px rgba(139,92,246,0.15); border-color: rgba(139,92,246,0.3); }
+        83% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(0.95); }
+        84% { left: 50%; top: 80%; opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
+        85%, 100% { left: 50%; top: 85%; opacity: 0; transform: translate(-50%, -50%) scale(0); }
+    }
+    .det-ot { animation: dOt var(--mgr-duration) ease infinite; }
+    @@keyframes dOt { 0%, 30% { height: 0; opacity: 0; margin-top: 0; } 32%, 34% { height: 26px; opacity: 1; margin-top: 4px; } 35%, 100% { height: 0; opacity: 0; margin-top: 0; } }
+    .bpo-anim { animation: bpoFade var(--mgr-duration) step-end infinite; }
+    .bao-anim { opacity: 0; animation: baoFade var(--mgr-duration) step-end infinite; }
+    @@keyframes bpoFade { 0%, 33% { opacity: 1; } 34%, 70% { opacity: 0; } 71%, 81% { opacity: 1; } 82%, 100% { opacity: 0; } }
+    @@keyframes baoFade { 0%, 33% { opacity: 0; } 34%, 38% { opacity: 1; } 39%, 70% { opacity: 0; } 71%, 81% { opacity: 0; } 82%, 85% { opacity: 1; } 86%, 100% { opacity: 0; } }
+
+    .req-travel { animation: rTravel var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; z-index: 6; }
+    @@keyframes rTravel {
+        0%, 46% { left: 85%; top: 10%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+        48%, 49% { left: 85%; top: 20%; opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+        51%, 54% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(0.9); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
+        56% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(1.15); box-shadow: 0 20px 40px rgba(245,158,11,0.15); border-color: rgba(245,158,11,0.3); }
+        58%, 59% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(0.95); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
+        60% { left: 50%; top: 80%; opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
+        61%, 70% { left: 50%; top: 85%; opacity: 0; transform: translate(-50%, -50%) scale(0); }
+        /* Phase 4 */
+        71% { left: 85%; top: 10%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+        72%, 73% { left: 85%; top: 20%; opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+        75%, 76% { left: 50%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(0.9); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
+        78%, 81% { left: 85%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 20px 40px rgba(245,158,11,0.15); border-color: rgba(245,158,11,0.3); }
+        83% { left: 85%; top: 35%; opacity: 1; transform: translate(-50%, -50%) scale(0.95); }
+        84% { left: 50%; top: 80%; opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
+        85%, 100% { left: 50%; top: 85%; opacity: 0; transform: translate(-50%, -50%) scale(0); }
+    }
+    .det-travel { animation: dTravel var(--mgr-duration) ease infinite; }
+    @@keyframes dTravel { 0%, 53% { height: 0; opacity: 0; margin-top: 0; } 55%, 57% { height: 26px; opacity: 1; margin-top: 4px; } 58%, 100% { height: 0; opacity: 0; margin-top: 0; } }
+    .bpt-anim { animation: bptFade var(--mgr-duration) step-end infinite; }
+    .bat-anim { opacity: 0; animation: batFade var(--mgr-duration) step-end infinite; }
+    @@keyframes bptFade { 0%, 56% { opacity: 1; } 57%, 70% { opacity: 0; } 71%, 81% { opacity: 1; } 82%, 100% { opacity: 0; } }
+    @@keyframes batFade { 0%, 56% { opacity: 0; } 57%, 61% { opacity: 1; } 62%, 70% { opacity: 0; } 71%, 81% { opacity: 0; } 82%, 85% { opacity: 1; } 86%, 100% { opacity: 0; } }
+
+    .mgr-portal { left: 35%; top: 60%; width: 150px; padding: 12px; display: flex; flex-direction: column; gap: 8px; animation: portalHighlight var(--mgr-duration) ease infinite; }
+    @@keyframes portalHighlight {
+        0%, 7% { border-color: rgba(255,255,255,1); box-shadow: 0 10px 30px rgba(15,23,42,0.05); transform: translate(-50%, -50%) scale(1); }
+        8%, 12% { border-color: #3b82f6; box-shadow: 0 15px 40px rgba(59,130,246,0.2); transform: translate(-50%, -50%) scale(1.05); }
+        13%, 30% { border-color: rgba(255,255,255,1); box-shadow: 0 10px 30px rgba(15,23,42,0.05); transform: translate(-50%, -50%) scale(1); }
+        31%, 35% { border-color: #8b5cf6; box-shadow: 0 15px 40px rgba(139,92,246,0.2); transform: translate(-50%, -50%) scale(1.05); }
+        36%, 53% { border-color: rgba(255,255,255,1); box-shadow: 0 10px 30px rgba(15,23,42,0.05); transform: translate(-50%, -50%) scale(1); }
+        54%, 58% { border-color: #f59e0b; box-shadow: 0 15px 40px rgba(245,158,11,0.2); transform: translate(-50%, -50%) scale(1.05); }
+        59%, 78% { border-color: rgba(255,255,255,1); box-shadow: 0 10px 30px rgba(15,23,42,0.05); transform: translate(-50%, -50%) scale(1); }
+        79%, 83% { border-color: #10b981; box-shadow: 0 15px 40px rgba(16,185,129,0.2); transform: translate(-50%, -50%) scale(1.05); }
+        84%, 100% { border-color: rgba(255,255,255,1); box-shadow: 0 10px 30px rgba(15,23,42,0.05); transform: translate(-50%, -50%) scale(1); }
     }
 
-    .req-leave .req-details { animation: detExpand var(--mgr-duration) ease infinite; }
-    @@keyframes detExpand { 0%, 38% { height: 0; opacity: 0; margin-top: 0; } 41%, 60% { height: 26px; opacity: 1; margin-top: 4px; } 63%, 100% { height: 0; opacity: 0; margin-top: 0; } }
-
-    .bp-anim { animation: bpFade var(--mgr-duration) ease infinite; }
-    .ba-anim { opacity: 0; animation: baFade var(--mgr-duration) ease infinite; }
-    @@keyframes bpFade { 0%, 50% { opacity: 1; } 52%, 100% { opacity: 0; } }
-    @@keyframes baFade { 0%, 50% { opacity: 0; transform: scale(0.8); } 53%, 100% { opacity: 1; transform: scale(1); } }
-
-    /* Portals */
-    .mgr-portal { left: 35%; top: 60%; width: 150px; padding: 12px; display: flex; flex-direction: column; gap: 8px; animation: portalFade var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
     .portal-header { display: flex; align-items: center; justify-content: space-between; }
     .portal-title { font-family: 'Figtree', sans-serif; font-size: 0.65rem; font-weight: 800; color: #334155; }
     .fake-ui-line { height: 4px; background: #e2e8f0; border-radius: 2px; }
     .w-75 { width: 75%; } .w-50 { width: 50%; }
     
-    .mgr-mobile { left: 75%; top: 60%; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 8px; animation: portalFade var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
-    
-    @@keyframes portalFade { 0%, 25% { opacity: 0; transform: translate(-50%, 15px) scale(0.9); } 28%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+    .mgr-mobile { left: 75%; top: 60%; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
 
     .mgr-bell { position: relative; display: flex; align-items: center; justify-content: center; }
     .bell-ring { position: absolute; inset: -4px; border-radius: 50%; border: 2px solid #ef4444; opacity: 0; animation: bRing var(--mgr-duration) ease-out infinite; }
-    @@keyframes bRing { 0%, 29% { opacity: 0; transform: scale(0.5); } 31% { opacity: 0.6; transform: scale(1.2); } 35%, 100% { opacity: 0; transform: scale(1.5); } }
+    @@keyframes bRing {
+        0%, 4% { opacity: 0; transform: scale(0.5); }
+        5%, 6% { opacity: 1; transform: scale(1.2); }
+        7%, 27% { opacity: 0; transform: scale(1.5); }
+        28%, 29% { opacity: 1; transform: scale(1.2); }
+        30%, 50% { opacity: 0; transform: scale(1.5); }
+        51%, 52% { opacity: 1; transform: scale(1.2); }
+        53%, 74% { opacity: 0; transform: scale(1.5); }
+        75%, 76% { opacity: 1; transform: scale(1.2); }
+        77%, 100% { opacity: 0; transform: scale(1.5); }
+    }
 
-    .mgr-action-pop { position: absolute; left: 50%; top: -20px; transform: translate(-50%, 0); opacity: 0; animation: aPop var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
-    @@keyframes aPop { 0%, 48% { opacity: 0; transform: translate(-50%, 10px) scale(0.5); } 51%, 55% { opacity: 1; transform: translate(-50%, -10px) scale(1); } 58%, 100% { opacity: 0; transform: translate(-50%, -20px) scale(0.5); } }
+    .mgr-action-pop { position: absolute; right: -12px; top: -15px; opacity: 0; animation: aPop var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+    @@keyframes aPop {
+        0%, 9% { opacity: 0; transform: scale(0.5); }
+        10%, 11% { opacity: 1; transform: scale(1.2); }
+        12%, 32% { opacity: 0; transform: scale(0.5); }
+        33%, 34% { opacity: 1; transform: scale(1.2); }
+        35%, 55% { opacity: 0; transform: scale(0.5); }
+        56%, 57% { opacity: 1; transform: scale(1.2); }
+        58%, 80% { opacity: 0; transform: scale(0.5); }
+        81%, 82% { opacity: 1; transform: scale(1.2); }
+        83%, 100% { opacity: 0; transform: scale(0.5); }
+    }
 
-    /* HR Processing */
-    .mgr-hr-panel { left: 50%; top: 85%; width: 180px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; animation: hrFade var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+    .mgr-hr-panel { left: 50%; top: 85%; width: 180px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; animation: hrHighlight var(--mgr-duration) ease infinite; z-index: 25; }
+    @@keyframes hrHighlight {
+        0%, 14% { background: rgba(255, 255, 255, 0.95); }
+        15%, 17% { background: #ecfdf5; box-shadow: 0 0 15px rgba(16,185,129,0.3); }
+        18%, 37% { background: rgba(255, 255, 255, 0.95); }
+        38%, 40% { background: #ecfdf5; box-shadow: 0 0 15px rgba(16,185,129,0.3); }
+        41%, 60% { background: rgba(255, 255, 255, 0.95); }
+        61%, 63% { background: #ecfdf5; box-shadow: 0 0 15px rgba(16,185,129,0.3); }
+        64%, 84% { background: rgba(255, 255, 255, 0.95); }
+        85%, 87% { background: #ecfdf5; box-shadow: 0 0 15px rgba(16,185,129,0.3); }
+        88%, 100% { background: rgba(255, 255, 255, 0.95); }
+    }
     .hr-icon-bg { width: 32px; height: 32px; background: #ecfdf5; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
     .hr-title { font-family: 'Figtree', sans-serif; font-size: 0.75rem; font-weight: 800; color: #334155; flex-grow: 1; }
     .hr-processed { display: flex; align-items: center; gap: 4px; font-family: 'Figtree', sans-serif; font-size: 0.6rem; font-weight: 800; color: #10b981; text-transform: uppercase; opacity: 0; animation: procFade var(--mgr-duration) ease infinite; }
-    @@keyframes hrFade { 0%, 58% { opacity: 0; transform: translate(-50%, 15px) scale(0.9); } 61%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
-    @@keyframes procFade { 0%, 68% { opacity: 0; transform: translateX(-5px); } 70%, 100% { opacity: 1; transform: translateX(0); } }
-
-    /* Feedback Notification */
-    .mgr-feedback { display: flex; align-items: center; gap: 6px; padding: 8px 12px; font-family: 'Figtree', sans-serif; font-size: 0.7rem; font-weight: 800; color: #0f172a; border: 1px solid rgba(16,185,129,0.3); animation: flyFeedback var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
-    @@keyframes flyFeedback {
-        0%, 70% { left: 50%; top: 85%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-        73% { left: 50%; top: 85%; opacity: 1; transform: translate(-50%, -50%) scale(1); }
-        77%, 82% { left: 15%; top: 25%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 10px 20px rgba(16,185,129,0.2); }
-        86%, 100% { left: 15%; top: 25%; opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+    @@keyframes procFade {
+        0%, 14% { opacity: 0; transform: translateX(-5px); }
+        15%, 17% { opacity: 1; transform: translateX(0); }
+        18%, 37% { opacity: 0; transform: translateX(-5px); }
+        38%, 40% { opacity: 1; transform: translateX(0); }
+        41%, 60% { opacity: 0; transform: translateX(-5px); }
+        61%, 63% { opacity: 1; transform: translateX(0); }
+        64%, 84% { opacity: 0; transform: translateX(-5px); }
+        85%, 87% { opacity: 1; transform: translateX(0); }
+        88%, 100% { opacity: 0; transform: translateX(-5px); }
     }
 
-    /* Paperless Badge */
-    .mgr-paperless-badge { display: flex; align-items: center; gap: 8px; padding: 10px 16px; left: 50%; top: 50%; font-family: 'Figtree', sans-serif; font-size: 0.8rem; font-weight: 800; color: #0f172a; box-shadow: 0 15px 35px rgba(59,130,246,0.15); animation: paperPop var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
-    @@keyframes paperPop { 0%, 82% { opacity: 0; transform: translate(-50%, 15px) scale(0.8); } 85%, 95% { opacity: 1; transform: translate(-50%, -50%) scale(1); } 98%, 100% { opacity: 0; transform: translate(-50%, -15px) scale(0.8); } }
+    .mgr-feedback { display: flex; align-items: center; gap: 6px; padding: 8px 12px; font-family: 'Figtree', sans-serif; font-size: 0.7rem; font-weight: 800; color: #0f172a; border: 1px solid rgba(16,185,129,0.3); z-index: 20; }
+    .fb1 { animation: flyFb1 var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+    .fb2 { animation: flyFb2 var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+    .fb3 { animation: flyFb3 var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+    
+    @@keyframes flyFb1 {
+        0%, 15% { left: 50%; top: 85%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+        16% { left: 50%; top: 85%; opacity: 1; transform: translate(-50%, -50%) scale(0.8); }
+        18% { left: 15%; top: 10%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 10px 20px rgba(16,185,129,0.2); }
+        20%, 85% { left: 15%; top: 10%; opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+        86% { left: 50%; top: 85%; opacity: 1; transform: translate(-50%, -50%) scale(0.8); }
+        88% { left: 15%; top: 10%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 10px 20px rgba(16,185,129,0.2); }
+        90%, 100% { left: 15%; top: 10%; opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+    }
+    @@keyframes flyFb2 {
+        0%, 38% { left: 50%; top: 85%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+        39% { left: 50%; top: 85%; opacity: 1; transform: translate(-50%, -50%) scale(0.8); }
+        41% { left: 50%; top: 10%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 10px 20px rgba(16,185,129,0.2); }
+        43%, 85% { left: 50%; top: 10%; opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+        86% { left: 50%; top: 85%; opacity: 1; transform: translate(-50%, -50%) scale(0.8); }
+        88% { left: 50%; top: 10%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 10px 20px rgba(16,185,129,0.2); }
+        90%, 100% { left: 50%; top: 10%; opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+    }
+    @@keyframes flyFb3 {
+        0%, 61% { left: 50%; top: 85%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+        62% { left: 50%; top: 85%; opacity: 1; transform: translate(-50%, -50%) scale(0.8); }
+        64% { left: 85%; top: 10%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 10px 20px rgba(16,185,129,0.2); }
+        66%, 85% { left: 85%; top: 10%; opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+        86% { left: 50%; top: 85%; opacity: 1; transform: translate(-50%, -50%) scale(0.8); }
+        88% { left: 85%; top: 10%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 10px 20px rgba(16,185,129,0.2); }
+        90%, 100% { left: 85%; top: 10%; opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+    }
 
-    /* Mobile Adjustments */
+    .mgr-paperless-badge { display: flex; align-items: center; gap: 8px; padding: 10px 16px; left: 50%; top: 72%; font-family: 'Figtree', sans-serif; font-size: 0.8rem; font-weight: 800; color: #0f172a; box-shadow: 0 15px 35px rgba(59,130,246,0.15); animation: paperPop var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+    @@keyframes paperPop { 0%, 88% { opacity: 0; transform: translate(-50%, 15px) scale(0.8); } 90%, 96% { opacity: 1; transform: translate(-50%, -50%) scale(1); } 98%, 100% { opacity: 0; transform: translate(-50%, -15px) scale(0.8); } }
+
     @@media (max-width: 767px) {
         .mgr-container { min-height: 520px; }
-        .mgr-req-card { width: 85px; padding: 6px 8px; }
+        .mgr-req-card { width: 95px; padding: 6px 8px; }
         .req-title { font-size: 0.55rem; }
+        .req-badge-wrapper { width: 55px; }
         .mgr-portal { left: 35%; width: 120px; }
         .portal-title { font-size: 0.55rem; }
         .mgr-hr-panel { width: 150px; }
