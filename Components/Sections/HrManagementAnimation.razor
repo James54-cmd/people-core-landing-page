@@ -28,7 +28,7 @@
         <div class="sync-packet p4"></div>
 
         <!-- 1. Employee Profile -->
-        <div class="emp-profile glass-card">
+        <div class="emp-profile hrm-glass-card">
             <div class="avatar-bg">
                 <MudIcon Icon="@Icons.Material.Filled.Person" Style="font-size: 1.5rem; color: #3b82f6;" />
             </div>
@@ -41,21 +41,21 @@
         </div>
 
         <!-- 2. Folders -->
-        <div class="folder-card f-201 glass-card">
+        <div class="folder-card f-201 hrm-glass-card">
             <MudIcon Icon="@Icons.Material.Filled.FolderShared" Style="font-size: 1.2rem; color: #64748b;" />
             <span>201 File</span>
         </div>
-        <div class="folder-card f-contract glass-card">
+        <div class="folder-card f-contract hrm-glass-card">
             <MudIcon Icon="@Icons.Material.Filled.Description" Style="font-size: 1.2rem; color: #64748b;" />
             <span>Contracts</span>
         </div>
-        <div class="folder-card f-action glass-card">
+        <div class="folder-card f-action hrm-glass-card">
             <MudIcon Icon="@Icons.Material.Filled.Assignment" Style="font-size: 1.2rem; color: #64748b;" />
             <span>Personnel Actions</span>
         </div>
 
         <!-- 3. Update Card (Pops out of 201 File) -->
-        <div class="update-card glass-card">
+        <div class="update-card hrm-glass-card">
             <span class="upd-label">Department</span>
             <div class="upd-values">
                 <span class="old-val">Finance</span>
@@ -66,15 +66,15 @@
         </div>
 
         <!-- 4. Flying Documents -->
-        <div class="flying-doc doc-contract glass-card">
+        <div class="flying-doc doc-contract hrm-glass-card">
             <MudIcon Icon="@Icons.Material.Filled.Description" Style="font-size: 1rem; color: #10b981;" />
         </div>
-        <div class="flying-doc doc-action glass-card">
+        <div class="flying-doc doc-action hrm-glass-card">
             <MudIcon Icon="@Icons.Material.Filled.AssignmentTurnedIn" Style="font-size: 1rem; color: #f59e0b;" />
         </div>
 
         <!-- 5. Timeline -->
-        <div class="timeline-container">
+        <div class="hrm-timeline-container">
             <div class="timeline-track"></div>
             
             <div class="t-node" style="left: 10%;">
@@ -93,13 +93,13 @@
                 <div class="t-dot d-sep"></div><span class="t-label">Separation</span>
             </div>
 
-            <div class="timeline-avatar glass-card">
+            <div class="timeline-avatar hrm-glass-card">
                 <MudIcon Icon="@Icons.Material.Filled.Person" Style="font-size: 0.9rem; color: #3b82f6;" />
             </div>
         </div>
 
         <!-- 6. Audit History -->
-        <div class="audit-panel glass-card">
+        <div class="audit-panel hrm-glass-card">
             <div class="audit-header">
                 <div class="d-flex align-center gap-2">
                     <MudIcon Icon="@Icons.Material.Filled.History" Style="font-size: 1rem; color: #64748b;" />
@@ -166,7 +166,7 @@
     }
 
     /* Core Card Design */
-    .glass-card {
+    .hrm-glass-card {
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
@@ -299,7 +299,7 @@
     }
 
     /* 5. Timeline */
-    .timeline-container {
+    .hrm-timeline-container {
         position: absolute; width: 80%; left: 10%; top: 62%; height: 40px; z-index: 2;
         animation: timelineFade var(--hrm-duration) ease-in-out infinite;
     }
@@ -383,7 +383,7 @@
         .hrm-container { min-height: 520px; }
         .folder-card { width: 75px; padding: 8px 4px; font-size: 0.65rem; }
         .update-card { left: 25%; top: 20%; width: 140px; }
-        .timeline-container { width: 90%; left: 5%; }
+        .hrm-timeline-container { width: 90%; left: 5%; }
         .t-label { font-size: 0.55rem; }
         
         @@keyframes updateCard {
