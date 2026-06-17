@@ -17,10 +17,10 @@
             <span class="bubble-text">Submit Application</span>
         </div>
 
-        <div class="hr-panel">
-            <div class="panel-header">
+        <div class="ats-hr-panel">
+            <div class="ats-panel-header">
                 <MudIcon Icon="@Icons.Material.Filled.Search" Style="font-size: 1rem; color: #64748b; margin-right: 6px;" />
-                <span class="panel-title">HR Review System</span>
+                <span class="ats-panel-title">HR Review System</span>
             </div>
             <div class="panel-card-slot">
                 <div class="slot-border"></div>
@@ -57,31 +57,31 @@
         </div>
 
         <div class="moving-card">
-            <div class="card-content content-applicant">
-                <div class="icon-circle applicant-color">
+            <div class="ats-card-content content-applicant">
+                <div class="ats-icon-circle applicant-color">
                     <MudIcon Icon="@Icons.Material.Filled.Person" Style="font-size: 1.4rem; color: #475569;" />
                 </div>
-                <div class="text-wrapper">
-                    <span class="card-title">Applicant</span>
-                    <span class="card-subtitle">New Entry</span>
+                <div class="ats-text-wrapper">
+                    <span class="ats-card-title">Applicant</span>
+                    <span class="ats-card-subtitle">New Entry</span>
                 </div>
             </div>
-            <div class="card-content content-resume">
-                <div class="icon-circle resume-color">
+            <div class="ats-card-content content-resume">
+                <div class="ats-icon-circle resume-color">
                     <MudIcon Icon="@Icons.Material.Filled.Description" Style="font-size: 1.4rem; color: #2563eb;" />
                 </div>
-                <div class="text-wrapper">
-                    <span class="card-title">Resume</span>
-                    <span class="card-subtitle">Processing</span>
+                <div class="ats-text-wrapper">
+                    <span class="ats-card-title">Resume</span>
+                    <span class="ats-card-subtitle">Processing</span>
                 </div>
             </div>
-            <div class="card-content content-hired">
-                <div class="icon-circle hired-color">
+            <div class="ats-card-content content-hired">
+                <div class="ats-icon-circle hired-color">
                     <MudIcon Icon="@Icons.Material.Filled.Celebration" Style="font-size: 1.4rem; color: #059669;" />
                 </div>
-                <div class="text-wrapper">
-                    <span class="card-title">Hired!</span>
-                    <span class="card-subtitle">Welcome aboard</span>
+                <div class="ats-text-wrapper">
+                    <span class="ats-card-title">Hired!</span>
+                    <span class="ats-card-subtitle" style="color: #10b981;">Welcome aboard</span>
                 </div>
             </div>
         </div>
@@ -183,7 +183,7 @@
     }
 
     /* HR REVIEW PANEL (Moved to TOP) */
-    .hr-panel {
+    .ats-hr-panel {
         position: absolute;
         left: 50%;
         top: 20%;
@@ -208,12 +208,12 @@
         86%, 100% { opacity: 0; transform: translate(-50%, -60%) scale(0.95); }
     }
 
-    .panel-header {
+    .ats-panel-header {
         display: flex;
         align-items: center;
         margin-bottom: 8px;
     }
-    .panel-title {
+    .ats-panel-title {
         font-family: 'Gilroy', sans-serif;
         font-weight: 700;
         font-size: 0.75rem;
@@ -329,7 +329,7 @@
         96%, 100% { left: 85%; top: 45%; transform: translate(-50%, -20px) scale(0.9); opacity: 0; }
     }
 
-    .card-content {
+    .ats-card-content {
         position: absolute;
         inset: 0;
         display: flex;
@@ -351,7 +351,7 @@
         85%, 100% { opacity: 0; transform: translateY(-15px); }
     }
 
-    .icon-circle {
+    .ats-icon-circle {
         width: 36px;
         height: 36px;
         border-radius: 10px;
@@ -364,18 +364,18 @@
     .resume-color { background-color: #eff6ff; }
     .hired-color { background-color: #ecfdf5; }
 
-    .text-wrapper {
+    .ats-text-wrapper {
         display: flex;
         flex-direction: column;
     }
-    .card-title {
+    .ats-card-title {
         font-family: 'Gilroy', sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
         font-weight: 800;
         font-size: 0.85rem;
         color: var(--color-text-dark);
         line-height: 1.1;
     }
-    .card-subtitle {
+    .ats-card-subtitle {
         font-family: 'Figtree', sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
         font-size: 0.7rem;
         color: var(--color-text-muted);
@@ -534,7 +534,7 @@
             17%, 100% { opacity: 0; transform: translate(-50%, -20px) scale(0.9); }
         }
 
-        .hr-panel {
+        .ats-hr-panel {
             top: 48%;
         }
         @@keyframes panelFade {
