@@ -1,4 +1,5 @@
 @using MudBlazor
+@using PeopleCoreLandingPage.Components.Sections.Animations
 @rendermode InteractiveServer
 
 <style>
@@ -84,7 +85,7 @@
                                 @if (index == 0)
                                 {
                                     <div class="center-showcase-container transparent-bg" style="aspect-ratio: 1; display: flex; align-items: center; justify-content: center; width: 100%; max-width: 560px; margin: 0 auto;">
-                                        <CoreFunctionsAnimation @key="index" />
+                                        <ApplicantServiceAnimation @key="index" />
                                     </div>
                                 }
                                 else if (index == 1)
@@ -111,7 +112,7 @@
                     <div class="center-content-wrapper @(IsTransitioning ? "fade-out" : "fade-in")">
                         @if (DisplayedIndex == 0)
                         {
-                            <CoreFunctionsAnimation @key="DisplayedIndex" />
+                            <ApplicantServiceAnimation @key="DisplayedIndex" />
                         }
                         else if (DisplayedIndex == 1)
                         {
