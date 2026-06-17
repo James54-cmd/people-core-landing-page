@@ -1,616 +1,278 @@
 @using MudBlazor
 
-<div class="workflow-container">
+<div class="ats-container">
+    <div class="ats-glow"></div>
     <div class="grid-bg"></div>
 
-    <div class="workflow-canvas">
-        <!-- Connecting Line Track behind cards (Desktop) -->
-        <div class="flow-line-track d-none d-md-block">
-            <div class="flow-line-progress"></div>
+    <div class="ats-canvas">
+
+        <!-- Position header -->
+        <div class="ats-header">
+            <div class="ats-pos-ic">
+                <MudIcon Icon="@Icons.Material.Filled.WorkOutline" Style="font-size: 1.3rem; color: #ffffff;" />
+            </div>
+            <div class="ats-header-info">
+                <span class="ats-pos">Software Engineer</span>
+                <span class="ats-meta">Engineering · Full-time</span>
+            </div>
+            <div class="ats-open"><span class="ats-open-dot"></span>Open</div>
         </div>
 
-        <!-- Vertical upload track for the "absorption" metaphor (Desktop) -->
-        <div class="upload-track d-none d-md-block"></div>
-
-        <div class="action-bubble">
-            <span class="bubble-dot"></span>
-            <span class="bubble-text">Submit Application</span>
-        </div>
-
-        <div class="ats-hr-panel">
-            <div class="ats-panel-header">
-                <MudIcon Icon="@Icons.Material.Filled.Search" Style="font-size: 1rem; color: #64748b; margin-right: 6px;" />
-                <span class="ats-panel-title">HR Review System</span>
+        <!-- Hiring pipeline tracker -->
+        <div class="ats-pipeline">
+            <div class="ats-pl-head">
+                <span class="ats-pl-title">Hiring Pipeline</span>
+                <span class="ats-pl-stage">
+                    <span class="ps ps-1">Applied</span>
+                    <span class="ps ps-2">Screening</span>
+                    <span class="ps ps-3">Interview</span>
+                    <span class="ps ps-4">Hired</span>
+                </span>
             </div>
-            <div class="panel-card-slot">
-                <div class="slot-border"></div>
-                <div class="laser-line"></div>
-            </div>
-        </div>
-
-        <!-- Timeline Tracker -->
-        <div class="timeline-tracker">
-            <div class="timeline-sub-line">
-                <div class="timeline-sub-progress"></div>
-            </div>
-            
-            <div class="timeline-node node-pending">
-                <div class="node-icon-wrapper">
-                    <MudIcon Icon="@Icons.Material.Filled.Schedule" Style="font-size: 1.1rem;" />
-                </div>
-                <span class="node-label">Pending</span>
-            </div>
-
-            <div class="timeline-node node-interview">
-                <div class="node-icon-wrapper">
-                    <MudIcon Icon="@Icons.Material.Filled.Forum" Style="font-size: 1.1rem;" />
-                </div>
-                <span class="node-label">Interview</span>
-            </div>
-
-            <div class="timeline-node node-hired">
-                <div class="node-icon-wrapper">
-                    <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Style="font-size: 1.1rem;" />
-                </div>
-                <span class="node-label">Hired</span>
+            <div class="ats-pl-track">
+                <div class="ats-pl-fill"></div>
+                <div class="ats-pl-node pn1"></div>
+                <div class="ats-pl-node pn2"></div>
+                <div class="ats-pl-node pn3"></div>
+                <div class="ats-pl-node pn4"></div>
+                <div class="ats-pl-marker"></div>
             </div>
         </div>
 
-        <div class="moving-card">
-            <div class="ats-card-content content-applicant">
-                <div class="ats-icon-circle applicant-color">
-                    <MudIcon Icon="@Icons.Material.Filled.Person" Style="font-size: 1.4rem; color: #475569;" />
+        <!-- Candidate card -->
+        <div class="ats-candidate">
+            <div class="ats-cand-top">
+                <div class="ats-cand-avatar">
+                    <MudIcon Icon="@Icons.Material.Filled.Person" Style="font-size: 1.4rem; color: #ffffff;" />
                 </div>
-                <div class="ats-text-wrapper">
-                    <span class="ats-card-title">Applicant</span>
-                    <span class="ats-card-subtitle">New Entry</span>
+                <div class="ats-cand-info">
+                    <span class="ats-cand-name">Alex Rivera</span>
+                    <span class="ats-cand-role">5 yrs · React, Node, Azure</span>
                 </div>
-            </div>
-            <div class="ats-card-content content-resume">
-                <div class="ats-icon-circle resume-color">
-                    <MudIcon Icon="@Icons.Material.Filled.Description" Style="font-size: 1.4rem; color: #2563eb;" />
-                </div>
-                <div class="ats-text-wrapper">
-                    <span class="ats-card-title">Resume</span>
-                    <span class="ats-card-subtitle">Processing</span>
+                <div class="ats-badge-wrap">
+                    <span class="ats-badge ab-1">Applied</span>
+                    <span class="ats-badge ab-2">Interview</span>
+                    <span class="ats-badge ab-3">Hired</span>
                 </div>
             </div>
-            <div class="ats-card-content content-hired">
-                <div class="ats-icon-circle hired-color">
-                    <MudIcon Icon="@Icons.Material.Filled.Celebration" Style="font-size: 1.4rem; color: #059669;" />
+            <div class="ats-cand-foot">
+                <div class="ats-match">
+                    <div class="ats-match-bar"><div class="ats-match-fill"></div></div>
+                    <span class="ats-match-val">92% match</span>
                 </div>
-                <div class="ats-text-wrapper">
-                    <span class="ats-card-title">Hired!</span>
-                    <span class="ats-card-subtitle" style="color: #10b981;">Welcome aboard</span>
-                </div>
+                <div class="ats-resume"><MudIcon Icon="@Icons.Material.Filled.Description" Style="font-size: 0.8rem; color: #6366f1;" />Resume</div>
             </div>
         </div>
 
-        <div class="confetti-container">
-            <div class="confetti c1"></div>
-            <div class="confetti c2"></div>
-            <div class="confetti c3"></div>
-            <div class="confetti c4"></div>
-            <div class="confetti c5"></div>
-            <div class="confetti c6"></div>
-            <div class="confetti c7"></div>
+        <!-- Hired toast + confetti -->
+        <div class="ats-confetti">
+            <span class="cf cf1"></span><span class="cf cf2"></span><span class="cf cf3"></span>
+            <span class="cf cf4"></span><span class="cf cf5"></span><span class="cf cf6"></span>
         </div>
+        <div class="ats-toast">
+            <MudIcon Icon="@Icons.Material.Filled.Celebration" Style="font-size: 1rem; color: #10b981;" />
+            <span>Offer accepted · welcome aboard</span>
+        </div>
+
     </div>
 </div>
 
 <style>
     :root {
-        --animation-duration: 9.5s;
-        --card-w: 160px;
-        --card-h: 64px;
-        --panel-w: 240px;
-        --panel-h: 120px;
-        --color-primary: #3b82f6;
-        --color-success: #10b981;
-        --color-warning: #f59e0b;
-        --color-text-dark: #0f172a;
-        --color-text-muted: #64748b;
+        --ats-duration: 11s;
+        --ats-indigo: #6366f1;
+        --ats-blue: #3b82f6;
+        --ats-green: #10b981;
+        --ats-ink: #0f172a;
+        --ats-muted: #64748b;
+        --ats-line: rgba(15, 23, 42, 0.06);
     }
-
-    .workflow-container {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        min-height: 480px;
-        border-radius: 24px;
-        background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: inset 0 0 0 1px rgba(0,0,0,0.03);
+    .ats-container {
+        position: relative; width: 100%; height: 100%; min-height: 540px; border-radius: 24px;
+        background: linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
+        overflow: hidden; display: flex; align-items: center; justify-content: center;
+        font-family: 'Figtree', sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
     }
-
+    .ats-glow {
+        position: absolute; top: -12%; left: 50%; width: 420px; height: 420px; transform: translateX(-50%);
+        background: radial-gradient(circle, rgba(99, 102, 241, 0.10) 0%, rgba(99, 102, 241, 0) 68%);
+        pointer-events: none; z-index: 0;
+    }
     .grid-bg {
-        position: absolute;
-        inset: 0;
-        background-image: radial-gradient(rgba(15, 23, 42, 0.06) 1.5px, transparent 1.5px);
-        background-size: 24px 24px;
-        pointer-events: none;
+        position: absolute; inset: 0; pointer-events: none; z-index: 0;
+        background-image: radial-gradient(rgba(15, 23, 42, 0.035) 1.2px, transparent 1.2px);
+        background-size: 26px 26px;
+        -webkit-mask-image: radial-gradient(circle at 50% 45%, #000 55%, transparent 90%);
+        mask-image: radial-gradient(circle at 50% 45%, #000 55%, transparent 90%);
     }
-
-    .workflow-canvas {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        max-width: 640px;
-        height: 480px;
-        animation: canvasFadeLoop var(--animation-duration) cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    .ats-canvas {
+        position: relative; width: 100%; height: 100%; max-width: 560px; z-index: 1;
+        animation: canvasFade var(--ats-duration) cubic-bezier(0.4, 0, 0.2, 1) infinite;
     }
-
-    @@keyframes canvasFadeLoop {
+    @@keyframes canvasFade {
         0%, 2% { opacity: 0; transform: scale(0.98); }
-        6%, 90% { opacity: 1; transform: scale(1); }
-        96%, 100% { opacity: 0; transform: scale(0.98); }
+        6%, 94% { opacity: 1; transform: scale(1); }
+        98%, 100% { opacity: 0; transform: scale(0.98); }
     }
 
-    /* ACTION BUBBLE */
-    .action-bubble {
-        position: absolute;
-        top: 28%; /* Places it right above the applicant start */
-        left: 15%;
-        transform: translate(-50%, -50%);
-        background: #0f172a;
-        color: #ffffff;
-        padding: 8px 14px;
-        border-radius: 20px;
-        font-family: 'Figtree', sans-serif;
-        font-size: 0.75rem;
-        font-weight: 600;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
-        z-index: 12;
-        animation: actionTag var(--animation-duration) ease-in-out infinite;
-    }
-    .bubble-dot {
-        width: 6px;
-        height: 6px;
-        background-color: #10b981;
-        border-radius: 50%;
-        box-shadow: 0 0 8px #10b981;
-    }
-    @@keyframes actionTag {
-        0%, 3% { opacity: 0; transform: translate(-50%, -10px) scale(0.9); }
-        6%, 14% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-        17%, 100% { opacity: 0; transform: translate(-50%, -60px) scale(0.9); }
+    .ats-header, .ats-pipeline, .ats-candidate, .ats-toast {
+        background: #ffffff; border: 1px solid var(--ats-line);
+        box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 12px 28px -12px rgba(15, 23, 42, 0.18);
     }
 
-    /* HR REVIEW PANEL (Moved to TOP) */
-    .ats-hr-panel {
-        position: absolute;
-        left: 50%;
-        top: 20%;
-        transform: translate(-50%, -50%);
-        width: var(--panel-w);
-        height: var(--panel-h);
-        border-radius: 24px;
-        background: rgba(255, 255, 255, 0.7);
-        border: 1px solid rgba(255, 255, 255, 0.9);
-        box-shadow: 0 20px 40px rgba(15, 23, 42, 0.05), inset 0 1px 0 rgba(255, 255, 255, 1);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        display: flex;
-        flex-direction: column;
-        padding: 14px;
-        z-index: 5;
-        animation: panelFade var(--animation-duration) cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    /* Header */
+    .ats-header {
+        position: absolute; left: 50%; top: 13%; width: 90%; max-width: 330px; transform: translate(-50%, -50%);
+        display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 18px;
+        animation: fadeUp var(--ats-duration) cubic-bezier(0.16, 1, 0.3, 1) infinite;
     }
-    @@keyframes panelFade {
-        0%, 25% { opacity: 0; transform: translate(-50%, -40%) scale(0.95); }
-        30%, 82% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-        86%, 100% { opacity: 0; transform: translate(-50%, -60%) scale(0.95); }
+    .ats-pos-ic {
+        width: 44px; height: 44px; flex-shrink: 0; border-radius: 13px;
+        background: linear-gradient(135deg, #6366f1 0%, #3b82f6 100%);
+        display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 16px -4px rgba(79, 70, 229, 0.5);
     }
-
-    .ats-panel-header {
-        display: flex;
-        align-items: center;
-        margin-bottom: 8px;
+    .ats-header-info { display: flex; flex-direction: column; flex-grow: 1; min-width: 0; }
+    .ats-pos { font-size: 0.92rem; font-weight: 800; color: var(--ats-ink); line-height: 1.2; }
+    .ats-meta { font-size: 0.72rem; font-weight: 600; color: var(--ats-muted); margin-top: 1px; }
+    .ats-open {
+        display: flex; align-items: center; gap: 5px; flex-shrink: 0;
+        background: #eef2ff; color: #4f46e5; font-size: 0.68rem; font-weight: 800; padding: 4px 9px; border-radius: 999px;
     }
-    .ats-panel-title {
-        font-family: 'Gilroy', sans-serif;
-        font-weight: 700;
-        font-size: 0.75rem;
-        color: #475569;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-    .panel-card-slot {
-        flex-grow: 1;
-        width: 100%;
-        border-radius: 12px;
-        background: rgba(255, 255, 255, 0.5);
-        border: 2px dashed rgba(148, 163, 184, 0.3);
-        position: relative;
-        overflow: hidden;
-    }
-    .laser-line {
-        position: absolute;
-        left: 0;
-        right: 0;
-        height: 3px;
-        background: linear-gradient(90deg, transparent 0%, rgba(59,130,246,0.8) 50%, transparent 100%);
-        box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
-        z-index: 12;
-        animation: laserSweep var(--animation-duration) linear infinite;
-    }
-    @@keyframes laserSweep {
-        0%, 39% { opacity: 0; top: 10%; }
-        40% { opacity: 1; top: 10%; }
-        55% { opacity: 1; top: 90%; }
-        56%, 100% { opacity: 0; top: 90%; }
+    .ats-open-dot { width: 6px; height: 6px; border-radius: 50%; background: #6366f1; animation: pulseDot 2s ease-in-out infinite; }
+    @@keyframes pulseDot { 0%, 100% { box-shadow: 0 0 0 0 rgba(99,102,241,0.5); } 50% { box-shadow: 0 0 0 4px rgba(99,102,241,0); } }
+    @@keyframes fadeUp {
+        0%, 2% { opacity: 0; transform: translate(-50%, calc(-50% + 14px)) scale(0.96); }
+        7%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
     }
 
-    /* VERTICAL UPLOAD TRACK */
-    .upload-track {
-        position: absolute;
-        left: 50%;
-        top: 25%;
-        bottom: 55%; /* Extends down to the main horizontal line at 45% */
-        width: 2px;
-        background-image: linear-gradient(to bottom, rgba(148, 163, 184, 0.3) 50%, transparent 50%);
-        background-size: 100% 12px;
-        z-index: 1;
-        transform: translateX(-50%);
-        animation: trackFade var(--animation-duration) infinite;
+    /* Pipeline tracker */
+    .ats-pipeline {
+        position: absolute; left: 50%; top: 35%; width: 90%; max-width: 330px; transform: translate(-50%, -50%);
+        padding: 14px 16px 18px; border-radius: 18px;
+        animation: sectionIn var(--ats-duration) cubic-bezier(0.16, 1, 0.3, 1) infinite;
     }
-    @@keyframes trackFade {
-        0%, 25% { opacity: 0; }
-        28%, 85% { opacity: 1; }
-        88%, 100% { opacity: 0; }
+    @@keyframes sectionIn {
+        0%, 13% { opacity: 0; transform: translate(-50%, calc(-50% + 12px)) scale(0.97); }
+        18%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    }
+    .ats-pl-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+    .ats-pl-title { font-size: 0.78rem; font-weight: 800; color: var(--ats-ink); }
+    .ats-pl-stage { position: relative; height: 18px; min-width: 72px; }
+    .ps { position: absolute; right: 0; top: 0; font-size: 0.68rem; font-weight: 800; color: var(--ats-indigo); white-space: nowrap; opacity: 0; }
+    .ps-1 { animation: pstage1 var(--ats-duration) ease infinite; }
+    .ps-2 { animation: pstage2 var(--ats-duration) ease infinite; }
+    .ps-3 { animation: pstage3 var(--ats-duration) ease infinite; }
+    .ps-4 { animation: pstage4 var(--ats-duration) ease infinite; }
+    @@keyframes pstage1 { 0%, 26% { opacity: 0; } 28%, 41% { opacity: 1; } 43%, 100% { opacity: 0; } }
+    @@keyframes pstage2 { 0%, 42% { opacity: 0; } 44%, 53% { opacity: 1; } 55%, 100% { opacity: 0; } }
+    @@keyframes pstage3 { 0%, 54% { opacity: 0; } 56%, 65% { opacity: 1; } 67%, 100% { opacity: 0; } }
+    @@keyframes pstage4 { 0%, 66% { opacity: 0; } 68%, 100% { opacity: 1; color: var(--ats-green); } }
+
+    .ats-pl-track { position: relative; height: 6px; margin: 0 8px; border-radius: 999px; background: #eef0f5; }
+    .ats-pl-fill {
+        position: absolute; left: 0; top: 0; height: 100%; width: 0; border-radius: 999px;
+        background: linear-gradient(90deg, #6366f1, #3b82f6 60%, #10b981);
+        animation: plFill var(--ats-duration) cubic-bezier(0.65, 0, 0.35, 1) infinite;
+    }
+    @@keyframes plFill { 0%, 27% { width: 0%; } 44% { width: 33%; } 56% { width: 66%; } 68%, 100% { width: 100%; } }
+    .ats-pl-node {
+        position: absolute; top: 50%; width: 11px; height: 11px; border-radius: 50%;
+        background: #ffffff; border: 2px solid #d8dce6; transform: translate(-50%, -50%);
+    }
+    .pn1 { left: 0%; } .pn2 { left: 33.33%; } .pn3 { left: 66.66%; } .pn4 { left: 100%; }
+    .pn1 { animation: pnode1 var(--ats-duration) ease infinite; }
+    .pn2 { animation: pnode2 var(--ats-duration) ease infinite; }
+    .pn3 { animation: pnode3 var(--ats-duration) ease infinite; }
+    .pn4 { animation: pnode4 var(--ats-duration) ease infinite; }
+    @@keyframes pnode1 { 0%, 27% { border-color: #d8dce6; background: #fff; } 29%, 100% { border-color: var(--ats-indigo); background: var(--ats-indigo); } }
+    @@keyframes pnode2 { 0%, 43% { border-color: #d8dce6; background: #fff; } 45%, 100% { border-color: var(--ats-indigo); background: var(--ats-indigo); } }
+    @@keyframes pnode3 { 0%, 55% { border-color: #d8dce6; background: #fff; } 57%, 100% { border-color: var(--ats-blue); background: var(--ats-blue); } }
+    @@keyframes pnode4 { 0%, 67% { border-color: #d8dce6; background: #fff; } 69%, 100% { border-color: var(--ats-green); background: var(--ats-green); } }
+    .ats-pl-marker {
+        position: absolute; top: 50%; left: 0%; width: 16px; height: 16px; border-radius: 50%;
+        background: #ffffff; border: 3px solid var(--ats-indigo); transform: translate(-50%, -50%);
+        box-shadow: 0 0 0 4px rgba(99,102,241,0.15), 0 4px 10px rgba(99,102,241,0.3);
+        opacity: 0; z-index: 3; animation: plMarker var(--ats-duration) cubic-bezier(0.65, 0, 0.35, 1) infinite;
+    }
+    @@keyframes plMarker {
+        0%, 27% { opacity: 0; left: 0%; }
+        29% { opacity: 1; left: 0%; }
+        44% { left: 33.33%; } 56% { left: 66.66%; border-color: var(--ats-blue); }
+        68% { opacity: 1; left: 100%; border-color: var(--ats-green); box-shadow: 0 0 0 4px rgba(16,185,129,0.15), 0 4px 10px rgba(16,185,129,0.3); }
+        100% { opacity: 1; left: 100%; border-color: var(--ats-green); }
     }
 
-    /* MAIN FLOW LINE (Desktop) */
-    .flow-line-track {
-        position: absolute;
-        left: 15%;
-        right: 15%;
-        top: 45%;
-        height: 2px;
-        background-color: rgba(148, 163, 184, 0.2);
-        z-index: 1;
-        border-radius: 1px;
+    /* Candidate card */
+    .ats-candidate {
+        position: absolute; left: 50%; top: 60%; width: 90%; max-width: 320px; transform: translate(-50%, -50%);
+        padding: 14px; border-radius: 18px; display: flex; flex-direction: column; gap: 12px;
+        animation: candIn var(--ats-duration) cubic-bezier(0.16, 1, 0.3, 1) infinite;
     }
-    .flow-line-progress {
-        height: 100%;
-        background: linear-gradient(90deg, #94a3b8, var(--color-primary));
-        width: 0%;
-        animation: mainFlowLine var(--animation-duration) ease-in-out infinite;
+    @@keyframes candIn {
+        0%, 20% { opacity: 0; transform: translate(-50%, calc(-50% + 12px)) scale(0.97); }
+        25%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
     }
-    @@keyframes mainFlowLine {
-        0%, 15% { width: 0%; }
-        22%, 80% { width: 50%; } /* Stays at 50% while card is processing in panel above */
-        85%, 100% { width: 100%; }
+    .ats-cand-top { display: flex; align-items: center; gap: 11px; }
+    .ats-cand-avatar {
+        width: 40px; height: 40px; flex-shrink: 0; border-radius: 12px;
+        background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+        display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 16px -4px rgba(124, 58, 237, 0.45);
     }
-
-
-    /* MOVING CARD */
-    .moving-card {
-        position: absolute;
-        width: var(--card-w);
-        height: var(--card-h);
-        border-radius: 16px;
-        background: #ffffff;
-        border: 1px solid rgba(0, 0, 0, 0.05);
-        z-index: 10;
-        overflow: hidden;
-        animation: cardFlow var(--animation-duration) cubic-bezier(0.25, 1, 0.5, 1) infinite;
+    .ats-cand-info { display: flex; flex-direction: column; flex-grow: 1; min-width: 0; }
+    .ats-cand-name { font-size: 0.86rem; font-weight: 800; color: var(--ats-ink); line-height: 1.2; }
+    .ats-cand-role { font-size: 0.68rem; font-weight: 600; color: var(--ats-muted); margin-top: 1px; }
+    .ats-badge-wrap { position: relative; height: 20px; min-width: 64px; flex-shrink: 0; }
+    .ats-badge {
+        position: absolute; right: 0; top: 0; font-size: 0.6rem; font-weight: 800; text-transform: uppercase;
+        padding: 3px 9px; border-radius: 999px; letter-spacing: 0.3px; white-space: nowrap;
     }
-    @@keyframes cardFlow {
-        /* Entry on main line (45%) */
-        0% { left: 15%; top: 45%; transform: translate(-50%, -30%) scale(0.9); opacity: 0; }
-        3% { left: 15%; top: 45%; transform: translate(-50%, -50%) scale(1); opacity: 1; box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06); }
-        15% { left: 15%; top: 45%; transform: translate(-50%, -50%) scale(1); }
-        
-        /* Move right to center */
-        22% { left: 50%; top: 45%; transform: translate(-50%, -50%) scale(1.05); box-shadow: 0 15px 35px rgba(37, 99, 235, 0.2); }
-        26% { left: 50%; top: 45%; transform: translate(-50%, -50%) scale(1); box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08); }
-        30% { left: 50%; top: 45%; transform: translate(-50%, -50%) scale(1); opacity: 1; }
-        
-        /* Go UP into HR Panel ("Absorbed") */
-        35% { left: 50%; top: 22%; transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
-        75% { left: 50%; top: 22%; transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
-        
-        /* Come DOWN from HR Panel */
-        80% { left: 50%; top: 45%; transform: translate(-50%, -50%) scale(1.05); opacity: 1; box-shadow: 0 15px 35px rgba(37, 99, 235, 0.2); }
-        81% { left: 50%; top: 45%; transform: translate(-50%, -50%) scale(1); }
-
-        /* Move RIGHT to Hired on the same horizontal line */
-        85% { left: 85%; top: 45%; transform: translate(-50%, -50%) scale(1.05); box-shadow: 0 15px 35px rgba(16, 185, 129, 0.2); }
-        88%, 92% { left: 85%; top: 45%; transform: translate(-50%, -50%) scale(1); box-shadow: 0 10px 30px rgba(16, 185, 129, 0.15); opacity: 1; }
-        
-        /* Exit */
-        96%, 100% { left: 85%; top: 45%; transform: translate(-50%, -20px) scale(0.9); opacity: 0; }
+    .ab-1 { background: #f1f5f9; color: #64748b; animation: ab1 var(--ats-duration) step-end infinite; }
+    .ab-2 { background: #eff6ff; color: #2563eb; opacity: 0; animation: ab2 var(--ats-duration) step-end infinite; }
+    .ab-3 { background: #ecfdf5; color: #059669; opacity: 0; animation: ab3 var(--ats-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+    @@keyframes ab1 { 0%, 43% { opacity: 1; } 44%, 100% { opacity: 0; } }
+    @@keyframes ab2 { 0%, 43% { opacity: 0; } 44%, 67% { opacity: 1; } 68%, 100% { opacity: 0; } }
+    @@keyframes ab3 { 0%, 67% { opacity: 0; transform: scale(0.6); } 70%, 100% { opacity: 1; transform: scale(1); } }
+    .ats-cand-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .ats-match { display: flex; align-items: center; gap: 8px; flex-grow: 1; }
+    .ats-match-bar { flex-grow: 1; height: 6px; border-radius: 999px; background: #eef0f5; overflow: hidden; max-width: 120px; }
+    .ats-match-fill {
+        height: 100%; width: 0; border-radius: 999px; background: linear-gradient(90deg, #6366f1, #10b981);
+        animation: matchFill var(--ats-duration) cubic-bezier(0.65, 0, 0.35, 1) infinite;
+    }
+    @@keyframes matchFill { 0%, 27% { width: 0; } 40%, 100% { width: 92%; } }
+    .ats-match-val { font-size: 0.66rem; font-weight: 800; color: #059669; white-space: nowrap; }
+    .ats-resume {
+        display: flex; align-items: center; gap: 4px; font-size: 0.66rem; font-weight: 700; color: #475569;
+        background: #f8fafc; padding: 5px 9px; border-radius: 8px; flex-shrink: 0;
     }
 
-    .ats-card-content {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        align-items: center;
-        padding: 0 14px;
-        gap: 12px;
-        background: #ffffff; 
+    /* Confetti + toast */
+    .ats-toast {
+        position: absolute; left: 50%; top: 84%; transform: translate(-50%, -50%);
+        display: flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 999px;
+        font-size: 0.74rem; font-weight: 800; color: var(--ats-ink); white-space: nowrap; border-color: rgba(16,185,129,0.25);
+        animation: toastPop var(--ats-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
     }
-    .content-applicant { z-index: 3; animation: fadeApplicant var(--animation-duration) ease-in-out infinite; }
-    .content-resume { z-index: 2; animation: fadeResume var(--animation-duration) ease-in-out infinite; }
-    .content-hired { z-index: 1; }
-
-    @@keyframes fadeApplicant {
-        0%, 18% { opacity: 1; transform: translateY(0); }
-        22%, 100% { opacity: 0; transform: translateY(-15px); }
+    @@keyframes toastPop {
+        0%, 68% { opacity: 0; transform: translate(-50%, calc(-50% + 12px)) scale(0.9); }
+        72%, 92% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        96%, 100% { opacity: 0; transform: translate(-50%, calc(-50% - 8px)) scale(0.95); }
     }
-    @@keyframes fadeResume {
-        0%, 82% { opacity: 1; transform: translateY(0); }
-        85%, 100% { opacity: 0; transform: translateY(-15px); }
-    }
-
-    .ats-icon-circle {
-        width: 36px;
-        height: 36px;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-    }
-    .applicant-color { background-color: #f1f5f9; }
-    .resume-color { background-color: #eff6ff; }
-    .hired-color { background-color: #ecfdf5; }
-
-    .ats-text-wrapper {
-        display: flex;
-        flex-direction: column;
-    }
-    .ats-card-title {
-        font-family: 'Gilroy', sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
-        font-weight: 800;
-        font-size: 0.85rem;
-        color: var(--color-text-dark);
-        line-height: 1.1;
-    }
-    .ats-card-subtitle {
-        font-family: 'Figtree', sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
-        font-size: 0.7rem;
-        color: var(--color-text-muted);
-        font-weight: 500;
-        line-height: 1.2;
-        margin-top: 2px;
+    .ats-confetti { position: absolute; left: 50%; top: 60%; width: 4px; height: 4px; z-index: 12; }
+    .cf { position: absolute; width: 7px; height: 7px; border-radius: 2px; opacity: 0; }
+    .cf1 { background: #6366f1; --dx: -60px; --dy: -34px; animation: conf var(--ats-duration) ease-out infinite; }
+    .cf2 { background: #3b82f6; --dx: 56px; --dy: -40px; animation: conf var(--ats-duration) ease-out infinite; }
+    .cf3 { background: #10b981; --dx: -38px; --dy: -56px; animation: conf var(--ats-duration) ease-out infinite; }
+    .cf4 { background: #f59e0b; --dx: 40px; --dy: -52px; animation: conf var(--ats-duration) ease-out infinite; }
+    .cf5 { background: #8b5cf6; --dx: -16px; --dy: -64px; animation: conf var(--ats-duration) ease-out infinite; }
+    .cf6 { background: #10b981; --dx: 22px; --dy: -60px; animation: conf var(--ats-duration) ease-out infinite; }
+    @@keyframes conf {
+        0%, 67% { opacity: 0; transform: translate(0, 0) scale(0.4) rotate(0deg); }
+        69% { opacity: 1; transform: translate(calc(var(--dx) * 0.4), calc(var(--dy) * 0.4)) scale(1) rotate(60deg); }
+        78%, 100% { opacity: 0; transform: translate(var(--dx), calc(var(--dy) + 30px)) scale(0.7) rotate(200deg); }
     }
 
-    /* TIMELINE TRACKER */
-    .timeline-tracker {
-        position: absolute;
-        bottom: 12%;
-        left: 15%;
-        right: 15%;
-        height: 70px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        z-index: 6;
-        animation: trackerFade var(--animation-duration) ease-in-out infinite;
-    }
-    @@keyframes trackerFade {
-        0%, 25% { opacity: 0; transform: translateY(10px); }
-        30%, 88% { opacity: 1; transform: translateY(0); }
-        92%, 100% { opacity: 0; transform: translateY(10px); }
-    }
-    .timeline-sub-line {
-        position: absolute;
-        left: 30px;
-        right: 30px;
-        top: 23px;
-        height: 4px;
-        background-color: rgba(148, 163, 184, 0.2);
-        z-index: 1;
-        border-radius: 2px;
-        overflow: hidden;
-    }
-    .timeline-sub-progress {
-        height: 100%;
-        background: var(--color-primary);
-        width: 0%;
-        animation: lineProgress var(--animation-duration) ease-in-out infinite;
-    }
-    @@keyframes lineProgress {
-        0%, 40% { width: 0%; }
-        45%, 65% { width: 50%; }
-        70%, 100% { width: 100%; }
-    }
-    .timeline-node {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 70px;
-        z-index: 2;
-    }
-    .node-icon-wrapper {
-        width: 46px;
-        height: 46px;
-        border-radius: 50%;
-        background: #ffffff;
-        border: 2px solid #e2e8f0;
-        color: #94a3b8;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.4s ease;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-    }
-    .node-label {
-        font-family: 'Figtree', sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
-        font-weight: 600;
-        font-size: 0.75rem;
-        color: #94a3b8;
-        margin-top: 8px;
-    }
-
-    /* Timeline Node Highlights (Synced to Panel processing) */
-    .node-pending .node-icon-wrapper { animation: pendingWrapper var(--animation-duration) ease infinite; }
-    .node-pending .node-label { animation: pendingLabel var(--animation-duration) ease infinite; }
-    @@keyframes pendingWrapper {
-        0%, 29% { background: #ffffff; color: #94a3b8; border-color: #e2e8f0; box-shadow: none; transform: scale(1); }
-        30%, 100% { background: #eff6ff; color: var(--color-primary); border-color: var(--color-primary); box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1); transform: scale(1.05); }
-    }
-    @@keyframes pendingLabel { 
-        0%, 29% { color: #94a3b8; font-weight: 600; } 
-        30%, 100% { color: var(--color-primary); font-weight: 700; } 
-    }
-
-    .node-interview .node-icon-wrapper { animation: interviewWrapper var(--animation-duration) ease infinite; }
-    .node-interview .node-label { animation: interviewLabel var(--animation-duration) ease infinite; }
-    @@keyframes interviewWrapper {
-        0%, 44% { background: #ffffff; color: #94a3b8; border-color: #e2e8f0; box-shadow: none; transform: scale(1); }
-        45%, 100% { background: #fffbeb; color: var(--color-warning); border-color: var(--color-warning); box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.1); transform: scale(1.05); }
-    }
-    @@keyframes interviewLabel { 
-        0%, 44% { color: #94a3b8; font-weight: 600; } 
-        45%, 100% { color: var(--color-warning); font-weight: 700; } 
-    }
-
-    .node-hired .node-icon-wrapper { animation: hiredWrapper var(--animation-duration) ease infinite; }
-    .node-hired .node-label { animation: hiredLabel var(--animation-duration) ease infinite; }
-    @@keyframes hiredWrapper {
-        0%, 69% { background: #ffffff; color: #94a3b8; border-color: #e2e8f0; box-shadow: none; transform: scale(1); }
-        70%, 100% { background: #ecfdf5; color: var(--color-success); border-color: var(--color-success); box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1); transform: scale(1.05); }
-    }
-    @@keyframes hiredLabel { 
-        0%, 69% { color: #94a3b8; font-weight: 600; } 
-        70%, 100% { color: var(--color-success); font-weight: 700; } 
-    }
-
-    /* CONFETTI */
-    .confetti-container {
-        position: absolute;
-        left: 85%;
-        top: 45%;
-        transform: translate(-50%, -50%);
-        width: 10px;
-        height: 10px;
-        z-index: 15;
-    }
-    .confetti {
-        position: absolute;
-        width: 8px;
-        height: 4px;
-        opacity: 0;
-        transform: scale(0);
-        animation: confettiBurst var(--animation-duration) ease-out infinite;
-    }
-    @@keyframes confettiBurst {
-        0%, 83% { opacity: 0; transform: scale(0) rotate(0deg); }
-        84% { opacity: 1; transform: scale(1.2) rotate(0deg); }
-        88% { opacity: 1; transform: translate(calc(var(--cx) * 0.5), calc(var(--cy) * 0.5)) scale(1) rotate(calc(var(--cr) * 0.5)); }
-        92%, 100% { opacity: 0; transform: translate(var(--cx), var(--cy)) scale(0.5) rotate(var(--cr)); }
-    }
-    .c1 { background: #10b981; --cx: -40px; --cy: -35px; --cr: 180deg; animation-delay: 0s; }
-    .c2 { background: #3b82f6; --cx: -55px; --cy: -10px; --cr: -120deg; animation-delay: 0.05s; }
-    .c3 { background: #f59e0b; --cx: -30px; --cy: 30px; --cr: 90deg; animation-delay: 0.02s; }
-    .c4 { background: #ec4899; --cx: 30px; --cy: -30px; --cr: -180deg; animation-delay: 0.07s; }
-    .c5 { background: #8b5cf6; --cx: 45px; --cy: -5px; --cr: 150deg; animation-delay: 0.01s; }
-    .c6 { background: #10b981; --cx: 25px; --cy: 35px; --cr: -90deg; animation-delay: 0.06s; }
-    .c7 { background: #06b6d4; --cx: -10px; --cy: -50px; --cr: 120deg; animation-delay: 0.03s; }
-
-    /* MOBILE & TABLET LAYOUT (Top-to-Bottom Vertical Flow) */
     @@media (max-width: 767px) {
-        .workflow-container { min-height: 520px; padding: 20px 0; }
-        .workflow-canvas { height: 520px; max-width: 100%; }
-
-        .action-bubble {
-            top: 5%;
-            left: 50%;
-            animation: actionTagMobile var(--animation-duration) ease-in-out infinite;
-        }
-        @@keyframes actionTagMobile {
-            0%, 3% { opacity: 0; transform: translate(-50%, -10px) scale(0.9); }
-            6%, 14% { opacity: 1; transform: translate(-50%, 0) scale(1); }
-            17%, 100% { opacity: 0; transform: translate(-50%, -20px) scale(0.9); }
-        }
-
-        .ats-hr-panel {
-            top: 48%;
-        }
-        @@keyframes panelFade {
-            0%, 25% { opacity: 0; transform: translate(-50%, -60%) scale(0.95); }
-            30%, 82% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-            86%, 100% { opacity: 0; transform: translate(-50%, -40%) scale(0.95); }
-        }
-
-        /* Vertical dashed track connecting the nodes */
-        .upload-track {
-            display: block !important; /* Visible on mobile */
-            left: 50%;
-            top: 18%;
-            bottom: auto;
-            height: 58%; /* Reaches exactly 76% (Hired slot) */
-            width: 2px;
-            background-image: linear-gradient(to bottom, rgba(148, 163, 184, 0.3) 50%, transparent 50%);
-            background-size: 100% 12px;
-            z-index: 1;
-            transform: translateX(-50%);
-            animation: trackFadeMobile var(--animation-duration) infinite;
-        }
-        @@keyframes trackFadeMobile {
-            0%, 15% { opacity: 0; }
-            18%, 95% { opacity: 1; }
-            98%, 100% { opacity: 0; }
-        }
-
-        /* Hide the horizontal track */
-        .flow-line-track {
-            display: none !important;
-        }
-
-        .moving-card {
-            animation: cardFlowMobile var(--animation-duration) cubic-bezier(0.25, 1, 0.5, 1) infinite;
-        }
-        @@keyframes cardFlowMobile {
-            /* Start Top */
-            0% { left: 50%; top: 18%; transform: translate(-50%, -30%) scale(0.9); opacity: 0; }
-            3% { left: 50%; top: 18%; transform: translate(-50%, -50%) scale(1); opacity: 1; box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06); }
-            15% { left: 50%; top: 18%; transform: translate(-50%, -50%) scale(1); }
-            
-            /* Move slightly down and morph to Resume */
-            22% { left: 50%; top: 25%; transform: translate(-50%, -50%) scale(1.05); box-shadow: 0 15px 35px rgba(37, 99, 235, 0.2); }
-            26% { left: 50%; top: 32%; transform: translate(-50%, -50%) scale(1); box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08); }
-            30% { left: 50%; top: 32%; transform: translate(-50%, -50%) scale(1); opacity: 1; }
-            
-            /* Feed DOWN into HR Panel */
-            35% { left: 50%; top: 48%; transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
-            75% { left: 50%; top: 48%; transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
-            
-            /* Come DOWN from HR Panel */
-            80% { left: 50%; top: 48%; transform: translate(-50%, -50%) scale(1.05); opacity: 1; box-shadow: 0 15px 35px rgba(37, 99, 235, 0.2); }
-            81% { left: 50%; top: 48%; transform: translate(-50%, -50%) scale(1); }
-            
-            /* Move DOWN to Hired position */
-            85% { left: 50%; top: 76%; transform: translate(-50%, -50%) scale(1.05); box-shadow: 0 15px 35px rgba(16, 185, 129, 0.2); }
-            88%, 92% { left: 50%; top: 76%; transform: translate(-50%, -50%) scale(1); box-shadow: 0 10px 30px rgba(16, 185, 129, 0.15); opacity: 1; }
-            
-            /* Exit */
-            96%, 100% { left: 50%; top: 76%; transform: translate(-50%, 20px) scale(0.9); opacity: 0; }
-        }
-
-        .timeline-tracker {
-            bottom: 4%;
-            left: 5%;
-            right: 5%;
-        }
-        .timeline-sub-line {
-            left: 20px;
-            right: 20px;
-        }
-
-        .confetti-container {
-            left: 50%;
-            top: 76%;
-        }
+        .ats-container { min-height: 540px; }
     }
 </style>

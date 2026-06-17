@@ -1,153 +1,77 @@
 @using MudBlazor
 
 <div class="mgr-container">
+    <div class="mgr-glow"></div>
     <div class="grid-bg"></div>
 
     <div class="mgr-canvas">
-        <svg class="connections" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <!-- Employees converge down into the Manager Portal -->
-            <path class="mgr-line" d="M 18 12 L 18 28 L 50 28 L 50 44" />
-            <path class="mgr-line" d="M 50 12 L 50 44" />
-            <path class="mgr-line" d="M 82 12 L 82 28 L 50 28 L 50 44" />
 
-            <!-- Manager Portal down to HR Processing -->
-            <path class="mgr-line" d="M 50 44 L 50 84" />
-
-            <!-- Branch to the manager's mobile device -->
-            <path class="mgr-line" d="M 65 53 L 82 53" />
-        </svg>
-
-        <!-- Approval pulse: Manager -> HR -->
-        <div class="mgr-particle mp1"></div>
-        <div class="mgr-particle mp2"></div>
-        <div class="mgr-particle mp3"></div>
-
-        <!-- Employees (submit requests / receive notifications) -->
-        <div class="mgr-emp e1 mgr-glass-card">
-            <MudIcon Icon="@Icons.Material.Filled.Person" Style="font-size: 1.2rem; color: #3b82f6;" />
-            <div class="emp-glow emp-glow-1"></div>
-        </div>
-        <div class="mgr-emp e2 mgr-glass-card">
-            <MudIcon Icon="@Icons.Material.Filled.Person" Style="font-size: 1.2rem; color: #8b5cf6;" />
-            <div class="emp-glow emp-glow-2"></div>
-        </div>
-        <div class="mgr-emp e3 mgr-glass-card">
-            <MudIcon Icon="@Icons.Material.Filled.Person" Style="font-size: 1.2rem; color: #f59e0b;" />
-            <div class="emp-glow emp-glow-3"></div>
-        </div>
-
-        <!-- Pending Approvals counter (manager's inbox) -->
-        <div class="mgr-queue-title">
-            <MudIcon Icon="@Icons.Material.Filled.Inbox" Style="font-size: 1.2rem; color: #64748b;" />
-            <span>Pending Approvals</span>
-            <div class="queue-badge-wrapper">
-                <div class="q-badge qb-0">0</div>
-                <div class="q-badge qb-1">1</div>
-                <div class="q-badge qb-3">3</div>
+        <!-- Manager header -->
+        <div class="mgr-header">
+            <div class="mgr-bell-ic">
+                <MudIcon Icon="@Icons.Material.Filled.Notifications" Style="font-size: 1.25rem; color: #ffffff;" />
+                <div class="mgr-bell-ring"></div>
+            </div>
+            <div class="mgr-header-info">
+                <span class="mgr-title">Manager Portal</span>
+                <span class="mgr-meta">Approve from anywhere</span>
+            </div>
+            <div class="mgr-count-wrap">
+                <span class="mgr-count c-3">3</span>
+                <span class="mgr-count c-2">2</span>
+                <span class="mgr-count c-1">1</span>
+                <span class="mgr-count c-done"><MudIcon Icon="@Icons.Material.Filled.Check" Style="font-size: 0.8rem; color: #ffffff;" /></span>
             </div>
         </div>
 
-        <!-- Request: Leave (Employee A) -->
-        <div class="mgr-req-card req-leave mgr-glass-card">
-            <MudIcon Icon="@Icons.Material.Filled.EventAvailable" Class="req-icon" Style="color: #3b82f6;" />
-            <span class="req-title">Leave Request</span>
-            <div class="req-badge-wrapper">
-                <div class="req-badge b-pending bpl-anim">Pending</div>
-                <div class="req-badge b-approved bal-anim">Approved</div>
+        <!-- Pending approvals inbox -->
+        <div class="mgr-inbox">
+            <div class="mgr-inbox-head">
+                <span class="mgr-inbox-title">Pending Approvals</span>
+                <span class="mgr-inbox-sub">Today</span>
             </div>
-            <div class="req-details det-leave">
-                <span>3 Days</span>
-                <span>Vacation Leave</span>
-            </div>
-        </div>
 
-        <!-- Request: Overtime (Employee B) -->
-        <div class="mgr-req-card req-ot mgr-glass-card">
-            <MudIcon Icon="@Icons.Material.Filled.Schedule" Class="req-icon" Style="color: #8b5cf6;" />
-            <span class="req-title">Overtime</span>
-            <div class="req-badge-wrapper">
-                <div class="req-badge b-pending bpo-anim">Pending</div>
-                <div class="req-badge b-approved bao-anim">Approved</div>
-            </div>
-            <div class="req-details det-ot">
-                <span>4 Hours</span>
-                <span>Weekend Shift</span>
-            </div>
-        </div>
-
-        <!-- Request: Travel (Employee C) -->
-        <div class="mgr-req-card req-travel mgr-glass-card">
-            <MudIcon Icon="@Icons.Material.Filled.FlightTakeoff" Class="req-icon" Style="color: #f59e0b;" />
-            <span class="req-title">Travel Order</span>
-            <div class="req-badge-wrapper">
-                <div class="req-badge b-pending bpt-anim">Pending</div>
-                <div class="req-badge b-approved bat-anim">Approved</div>
-            </div>
-            <div class="req-details det-travel">
-                <span>New York</span>
-                <span>Client Meeting</span>
-            </div>
-        </div>
-
-        <!-- Manager Portal (review + approve hub) -->
-        <div class="mgr-portal mgr-glass-card">
-            <div class="portal-header">
-                <div class="d-flex align-center gap-1">
-                    <MudIcon Icon="@Icons.Material.Filled.SupervisorAccount" Style="font-size: 1.2rem; color: #475569;" />
-                    <span class="portal-title">Manager Portal</span>
+            <div class="mgr-row mrow-1">
+                <div class="mgr-av av-1">JC</div>
+                <div class="mgr-row-info">
+                    <span class="mgr-row-name">Jane Cruz</span>
+                    <span class="mgr-row-type">Leave · 3 days</span>
                 </div>
-                <div class="mgr-bell">
-                    <MudIcon Icon="@Icons.Material.Filled.Notifications" Style="font-size: 1rem; color: #ef4444;" />
-                    <div class="bell-ring"></div>
+                <div class="mgr-st-wrap">
+                    <span class="mgr-st st-pending">Pending</span>
+                    <span class="mgr-st st-approved"><MudIcon Icon="@Icons.Material.Filled.Check" Style="font-size: 0.7rem;" />Approved</span>
                 </div>
             </div>
-            <div class="fake-ui-line w-75"></div>
-            <div class="fake-ui-line w-50"></div>
 
-            <div class="mgr-action-pop">
-                <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Style="font-size: 1.5rem; color: #10b981; background: white; border-radius: 50%; box-shadow: 0 4px 10px rgba(16,185,129,0.3);" />
+            <div class="mgr-row mrow-2">
+                <div class="mgr-av av-2">MT</div>
+                <div class="mgr-row-info">
+                    <span class="mgr-row-name">Mark Tan</span>
+                    <span class="mgr-row-type">Overtime · 4 hrs</span>
+                </div>
+                <div class="mgr-st-wrap">
+                    <span class="mgr-st st-pending">Pending</span>
+                    <span class="mgr-st st-approved"><MudIcon Icon="@Icons.Material.Filled.Check" Style="font-size: 0.7rem;" />Approved</span>
+                </div>
+            </div>
+
+            <div class="mgr-row mrow-3">
+                <div class="mgr-av av-3">LR</div>
+                <div class="mgr-row-info">
+                    <span class="mgr-row-name">Liza Reyes</span>
+                    <span class="mgr-row-type">Travel · Manila</span>
+                </div>
+                <div class="mgr-st-wrap">
+                    <span class="mgr-st st-pending">Pending</span>
+                    <span class="mgr-st st-approved"><MudIcon Icon="@Icons.Material.Filled.Check" Style="font-size: 0.7rem;" />Approved</span>
+                </div>
             </div>
         </div>
 
-        <!-- Manager's mobile (approve on the go) -->
-        <div class="mgr-mobile mgr-glass-card">
-            <MudIcon Icon="@Icons.Material.Filled.Smartphone" Style="font-size: 1.5rem; color: #64748b;" />
-            <div class="mgr-bell">
-                <MudIcon Icon="@Icons.Material.Filled.Notifications" Style="font-size: 0.8rem; color: #ef4444;" />
-                <div class="bell-ring"></div>
-            </div>
-        </div>
-
-        <!-- HR Processing (final step) -->
-        <div class="mgr-hr-panel mgr-glass-card">
-            <div class="hr-icon-bg">
-                <MudIcon Icon="@Icons.Material.Filled.BusinessCenter" Style="font-size: 1.2rem; color: #10b981;" />
-            </div>
-            <span class="hr-title">HR Processing</span>
-            <div class="hr-processed">
-                <span>Processed</span>
-                <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Style="font-size: 0.8rem; color: #10b981;" />
-            </div>
-        </div>
-
-        <!-- Notifications back to employees -->
-        <div class="mgr-feedback fb1 mgr-glass-card">
-            <MudIcon Icon="@Icons.Material.Filled.DoneAll" Style="font-size: 1rem; color: #10b981;" />
-            <span>Approved</span>
-        </div>
-        <div class="mgr-feedback fb2 mgr-glass-card">
-            <MudIcon Icon="@Icons.Material.Filled.DoneAll" Style="font-size: 1rem; color: #10b981;" />
-            <span>Approved</span>
-        </div>
-        <div class="mgr-feedback fb3 mgr-glass-card">
-            <MudIcon Icon="@Icons.Material.Filled.DoneAll" Style="font-size: 1rem; color: #10b981;" />
-            <span>Approved</span>
-        </div>
-
-        <!-- Paperless Workflow finale -->
-        <div class="mgr-paperless-badge mgr-glass-card">
-            <MudIcon Icon="@Icons.Material.Filled.CloudDone" Style="font-size: 1.2rem; color: #3b82f6;" />
-            <span>Paperless Workflow</span>
+        <!-- Confirmation toast -->
+        <div class="mgr-toast">
+            <MudIcon Icon="@Icons.Material.Filled.CloudDone" Style="font-size: 1rem; color: #10b981;" />
+            <span>All caught up · synced to HR</span>
         </div>
 
     </div>
@@ -155,284 +79,175 @@
 
 <style>
     :root {
-        --mgr-duration: 20s;
+        --mgr-duration: 11s;
+        --mgr-indigo: #6366f1;
+        --mgr-blue: #3b82f6;
+        --mgr-green: #10b981;
+        --mgr-amber: #ea580c;
+        --mgr-ink: #0f172a;
+        --mgr-muted: #64748b;
+        --mgr-line: rgba(15, 23, 42, 0.06);
     }
     .mgr-container {
         position: relative; width: 100%; height: 100%; min-height: 540px; border-radius: 24px;
-        background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+        background: linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
         overflow: hidden; display: flex; align-items: center; justify-content: center;
+        font-family: 'Figtree', sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+    }
+    .mgr-glow {
+        position: absolute; top: -12%; left: 50%; width: 420px; height: 420px; transform: translateX(-50%);
+        background: radial-gradient(circle, rgba(99, 102, 241, 0.10) 0%, rgba(99, 102, 241, 0) 68%);
+        pointer-events: none; z-index: 0;
     }
     .grid-bg {
-        position: absolute; inset: 0; background-image: radial-gradient(rgba(15, 23, 42, 0.04) 1.5px, transparent 1.5px);
-        background-size: 24px 24px; pointer-events: none;
+        position: absolute; inset: 0; pointer-events: none; z-index: 0;
+        background-image: radial-gradient(rgba(15, 23, 42, 0.035) 1.2px, transparent 1.2px);
+        background-size: 26px 26px;
+        -webkit-mask-image: radial-gradient(circle at 50% 45%, #000 55%, transparent 90%);
+        mask-image: radial-gradient(circle at 50% 45%, #000 55%, transparent 90%);
     }
     .mgr-canvas {
-        position: relative; width: 100%; height: 100%; max-width: 560px;
-        animation: canvasFade var(--mgr-duration) ease-in-out infinite;
+        position: relative; width: 100%; height: 100%; max-width: 560px; z-index: 1;
+        animation: canvasFade var(--mgr-duration) cubic-bezier(0.4, 0, 0.2, 1) infinite;
     }
     @@keyframes canvasFade {
-        0%, 1% { opacity: 0; transform: scale(0.97); }
-        3%, 97% { opacity: 1; transform: scale(1); }
-        99%, 100% { opacity: 0; transform: scale(0.97); }
+        0%, 2% { opacity: 0; transform: scale(0.98); }
+        6%, 94% { opacity: 1; transform: scale(1); }
+        98%, 100% { opacity: 0; transform: scale(0.98); }
     }
 
-    .mgr-glass-card {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 1);
-        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
-        border-radius: 12px; position: absolute; transform: translate(-50%, -50%); z-index: 5;
+    .mgr-header, .mgr-inbox, .mgr-toast {
+        background: #ffffff; border: 1px solid var(--mgr-line);
+        box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 12px 28px -12px rgba(15, 23, 42, 0.18);
     }
 
-    .connections { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
-    .mgr-line {
-        fill: none; stroke: rgba(148, 163, 184, 0.3); stroke-width: 1.5; stroke-linecap: round; stroke-dasharray: 200; stroke-dashoffset: 200;
-        animation: drawMgrLines var(--mgr-duration) ease-out infinite, syncMgrGlow var(--mgr-duration) linear infinite;
+    /* Header */
+    .mgr-header {
+        position: absolute; left: 50%; top: 13%; width: 90%; max-width: 340px; transform: translate(-50%, -50%);
+        display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 18px;
+        animation: fadeUp var(--mgr-duration) cubic-bezier(0.16, 1, 0.3, 1) infinite;
     }
-    @@keyframes drawMgrLines { 0%, 3% { stroke-dashoffset: 200; } 6%, 100% { stroke-dashoffset: 0; } }
-    @@keyframes syncMgrGlow {
-        0%, 4% { stroke: rgba(148, 163, 184, 0.3); filter: none; }
-        5%, 14% { stroke: #3b82f6; filter: drop-shadow(0 0 4px rgba(59,130,246,0.5)); }
-        15%, 27% { stroke: rgba(148, 163, 184, 0.3); filter: none; }
-        28%, 37% { stroke: #8b5cf6; filter: drop-shadow(0 0 4px rgba(139,92,246,0.5)); }
-        38%, 50% { stroke: rgba(148, 163, 184, 0.3); filter: none; }
-        51%, 60% { stroke: #f59e0b; filter: drop-shadow(0 0 4px rgba(245,158,11,0.5)); }
-        61%, 72% { stroke: rgba(148, 163, 184, 0.3); filter: none; }
-        73%, 84% { stroke: #10b981; filter: drop-shadow(0 0 4px rgba(16,185,129,0.5)); }
-        85%, 100% { stroke: rgba(148, 163, 184, 0.3); filter: none; }
+    .mgr-bell-ic {
+        position: relative; width: 44px; height: 44px; flex-shrink: 0; border-radius: 13px;
+        background: linear-gradient(135deg, #6366f1 0%, #3b82f6 100%);
+        display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 16px -4px rgba(79, 70, 229, 0.5);
     }
-
-    /* Approval pulse travelling Manager Portal -> HR */
-    .mgr-particle { position: absolute; width: 6px; height: 6px; background: #10b981; border-radius: 50%; box-shadow: 0 0 10px #10b981; z-index: 10; transform: translate(-50%, -50%); opacity: 0; left: 50%; }
-    .mp1 { animation: pAnim1 var(--mgr-duration) linear infinite; }
-    .mp2 { animation: pAnim2 var(--mgr-duration) linear infinite; }
-    .mp3 { animation: pAnim3 var(--mgr-duration) linear infinite; }
-    @@keyframes pAnim1 { 0%, 13% { opacity: 0; top: 53%; } 14% { opacity: 1; top: 53%; } 15% { opacity: 1; top: 84%; } 16%, 83% { opacity: 0; top: 84%; } 84% { opacity: 1; top: 53%; } 85% { opacity: 1; top: 84%; } 86%, 100% { opacity: 0; top: 84%; } }
-    @@keyframes pAnim2 { 0%, 36% { opacity: 0; top: 53%; } 37% { opacity: 1; top: 53%; } 38% { opacity: 1; top: 84%; } 39%, 83% { opacity: 0; top: 84%; } 84% { opacity: 1; top: 53%; } 85% { opacity: 1; top: 84%; } 86%, 100% { opacity: 0; top: 84%; } }
-    @@keyframes pAnim3 { 0%, 59% { opacity: 0; top: 53%; } 60% { opacity: 1; top: 53%; } 61% { opacity: 1; top: 84%; } 62%, 83% { opacity: 0; top: 84%; } 84% { opacity: 1; top: 53%; } 85% { opacity: 1; top: 84%; } 86%, 100% { opacity: 0; top: 84%; } }
-
-    .mgr-emp { padding: 10px; border-radius: 50%; }
-    .e1 { left: 18%; top: 12%; } .e2 { left: 50%; top: 12%; } .e3 { left: 82%; top: 12%; }
-    .emp-glow { position: absolute; inset: -4px; border-radius: 50%; border: 2px solid #10b981; opacity: 0; }
-    .emp-glow-1 { animation: eGlow1 var(--mgr-duration) ease-out infinite; }
-    .emp-glow-2 { animation: eGlow2 var(--mgr-duration) ease-out infinite; }
-    .emp-glow-3 { animation: eGlow3 var(--mgr-duration) ease-out infinite; }
-    @@keyframes eGlow1 { 0%, 18% { opacity: 0; transform: scale(0.8); } 19% { opacity: 1; transform: scale(1.2); } 22%, 87% { opacity: 0; transform: scale(1.5); } 88% { opacity: 1; transform: scale(1.2); } 91%, 100% { opacity: 0; transform: scale(1.5); } }
-    @@keyframes eGlow2 { 0%, 41% { opacity: 0; transform: scale(0.8); } 42% { opacity: 1; transform: scale(1.2); } 45%, 87% { opacity: 0; transform: scale(1.5); } 88% { opacity: 1; transform: scale(1.2); } 91%, 100% { opacity: 0; transform: scale(1.5); } }
-    @@keyframes eGlow3 { 0%, 64% { opacity: 0; transform: scale(0.8); } 65% { opacity: 1; transform: scale(1.2); } 68%, 87% { opacity: 0; transform: scale(1.5); } 88% { opacity: 1; transform: scale(1.2); } 91%, 100% { opacity: 0; transform: scale(1.5); } }
-
-    .mgr-queue-title { position: absolute; left: 50%; top: 30%; transform: translate(-50%, -50%); display: flex; align-items: center; gap: 8px; font-family: 'Figtree', sans-serif; font-size: 0.8rem; font-weight: 800; color: #475569; z-index: 2; animation: queueFade var(--mgr-duration) cubic-bezier(0.4, 0, 0.2, 1) infinite; }
-    @@keyframes queueFade { 0%, 86% { opacity: 1; transform: translate(-50%, -50%); } 88%, 96% { opacity: 0; transform: translate(-50%, -60%); } 98%, 100% { opacity: 1; transform: translate(-50%, -50%); } }
-    .queue-badge-wrapper { position: relative; width: 22px; height: 22px; }
-    .q-badge { position: absolute; inset: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 800; color: white; }
-    .qb-0 { background: #cbd5e1; animation: qb0 var(--mgr-duration) step-end infinite; }
-    .qb-1 { background: #ef4444; opacity: 0; animation: qb1 var(--mgr-duration) step-end infinite; }
-    .qb-3 { background: #ef4444; opacity: 0; animation: qb3 var(--mgr-duration) step-end infinite; }
-    @@keyframes qb0 { 0%, 4% { opacity: 1; } 5%, 11% { opacity: 0; } 12%, 27% { opacity: 1; } 28%, 34% { opacity: 0; } 35%, 50% { opacity: 1; } 51%, 57% { opacity: 0; } 58%, 71% { opacity: 1; } 72%, 81% { opacity: 0; } 82%, 100% { opacity: 1; } }
-    @@keyframes qb1 { 0%, 4% { opacity: 0; } 5%, 11% { opacity: 1; } 12%, 27% { opacity: 0; } 28%, 34% { opacity: 1; } 35%, 50% { opacity: 0; } 51%, 57% { opacity: 1; } 58%, 100% { opacity: 0; } }
-    @@keyframes qb3 { 0%, 71% { opacity: 0; } 72%, 81% { opacity: 1; } 82%, 100% { opacity: 0; } }
-
-    .mgr-req-card { display: flex; flex-direction: column; align-items: center; padding: 10px 14px; gap: 6px; width: 110px; border-radius: 12px; font-family: 'Figtree', sans-serif; z-index: 10; }
-    .req-icon { font-size: 1.4rem; }
-    .req-title { font-size: 0.65rem; font-weight: 800; color: #334155; white-space: nowrap; }
-    .req-badge-wrapper { position: relative; height: 18px; width: 68px; display: flex; justify-content: center; }
-    .req-badge { position: absolute; font-size: 0.55rem; font-weight: 800; text-transform: uppercase; padding: 2px 6px; border-radius: 4px; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
-    .b-pending { background: #f1f5f9; color: #64748b; }
-    .b-approved { background: #dcfce7; color: #16a34a; }
-    .req-details { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 0.6rem; color: #64748b; font-weight: 600; margin-top: 4px; height: 0; overflow: hidden; opacity: 0; transition: all 0.3s; }
-
-    /* Flow: employee (top) -> manager portal (review/approve) -> HR (down) */
-    .req-leave { animation: rLeave var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; z-index: 8; }
-    @@keyframes rLeave {
-        0%, 1% { left: 18%; top: 12%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-        2%, 3% { left: 18%; top: 18%; opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
-        5%, 7% { left: 50%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(0.95); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
-        9% { left: 50%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(1.12); box-shadow: 0 20px 40px rgba(59,130,246,0.15); border-color: rgba(59,130,246,0.3); }
-        11%, 12% { left: 50%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(0.96); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
-        14% { left: 50%; top: 84%; opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
-        15%, 70% { left: 50%; top: 84%; opacity: 0; transform: translate(-50%, -50%) scale(0); }
-        /* Phase 4: batch */
-        71% { left: 18%; top: 12%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-        72%, 73% { left: 25%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(1); }
-        78%, 81% { left: 25%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(1.05); box-shadow: 0 20px 40px rgba(59,130,246,0.15); border-color: rgba(59,130,246,0.3); }
-        83% { left: 25%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(0.95); }
-        84% { left: 50%; top: 84%; opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
-        85%, 100% { left: 50%; top: 84%; opacity: 0; transform: translate(-50%, -50%) scale(0); }
+    .mgr-bell-ring {
+        position: absolute; inset: -3px; border-radius: 16px; border: 2px solid #6366f1; opacity: 0;
+        animation: bellRing var(--mgr-duration) ease-out infinite;
     }
-    .det-leave { animation: dLeave var(--mgr-duration) ease infinite; }
-    @@keyframes dLeave { 0%, 6% { height: 0; opacity: 0; margin-top: 0; } 8%, 10% { height: 26px; opacity: 1; margin-top: 4px; } 11%, 100% { height: 0; opacity: 0; margin-top: 0; } }
-    .bpl-anim { animation: bplFade var(--mgr-duration) step-end infinite; }
-    .bal-anim { opacity: 0; animation: balFade var(--mgr-duration) step-end infinite; }
-    @@keyframes bplFade { 0%, 9% { opacity: 1; } 10%, 71% { opacity: 0; } 72%, 80% { opacity: 1; } 81%, 100% { opacity: 0; } }
-    @@keyframes balFade { 0%, 10% { opacity: 0; } 11%, 15% { opacity: 1; } 16%, 80% { opacity: 0; } 81%, 85% { opacity: 1; } 86%, 100% { opacity: 0; } }
-
-    .req-ot { animation: rOt var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; z-index: 7; }
-    @@keyframes rOt {
-        0%, 23% { left: 50%; top: 12%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-        25%, 26% { left: 50%; top: 18%; opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
-        28%, 30% { left: 50%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(0.95); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
-        32% { left: 50%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(1.12); box-shadow: 0 20px 40px rgba(139,92,246,0.15); border-color: rgba(139,92,246,0.3); }
-        34%, 35% { left: 50%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(0.96); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
-        37% { left: 50%; top: 84%; opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
-        38%, 70% { left: 50%; top: 84%; opacity: 0; transform: translate(-50%, -50%) scale(0); }
-        /* Phase 4: batch */
-        71% { left: 50%; top: 12%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-        72%, 73% { left: 50%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(1); }
-        78%, 81% { left: 50%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(1.05); box-shadow: 0 20px 40px rgba(139,92,246,0.15); border-color: rgba(139,92,246,0.3); }
-        83% { left: 50%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(0.95); }
-        84% { left: 50%; top: 84%; opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
-        85%, 100% { left: 50%; top: 84%; opacity: 0; transform: translate(-50%, -50%) scale(0); }
+    @@keyframes bellRing {
+        0%, 7% { opacity: 0; transform: scale(0.8); }
+        9% { opacity: 0.8; transform: scale(1); }
+        13%, 100% { opacity: 0; transform: scale(1.3); }
     }
-    .det-ot { animation: dOt var(--mgr-duration) ease infinite; }
-    @@keyframes dOt { 0%, 29% { height: 0; opacity: 0; margin-top: 0; } 31%, 33% { height: 26px; opacity: 1; margin-top: 4px; } 34%, 100% { height: 0; opacity: 0; margin-top: 0; } }
-    .bpo-anim { animation: bpoFade var(--mgr-duration) step-end infinite; }
-    .bao-anim { opacity: 0; animation: baoFade var(--mgr-duration) step-end infinite; }
-    @@keyframes bpoFade { 0%, 32% { opacity: 1; } 33%, 71% { opacity: 0; } 72%, 80% { opacity: 1; } 81%, 100% { opacity: 0; } }
-    @@keyframes baoFade { 0%, 32% { opacity: 0; } 33%, 38% { opacity: 1; } 39%, 80% { opacity: 0; } 81%, 85% { opacity: 1; } 86%, 100% { opacity: 0; } }
-
-    .req-travel { animation: rTravel var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; z-index: 6; }
-    @@keyframes rTravel {
-        0%, 46% { left: 82%; top: 12%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-        48%, 49% { left: 82%; top: 18%; opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
-        51%, 53% { left: 50%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(0.95); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
-        55% { left: 50%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(1.12); box-shadow: 0 20px 40px rgba(245,158,11,0.15); border-color: rgba(245,158,11,0.3); }
-        57%, 58% { left: 50%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(0.96); box-shadow: 0 10px 30px rgba(15,23,42,0.05); }
-        60% { left: 50%; top: 84%; opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
-        61%, 70% { left: 50%; top: 84%; opacity: 0; transform: translate(-50%, -50%) scale(0); }
-        /* Phase 4: batch */
-        71% { left: 82%; top: 12%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-        72%, 73% { left: 75%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(1); }
-        78%, 81% { left: 75%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(1.05); box-shadow: 0 20px 40px rgba(245,158,11,0.15); border-color: rgba(245,158,11,0.3); }
-        83% { left: 75%; top: 44%; opacity: 1; transform: translate(-50%, -50%) scale(0.95); }
-        84% { left: 50%; top: 84%; opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
-        85%, 100% { left: 50%; top: 84%; opacity: 0; transform: translate(-50%, -50%) scale(0); }
+    .mgr-header-info { display: flex; flex-direction: column; flex-grow: 1; min-width: 0; }
+    .mgr-title { font-size: 0.95rem; font-weight: 800; color: var(--mgr-ink); line-height: 1.2; }
+    .mgr-meta { font-size: 0.72rem; font-weight: 600; color: var(--mgr-muted); margin-top: 1px; }
+    .mgr-count-wrap { position: relative; width: 26px; height: 26px; flex-shrink: 0; }
+    .mgr-count {
+        position: absolute; inset: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        font-size: 0.78rem; font-weight: 800; color: #ffffff; background: #ef4444; opacity: 0;
+        box-shadow: 0 4px 10px rgba(239, 68, 68, 0.35);
     }
-    .det-travel { animation: dTravel var(--mgr-duration) ease infinite; }
-    @@keyframes dTravel { 0%, 52% { height: 0; opacity: 0; margin-top: 0; } 54%, 56% { height: 26px; opacity: 1; margin-top: 4px; } 57%, 100% { height: 0; opacity: 0; margin-top: 0; } }
-    .bpt-anim { animation: bptFade var(--mgr-duration) step-end infinite; }
-    .bat-anim { opacity: 0; animation: batFade var(--mgr-duration) step-end infinite; }
-    @@keyframes bptFade { 0%, 55% { opacity: 1; } 56%, 71% { opacity: 0; } 72%, 80% { opacity: 1; } 81%, 100% { opacity: 0; } }
-    @@keyframes batFade { 0%, 55% { opacity: 0; } 56%, 61% { opacity: 1; } 62%, 80% { opacity: 0; } 81%, 85% { opacity: 1; } 86%, 100% { opacity: 0; } }
-
-    .mgr-portal { left: 50%; top: 53%; width: 160px; padding: 12px; display: flex; flex-direction: column; gap: 8px; animation: portalHighlight var(--mgr-duration) ease infinite; z-index: 4; }
-    @@keyframes portalHighlight {
-        0%, 5% { border-color: rgba(255,255,255,1); box-shadow: 0 10px 30px rgba(15,23,42,0.05); transform: translate(-50%, -50%) scale(1); }
-        6%, 11% { border-color: #3b82f6; box-shadow: 0 15px 40px rgba(59,130,246,0.2); transform: translate(-50%, -50%) scale(1.04); }
-        12%, 29% { border-color: rgba(255,255,255,1); box-shadow: 0 10px 30px rgba(15,23,42,0.05); transform: translate(-50%, -50%) scale(1); }
-        30%, 35% { border-color: #8b5cf6; box-shadow: 0 15px 40px rgba(139,92,246,0.2); transform: translate(-50%, -50%) scale(1.04); }
-        36%, 52% { border-color: rgba(255,255,255,1); box-shadow: 0 10px 30px rgba(15,23,42,0.05); transform: translate(-50%, -50%) scale(1); }
-        53%, 58% { border-color: #f59e0b; box-shadow: 0 15px 40px rgba(245,158,11,0.2); transform: translate(-50%, -50%) scale(1.04); }
-        59%, 76% { border-color: rgba(255,255,255,1); box-shadow: 0 10px 30px rgba(15,23,42,0.05); transform: translate(-50%, -50%) scale(1); }
-        77%, 82% { border-color: #10b981; box-shadow: 0 15px 40px rgba(16,185,129,0.2); transform: translate(-50%, -50%) scale(1.04); }
-        83%, 100% { border-color: rgba(255,255,255,1); box-shadow: 0 10px 30px rgba(15,23,42,0.05); transform: translate(-50%, -50%) scale(1); }
+    .c-3 { animation: cnt3 var(--mgr-duration) step-end infinite; }
+    .c-2 { animation: cnt2 var(--mgr-duration) step-end infinite; }
+    .c-1 { animation: cnt1 var(--mgr-duration) step-end infinite; }
+    .c-done { background: #10b981; box-shadow: 0 4px 10px rgba(16,185,129,0.35); animation: cntDone var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+    @@keyframes cnt3 { 0%, 4% { opacity: 0; } 5%, 33% { opacity: 1; } 34%, 100% { opacity: 0; } }
+    @@keyframes cnt2 { 0%, 33% { opacity: 0; } 34%, 45% { opacity: 1; } 46%, 100% { opacity: 0; } }
+    @@keyframes cnt1 { 0%, 45% { opacity: 0; } 46%, 57% { opacity: 1; } 58%, 100% { opacity: 0; } }
+    @@keyframes cntDone { 0%, 57% { opacity: 0; transform: scale(0.4); } 60%, 100% { opacity: 1; transform: scale(1); } }
+    @@keyframes fadeUp {
+        0%, 2% { opacity: 0; transform: translate(-50%, calc(-50% + 14px)) scale(0.96); }
+        7%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
     }
 
-    .portal-header { display: flex; align-items: center; justify-content: space-between; }
-    .portal-title { font-family: 'Figtree', sans-serif; font-size: 0.65rem; font-weight: 800; color: #334155; }
-    .fake-ui-line { height: 4px; background: #e2e8f0; border-radius: 2px; }
-    .w-75 { width: 75%; } .w-50 { width: 50%; }
+    /* Inbox */
+    .mgr-inbox {
+        position: absolute; left: 50%; top: 48%; width: 90%; max-width: 340px; transform: translate(-50%, -50%);
+        padding: 14px; border-radius: 18px; display: flex; flex-direction: column; gap: 9px;
+        animation: inboxIn var(--mgr-duration) cubic-bezier(0.16, 1, 0.3, 1) infinite;
+    }
+    @@keyframes inboxIn {
+        0%, 12% { opacity: 0; transform: translate(-50%, calc(-50% + 12px)) scale(0.97); }
+        17%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    }
+    .mgr-inbox-head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 4px; }
+    .mgr-inbox-title { font-size: 0.78rem; font-weight: 800; color: var(--mgr-ink); }
+    .mgr-inbox-sub { font-size: 0.64rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.4px; }
 
-    .mgr-mobile { left: 82%; top: 53%; padding: 12px 8px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .mgr-row {
+        display: flex; align-items: center; gap: 11px; padding: 9px 10px; border-radius: 12px;
+        background: #f8fafc; border: 1px solid transparent;
+    }
+    .mgr-av {
+        width: 32px; height: 32px; flex-shrink: 0; border-radius: 10px; display: flex; align-items: center; justify-content: center;
+        font-size: 0.66rem; font-weight: 800; letter-spacing: 0.3px;
+    }
+    .av-1 { background: #eef2ff; color: #4f46e5; }
+    .av-2 { background: #eff6ff; color: #2563eb; }
+    .av-3 { background: #f5f3ff; color: #7c3aed; }
+    .mgr-row-info { display: flex; flex-direction: column; flex-grow: 1; min-width: 0; }
+    .mgr-row-name { font-size: 0.78rem; font-weight: 800; color: #1e293b; line-height: 1.2; }
+    .mgr-row-type { font-size: 0.66rem; font-weight: 600; color: var(--mgr-muted); margin-top: 1px; }
+    .mgr-st-wrap { position: relative; height: 20px; min-width: 78px; flex-shrink: 0; }
+    .mgr-st {
+        position: absolute; right: 0; top: 0; display: flex; align-items: center; gap: 3px; white-space: nowrap;
+        font-size: 0.58rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.3px; padding: 3px 8px; border-radius: 999px;
+    }
+    .st-pending { background: #fff7ed; color: var(--mgr-amber); }
+    .st-approved { background: #ecfdf5; color: #059669; opacity: 0; }
 
-    .mgr-bell { position: relative; display: flex; align-items: center; justify-content: center; }
-    .bell-ring { position: absolute; inset: -4px; border-radius: 50%; border: 2px solid #ef4444; opacity: 0; animation: bRing var(--mgr-duration) ease-out infinite; }
-    @@keyframes bRing {
-        0%, 4% { opacity: 0; transform: scale(0.5); }
-        5%, 6% { opacity: 1; transform: scale(1.2); }
-        7%, 27% { opacity: 0; transform: scale(1.5); }
-        28%, 29% { opacity: 1; transform: scale(1.2); }
-        30%, 50% { opacity: 0; transform: scale(1.5); }
-        51%, 52% { opacity: 1; transform: scale(1.2); }
-        53%, 72% { opacity: 0; transform: scale(1.5); }
-        73%, 74% { opacity: 1; transform: scale(1.2); }
-        75%, 100% { opacity: 0; transform: scale(1.5); }
+    /* Row reveal */
+    .mrow-1 { animation: rowIn1 var(--mgr-duration) cubic-bezier(0.16, 1, 0.3, 1) infinite; }
+    .mrow-2 { animation: rowIn2 var(--mgr-duration) cubic-bezier(0.16, 1, 0.3, 1) infinite; }
+    .mrow-3 { animation: rowIn3 var(--mgr-duration) cubic-bezier(0.16, 1, 0.3, 1) infinite; }
+    @@keyframes rowIn1 {
+        0%, 17% { opacity: 0; transform: translateY(8px); background: #f8fafc; border-color: transparent; }
+        21%, 33% { opacity: 1; transform: translateY(0); background: #f8fafc; border-color: transparent; }
+        36%, 100% { opacity: 1; transform: translateY(0); background: #f0fdf4; border-color: rgba(16,185,129,0.25); }
+    }
+    @@keyframes rowIn2 {
+        0%, 20% { opacity: 0; transform: translateY(8px); background: #f8fafc; border-color: transparent; }
+        24%, 45% { opacity: 1; transform: translateY(0); background: #f8fafc; border-color: transparent; }
+        48%, 100% { opacity: 1; transform: translateY(0); background: #f0fdf4; border-color: rgba(16,185,129,0.25); }
+    }
+    @@keyframes rowIn3 {
+        0%, 23% { opacity: 0; transform: translateY(8px); background: #f8fafc; border-color: transparent; }
+        27%, 57% { opacity: 1; transform: translateY(0); background: #f8fafc; border-color: transparent; }
+        60%, 100% { opacity: 1; transform: translateY(0); background: #f0fdf4; border-color: rgba(16,185,129,0.25); }
     }
 
-    .mgr-action-pop { position: absolute; right: -12px; top: -15px; opacity: 0; animation: aPop var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
-    @@keyframes aPop {
-        0%, 9% { opacity: 0; transform: scale(0.5); }
-        10%, 11% { opacity: 1; transform: scale(1.2); }
-        12%, 32% { opacity: 0; transform: scale(0.5); }
-        33%, 34% { opacity: 1; transform: scale(1.2); }
-        35%, 55% { opacity: 0; transform: scale(0.5); }
-        56%, 57% { opacity: 1; transform: scale(1.2); }
-        58%, 79% { opacity: 0; transform: scale(0.5); }
-        80%, 81% { opacity: 1; transform: scale(1.2); }
-        82%, 100% { opacity: 0; transform: scale(0.5); }
-    }
+    /* Status flip per row */
+    .mrow-1 .st-pending { animation: pen1 var(--mgr-duration) step-end infinite; }
+    .mrow-1 .st-approved { animation: app1 var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+    .mrow-2 .st-pending { animation: pen2 var(--mgr-duration) step-end infinite; }
+    .mrow-2 .st-approved { animation: app2 var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+    .mrow-3 .st-pending { animation: pen3 var(--mgr-duration) step-end infinite; }
+    .mrow-3 .st-approved { animation: app3 var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+    @@keyframes pen1 { 0%, 33% { opacity: 1; } 34%, 100% { opacity: 0; } }
+    @@keyframes app1 { 0%, 33% { opacity: 0; transform: scale(0.6); } 36%, 100% { opacity: 1; transform: scale(1); } }
+    @@keyframes pen2 { 0%, 45% { opacity: 1; } 46%, 100% { opacity: 0; } }
+    @@keyframes app2 { 0%, 45% { opacity: 0; transform: scale(0.6); } 48%, 100% { opacity: 1; transform: scale(1); } }
+    @@keyframes pen3 { 0%, 57% { opacity: 1; } 58%, 100% { opacity: 0; } }
+    @@keyframes app3 { 0%, 57% { opacity: 0; transform: scale(0.6); } 60%, 100% { opacity: 1; transform: scale(1); } }
 
-    .mgr-hr-panel { left: 50%; top: 84%; width: 180px; padding: 10px 14px; display: flex; align-items: center; gap: 10px; animation: hrHighlight var(--mgr-duration) ease infinite; z-index: 25; }
-    @@keyframes hrHighlight {
-        0%, 14% { background: rgba(255, 255, 255, 0.95); }
-        15%, 17% { background: #ecfdf5; box-shadow: 0 0 15px rgba(16,185,129,0.3); }
-        18%, 37% { background: rgba(255, 255, 255, 0.95); }
-        38%, 40% { background: #ecfdf5; box-shadow: 0 0 15px rgba(16,185,129,0.3); }
-        41%, 60% { background: rgba(255, 255, 255, 0.95); }
-        61%, 63% { background: #ecfdf5; box-shadow: 0 0 15px rgba(16,185,129,0.3); }
-        64%, 84% { background: rgba(255, 255, 255, 0.95); }
-        85%, 87% { background: #ecfdf5; box-shadow: 0 0 15px rgba(16,185,129,0.3); }
-        88%, 100% { background: rgba(255, 255, 255, 0.95); }
+    /* Toast */
+    .mgr-toast {
+        position: absolute; left: 50%; top: 84%; transform: translate(-50%, -50%);
+        display: flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 999px;
+        font-size: 0.74rem; font-weight: 800; color: var(--mgr-ink); white-space: nowrap; border-color: rgba(16,185,129,0.25);
+        animation: toastPop var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
     }
-    .hr-icon-bg { width: 32px; height: 32px; background: #ecfdf5; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
-    .hr-title { font-family: 'Figtree', sans-serif; font-size: 0.75rem; font-weight: 800; color: #334155; flex-grow: 1; }
-    .hr-processed { display: flex; align-items: center; gap: 4px; font-family: 'Figtree', sans-serif; font-size: 0.6rem; font-weight: 800; color: #10b981; text-transform: uppercase; opacity: 0; animation: procFade var(--mgr-duration) ease infinite; }
-    @@keyframes procFade {
-        0%, 14% { opacity: 0; transform: translateX(-5px); }
-        15%, 17% { opacity: 1; transform: translateX(0); }
-        18%, 37% { opacity: 0; transform: translateX(-5px); }
-        38%, 40% { opacity: 1; transform: translateX(0); }
-        41%, 60% { opacity: 0; transform: translateX(-5px); }
-        61%, 63% { opacity: 1; transform: translateX(0); }
-        64%, 84% { opacity: 0; transform: translateX(-5px); }
-        85%, 87% { opacity: 1; transform: translateX(0); }
-        88%, 100% { opacity: 0; transform: translateX(-5px); }
+    @@keyframes toastPop {
+        0%, 62% { opacity: 0; transform: translate(-50%, calc(-50% + 12px)) scale(0.9); }
+        67%, 92% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        96%, 100% { opacity: 0; transform: translate(-50%, calc(-50% - 8px)) scale(0.95); }
     }
-
-    /* Notification: HR completion flies back up to the originating employee */
-    .mgr-feedback { display: flex; align-items: center; gap: 6px; padding: 8px 12px; font-family: 'Figtree', sans-serif; font-size: 0.7rem; font-weight: 800; color: #0f172a; border: 1px solid rgba(16,185,129,0.3); z-index: 20; }
-    .fb1 { animation: flyFb1 var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
-    .fb2 { animation: flyFb2 var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
-    .fb3 { animation: flyFb3 var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
-
-    @@keyframes flyFb1 {
-        0%, 16% { left: 50%; top: 84%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-        17% { left: 50%; top: 84%; opacity: 1; transform: translate(-50%, -50%) scale(0.8); }
-        19% { left: 18%; top: 12%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 10px 20px rgba(16,185,129,0.2); }
-        21%, 85% { left: 18%; top: 12%; opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-        86% { left: 50%; top: 84%; opacity: 1; transform: translate(-50%, -50%) scale(0.8); }
-        88% { left: 18%; top: 12%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 10px 20px rgba(16,185,129,0.2); }
-        90%, 100% { left: 18%; top: 12%; opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-    }
-    @@keyframes flyFb2 {
-        0%, 39% { left: 50%; top: 84%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-        40% { left: 50%; top: 84%; opacity: 1; transform: translate(-50%, -50%) scale(0.8); }
-        42% { left: 50%; top: 12%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 10px 20px rgba(16,185,129,0.2); }
-        44%, 85% { left: 50%; top: 12%; opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-        86% { left: 50%; top: 84%; opacity: 1; transform: translate(-50%, -50%) scale(0.8); }
-        88% { left: 50%; top: 12%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 10px 20px rgba(16,185,129,0.2); }
-        90%, 100% { left: 50%; top: 12%; opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-    }
-    @@keyframes flyFb3 {
-        0%, 62% { left: 50%; top: 84%; opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-        63% { left: 50%; top: 84%; opacity: 1; transform: translate(-50%, -50%) scale(0.8); }
-        65% { left: 82%; top: 12%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 10px 20px rgba(16,185,129,0.2); }
-        67%, 85% { left: 82%; top: 12%; opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-        86% { left: 50%; top: 84%; opacity: 1; transform: translate(-50%, -50%) scale(0.8); }
-        88% { left: 82%; top: 12%; opacity: 1; transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 10px 20px rgba(16,185,129,0.2); }
-        90%, 100% { left: 82%; top: 12%; opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-    }
-
-    .mgr-paperless-badge { display: flex; align-items: center; gap: 8px; padding: 10px 16px; left: 50%; top: 68%; font-family: 'Figtree', sans-serif; font-size: 0.8rem; font-weight: 800; color: #0f172a; box-shadow: 0 15px 35px rgba(59,130,246,0.15); z-index: 30; animation: paperPop var(--mgr-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
-    @@keyframes paperPop { 0%, 88% { opacity: 0; transform: translate(-50%, 15px) scale(0.8); } 90%, 96% { opacity: 1; transform: translate(-50%, -50%) scale(1); } 98%, 100% { opacity: 0; transform: translate(-50%, -15px) scale(0.8); } }
 
     @@media (max-width: 767px) {
         .mgr-container { min-height: 540px; }
-        .mgr-req-card { width: 100px; padding: 8px 10px; }
-        .req-title { font-size: 0.6rem; }
-        .req-badge-wrapper { width: 62px; }
-        .mgr-portal { width: 150px; }
-        .portal-title { font-size: 0.6rem; }
-        .mgr-hr-panel { width: 170px; }
-        .hr-title { font-size: 0.7rem; }
+        .mgr-row-type { font-size: 0.62rem; }
     }
 </style>
