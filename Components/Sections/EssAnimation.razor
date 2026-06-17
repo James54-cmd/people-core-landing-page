@@ -1,0 +1,605 @@
+@using MudBlazor
+
+<div class="ess-container">
+    <div class="grid-bg"></div>
+
+    <div class="ess-canvas">
+        <svg class="connections" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <!-- Vertical Trunk: HR System (15) down to Employee (85) -->
+            <path class="line-path" d="M 50 15 L 50 85" />
+            <!-- Horizontal Branch: Portal (20) across to App (80) at center (50) -->
+            <path class="line-path" d="M 20 50 L 80 50" />
+        </svg>
+
+        <!-- Data Packets -->
+        <div class="data-packet pulse-login-left"></div>
+        <div class="data-packet pulse-login-right"></div>
+        <div class="data-packet pulse-sync-up"></div>
+        <div class="data-packet pulse-appr-left"></div>
+        <div class="data-packet pulse-appr-right"></div>
+
+        <!-- HR Panel (Top Center) -->
+        <div class="ess-hr-panel glass-card">
+            <div class="hr-icon-bg"><MudIcon Icon="@Icons.Material.Filled.BusinessCenter" Style="font-size: 1.2rem; color: #3b82f6;" /></div>
+            <span class="hr-title">HR System</span>
+            <div class="badge-new">New</div>
+        </div>
+
+        <!-- Portal Device (Left) -->
+        <div class="device-card desktop-card glass-card">
+            <MudIcon Icon="@Icons.Material.Filled.DesktopWindows" Style="font-size: 1rem; color: #64748b;" />
+            <span class="device-name">Portal</span>
+            <div class="status-dot"></div>
+            <div class="notification-bubble n-desktop">
+                <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Style="font-size: 0.8rem; color: #10b981;" />
+                <span>Leave Approved</span>
+            </div>
+        </div>
+
+        <!-- App Device (Right) -->
+        <div class="device-card mobile-card glass-card">
+            <MudIcon Icon="@Icons.Material.Filled.Smartphone" Style="font-size: 1rem; color: #64748b;" />
+            <span class="device-name">App</span>
+            <div class="status-dot"></div>
+            <div class="notification-bubble n-mobile">
+                <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Style="font-size: 0.8rem; color: #10b981;" />
+                <span>Approved</span>
+            </div>
+        </div>
+
+        <!-- Employee Node (Bottom Center) -->
+        <div class="employee-node glass-card">
+            <div class="emp-avatar">
+                <MudIcon Icon="@Icons.Material.Filled.Person" Style="font-size: 1.5rem; color: #475569;" />
+            </div>
+            <div class="login-check">
+                <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Style="font-size: 0.9rem; color: #10b981;" />
+            </div>
+        </div>
+
+        <!-- Attendance Action (Lower Middle) -->
+        <div class="action-card attendance-card glass-card">
+            <div class="att-icon-bg"><MudIcon Icon="@Icons.Material.Filled.Fingerprint" Style="font-size: 1.1rem; color: #3b82f6;" /></div>
+            <span class="action-text">Attendance</span>
+            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Class="att-check" Style="font-size: 1rem; color: #10b981;" />
+        </div>
+
+        <!-- Leave Request Action (Upper Middle) -->
+        <div class="action-card leave-card glass-card">
+            <div class="leave-header">
+                <div class="leave-icon-bg"><MudIcon Icon="@Icons.Material.Filled.EventAvailable" Style="font-size: 0.9rem; color: #f59e0b;" /></div>
+                <span class="leave-title">Leave Request</span>
+            </div>
+            <div class="leave-body">
+                <div class="leave-field">Vacation Leave</div>
+                <div class="leave-field">June 15 &bull; 3 Days</div>
+            </div>
+            <div class="leave-footer">
+                <span>Submit</span>
+                <MudIcon Icon="@Icons.Material.Filled.Send" Style="font-size: 0.85rem; color: #94a3b8;" />
+            </div>
+        </div>
+
+        <!-- Payslip Action (Bottom Right) -->
+        <div class="action-card payslip-card glass-card">
+            <div class="payslip-icon-bg"><MudIcon Icon="@Icons.Material.Filled.ReceiptLong" Style="font-size: 1.1rem; color: #8b5cf6;" /></div>
+            <div class="payslip-text-col">
+                <span class="payslip-title">Payslip</span>
+                <span class="payslip-sub">Available</span>
+            </div>
+            <MudIcon Icon="@Icons.Material.Filled.Download" Style="font-size: 1rem; color: #94a3b8;" />
+            <div class="sparkle"></div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    :root {
+        --ess-duration: 9.5s;
+    }
+    .ess-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        min-height: 520px;
+        border-radius: 24px;
+        background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .grid-bg {
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(rgba(15, 23, 42, 0.04) 1.5px, transparent 1.5px);
+        background-size: 24px 24px;
+        pointer-events: none;
+    }
+    .ess-canvas {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        max-width: 560px;
+        animation: canvasFade var(--ess-duration) cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+    @@keyframes canvasFade {
+        0%, 2% { opacity: 0; transform: scale(0.97); }
+        6%, 95% { opacity: 1; transform: scale(1); }
+        98%, 100% { opacity: 0; transform: scale(0.97); }
+    }
+
+    /* Connections */
+    .connections {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: none;
+    }
+    .line-path {
+        fill: none;
+        stroke: rgba(148, 163, 184, 0.35);
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-dasharray: 100;
+        stroke-dashoffset: 100;
+        animation: drawLines var(--ess-duration) ease-out infinite;
+    }
+    @@keyframes drawLines {
+        0%, 5% { stroke-dashoffset: 100; }
+        15%, 100% { stroke-dashoffset: 0; }
+    }
+
+    /* Core Card Design */
+    .glass-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 1);
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+        border-radius: 16px;
+        position: absolute;
+        z-index: 5;
+        transform: translate(-50%, -50%); /* Base centering for ALL absolute elements */
+    }
+
+    /* HR Panel */
+    .ess-hr-panel {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 18px;
+        gap: 10px;
+        height: 52px; /* strict height */
+        left: 50%;
+        top: 15%;
+        border-radius: 26px; /* Pill */
+        z-index: 4; /* Stays below floating cards */
+        animation: hrPanelGlow var(--ess-duration) ease-in-out infinite;
+    }
+    .hr-icon-bg {
+        width: 34px;
+        height: 34px;
+        background: #eff6ff;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: inset 0 2px 4px rgba(255,255,255,0.8);
+    }
+    .hr-title {
+        font-family: 'Figtree', sans-serif;
+        font-weight: 800;
+        font-size: 0.95rem;
+        color: #0f172a;
+    }
+    .badge-new {
+        background: #ef4444;
+        color: white;
+        font-family: 'Figtree', sans-serif;
+        font-size: 0.65rem;
+        font-weight: 800;
+        padding: 2px 8px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+        animation: badgeNew var(--ess-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+    }
+    @@keyframes badgeNew {
+        0%, 50% { opacity: 0; transform: scale(0); }
+        52%, 75% { opacity: 1; transform: scale(1); }
+        76%, 100% { opacity: 0; transform: scale(0); }
+    }
+    @@keyframes hrPanelGlow {
+        0%, 61% { box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05); border-color: rgba(255,255,255,1); transform: translate(-50%, -50%) scale(1); }
+        63%, 70% { box-shadow: 0 0 30px rgba(16, 185, 129, 0.25); border-color: #10b981; transform: translate(-50%, -50%) scale(1.05); }
+        75%, 100% { box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05); border-color: rgba(255,255,255,1); transform: translate(-50%, -50%) scale(1); }
+    }
+
+    /* Devices (Portal & App) */
+    .device-card {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 8px 14px;
+        gap: 8px;
+        height: 44px;
+        border-radius: 22px; /* Pill */
+        z-index: 6;
+        animation: floatDevice var(--ess-duration) ease-in-out infinite;
+    }
+    .desktop-card { left: 20%; top: 50%; }
+    .mobile-card { left: 80%; top: 50%; animation-delay: 0.5s; }
+    
+    @@keyframes floatDevice {
+        0%, 100% { transform: translate(-50%, -50%) translateY(0); box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05); }
+        50% { transform: translate(-50%, -50%) translateY(-6px); box-shadow: 0 15px 35px rgba(15, 23, 42, 0.1); }
+    }
+    .device-name {
+        font-family: 'Figtree', sans-serif;
+        font-weight: 800;
+        font-size: 0.85rem;
+        color: #334155;
+    }
+    .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #cbd5e1;
+        transition: all 0.3s ease;
+        animation: statusDot var(--ess-duration) ease-in-out infinite;
+    }
+    @@keyframes statusDot {
+        0%, 19% { background-color: #cbd5e1; box-shadow: none; }
+        21%, 95% { background-color: #10b981; box-shadow: 0 0 10px rgba(16, 185, 129, 0.5); }
+        100% { background-color: #cbd5e1; box-shadow: none; }
+    }
+
+    /* Notifications */
+    .notification-bubble {
+        position: absolute;
+        bottom: 100%; /* Pops out ABOVE the device */
+        left: 50%;
+        margin-bottom: 8px; /* Spacing from device */
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 20px;
+        padding: 6px 14px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+        white-space: nowrap;
+        font-family: 'Figtree', sans-serif;
+        font-size: 0.75rem;
+        font-weight: 800;
+        color: #1e293b;
+        animation: notificationBubble var(--ess-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+    }
+    @@keyframes notificationBubble {
+        0%, 70% { opacity: 0; transform: translate(-50%, 10px) scale(0.8); }
+        73%, 78% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+        81%, 100% { opacity: 0; transform: translate(-50%, 15px) scale(0.9); }
+    }
+
+    /* Employee Node */
+    .employee-node {
+        display: flex;
+        padding: 10px;
+        border-radius: 50%;
+        left: 50%;
+        top: 85%;
+        animation: empNodeMove var(--ess-duration) cubic-bezier(0.25, 1, 0.5, 1) infinite;
+    }
+    .emp-avatar {
+        width: 48px;
+        height: 48px;
+        background: #f1f5f9;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: inset 0 2px 4px rgba(255,255,255,0.8);
+    }
+    .login-check {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: white;
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+        animation: loginCheckPop var(--ess-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+    }
+    @@keyframes empNodeMove {
+        0%, 10% { opacity: 0; transform: translate(-50%, calc(-50% + 20px)) scale(0.9); }
+        12%, 14% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        16%, 95% { opacity: 1; transform: translate(-50%, calc(-50% - 10px)) scale(1); box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08); }
+        98%, 100% { opacity: 0; transform: translate(-50%, calc(-50% + 10px)) scale(0.9); }
+    }
+    @@keyframes loginCheckPop {
+        0%, 14% { opacity: 0; transform: scale(0); }
+        16%, 95% { opacity: 1; transform: scale(1); }
+        100% { opacity: 0; transform: scale(0); }
+    }
+
+    /* Action Cards */
+    .action-card {
+        display: flex;
+        align-items: center;
+        padding: 10px 16px;
+        gap: 12px;
+    }
+    .action-text {
+        font-family: 'Figtree', sans-serif;
+        font-weight: 800;
+        font-size: 0.9rem;
+        color: #0f172a;
+    }
+    
+    /* Attendance */
+    .attendance-card {
+        left: 50%;
+        top: 68%; /* Between Emp and Center */
+        animation: attendanceCard var(--ess-duration) cubic-bezier(0.25, 1, 0.5, 1) infinite;
+    }
+    .att-icon-bg {
+        width: 32px;
+        height: 32px;
+        background: #eff6ff;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .att-check {
+        animation: attCheck var(--ess-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+    }
+    @@keyframes attendanceCard {
+        0%, 21% { opacity: 0; transform: translate(-50%, calc(-50% + 15px)) scale(0.9); left: 50%; top: 68%; }
+        24%, 30% { opacity: 1; transform: translate(-50%, -50%) scale(1); left: 50%; top: 68%; box-shadow: 0 15px 35px rgba(37, 99, 235, 0.15); }
+        33%, 100% { opacity: 0; transform: translate(-50%, calc(-50% - 20px)) scale(0.95); left: 50%; top: 68%; }
+    }
+    @@keyframes attCheck {
+        0%, 26% { opacity: 0; transform: scale(0); }
+        28%, 100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* Leave Request */
+    .leave-card {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 12px;
+        width: 150px;
+        left: 50%;
+        top: 35%; /* Between Center and HR */
+        animation: leaveCard var(--ess-duration) cubic-bezier(0.25, 1, 0.5, 1) infinite;
+    }
+    .leave-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 8px;
+    }
+    .leave-icon-bg {
+        width: 28px;
+        height: 28px;
+        background: #fffbeb;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .leave-title {
+        font-family: 'Figtree', sans-serif;
+        font-weight: 800;
+        font-size: 0.85rem;
+        color: #0f172a;
+    }
+    .leave-body {
+        background: #f8fafc;
+        border-radius: 8px;
+        padding: 8px;
+        margin-bottom: 8px;
+    }
+    .leave-field {
+        font-family: 'Figtree', sans-serif;
+        font-size: 0.7rem;
+        color: #475569;
+        font-weight: 600;
+        line-height: 1.4;
+    }
+    .leave-footer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        background: #f1f5f9;
+        padding: 6px;
+        border-radius: 6px;
+        font-family: 'Figtree', sans-serif;
+        font-size: 0.75rem;
+        font-weight: 800;
+        color: #334155;
+        animation: submitPulse var(--ess-duration) ease-in-out infinite;
+    }
+    @@keyframes leaveCard {
+        0%, 35% { opacity: 0; transform: translate(-50%, calc(-50% + 15px)) scale(0.9); top: 35%; left: 50%; }
+        38%, 45% { opacity: 1; transform: translate(-50%, -50%) scale(1); top: 35%; left: 50%; box-shadow: 0 15px 35px rgba(245, 158, 11, 0.15); }
+        50% { opacity: 1; transform: translate(-50%, -50%) scale(0.4); top: 15%; left: 50%; }
+        52%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0); top: 15%; left: 50%; }
+    }
+    @@keyframes submitPulse {
+        0%, 41% { background-color: #f1f5f9; transform: scale(1); }
+        43% { background-color: #e2e8f0; transform: scale(0.93); color: #0f172a; } 
+        45%, 100% { background-color: #f1f5f9; transform: scale(1); }
+    }
+
+    /* Payslip */
+    .payslip-card {
+        animation: payslipCard var(--ess-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+    }
+    .payslip-icon-bg {
+        width: 32px;
+        height: 32px;
+        background: #f5f3ff;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .payslip-text-col {
+        display: flex;
+        flex-direction: column;
+    }
+    .payslip-title {
+        font-family: 'Figtree', sans-serif;
+        font-weight: 800;
+        font-size: 0.9rem;
+        color: #0f172a;
+        line-height: 1.1;
+    }
+    .payslip-sub {
+        font-family: 'Figtree', sans-serif;
+        font-weight: 700;
+        font-size: 0.65rem;
+        color: #10b981;
+    }
+    .sparkle {
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        width: 16px;
+        height: 16px;
+        background: #f59e0b;
+        clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        animation: sparkleSpin 3s linear infinite;
+        box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+    }
+    @@keyframes sparkleSpin { 100% { transform: rotate(360deg); } }
+    @@keyframes payslipCard {
+        0%, 80% { opacity: 0; transform: translate(-50%, calc(-50% + 20px)) scale(0.8); left: 50%; top: 50%; }
+        84%, 95% { opacity: 1; transform: translate(-50%, -50%) scale(1); left: 75%; top: 70%; box-shadow: 0 15px 35px rgba(139, 92, 246, 0.15); }
+        98%, 100% { opacity: 0; transform: translate(-50%, calc(-50% - 20px)) scale(0.9); left: 75%; top: 70%; }
+    }
+
+    /* Glowing Data Packets */
+    .data-packet {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        z-index: 10;
+        transform: translate(-50%, -50%);
+    }
+
+    /* Login Pulses */
+    .pulse-login-left, .pulse-login-right {
+        background: #3b82f6;
+        box-shadow: 0 0 15px #3b82f6, 0 0 30px rgba(59, 130, 246, 0.8);
+    }
+    .pulse-login-left { animation: pLoginL var(--ess-duration) linear infinite; }
+    .pulse-login-right { animation: pLoginR var(--ess-duration) linear infinite; }
+    
+    @@keyframes pLoginL {
+        0%, 12% { opacity: 0; left: 50%; top: 85%; }
+        13% { opacity: 1; left: 50%; top: 85%; }
+        16% { opacity: 1; left: 50%; top: 50%; }
+        19% { opacity: 1; left: 20%; top: 50%; }
+        20%, 100% { opacity: 0; left: 20%; top: 50%; }
+    }
+    @@keyframes pLoginR {
+        0%, 12% { opacity: 0; left: 50%; top: 85%; }
+        13% { opacity: 1; left: 50%; top: 85%; }
+        16% { opacity: 1; left: 50%; top: 50%; }
+        19% { opacity: 1; left: 80%; top: 50%; }
+        20%, 100% { opacity: 0; left: 80%; top: 50%; }
+    }
+
+    /* Sync Pulse */
+    .pulse-sync-up {
+        background: #3b82f6;
+        box-shadow: 0 0 15px #3b82f6, 0 0 30px rgba(59, 130, 246, 0.8);
+        animation: pSyncUp var(--ess-duration) linear infinite;
+    }
+    @@keyframes pSyncUp {
+        0%, 23% { opacity: 0; left: 50%; top: 85%; }
+        24% { opacity: 1; left: 50%; top: 85%; }
+        28% { opacity: 1; left: 50%; top: 15%; }
+        29%, 100% { opacity: 0; left: 50%; top: 15%; }
+    }
+
+    /* Approval Pulses */
+    .pulse-appr-left, .pulse-appr-right {
+        background: #10b981;
+        box-shadow: 0 0 15px #10b981, 0 0 30px rgba(16, 185, 129, 0.8);
+    }
+    .pulse-appr-left { animation: pApprL var(--ess-duration) linear infinite; }
+    .pulse-appr-right { animation: pApprR var(--ess-duration) linear infinite; }
+
+    @@keyframes pApprL {
+        0%, 61% { opacity: 0; left: 50%; top: 15%; }
+        62% { opacity: 1; left: 50%; top: 15%; }
+        65% { opacity: 1; left: 50%; top: 50%; }
+        68% { opacity: 1; left: 20%; top: 50%; }
+        69%, 100% { opacity: 0; left: 20%; top: 50%; }
+    }
+    @@keyframes pApprR {
+        0%, 61% { opacity: 0; left: 50%; top: 15%; }
+        62% { opacity: 1; left: 50%; top: 15%; }
+        65% { opacity: 1; left: 50%; top: 50%; }
+        68% { opacity: 1; left: 80%; top: 50%; }
+        69%, 100% { opacity: 0; left: 80%; top: 50%; }
+    }
+
+    /* MOBILE LAYOUT ADJUSTMENTS */
+    @@media (max-width: 767px) {
+        .ess-container { min-height: 480px; }
+        
+        /* On mobile, bring devices slightly closer to center */
+        .desktop-card { left: 22%; }
+        .mobile-card { left: 78%; }
+        
+        @@keyframes pLoginL {
+            0%, 12% { opacity: 0; left: 50%; top: 85%; }
+            13% { opacity: 1; left: 50%; top: 85%; }
+            16% { opacity: 1; left: 50%; top: 50%; }
+            19% { opacity: 1; left: 22%; top: 50%; }
+            20%, 100% { opacity: 0; left: 22%; top: 50%; }
+        }
+        @@keyframes pLoginR {
+            0%, 12% { opacity: 0; left: 50%; top: 85%; }
+            13% { opacity: 1; left: 50%; top: 85%; }
+            16% { opacity: 1; left: 50%; top: 50%; }
+            19% { opacity: 1; left: 78%; top: 50%; }
+            20%, 100% { opacity: 0; left: 78%; top: 50%; }
+        }
+        @@keyframes pApprL {
+            0%, 61% { opacity: 0; left: 50%; top: 15%; }
+            62% { opacity: 1; left: 50%; top: 15%; }
+            65% { opacity: 1; left: 50%; top: 50%; }
+            68% { opacity: 1; left: 22%; top: 50%; }
+            69%, 100% { opacity: 0; left: 22%; top: 50%; }
+        }
+        @@keyframes pApprR {
+            0%, 61% { opacity: 0; left: 50%; top: 15%; }
+            62% { opacity: 1; left: 50%; top: 15%; }
+            65% { opacity: 1; left: 50%; top: 50%; }
+            68% { opacity: 1; left: 78%; top: 50%; }
+            69%, 100% { opacity: 0; left: 78%; top: 50%; }
+        }
+
+        @@keyframes payslipCard {
+            0%, 80% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); left: 50%; top: 50%; }
+            84%, 95% { opacity: 1; transform: translate(-50%, -50%) scale(0.9); left: 65%; top: 75%; box-shadow: 0 15px 35px rgba(139, 92, 246, 0.15); }
+            98%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); left: 65%; top: 75%; }
+        }
+    }
+</style>
