@@ -107,7 +107,7 @@
 
             <!-- Center Column (Image / Animation) -->
             <MudItem xs="12" md="6" Class="d-none d-md-block fade-in-up delay-200">
-                <div class="center-showcase-container @(SelectedIndex == 0 || SelectedIndex == 1 || SelectedIndex == 2 ? "transparent-bg" : "")">
+                <div class="center-showcase-container @(SelectedIndex == 0 || SelectedIndex == 1 || SelectedIndex == 2 || SelectedIndex == 3 ? "transparent-bg" : "")">
                     <div class="center-content-wrapper @(IsTransitioning ? "fade-out" : "fade-in")">
                         @if (DisplayedIndex == 0)
                         {
@@ -120,6 +120,10 @@
                         else if (DisplayedIndex == 2)
                         {
                             <EssAnimation @key="DisplayedIndex" />
+                        }
+                        else if (DisplayedIndex == 3)
+                        {
+                            <ManagerialServiceAnimation @key="DisplayedIndex" />
                         }
                         else
                         {
@@ -149,6 +153,12 @@
                                 {
                                     <div class="center-showcase-container transparent-bg" style="aspect-ratio: 1; display: flex; align-items: center; justify-content: center; width: 100%; max-width: 560px; margin: 0 auto;">
                                         <EssAnimation @key="index" />
+                                    </div>
+                                }
+                                else if (index == 3)
+                                {
+                                    <div class="center-showcase-container transparent-bg" style="aspect-ratio: 1; display: flex; align-items: center; justify-content: center; width: 100%; max-width: 560px; margin: 0 auto;">
+                                        <ManagerialServiceAnimation @key="index" />
                                     </div>
                                 }
                                 else
