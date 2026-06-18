@@ -1329,6 +1329,15 @@ body, .mud-typography-body1, .mud-typography-body2, .mud-typography-button {
     color: #1E9FE0;
 }
 
+/* Hide the mobile menu + backdrop on desktop. Placed after their base
+   rules so it wins on source order at the 960px breakpoint. */
+@media (min-width: 960px) {
+    .nav-mobile-backdrop,
+    .nav-mobile-menu {
+        display: none;
+    }
+}
+
 /* ============================================================
    Responsive typography — Services page + Contact (page & dialog)
    These areas used MudBlazor's fixed default heading sizes (and a
