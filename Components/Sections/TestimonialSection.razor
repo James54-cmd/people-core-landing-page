@@ -1,59 +1,137 @@
 @using MudBlazor
-@rendermode InteractiveServer
-<section class="py-16 py-md-32 text-left" style="background: linear-gradient(135deg, #F7F9FB 0%, #E8F4FB 100%); position: relative; overflow: hidden;">
+
+<section class="role-section py-20 py-md-32" style="background: linear-gradient(135deg, #F7F9FB 0%, #E8F4FB 100%); position: relative; overflow: hidden;">
+    <!-- Background subtle shapes for premium design -->
+    <div class="absolute" style="top: -10%; left: -5%; opacity: 0.05; pointer-events: none; width: 400px; height: 400px; border-radius: 50%; background: #1E9FE0; filter: blur(80px);"></div>
+    <div class="absolute" style="bottom: -10%; right: -5%; opacity: 0.05; pointer-events: none; width: 400px; height: 400px; border-radius: 50%; background: #122656; filter: blur(80px);"></div>
+
     <MudContainer MaxWidth="MaxWidth.Large">
-        <MudGrid Spacing="8" Class="align-center">
-            
-            <!-- Left Side: Sticky Text -->
-            <MudItem xs="12" md="4" Style="position: relative; z-index: 2;">
-                <div class="sticky-testimonial-header pe-md-8">
-                    <!-- Eyebrow -->
-                    <MudText Typo="Typo.subtitle2" Style="font-family: 'Figtree', sans-serif; font-weight: 700; color: #1E9FE0; text-transform: uppercase; letter-spacing: 2px;" Class="mb-4 fade-in-up">
-                        Trusted by top teams
-                    </MudText>
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+            <MudText Typo="Typo.subtitle2" Style="font-family: 'Figtree', sans-serif; font-weight: 700; color: #1E9FE0; text-transform: uppercase; letter-spacing: 2px;" Class="mb-3 fade-in-up">
+                Made for Every Role
+            </MudText>
+            <MudText Typo="Typo.h2" Style="font-family: 'Gilroy', sans-serif; font-size: clamp(2.25rem, 4.5vw, 3.5rem); font-weight: 800; color: #111827; letter-spacing: -1.5px; line-height: 1.1;" Class="mb-4 fade-in-up delay-100">
+                Why teams choose PeopleCore
+            </MudText>
+            <MudText Typo="Typo.body1" Style="font-family: 'Figtree', sans-serif; color: #4b5563; font-size: 1.15rem; max-width: 600px; margin: 0 auto; line-height: 1.6;" Class="fade-in-up delay-200">
+                A unified platform engineered to serve administrators, managers, and employees with tailored workflows.
+            </MudText>
+        </div>
 
-                    <MudText Typo="Typo.h2" Color="Color.Dark" Style="font-family: 'Gilroy', sans-serif; font-size: clamp(3rem, 5vw, 4rem); font-weight: 800; letter-spacing: -2px; line-height: 1.1;" Class="mb-6 fade-in-up delay-100">
-                        What<br />leaders say
-                    </MudText>
-                    
-                    <MudText Typo="Typo.body1" Style="font-family: 'Figtree', sans-serif; font-size: 1.25rem; line-height: 1.6; color: #555; max-width: 400px;" Class="fade-in-up delay-200">
-                        Hear from HR professionals across the Philippines who made the switch to PeopleCore and never looked back.
-                    </MudText>
-                </div>
-            </MudItem>
-
-            <MudItem xs="12" md="8" Class="position-relative">
-                
-                <div class="testimonial-flow-wrapper">
-                    <div class="testimonial-flow-container">
-                        <!-- Column 1 (Flows Up) -->
-                        <div class="flow-column flow-up">
-                            <!-- Original Set -->
-                            <TestimonialCard Name="Maria Santos" Role="HR Director, Chong Hua Hospital" Quote="PeopleCore eliminated spreadsheets and gave us back our time. Our payroll process that took three days now runs in hours." AvatarUrl="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80" />
-                            <TestimonialCard Name="James Reyes" Role="Operations Manager, Metro Enterprise" Quote="The platform is intuitive. Our team needed minimal training, and the support team responds quickly when we have questions." AvatarUrl="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80" />
-                            <TestimonialCard Name="Angela Cruz" Role="Chief People Officer, TechFlow" Quote="We finally have visibility into our workforce. The analytics dashboard shows us trends we never saw before." AvatarUrl="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&h=150&q=80" />
-                            <!-- Duplicated Set for Infinite Flow -->
-                            <TestimonialCard Name="Maria Santos" Role="HR Director, Chong Hua Hospital" Quote="PeopleCore eliminated spreadsheets and gave us back our time. Our payroll process that took three days now runs in hours." AvatarUrl="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80" />
-                            <TestimonialCard Name="James Reyes" Role="Operations Manager, Metro Enterprise" Quote="The platform is intuitive. Our team needed minimal training, and the support team responds quickly when we have questions." AvatarUrl="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80" />
-                            <TestimonialCard Name="Angela Cruz" Role="Chief People Officer, TechFlow" Quote="We finally have visibility into our workforce. The analytics dashboard shows us trends we never saw before." AvatarUrl="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&h=150&q=80" />
+        <!-- 3-Column Grid for Roles -->
+        <MudGrid Spacing="6" Class="justify-center">
+            @foreach (var role in Roles)
+            {
+                <MudItem xs="12" sm="6" md="4" Class="@($"framer-animate {role.DelayClass}")">
+                    <div class="role-card h-100">
+                        <div class="role-card-image-wrapper">
+                            <img src="@role.ImagePath" alt="@role.RoleName" class="role-card-image" style="object-position: @role.ObjectPosition;" />
+                            <div class="role-card-overlay"></div>
                         </div>
-
-                        <!-- Column 2 (Flows Down) -->
-                        <div class="flow-column flow-down">
-                            <!-- Original Set -->
-                            <TestimonialCard Name="Elena Reyes" Role="Compliance Officer, Regional Hospital" Quote="Compliance used to keep me up at night. Now the system handles it automatically and I sleep better." AvatarUrl="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&h=150&q=80" />
-                            <TestimonialCard Name="Marcus Villanueva" Role="Chief People Officer, Enterprise Solutions" Quote="The analytics dashboard showed us patterns in turnover we never would have caught otherwise. It changed how we approach retention." AvatarUrl="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&h=150&q=80" />
-                            <TestimonialCard Name="David Chen" Role="Operations Lead, Sunrise Healthcare" Quote="The seamless integration with our existing tools made the transition completely painless. Highly recommended." AvatarUrl="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&h=150&q=80" />
-                            <!-- Duplicated Set for Infinite Flow -->
-                            <TestimonialCard Name="Elena Reyes" Role="Compliance Officer, Regional Hospital" Quote="Compliance used to keep me up at night. Now the system handles it automatically and I sleep better." AvatarUrl="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&h=150&q=80" />
-                            <TestimonialCard Name="Marcus Villanueva" Role="Chief People Officer, Enterprise Solutions" Quote="The analytics dashboard showed us patterns in turnover we never would have caught otherwise. It changed how we approach retention." AvatarUrl="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&h=150&q=80" />
-                            <TestimonialCard Name="David Chen" Role="Operations Lead, Sunrise Healthcare" Quote="The seamless integration with our existing tools made the transition completely painless. Highly recommended." AvatarUrl="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&h=150&q=80" />
+                        <div class="role-card-content pa-8">
+                            <span class="role-badge @role.BadgeClass">@role.RoleName</span>
+                            <div class="d-flex align-center gap-3 mb-4">
+                                <div class="role-icon-box @role.IconBoxClass">
+                                    <MudIcon Icon="@role.Icon" Style="@($"color: {role.IconColor}; font-size: 1.5rem;")" />
+                                </div>
+                                <MudText Typo="Typo.h5" Style="font-family: 'Gilroy', sans-serif; font-weight: 800; color: #ffffff;">
+                                    @role.Title
+                                </MudText>
+                            </div>
+                            <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; color: #e5e7eb; line-height: 1.6; font-size: 0.95rem;" Class="role-card-desc">
+                                @role.Description
+                            </MudText>
+                            <ul class="role-benefits-list">
+                                @foreach (var benefit in role.Benefits)
+                                {
+                                    <li>
+                                        <MudIcon Icon="@Icons.Material.Filled.Check" Style="color: #10B981; font-size: 1.2rem; flex-shrink: 0;" />
+                                        <span>@benefit</span>
+                                    </li>
+                                }
+                            </ul>
                         </div>
                     </div>
-                </div>
-
-            </MudItem>
-
+                </MudItem>
+            }
         </MudGrid>
     </MudContainer>
 </section>
+
+
+@code {
+    public class RoleDetail
+    {
+        public string RoleName { get; set; } = "";
+        public string Title { get; set; } = "";
+        public string ImagePath { get; set; } = "";
+        public string Description { get; set; } = "";
+        public string BadgeClass { get; set; } = "";
+        public string IconBoxClass { get; set; } = "";
+        public string Icon { get; set; } = "";
+        public string IconColor { get; set; } = "";
+        public string DelayClass { get; set; } = "";
+        public string ObjectPosition { get; set; } = "center";
+        public List<string> Benefits { get; set; } = new();
+    }
+
+    private List<RoleDetail> Roles = new()
+    {
+        new RoleDetail
+        {
+            RoleName = "Admin",
+            Title = "Centralized Control",
+            ImagePath = "image/bg/admin-male.jpg",
+            Description = "Maintain a secure, unified employee directory, automate tax compliance, and process payroll instantly with full administrative oversight.",
+            BadgeClass = "badge-admin",
+            IconBoxClass = "box-admin",
+            Icon = Icons.Material.Filled.Security,
+            IconColor = "#1E9FE0",
+            DelayClass = "",
+            ObjectPosition = "center top",
+            Benefits = new()
+            {
+                "Automated Government Reports",
+                "One-Click Payroll & Tax Filings",
+                "Unified Employee Records"
+            }
+        },
+        new RoleDetail
+        {
+            RoleName = "Manager",
+            Title = "Team Empowerment",
+            ImagePath = "image/bg/manager.jpg",
+            Description = "Enable department heads and team leaders to easily review leave requests, monitor schedules, and track team performance metrics.",
+            BadgeClass = "badge-manager",
+            IconBoxClass = "box-manager",
+            Icon = Icons.Material.Filled.People,
+            IconColor = "#122656",
+            DelayClass = "delay-100",
+            Benefits = new()
+            {
+                "Real-Time Request Approvals",
+                "Attendance & Shift Monitoring",
+                "Visual Team Calendars"
+            }
+        },
+        new RoleDetail
+        {
+            RoleName = "Employee",
+            Title = "Self-Service Freedom",
+            ImagePath = "image/bg/employee.jpg",
+            Description = "Give employees direct access to file leaves, clock in/out, download payslips, and manage their files, reducing repetitive HR requests.",
+            BadgeClass = "badge-employee",
+            IconBoxClass = "box-employee",
+            Icon = Icons.Material.Filled.Fingerprint,
+            IconColor = "#10B981",
+            DelayClass = "delay-200",
+            Benefits = new()
+            {
+                "Mobile Clock-In & Timecards",
+                "Instant Payslip Downloads",
+                "Frictionless Leave Submission"
+            }
+        }
+    };
+}

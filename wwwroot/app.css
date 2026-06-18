@@ -816,142 +816,150 @@ h1:focus {
     color: #fff !important;
 }
 
-/* Testimonial Section Styles */
-@media (min-width: 960px) {
-    .sticky-testimonial-header {
-        position: sticky;
-        top: 140px;
-    }
-}
-
-.testimonial-flow-wrapper {
+/* Role Section Styles */
+.role-card {
     position: relative;
-    height: 700px;
-    width: 100%;
+    background: #111827;
+    border-radius: 24px;
     overflow: hidden;
-    /* Gradient mask to gracefully fade out the top and bottom of the flow */
-    mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
-    -webkit-mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
-}
-
-.testimonial-flow-container {
-    display: flex;
-    gap: 2rem;
-    height: max-content;
-    /* 3D Isometric & Diagonal rotation */
-    transform: perspective(1200px) rotateX(15deg) rotateY(-10deg) rotateZ(-5deg) scale(1.1);
-    transform-style: preserve-3d;
-}
-
-.flow-column {
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    width: 50%;
+    height: 520px !important;
 }
 
-/* Pause flow on hover */
-.testimonial-flow-container:hover .flow-up,
-.testimonial-flow-container:hover .flow-down {
-    animation-play-state: paused;
+.role-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px -15px rgba(18, 38, 86, 0.35);
 }
 
-.flow-up {
-    animation: flowUpAnim 30s linear infinite;
+.role-card-image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
 
-.flow-down {
-    animation: flowDownAnim 35s linear infinite;
+.role-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@keyframes flowUpAnim {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-50%); } /* Scrolls exactly halfway through the duplicated content */
+.role-card:hover .role-card-image {
+    transform: scale(1.05);
 }
 
-@keyframes flowDownAnim {
-    0% { transform: translateY(-50%); }
-    100% { transform: translateY(0); }
+.role-card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    background: linear-gradient(to top, 
+        rgba(17, 24, 39, 0.95) 0%, 
+        rgba(17, 24, 39, 0.85) 45%, 
+        rgba(17, 24, 39, 0.3) 75%, 
+        rgba(17, 24, 39, 0) 100%
+    );
+    pointer-events: none;
+    z-index: 2;
 }
 
-.testimonial-card-3d {
-    background: linear-gradient(145deg, #ffffff, #f8fafc);
-    border: 1px solid rgba(0,0,0,0.08);
-    border-radius: 0;
-    padding: 2.5rem;
+.role-badge {
+    display: inline-block;
+    align-self: flex-start;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-family: 'Figtree', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+    text-transform: uppercase;
+    z-index: 2;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    overflow: hidden;
+    transform: translateZ(0);
+    margin-bottom: 16px;
+}
+
+.badge-admin {
+    background-color: rgba(30, 159, 224, 0.4);
+}
+
+.badge-manager {
+    background-color: rgba(18, 38, 86, 0.65);
+}
+
+.badge-employee {
+    background-color: rgba(16, 185, 129, 0.45);
+}
+
+.role-icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.box-admin {
+    background-color: rgba(30, 159, 224, 0.15);
+}
+
+.box-manager {
+    background-color: rgba(18, 38, 86, 0.2);
+}
+
+.box-employee {
+    background-color: rgba(16, 185, 129, 0.15);
+}
+
+.role-card-content {
     position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.5s ease;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.03);
-    /* Slight diagonal tilt */
-    transform: rotateZ(-2deg);
+    margin-top: auto;
+    height: 390px !important;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
 }
 
-.testimonial-card-3d:hover {
-    transform: translateZ(30px) rotateX(4deg) rotateY(-4deg) rotateZ(0deg) scale(1.05);
-    box-shadow: -20px 40px 80px rgba(30,159,224,0.15);
-    border-color: rgba(30,159,224,0.3);
+.role-card-desc {
+    height: 85px;
+    margin-bottom: 24px !important;
+}
+
+.role-benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.role-benefits-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Figtree', sans-serif;
+    font-size: 0.95rem;
+    color: #f3f4f6;
+    font-weight: 500;
 }
 
 /* Remove default MudBlazor padding so Hero goes to the very top */
 .mud-main-content {
     padding-top: 0 !important;
-}
-
-.card-content {
-    transition: transform 0.5s ease;
-    transform-style: preserve-3d;
-}
-
-.testimonial-card-3d:hover .card-content {
-    transform: translateZ(20px);
-}
-
-/* Mobile & Tablet Sideways 2D Testimonials */
-@media (max-width: 959px) {
-    .testimonial-flow-wrapper {
-        height: auto;
-        mask-image: none;
-        -webkit-mask-image: none;
-        margin-top: 2rem;
-    }
-    
-    .testimonial-flow-container {
-        transform: none;
-        overflow-x: auto;
-        padding-bottom: 2rem;
-        scroll-snap-type: x mandatory;
-        scrollbar-width: none; /* Hide scrollbar Firefox */
-    }
-    
-    .testimonial-flow-container::-webkit-scrollbar {
-        display: none; /* Hide scrollbar Chrome */
-    }
-    
-    .flow-column {
-        display: contents; /* Flattens columns into a single row */
-    }
-    
-    .flow-up, .flow-down {
-        animation: none;
-    }
-    
-    .testimonial-card-3d {
-        min-width: 300px;
-        max-width: 350px;
-        transform: none;
-        scroll-snap-align: center;
-        border-radius: 16px;
-    }
-    
-    .testimonial-card-3d:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-    }
-    
-    .testimonial-card-3d:hover .card-content {
-        transform: none;
-    }
 }
 
 /* CTA Section */
