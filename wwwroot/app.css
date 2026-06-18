@@ -171,9 +171,6 @@ h1:focus {
         text-align: center;
         z-index: 2;
     }
-    .hero-actions {
-        justify-content: center;
-    }
     .hero-visual-content {
         width: 100%;
         z-index: 1;
