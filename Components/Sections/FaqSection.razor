@@ -18,13 +18,16 @@
                     
                     @foreach(var item in FaqItems)
                     {
-                        <MudExpansionPanel Class="faq-panel">
+                        <MudExpansionPanel Class="faq-panel" HideIcon="true" @bind-Expanded="item.IsExpanded">
                             <TitleContent>
-                                <div class="d-flex align-center gap-4 py-2">
-                                    <div class="faq-number">@item.Number</div>
-                                    <MudText Typo="Typo.h6" Style="font-family: 'Figtree', sans-serif; font-weight: 600; color: #0b1121; font-size: 1.125rem;">
-                                        @item.Question
-                                    </MudText>
+                                <div class="d-flex align-center justify-space-between w-100 py-2">
+                                    <div class="d-flex align-center gap-4">
+                                        <div class="faq-number">@item.Number</div>
+                                        <MudText Typo="Typo.h6" Style="font-family: 'Figtree', sans-serif; font-weight: 600; color: #0b1121; font-size: 1.125rem;">
+                                            @item.Question
+                                        </MudText>
+                                    </div>
+                                    <MudIcon Icon="@Icons.Material.Filled.Add" Class="@($"faq-custom-icon {(item.IsExpanded ? "rotated" : "")}")" Style="color: #64748b; font-size: 1.5rem;" />
                                 </div>
                             </TitleContent>
                             <ChildContent>
@@ -48,6 +51,7 @@
         public string Number { get; set; } = "";
         public string Question { get; set; } = "";
         public string Answer { get; set; } = "";
+        public bool IsExpanded { get; set; }
     }
 
     private List<FaqItem> FaqItems = new()

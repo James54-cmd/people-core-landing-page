@@ -40,11 +40,11 @@
                 const id = decodeURIComponent(window.location.hash.substring(1));
                 const element = document.getElementById(id);
                 if (element) {
-                    element.scrollIntoView({ behavior: 'instant' });
+                    element.scrollIntoView();
                     return;
                 }
             }
-            window.scrollTo({ top: 0, behavior: 'instant' });
+            window.scrollTo(0, 0);
         });
     </script>
 </body>
