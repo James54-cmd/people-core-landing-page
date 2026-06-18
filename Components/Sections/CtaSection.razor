@@ -1,4 +1,6 @@
 @using MudBlazor
+@inject IDialogService DialogService
+@rendermode InteractiveServer
 
 <section class="cta-section py-16 py-md-24">
     <MudContainer MaxWidth="MaxWidth.Large">
@@ -20,11 +22,8 @@
                         </MudText>
                         
                         <div class="d-flex flex-wrap gap-4 mt-2 fade-in-up delay-400">
-                            <MudButton Variant="Variant.Filled" Size="Size.Large" Style="background-color: #1E9FE0; color: #ffffff; border-radius: 12px; padding: 14px 36px; font-weight: 700; font-family: 'Gilroy', sans-serif; transition: all 0.3s ease;" Class="cta-btn-hover">
+                            <MudButton OnClick="OpenContactDialog" Variant="Variant.Filled" Size="Size.Large" Style="background-color: #1E9FE0; color: #ffffff; border-radius: 12px; padding: 14px 36px; font-weight: 700; font-family: 'Gilroy', sans-serif; transition: all 0.3s ease;" Class="cta-btn-hover">
                                 REQUEST DEMO
-                            </MudButton>
-                            <MudButton Variant="Variant.Outlined" Size="Size.Large" Style="color: #ffffff; border-color: rgba(255,255,255,0.4); border-radius: 12px; padding: 14px 36px; font-weight: 700; font-family: 'Gilroy', sans-serif; transition: all 0.3s ease;" Class="cta-btn-outline-hover">
-                                EXPLORE
                             </MudButton>
                         </div>
                     </div>
@@ -34,3 +33,11 @@
         </div>
     </MudContainer>
 </section>
+
+@code {
+    private void OpenContactDialog()
+    {
+        var options = new DialogOptions { FullScreen = true, CloseButton = false, NoHeader = true };
+        _ = DialogService.ShowAsync<ContactDialog>("", options);
+    }
+}
