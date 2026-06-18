@@ -166,9 +166,13 @@ h1:focus {
         text-align: center;
         z-index: 2;
     }
+    .hero-actions {
+        justify-content: center;
+    }
     .hero-visual-content {
         width: 100%;
         z-index: 1;
+        margin-top: 2rem;
     }
 }
 
@@ -313,6 +317,39 @@ h1:focus {
     height: 100%;
     object-fit: cover;
     object-position: center top;
+}
+
+/* Device Responsiveness */
+@media (max-width: 959px) {
+    .laptop-wrapper {
+        width: 95%;
+    }
+    .tablet-frame {
+        width: 40%;
+        right: 0%;
+        bottom: -5%;
+    }
+    .mobile-frame {
+        width: 18%;
+        left: 2%;
+        bottom: -8%;
+    }
+}
+
+@media (max-width: 600px) {
+    .tablet-frame {
+        width: 42%;
+        right: 2%;
+        bottom: -2%;
+    }
+    .mobile-frame {
+        width: 22%;
+        left: 4%;
+        bottom: -5%;
+    }
+    .device-composition {
+        padding-bottom: 1rem;
+    }
 }
 
 /* Logo Cloud / Industry Partners */
