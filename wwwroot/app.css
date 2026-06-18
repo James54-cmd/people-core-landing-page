@@ -1107,3 +1107,96 @@ body, .mud-typography-body1, .mud-typography-body2, .mud-typography-button {
 .faq-custom-icon.rotated {
     transform: rotate(45deg) !important;
 }
+
+/* ============================================================
+   SaaS Page (Software as a Service) — dark themed
+   ============================================================ */
+.saas-page {
+    position: relative;
+    overflow: hidden;
+    background-color: #122656;
+    background-image:
+        radial-gradient(circle at 12% 0%, rgba(30, 159, 224, 0.14) 0%, transparent 42%),
+        radial-gradient(circle at 100% 100%, rgba(30, 159, 224, 0.08) 0%, transparent 45%);
+    font-family: 'Figtree', sans-serif;
+}
+
+/* Major component cards (glassmorphism on dark) */
+.saas-card {
+    height: 100%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, background 0.4s ease, box-shadow 0.4s ease;
+}
+
+.saas-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(30, 159, 224, 0.45);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 24px 48px -16px rgba(0, 0, 0, 0.45);
+}
+
+.saas-icon-box {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Optional module cards */
+.saas-module-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+
+.saas-module-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(30, 159, 224, 0.35);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.saas-module-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(30, 159, 224, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Floating nav defaults (so they can be themed per page) */
+.nav-link-item {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 600;
+    color: #000000 !important;
+    transition: color 0.3s ease;
+}
+
+.nav-logo {
+    transition: filter 0.3s ease;
+}
+
+/* Adapt the floating nav + logo to the dark SaaS page only */
+.mud-layout:has(.saas-page) .nav-link-item {
+    color: #ffffff !important;
+}
+
+.mud-layout:has(.saas-page) .nav-logo {
+    filter: brightness(0) invert(1);
+}

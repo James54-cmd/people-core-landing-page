@@ -1,0 +1,106 @@
+@page "/saas"
+@using MudBlazor
+
+<PageTitle>Software as a Service - People Core</PageTitle>
+
+<div class="saas-page">
+    <section style="position: relative; z-index: 1; padding: 160px 0 70px;">
+        <MudContainer MaxWidth="MaxWidth.Large">
+            <div style="max-width: 840px;">
+                <MudText Typo="Typo.subtitle2" Class="fade-in-up" Style="font-family: 'Figtree', sans-serif; font-weight: 700; color: #1E9FE0; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem;">
+                    PeopleCore SaaS
+                </MudText>
+                <MudText Typo="Typo.h1" Class="fade-in-up delay-100" Style="font-family: 'Gilroy', 'Figtree', sans-serif; font-weight: 800; color: #ffffff; font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 1.75rem;">
+                    Software as a <span style="color: #1E9FE0;">Service</span>
+                </MudText>
+                <MudText Typo="Typo.body1" Class="fade-in-up delay-200" Style="font-family: 'Figtree', sans-serif; color: #cbd5e1; font-size: 1.15rem; line-height: 1.8; max-width: 760px;">
+                    PeopleCore SaaS is a web-based application with fully integrated components and functions that allow organizations to fully automate critical Human Resource Management functions. PeopleCore SaaS consists of the following three major components:
+                </MudText>
+            </div>
+        </MudContainer>
+    </section>
+
+    <section style="position: relative; z-index: 1; padding: 30px 0 70px;">
+        <MudContainer MaxWidth="MaxWidth.Large">
+            <MudGrid Spacing="6">
+                @for (int i = 0; i < Components.Count; i++)
+                {
+                    var component = Components[i];
+                    <MudItem xs="12" md="4" Class="@($"framer-animate delay-{i * 100}")">
+                        <div class="saas-card">
+                            <div class="saas-icon-box" style="@($"background-color: {component.IconBg};")">
+                                <MudIcon Icon="@component.Icon" Style="@($"color: {component.IconColor}; font-size: 1.75rem;")" />
+                            </div>
+                            <MudText Typo="Typo.h5" Style="font-family: 'Gilroy', 'Figtree', sans-serif; font-weight: 800; color: #ffffff; margin-bottom: 0.85rem;">
+                                @component.Title
+                            </MudText>
+                            <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; color: #94a3b8; line-height: 1.75; font-size: 0.95rem;">
+                                @component.Description
+                            </MudText>
+                        </div>
+                    </MudItem>
+                }
+            </MudGrid>
+        </MudContainer>
+    </section>
+
+    <section style="position: relative; z-index: 1; padding: 30px 0 120px;">
+        <MudContainer MaxWidth="MaxWidth.Large">
+            <div class="text-center mb-12" style="max-width: 620px; margin-left: auto; margin-right: auto;">
+                <MudText Typo="Typo.subtitle2" Class="fade-in-up" Style="font-family: 'Figtree', sans-serif; font-weight: 700; color: #1E9FE0; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.75rem;">
+                    Add-ons
+                </MudText>
+                <MudText Typo="Typo.h2" Class="fade-in-up delay-100" Style="font-family: 'Gilroy', 'Figtree', sans-serif; font-weight: 800; color: #ffffff; font-size: clamp(1.75rem, 3.5vw, 2.5rem); letter-spacing: -1px;">
+                    Optional SaaS Modules
+                </MudText>
+                <MudText Typo="Typo.body1" Class="fade-in-up delay-200" Style="font-family: 'Figtree', sans-serif; color: #94a3b8; font-size: 1.05rem; line-height: 1.7; margin-top: 0.85rem;">
+                    Extend PeopleCore with specialized modules tailored to your operational needs.
+                </MudText>
+            </div>
+            <MudGrid Spacing="4" Class="justify-center">
+                @for (int i = 0; i < Modules.Count; i++)
+                {
+                    var module = Modules[i];
+                    <MudItem xs="12" sm="6" md="4" Class="@($"framer-animate delay-{i * 100}")">
+                        <div class="saas-module-card">
+                            <div class="saas-module-icon">
+                                <MudIcon Icon="@module.Icon" Style="color: #1E9FE0; font-size: 1.5rem;" />
+                            </div>
+                            <MudText Typo="Typo.body1" Style="font-family: 'Figtree', sans-serif; font-weight: 600; color: #e2e8f0; font-size: 1rem;">
+                                @module.Name
+                            </MudText>
+                        </div>
+                    </MudItem>
+                }
+            </MudGrid>
+        </MudContainer>
+    </section>
+</div>
+
+@code {
+    private record ComponentDetail(string Title, string Description, string Icon, string IconColor, string IconBg);
+    private record ModuleDetail(string Name, string Icon);
+
+    private readonly List<ComponentDetail> Components = new()
+    {
+        new ComponentDetail(
+            "HR Management",
+            "Allows HR of organizations to manage and administer HR processes. HR management and staff use this module to handle operations and processes — 201 and records management, benefits, attendance, payroll, and employee movements.",
+            Icons.Material.Filled.BusinessCenter, "#1E9FE0", "rgba(30, 159, 224, 0.15)"),
+        new ComponentDetail(
+            "Employee Services",
+            "Enables employees to access personal information and online forms and avail of HR services 24/7. In combination with Managerial Services, this module enables the organization and its clientele to operate paperless.",
+            Icons.Material.Filled.Groups, "#10B981", "rgba(16, 185, 129, 0.15)"),
+        new ComponentDetail(
+            "Managerial Services",
+            "Intended to extend HR services to Managers and Supervisors, allowing online services such as inquiry, application, and approval of data and transactions of subordinates.",
+            Icons.Material.Filled.SupervisorAccount, "#FFB400", "rgba(255, 180, 0, 0.15)"),
+    };
+
+    private readonly List<ModuleDetail> Modules = new()
+    {
+        new ModuleDetail("Billing and Contract Management System", Icons.Material.Filled.ReceiptLong),
+        new ModuleDetail("Work Allocation Time Track", Icons.Material.Filled.Schedule),
+        new ModuleDetail("Piece-rate", Icons.Material.Filled.Calculate),
+    };
+}
