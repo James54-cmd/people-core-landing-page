@@ -1,35 +1,56 @@
 @using MudBlazor
 
 <section class="hero-section">
-    <!-- Background Video -->
-    <video autoplay loop muted playsinline 
-           style="position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; transform: translate(-50%, -50%) scale(1.3); z-index: 0; pointer-events: none; object-fit: cover; filter: brightness(0.7);">
-        <source src="video/bgcinematic.mp4" type="video/mp4" />
-    </video>
-
     <div class="hero-bg-blob"></div>
     <MudContainer MaxWidth="MaxWidth.Large" Class="hero-content">
-        <div class="hero-diagonal-layout">
+        <div class="hero-modern-layout">
             
-            <!-- Headline (Top Start) -->
-            <div class="hero-headline fade-in-up pt-16">
-                <MudText Typo="Typo.h1" Style="color: white; font-size: clamp(3rem, 6vw, 5rem); font-weight: 800; line-height: 1.05; letter-spacing: -2px;">
-                    Unified HR & payroll<br />for the <span style="background: linear-gradient(90deg, #1E9FE0, #7ae0ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-style: italic; padding-right: 8px;">modern</span><br />workforce
-                </MudText>
+            <!-- Text Content (Left) -->
+            <div class="hero-text-content">
+                <div class="fade-in-up pt-8 pt-md-16">
+                    <MudText Typo="Typo.h1" Style="color: #0f172a; font-size: clamp(2.25rem, 4vw, 3.75rem); font-weight: 800; line-height: 1.1; letter-spacing: -1.5px;">
+                        Unified HR & payroll<br />for the <span style="background: linear-gradient(90deg, #1E9FE0, #0B5C8C); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-style: italic; padding-right: 8px;">modern</span><br />workforce
+                    </MudText>
+                </div>
+
+                <div class="fade-in-up delay-300 mt-6">
+                    <MudText Typo="Typo.body1" Style="font-size: 1.125rem; color: #475569; line-height: 1.6;">
+                        Empower your workforce with a unified HR and payroll platform designed to simplify people management and drive organizational success.
+                    </MudText>
+                    
+                    <div class="d-flex gap-4 mt-6">
+                        <MudButton Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" EndIcon="@Icons.Material.Filled.ArrowForward" Style="border-radius: 8px; padding: 14px 36px; font-weight: 600; text-transform: none; font-size: 1.1rem; box-shadow: 0 4px 14px rgba(30,159,224,0.39);">
+                            Get Started
+                        </MudButton>
+                    </div>
+                </div>
             </div>
 
+            <!-- Visual Content (Right) -->
+            <div class="hero-visual-content fade-in-up delay-400">
+                <div class="device-composition">
+                    <div class="laptop-wrapper">
+                        <div class="laptop-frame">
+                            <div class="laptop-camera"></div>
+                            <div class="laptop-screen">
+                                <img src="image/bg/desktop-bg.png" alt="Platform Dashboard on Laptop" />
+                            </div>
+                        </div>
+                        <div class="laptop-base"></div>
+                    </div>
+                    
+                    <div class="tablet-frame">
+                        <div class="tablet-screen">
+                            <img src="image/bg/desktop-bg.png" alt="Platform Dashboard on Tablet" />
+                        </div>
+                    </div>
 
-
-            <!-- Description & Buttons (Bottom End) -->
-            <div class="hero-description fade-in-up delay-300">
-                <MudText Typo="Typo.body1" Style="font-size: 1.125rem; color: white; line-height: 1.6;">
-                    Empower your workforce with a unified HR and payroll platform designed to simplify people management and drive organizational success.
-                </MudText>
-                
-                <div class="d-flex gap-4 mt-2">
-                    <MudButton Variant="Variant.Filled" Color="Color.Primary" Size="Size.Large" EndIcon="@Icons.Material.Filled.ArrowForward" Style="border-radius: 8px; padding: 14px 36px; font-weight: 600; text-transform: none; font-size: 1.1rem; box-shadow: none;">
-                        Get Started
-                    </MudButton>
+                    <div class="mobile-frame">
+                        <div class="mobile-notch"></div>
+                        <div class="mobile-screen">
+                            <img src="image/bg/mobile-bg.png" alt="Platform Dashboard on Mobile" />
+                        </div>
+                    </div>
                 </div>
             </div>
 
