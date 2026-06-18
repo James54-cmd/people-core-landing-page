@@ -17,8 +17,15 @@
         
         <!-- Author -->
         <div class="d-flex align-center gap-4 mt-auto">
-            <MudAvatar Color="Color.Surface" Style="width: 48px; height: 48px; border: 1px solid #e2e8f0; background: #f8fafc;">
-                <MudIcon Icon="@Icons.Material.Rounded.Image" Color="Color.Default" Size="Size.Small" />
+            <MudAvatar Style="width: 48px; height: 48px; border: 1px solid #e2e8f0; background: #f8fafc;">
+                @if (!string.IsNullOrEmpty(AvatarUrl))
+                {
+                    <img src="@AvatarUrl" alt="@Name" style="width: 100%; height: 100%; object-fit: cover;" />
+                }
+                else
+                {
+                    <MudIcon Icon="@Icons.Material.Rounded.Image" Color="Color.Default" Size="Size.Small" />
+                }
             </MudAvatar>
             <div>
                 <MudText Typo="Typo.subtitle2" Style="font-family: 'Gilroy', sans-serif; font-weight: 800; color: #111; line-height: 1.2;">
@@ -36,4 +43,5 @@
     [Parameter] public string Name { get; set; } = "";
     [Parameter] public string Role { get; set; } = "";
     [Parameter] public string Quote { get; set; } = "";
+    [Parameter] public string AvatarUrl { get; set; } = "";
 }
