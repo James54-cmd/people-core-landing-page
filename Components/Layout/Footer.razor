@@ -1,55 +1,84 @@
 @using MudBlazor
 
-<footer class="footer-section pt-16 pt-md-24 pb-8 d-flex flex-column" style="background-color: #122656; border-top: 1px solid #1e293b; position: relative; overflow: hidden; font-family: 'Figtree', sans-serif;">
-    <!-- Faded Background Watermark -->
-    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 150vw; height: 150vw; max-width: 1000px; max-height: 1000px; background: url('image/logo_withou_words.png') no-repeat center center; background-size: contain; opacity: 0.05; pointer-events: none; filter: brightness(0) invert(1); z-index: 0;"></div>
-
-    <MudContainer MaxWidth="MaxWidth.Large" Class="d-flex flex-column flex-grow-1 justify-space-between" Style="position: relative; z-index: 1;">
+<footer class="footer-section pt-16 pb-8 d-flex flex-column" style="background-color: #122656; font-family: 'Figtree', sans-serif;">
+    <MudContainer MaxWidth="MaxWidth.Large" Class="d-flex flex-column flex-grow-1">
         
-        <!-- Top Row: Logo/Links & Subscribe -->
-        <MudGrid Spacing="6" Class="mb-16">
-            <!-- Left Side -->
-            <MudItem xs="12" md="6" Class="d-flex flex-column gap-8">
-                <!-- Logo -->
-                <div class="d-flex align-center">
-                    <img src="image/logo_with_words.png" alt="People Core" style="height: 64px; width: auto; filter: brightness(0) invert(1);" />
-                </div>
-                
-                <!-- Links -->
-                <div class="d-flex flex-wrap gap-6">
-                    @foreach(var link in new[] { "Features", "Solutions", "Pricing", "Company", "Careers" })
-                    {
-                        <a href="#" class="footer-link">@link</a>
-                    }
-                </div>
+        <!-- Top Row: Logo & Slogan -->
+        <div class="d-flex flex-column flex-md-row justify-space-between align-md-center mb-8">
+            <img src="image/logo_with_words.png" alt="People Core" style="height: 80px; width: auto; filter: brightness(0) invert(1);" />
+            <MudText Typo="Typo.h5" Style="color: #ffffff; font-weight: 400; font-style: italic; letter-spacing: 0.05em; font-size: 1.75rem;" Class="mt-4 mt-md-0">
+                Efficient. Secure. Reliable.
+            </MudText>
+        </div>
+
+        <MudGrid Spacing="6" Class="mb-12">
+            <!-- Left Side: Description -->
+            <MudItem xs="12" md="4" Class="d-flex flex-column pe-md-8">
+                <MudText Typo="Typo.body2" Style="color: #94a3b8; line-height: 1.7; font-size: 0.95rem; max-width: 320px;">
+                    Empowering organizations through innovative enterprise HR technology and seamless automation. Simplified for your people.
+                </MudText>
             </MudItem>
 
-            <!-- Right Side: Subscribe -->
-            <MudItem xs="12" md="6" Class="d-flex flex-column align-start align-md-end gap-4">
-                <MudText Typo="Typo.subtitle2" Style="font-weight: 700; color: #ffffff; font-family: 'Figtree', sans-serif;">Subscribe</MudText>
-                <div class="d-flex gap-2 w-100 justify-md-end">
-                    <div class="d-flex gap-2 w-100" style="max-width: 450px;">
-                        <input type="email" placeholder="Enter your email" class="footer-input flex-grow-1" style="font-family: 'Figtree', sans-serif;" />
-                        <MudButton Variant="Variant.Filled" Color="Color.Primary" Style="border-radius: 4px; padding: 0 24px; font-weight: 600; height: 48px; color: #fff; font-family: 'Figtree', sans-serif;">Subscribe</MudButton>
-                    </div>
-                </div>
-                <MudText Typo="Typo.caption" Style="color: #94a3b8; font-size: 0.75rem; font-family: 'Figtree', sans-serif;">
-                    By subscribing you agree to with our <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" style="text-decoration: underline; color: #ffffff;">Privacy Policy</a>
-                </MudText>
+            <!-- Columns Area -->
+            <MudItem xs="12" md="8">
+                <MudGrid Spacing="4">
+                    <!-- Product Column -->
+                    <MudItem xs="6" sm="6" Class="d-flex flex-column">
+                        <MudText Typo="Typo.overline" Style="font-weight: 700; color: #ffffff; letter-spacing: 0.1em; opacity: 0.8;" Class="mb-4">PRODUCT</MudText>
+                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px;">
+                            <li><a href="/products-and-services" class="footer-link-premium">Products & Services</a></li>
+                            <li><a href="/module" class="footer-link-premium">Modules</a></li>
+                            <li><a href="/#pricing" class="footer-link-premium">Pricing</a></li>
+                            <li><a href="/documentation" class="footer-link-premium">Documentation</a></li>
+                        </ul>
+                    </MudItem>
+
+                    <!-- Legal Column -->
+                    <MudItem xs="6" sm="6" Class="d-flex flex-column">
+                        <MudText Typo="Typo.overline" Style="font-weight: 700; color: #ffffff; letter-spacing: 0.1em; opacity: 0.8;" Class="mb-4">LEGAL</MudText>
+                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px;">
+                            <li><a href="/privacy-notice" class="footer-link-premium">Privacy Notice</a></li>
+                            <li><a href="/privacy-policy" class="footer-link-premium">Privacy Policy</a></li>
+                            <li><a href="/terms-of-service" class="footer-link-premium">Terms of Service</a></li>
+                        </ul>
+                    </MudItem>
+                </MudGrid>
             </MudItem>
         </MudGrid>
 
-        <!-- Bottom Row: Legal & Copyright -->
-        <div class="d-flex flex-column flex-md-row justify-space-between align-center pt-8" style="border-top: 1px solid rgba(255,255,255,0.1);">
-            <div class="d-flex flex-wrap gap-4 gap-md-6 mb-4 mb-md-0">
-                <a href="/privacy-notice" target="_blank" rel="noopener noreferrer" class="footer-legal-link">Privacy Notice</a>
-                <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" class="footer-legal-link">Privacy Policy</a>
-                <a href="#" target="_blank" rel="noopener noreferrer" class="footer-legal-link">Terms of Service</a> 
-            </div>
-            <MudText Typo="Typo.body2" Style="color: #94a3b8; font-family: 'Figtree', sans-serif;">
+        <!-- Bottom Row -->
+        <div class="d-flex flex-column flex-md-row justify-space-between align-center pt-8 mt-auto" style="border-top: 1px solid rgba(255,255,255,0.08);">
+            <MudText Typo="Typo.body2" Style="color: #64748b;">
                 © 2026 People Core. All rights reserved.
             </MudText>
+
+            <!-- Social Icons -->
+            <div class="d-flex gap-2 mt-4 mt-md-0">
+                <MudIconButton Icon="@Icons.Custom.Brands.Facebook" Size="Size.Small" Style="color: #94a3b8;" Class="social-btn" />
+                <MudIconButton Icon="@Icons.Custom.Brands.Twitter" Size="Size.Small" Style="color: #94a3b8;" Class="social-btn" />
+                <MudIconButton Icon="@Icons.Custom.Brands.LinkedIn" Size="Size.Small" Style="color: #94a3b8;" Class="social-btn" />
+            </div>
         </div>
 
     </MudContainer>
 </footer>
+
+<style>
+    .footer-link-premium {
+        color: #94a3b8;
+        text-decoration: none;
+        font-size: 0.95rem;
+        transition: color 0.2s ease;
+        display: inline-block;
+    }
+    .footer-link-premium:hover {
+        color: #ffffff;
+    }
+    .social-btn {
+        transition: all 0.2s ease;
+    }
+    .social-btn:hover {
+        color: #ffffff !important;
+        background-color: rgba(255,255,255,0.1);
+    }
+</style>
