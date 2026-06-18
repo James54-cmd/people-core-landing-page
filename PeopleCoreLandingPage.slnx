@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="PeopleCoreLandingPage.csproj" />
+  <Project Path="PeopleCoreLandingPage.Tests/PeopleCoreLandingPage.Tests.csproj" />
+</Solution>

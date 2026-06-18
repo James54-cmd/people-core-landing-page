@@ -30,15 +30,5 @@
 </section>
 
 @code {
-    private void OpenContactDialog()
-    {
-        var options = new DialogOptions 
-        { 
-            FullScreen = true, 
-            CloseButton = false, 
-            NoHeader = true, 
-            CloseOnEscapeKey = false
-        };
-        _ = DialogService.ShowAsync<ContactDialog>("", options);
-    }
+    private Task OpenContactDialog() => DialogService.ShowContactDialogAsync();
 }

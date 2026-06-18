@@ -5,7 +5,8 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>PeopleCoreLandingPage</RootNamespace>
-
+    <!-- The test project lives in a subfolder; keep its files out of the web project's globs. -->
+    <DefaultItemExcludes>$(DefaultItemExcludes);PeopleCoreLandingPage.Tests/**</DefaultItemExcludes>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,0 +1,69 @@
+/* Scoped styles for ContactForm. Plain elements (logo, exit button, success badge)
+   match directly; MudBlazor-rendered internals (icon, inputs) are reached with ::deep. */
+
+/* Logo link / button (resets cover both <a> and <button> hosts) */
+.contact-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.contact-logo img {
+    height: 54px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Exit button */
+.contact-exit-btn {
+    width: 48px;
+    height: 48px;
+    background: #f1f5f9;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 50%;
+    color: #475569;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.contact-exit-btn:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+    transform: scale(1.05);
+}
+
+/* Success state badge */
+.success-icon-badge {
+    width: 96px;
+    height: 96px;
+    background: #ecfdf5;
+    border-radius: 50%;
+}
+
+/* Use Figtree inside the MudBlazor-rendered form fields */
+.contact-form-flat-container ::deep .mud-input-control,
+.contact-form-flat-container ::deep .mud-input,
+.contact-form-flat-container ::deep .mud-input-label,
+.contact-form-flat-container ::deep .mud-helper-text {
+    font-family: 'Figtree', sans-serif !important;
+}
+
+@media (max-width: 600px) {
+    .contact-logo img {
+        height: 40px;
+    }
+
+    .contact-exit-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .contact-exit-btn ::deep .mud-icon-root {
+        font-size: 1.5rem !important;
+    }
+}

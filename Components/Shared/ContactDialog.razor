@@ -1,0 +1,31 @@
+@using MudBlazor
+
+@*
+    Slide-in dialog host for the shared ContactForm. Launched via
+    IDialogService.ShowContactDialogAsync() (Services/DialogServiceExtensions.cs).
+    Dialog-only animation/backdrop CSS lives in wwwroot/app.css because it targets
+    .mud-overlay / .mud-dialog-container, which are rendered outside this component.
+*@
+
+<MudDialog Class="contact-dialog-wrapper pa-0" Style="border-radius: 0 !important; background-color: transparent !important; box-shadow: none;">
+    <DialogContent>
+        <div class="contact-page-container py-12 px-4 px-md-8 @(isClosing ? "dialog-closing" : "")">
+            <ContactForm OnClose="Close" />
+        </div>
+    </DialogContent>
+</MudDialog>
+
+@code {
+    [CascadingParameter]
+    private IMudDialogInstance MudDialog { get; set; } = default!;
+
+    private bool isClosing = false;
+
+    private async Task Close()
+    {
+        isClosing = true;
+        StateHasChanged();
+        await Task.Delay(400); // Match CSS slide-out duration
+        MudDialog.Close();
+    }
+}

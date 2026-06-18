@@ -1,0 +1,176 @@
+@rendermode InteractiveServer
+@using MudBlazor
+@using PeopleCoreLandingPage.Models
+
+@*
+    Shared contact form used by both the standalone Contact page and the slide-in
+    Contact dialog. The only page-vs-dialog difference is the top-bar action:
+    when OnClose has a delegate (dialog) the logo/exit close the dialog; otherwise
+    (page) they link back to "/". See ContactForm.razor.css for the form styles.
+*@
+
+<MudContainer MaxWidth="MaxWidth.Large">
+    <!-- Top Bar: Logo & Exit -->
+    <div class="d-flex justify-space-between align-center mb-8">
+        @if (OnClose.HasDelegate)
+        {
+            <button @onclick="OnClose" class="contact-logo">
+                <img src="image/logo_with_words.png" alt="People Core Logo" />
+            </button>
+            <button @onclick="OnClose" class="contact-exit-btn d-flex align-center justify-center">
+                <MudIcon Icon="@Icons.Material.Filled.Close" Style="font-size: 1.75rem;" />
+            </button>
+        }
+        else
+        {
+            <a href="/" class="contact-logo">
+                <img src="image/logo_with_words.png" alt="People Core Logo" />
+            </a>
+            <a href="/" class="contact-exit-btn d-flex align-center justify-center">
+                <MudIcon Icon="@Icons.Material.Filled.Close" Style="font-size: 1.75rem;" />
+            </a>
+        }
+    </div>
+
+    <MudGrid Spacing="8" Class="mt-4">
+
+        <!-- Left Column: Contact Details -->
+        <MudItem xs="12" md="5" Class="d-flex flex-column gap-6 justify-center">
+            <div>
+                <MudText Typo="Typo.h3" Style="font-weight: 800; color: #111827; font-family: 'Figtree', sans-serif;" Class="mb-4">
+                    Contact Us
+                </MudText>
+                <MudText Typo="Typo.body1" Style="color: #4b5563; font-size: 1.1rem; line-height: 1.6;" Class="mb-8">
+                    Get in touch and we’ll get back to you as soon as we can. We look forward to hearing from you!
+                </MudText>
+            </div>
+
+            <div class="d-flex flex-column gap-6">
+                <!-- Company -->
+                <div>
+                    <MudText Typo="Typo.caption" Style="font-weight: 700; color: #1E9FE0; letter-spacing: 0.1em; text-transform: uppercase;">Company</MudText>
+                    <MudText Typo="Typo.body1" Style="font-weight: 700; color: #111827; font-family: 'Figtree', sans-serif; font-size: 1.15rem;" Class="mt-1">
+                        CYCORE TECHNOLOGY SOLUTIONS CO. INC.
+                    </MudText>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <MudText Typo="Typo.caption" Style="font-weight: 700; color: #1E9FE0; letter-spacing: 0.1em; text-transform: uppercase;">Get in Touch</MudText>
+                    <MudText Typo="Typo.body1" Style="font-weight: 500; color: #374151; font-family: 'Figtree', sans-serif;" Class="mt-1">
+                        (+632) 8251 3482
+                    </MudText>
+                    <MudText Typo="Typo.body1" Style="font-weight: 500; color: #374151; font-family: 'Figtree', sans-serif;">
+                        info@peoplecore.net
+                    </MudText>
+                </div>
+
+                <!-- Address -->
+                <div>
+                    <MudText Typo="Typo.caption" Style="font-weight: 700; color: #1E9FE0; letter-spacing: 0.1em; text-transform: uppercase;">Address</MudText>
+                    <MudText Typo="Typo.body1" Style="font-weight: 500; color: #374151; font-family: 'Figtree', sans-serif; line-height: 1.5;" Class="mt-1">
+                        Unit A, 55 Liberty Ave, Cubao, Quezon City, Metro Manila, Philippines 1109
+                    </MudText>
+                </div>
+            </div>
+        </MudItem>
+
+        <!-- Right Column: Form -->
+        <MudItem xs="12" md="7" Class="d-flex align-center">
+            <div class="contact-form-flat-container w-100 pa-2">
+                @if (isSubmitted)
+                {
+                    <div class="d-flex flex-column align-center justify-center text-center py-12">
+                        <div class="success-icon-badge mb-6 d-flex align-center justify-center">
+                            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Style="font-size: 4.5rem; color: #10b981;" />
+                        </div>
+                        <MudText Typo="Typo.h4" Style="font-weight: 800; color: #111827;" Class="mb-3">
+                            Thank You!
+                        </MudText>
+                        <MudText Typo="Typo.body1" Style="color: #4b5563; max-width: 420px; margin: 0 auto; line-height: 1.6;" Class="mb-8">
+                            Your inquiry has been received successfully. A representative will contact you at <strong>@model.EmailAddress</strong> shortly.
+                        </MudText>
+                        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="ResetForm" Style="text-transform: none; border-radius: 8px; font-weight: 600; font-family: 'Figtree', sans-serif;" Class="px-8 py-3">
+                            Send Another Message
+                        </MudButton>
+                    </div>
+                }
+                else
+                {
+                    <MudText Typo="Typo.h5" Style="font-weight: 800; color: #111827;" Class="mb-6">
+                        Send us a message
+                    </MudText>
+
+                    <EditForm Model="@model" OnValidSubmit="HandleSubmit">
+                        <DataAnnotationsValidator />
+
+                        <MudGrid Spacing="3">
+                            <MudItem xs="12" sm="6">
+                                <MudTextField @bind-Value="model.FirstName" For="@(() => model.FirstName)" Label="First Name" Required="true" Variant="Variant.Outlined" Style="background: white;" />
+                            </MudItem>
+
+                            <MudItem xs="12" sm="6">
+                                <MudTextField @bind-Value="model.LastName" For="@(() => model.LastName)" Label="Last Name" Required="true" Variant="Variant.Outlined" Style="background: white;" />
+                            </MudItem>
+
+                            <MudItem xs="12" sm="6">
+                                <MudTextField @bind-Value="model.ContactNumber" For="@(() => model.ContactNumber)" Label="Contact Numbers" Required="true" Variant="Variant.Outlined" Style="background: white;" />
+                            </MudItem>
+
+                            <MudItem xs="12" sm="6">
+                                <MudTextField @bind-Value="model.EmailAddress" For="@(() => model.EmailAddress)" Label="Email Address" Required="true" Variant="Variant.Outlined" Style="background: white;" />
+                            </MudItem>
+
+                            <MudItem xs="12">
+                                <MudTextField @bind-Value="model.Inquiries" For="@(() => model.Inquiries)" Label="Send Us Your Inquiries or Questions" Required="true" Lines="5" Variant="Variant.Outlined" Style="background: white;" />
+                            </MudItem>
+
+                            <MudItem xs="12" Class="mt-4">
+                                <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Disabled="isSubmitting" Style="text-transform: none; border-radius: 8px; font-weight: 700; font-family: 'Figtree', sans-serif; width: 100%;" Class="py-3 shadow-none">
+                                    @if (isSubmitting)
+                                    {
+                                        <MudProgressCircular Size="Size.Small" Indeterminate="true" Class="mr-2" />
+                                        <span>Submitting...</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Submit Inquiries</span>
+                                    }
+                                </MudButton>
+                            </MudItem>
+                        </MudGrid>
+                    </EditForm>
+                }
+            </div>
+        </MudItem>
+
+    </MudGrid>
+</MudContainer>
+
+@code {
+    /// <summary>
+    /// When set (dialog host), the logo and exit button close the dialog. When unset
+    /// (standalone page), they render as links back to the home page.
+    /// </summary>
+    [Parameter]
+    public EventCallback OnClose { get; set; }
+
+    private ContactFormModel model = new();
+    private bool isSubmitting = false;
+    private bool isSubmitted = false;
+
+    private async Task HandleSubmit()
+    {
+        isSubmitting = true;
+        // Simulate API post
+        await Task.Delay(1500);
+        isSubmitting = false;
+        isSubmitted = true;
+    }
+
+    private void ResetForm()
+    {
+        model = new ContactFormModel();
+        isSubmitted = false;
+    }
+}
