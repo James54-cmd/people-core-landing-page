@@ -1,123 +1,167 @@
-<section class="py-16 py-md-24" style="background-color: #f9fafb;">
+@rendermode InteractiveServer
+
+<section class="py-16 py-md-24" style="background-color: #f4f6f8;">
     <MudContainer MaxWidth="MaxWidth.Large">
-        <div class="text-center mb-16">
-            <MudText Typo="Typo.h2" Style="font-family: 'Figtree', sans-serif; font-weight: 700; color: #111928;" Class="mb-4">
-                PEOPLECORE FEATURES
+        <!-- Top Section -->
+        <div class="mb-16">
+            <MudText Typo="Typo.h2" Style="font-family: 'Figtree', sans-serif; font-weight: 700; color: #0f172a; font-size: 3rem; line-height: 1.1; max-width: 800px;" Class="mb-6">
+                What part of your HR operation do you want to upgrade next?
             </MudText>
-            <MudText Typo="Typo.body1" Style="font-family: 'Figtree', sans-serif; color: #6B7280; max-width: 600px; margin: 0 auto; font-size: 1.125rem;">
-                A comprehensive suite of tools designed to streamline your HR processes and empower your workforce.
+            <MudText Typo="Typo.body1" Style="font-family: 'Figtree', sans-serif; color: #475569; max-width: 600px; font-size: 1.125rem;">
+                Find the right tools based on what HR challenge you need to solve. Choose one or multiple features. Scale fast either way.
             </MudText>
         </div>
 
         <MudGrid Spacing="6">
-            <!-- Applicant Service -->
-            <MudItem xs="12" md="6" lg="4">
-                <MudPaper Elevation="0" Class="pa-6 h-100 feature-card" Style="border: 1px solid #E5E7EB; border-radius: 20px; background: #ffffff;">
-                    <MudIcon Icon="@Icons.Material.Filled.PersonAdd" Size="Size.Large" Style="color: #3B82F6;" Class="mb-4" />
-                    <MudText Typo="Typo.h6" Style="font-family: 'Figtree', sans-serif; font-weight: 700; color: #111928;" Class="mb-2">APPLICANT SERVICE</MudText>
-                    <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; color: #4B5563; line-height: 1.6;">
-                        PeopleCore’s Applicant Service lets you say goodbye to tedious data encoding of applicant data. Automate management of recruitment and staffing, including automatic posting of open positions. Own applicants’ data for a good source of talent pool.
-                    </MudText>
-                </MudPaper>
+            <!-- Left Sidebar Menu -->
+            <MudItem xs="12" md="3">
+                <div class="d-flex flex-column gap-2 sticky-top" style="top: 100px;">
+                    @foreach (var category in categories)
+                    {
+                        <div @onclick="() => SetCategory(category)" 
+                             class="@GetMenuClass(category)"
+                             style="cursor: pointer; padding: 12px 16px; border-left: 2px solid @(activeCategory == category ? "#0f172a" : "transparent"); transition: all 0.2s ease; font-family: 'Figtree', sans-serif; font-weight: @(activeCategory == category ? "600" : "400"); color: @(activeCategory == category ? "#0f172a" : "#64748b"); font-size: 1.125rem;">
+                            @category
+                        </div>
+                    }
+                </div>
             </MudItem>
 
-            <!-- HR Management -->
-            <MudItem xs="12" md="6" lg="4">
-                <MudPaper Elevation="0" Class="pa-6 h-100 feature-card" Style="border: 1px solid #E5E7EB; border-radius: 20px; background: #ffffff;">
-                    <MudIcon Icon="@Icons.Material.Filled.ManageAccounts" Size="Size.Large" Style="color: #10B981;" Class="mb-4" />
-                    <MudText Typo="Typo.h6" Style="font-family: 'Figtree', sans-serif; font-weight: 700; color: #111928;" Class="mb-2">HR MANAGEMENT</MudText>
-                    <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; color: #4B5563; line-height: 1.6;">
-                        Digitally manage Employee Personnel Data (201 File). Issue and manage contracts, track the employee life cycle from hiring to separation, and easily audit changes to critical employee information.
+            <!-- Right Content Area -->
+            <MudItem xs="12" md="9">
+                <div class="mb-10">
+                    <MudText Typo="Typo.h4" Style="font-family: 'Figtree', sans-serif; font-weight: 600; color: #0f172a;" Class="mb-3">
+                        @GetCategoryTitle()
                     </MudText>
-                </MudPaper>
-            </MudItem>
+                    <MudText Typo="Typo.body1" Style="font-family: 'Figtree', sans-serif; color: #475569; font-size: 1.125rem;">
+                        @GetCategorySubtitle()
+                    </MudText>
+                </div>
 
-            <!-- Attendance -->
-            <MudItem xs="12" md="6" lg="4">
-                <MudPaper Elevation="0" Class="pa-6 h-100 feature-card" Style="border: 1px solid #E5E7EB; border-radius: 20px; background: #ffffff;">
-                    <MudIcon Icon="@Icons.Material.Filled.AccessTimeFilled" Size="Size.Large" Style="color: #F59E0B;" Class="mb-4" />
-                    <MudText Typo="Typo.h6" Style="font-family: 'Figtree', sans-serif; font-weight: 700; color: #111928;" Class="mb-2">INTEGRATED ATTENDANCE MANAGEMENT</MudText>
-                    <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; color: #4B5563; line-height: 1.6;">
-                        Manage attendance, overtime, scheduling, and daily time records. Fully integrated with leaves, employee self-service, and biometric/RF devices for automated processing.
-                    </MudText>
-                </MudPaper>
-            </MudItem>
-
-            <!-- Payroll -->
-            <MudItem xs="12" md="6" lg="4">
-                <MudPaper Elevation="0" Class="pa-6 h-100 feature-card" Style="border: 1px solid #E5E7EB; border-radius: 20px; background: #ffffff;">
-                    <MudIcon Icon="@Icons.Material.Filled.RequestQuote" Size="Size.Large" Style="color: #8B5CF6;" Class="mb-4" />
-                    <MudText Typo="Typo.h6" Style="font-family: 'Figtree', sans-serif; font-weight: 700; color: #111928;" Class="mb-2">LESS PAPER, LESS HASSLE</MudText>
-                    <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; color: #4B5563; line-height: 1.6;">
-                        Automate all payroll processes. Flexible handling of unlimited income and deductions. Generates standard reports, government statutory requirements, and bank support. Say goodbye to manual errors.
-                    </MudText>
-                </MudPaper>
-            </MudItem>
-
-            <!-- Career Management -->
-            <MudItem xs="12" md="6" lg="4">
-                <MudPaper Elevation="0" Class="pa-6 h-100 feature-card" Style="border: 1px solid #E5E7EB; border-radius: 20px; background: #ffffff;">
-                    <MudIcon Icon="@Icons.Material.Filled.TrendingUp" Size="Size.Large" Style="color: #EF4444;" Class="mb-4" />
-                    <MudText Typo="Typo.h6" Style="font-family: 'Figtree', sans-serif; font-weight: 700; color: #111928;" Class="mb-2">COMPETENCY IS THE KEY</MudText>
-                    <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; color: #4B5563; line-height: 1.6;">
-                        Career Management module allows profiling of positions, defining specifications, progression, and succession. Create competency standards and monitor compliance to address deficiencies.
-                    </MudText>
-                </MudPaper>
-            </MudItem>
-
-            <!-- Employee Self Service -->
-            <MudItem xs="12" md="6" lg="4">
-                <MudPaper Elevation="0" Class="pa-6 h-100 feature-card" Style="border: 1px solid #E5E7EB; border-radius: 20px; background: #ffffff;">
-                    <MudIcon Icon="@Icons.Material.Filled.TouchApp" Size="Size.Large" Style="color: #06B6D4;" Class="mb-4" />
-                    <MudText Typo="Typo.h6" Style="font-family: 'Figtree', sans-serif; font-weight: 700; color: #111928;" Class="mb-2">EMPLOYEE SELF-SERVICE</MudText>
-                    <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; color: #4B5563; line-height: 1.6;">
-                        Designed for employees to control their data and transactions. Services are available 24/7. Click, view, save personal information to ensure it's always accurate.
-                    </MudText>
-                </MudPaper>
-            </MudItem>
-
-            <!-- Applications -->
-            <MudItem xs="12" md="6" lg="4">
-                <MudPaper Elevation="0" Class="pa-6 h-100 feature-card" Style="border: 1px solid #E5E7EB; border-radius: 20px; background: #ffffff;">
-                    <MudIcon Icon="@Icons.Material.Filled.Approval" Size="Size.Large" Style="color: #EAB308;" Class="mb-4" />
-                    <MudText Typo="Typo.h6" Style="font-family: 'Figtree', sans-serif; font-weight: 700; color: #111928;" Class="mb-2">ONLINE APPLICATIONS</MudText>
-                    <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; color: #4B5563; line-height: 1.6;">
-                        Get your applications approved on time. No more time-consuming transactions. Applications are routed automatically to managers. Track pending and approved requests.
-                    </MudText>
-                </MudPaper>
-            </MudItem>
-
-            <!-- Performance Management -->
-            <MudItem xs="12" md="6" lg="4">
-                <MudPaper Elevation="0" Class="pa-6 h-100 feature-card" Style="border: 1px solid #E5E7EB; border-radius: 20px; background: #ffffff;">
-                    <MudIcon Icon="@Icons.Material.Filled.StarRate" Size="Size.Large" Style="color: #14B8A6;" Class="mb-4" />
-                    <MudText Typo="Typo.h6" Style="font-family: 'Figtree', sans-serif; font-weight: 700; color: #111928;" Class="mb-2">TRACK YOUR BEST EMPLOYEES</MudText>
-                    <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; color: #4B5563; line-height: 1.6;">
-                        Monitoring and generating performance data is now much easier. Automate reminders for performance schedules and allow online transactions for evaluations.
-                    </MudText>
-                </MudPaper>
-            </MudItem>
-
-            <!-- Managerial Service -->
-            <MudItem xs="12" md="6" lg="4">
-                <MudPaper Elevation="0" Class="pa-6 h-100 feature-card" Style="border: 1px solid #E5E7EB; border-radius: 20px; background: #ffffff;">
-                    <MudIcon Icon="@Icons.Material.Filled.SupervisorAccount" Size="Size.Large" Style="color: #EC4899;" Class="mb-4" />
-                    <MudText Typo="Typo.h6" Style="font-family: 'Figtree', sans-serif; font-weight: 700; color: #111928;" Class="mb-2">MANAGERIAL SERVICE</MudText>
-                    <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; color: #4B5563; line-height: 1.6;">
-                        Extend HR services to Managers and Supervisors. Enable online inquiries, paperless application transactions, and real-time notifications via email or SMS.
-                    </MudText>
-                </MudPaper>
+                <MudGrid Spacing="4">
+                    @foreach (var feature in GetVisibleFeatures())
+                    {
+                        <MudItem xs="12" sm="6">
+                            <MudPaper Elevation="0" Class="pa-8 h-100 d-flex flex-column feature-card-ui" Style="border-radius: 16px; background: #ffffff;">
+                                <div class="mb-4">
+                                    <MudIcon Icon="@feature.Icon" Size="Size.Large" Style="color: #3B82F6;" />
+                                </div>
+                                <MudText Typo="Typo.h5" Style="font-family: 'Figtree', sans-serif; font-weight: 700; color: #0f172a;" Class="mb-3">@feature.Title</MudText>
+                                <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; color: #475569; line-height: 1.6; flex-grow: 1;" Class="mb-8">
+                                    @feature.Description
+                                </MudText>
+                                
+                                <div class="d-flex align-center justify-space-between mt-auto pt-4" style="border-top: 1px solid #f1f5f9;">
+                                    <MudText Typo="Typo.caption" Style="font-family: 'Figtree', sans-serif; font-weight: 600; color: #94a3b8; letter-spacing: 0.05em; text-transform: uppercase;">
+                                        @feature.Category
+                                    </MudText>
+                                </div>
+                            </MudPaper>
+                        </MudItem>
+                    }
+                </MudGrid>
             </MudItem>
         </MudGrid>
     </MudContainer>
 </section>
 
 <style>
-    .feature-card {
+    .feature-card-ui {
         transition: all 0.3s ease;
     }
-    .feature-card:hover {
-        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    .feature-card-ui:hover {
+        box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.05), 0 4px 12px -4px rgba(0, 0, 0, 0.02);
         transform: translateY(-4px);
     }
+    .sticky-top {
+        position: sticky;
+        top: 100px;
+    }
+    .menu-item:hover {
+        background-color: #f1f5f9;
+    }
 </style>
+
+@code {
+    private string activeCategory = "All";
+
+    private readonly string[] categories = new[] 
+    { 
+        "All", 
+        "Recruitment", 
+        "Core HR", 
+        "Time & Payroll", 
+        "Talent Management", 
+        "Employee Services" 
+    };
+
+    private void SetCategory(string category)
+    {
+        activeCategory = category;
+    }
+
+    private string GetMenuClass(string category)
+    {
+        return activeCategory == category ? "menu-item active" : "menu-item";
+    }
+
+    private string GetCategoryTitle()
+    {
+        return activeCategory switch
+        {
+            "Recruitment" => "Find and acquire the best talent",
+            "Core HR" => "Centralize and manage employee data",
+            "Time & Payroll" => "Automate attendance and compensation",
+            "Talent Management" => "Develop and retain top performers",
+            "Employee Services" => "Empower your workforce with self-service",
+            _ => "Comprehensive HR Management"
+        };
+    }
+
+    private string GetCategorySubtitle()
+    {
+         return activeCategory switch
+        {
+            "Recruitment" => "Streamline your hiring process from requisition to onboarding.",
+            "Core HR" => "Maintain accurate records and track employee lifecycles digitally.",
+            "Time & Payroll" => "Eliminate manual errors with integrated time tracking and payroll processing.",
+            "Talent Management" => "Align individual goals with organizational objectives.",
+            "Employee Services" => "Give employees and managers the tools they need 24/7.",
+            _ => "Everything you need to manage your most valuable asset—your people."
+        };
+    }
+
+    private class Feature
+    {
+        public string Title { get; set; } = "";
+        public string Description { get; set; } = "";
+        public string Icon { get; set; } = "";
+        public string Color { get; set; } = "";
+        public string Category { get; set; } = "";
+    }
+
+    private readonly List<Feature> allFeatures = new()
+    {
+        new Feature { Title = "APPLICANT SERVICE", Description = "PeopleCore’s Applicant Service lets you say goodbye to tedious data encoding of applicant data. This tool will allow HR to automate management of recruitment and staffing. This includes the automatic posting of open positions from the manpower request and job profile to your company’s website. This system will allow your company to own applicants’ data to have a good source of the applicant pool for future opportunities and vacancies.", Icon = Icons.Material.Filled.PersonAdd, Color = "#3B82F6", Category = "Recruitment" },
+        new Feature { Title = "HR MANAGEMENT", Description = "HR Management allows HR to digitally manage Employee Personnel Data or record commonly called 201 File. It allows issuance and management of contract or personnel action notices and employee appointments enabling the organization to track employee life cycle moments, laterally from hiring to separation. Changes made to critical employee information can easily be tracked or audited.", Icon = Icons.Material.Filled.ManageAccounts, Color = "#10B981", Category = "Core HR" },
+        new Feature { Title = "INTEGRATED ATTENDANCE MANAGEMENT", Description = "Attendance Management allows organizations to manage attendance, including, overtime authorizations, scheduling, and daily-time-records. This is fully integrated with the Leave Module, Employee Self-service, and Managerial Services and can be integrated with any digital time capture devices outputs such as biometrics, barcodes, magnetic, or proximity (RF), enabling the user to have full control and automate attendance processing.", Icon = Icons.Material.Filled.AccessTimeFilled, Color = "#F59E0B", Category = "Time & Payroll" },
+        new Feature { Title = "LESS PAPER, LESS HASSLE", Description = "Computation and management of employee’s payroll and benefits are very tedious processes if done manually. PeopleCore’s Payroll Management automates all payroll processes. It is very comprehensive and flexible allowing organization of unlimited type of income and deductions. All standard reports and data requirements are generated by this module including government statutory requirement and bank support. No more room for manual-labor hassles and errors.", Icon = Icons.Material.Filled.RequestQuote, Color = "#8B5CF6", Category = "Time & Payroll" },
+        new Feature { Title = "COMPETENCY IS THE KEY", Description = "Career Management module will allow HR to profile positions, define job specifications and its minimum requirements, as well as progression and succession. Included is the competency module which allows the organization to create competency standards and monitor the compliance of employees on these predefined standards. Interventions can be developed to address competency deficiencies.", Icon = Icons.Material.Filled.TrendingUp, Color = "#EF4444", Category = "Talent Management" },
+        new Feature { Title = "EMPLOYEE SELF-SERVICE", Description = "The Employee Service System is designed for all employees to have control over their own data and transactions. This enables HR services to be available to employees 24/7.", Icon = Icons.Material.Filled.TouchApp, Color = "#06B6D4", Category = "Employee Services" },
+        new Feature { Title = "CLICK, VIEW, SAVE", Description = "Employees can access their personal information and manage it to make sure it’s updated and accurate. Managers can also see the information of the staff reporting to them.", Icon = Icons.Material.Filled.Visibility, Color = "#0EA5E9", Category = "Employee Services" },
+        new Feature { Title = "ONLINE APPLICATIONS", Description = "No more time-consuming transactions. Applications are routed automatically to supervisors and managers for approval. Employees can also view applications that are pending for approval and applications that have been already approved by their supervisors/managers.", Icon = Icons.Material.Filled.Approval, Color = "#EAB308", Category = "Employee Services" },
+        new Feature { Title = "TRACK YOUR BEST EMPLOYEES", Description = "Monitoring and generating employee performance data are now so much easier. HR can manage performance management program by automating reminders of performance schedules and allow employees and managers to transact perform evaluations online.", Icon = Icons.Material.Filled.StarRate, Color = "#14B8A6", Category = "Talent Management" },
+        new Feature { Title = "MANAGERIAL SERVICE", Description = "Managerial Service is intended to extend HR services to Managers and Supervisors allowing online services such as inquiry, application, and approvals of data and transactions of subordinates. The paperless online transaction allows Managers and Supervisors to even respond to approval requests in the comfort of their home.", Icon = Icons.Material.Filled.SupervisorAccount, Color = "#EC4899", Category = "Core HR" },
+        new Feature { Title = "EASIER PERSONNEL MANAGEMENT", Description = "The Managerial Service system will enable supervisors and managers to access the information of designated staff. By default, managers will be able to access all data and transactions under the Employee Service system except payroll.", Icon = Icons.Material.Filled.Group, Color = "#F43F5E", Category = "Core HR" },
+        new Feature { Title = "PAPERLESS APPLICATION TRANSACTION", Description = "To complete cycles for online transactions, managers are given the capability to view, manage and take action on subordinate applications/transaction. The transaction is categorized by the system as approved or for approval and managers can either approve, disapprove or put an application on hold or pending.", Icon = Icons.Material.Filled.AssignmentTurnedIn, Color = "#D946EF", Category = "Core HR" },
+        new Feature { Title = "REAL-TIME NOTIFICATIONS", Description = "The system is workflow integrated and superiors will be notified of any transactions that require actions through emails or SMS. The system also allows the managers to apply for certain transactions online. Additional functionality available to managers and supervisors includes online manpower requisition, transferring of employees, and assignments of alternate approvers whenever they are not available.", Icon = Icons.Material.Filled.NotificationsActive, Color = "#8B5CF6", Category = "Core HR" }
+    };
+
+    private IEnumerable<Feature> GetVisibleFeatures()
+    {
+        if (activeCategory == "All")
+            return allFeatures;
+        
+        return allFeatures.Where(f => f.Category == activeCategory);
+    }
+}
