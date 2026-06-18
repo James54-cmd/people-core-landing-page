@@ -7,7 +7,7 @@
 
     <MudSpacer />
 
-    <div class="d-none d-md-flex gap-6 align-center">
+    <div class="nav-desktop-links">
         <MudLink Href="/services" Underline="Underline.None" Color="Color.Inherit" Class="nav-link-item">Services</MudLink>
         <MudLink Href="/saas" Underline="Underline.None" Color="Color.Inherit" Class="nav-link-item">Software as a Service</MudLink>
         <MudLink Href="/contact" Underline="Underline.None" Color="Color.Inherit" Class="nav-link-item">Contact Us</MudLink>
@@ -16,16 +16,16 @@
     <MudSpacer />
     <MudSpacer />
 
-    <button type="button" class="nav-hamburger d-flex d-md-none" @onclick="ToggleMenu"
+    <button type="button" class="nav-hamburger" @onclick="ToggleMenu"
             aria-label="Toggle navigation menu" aria-expanded="@(_menuOpen ? "true" : "false")">
         <MudIcon Icon="@(_menuOpen ? Icons.Material.Filled.Close : Icons.Material.Filled.Menu)" Color="Color.Inherit" />
     </button>
 </MudPaper>
 
-<!-- Mobile menu -->
-<div class="nav-mobile-backdrop d-md-none @(_menuOpen ? "open" : "")" @onclick="CloseMenu"></div>
+<!-- Mobile / tablet menu -->
+<div class="nav-mobile-backdrop @(_menuOpen ? "open" : "")" @onclick="CloseMenu"></div>
 
-<nav class="nav-mobile-menu d-md-none @(_menuOpen ? "open" : "")">
+<nav class="nav-mobile-menu @(_menuOpen ? "open" : "")">
     <a href="/services" class="nav-mobile-link" @onclick="CloseMenu">Services</a>
     <a href="/saas" class="nav-mobile-link" @onclick="CloseMenu">Software as a Service</a>
     <a href="/contact" class="nav-mobile-link" @onclick="CloseMenu">Contact Us</a>

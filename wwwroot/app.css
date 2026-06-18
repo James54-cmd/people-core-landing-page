@@ -1197,8 +1197,18 @@ body, .mud-typography-body1, .mud-typography-body2, .mud-typography-button {
     filter: brightness(0) invert(1);
 }
 
-/* ---- Mobile hamburger + menu ---- */
+/* ---- Desktop links / mobile hamburger toggle ----
+   One consistent 960px breakpoint, set here instead of the framework
+   d-md-* utilities (Bootstrap md=768 vs MudBlazor md=960 conflict left
+   the tablet menu hidden by an !important rule while the button showed). */
+.nav-desktop-links {
+    display: none;
+    align-items: center;
+    gap: 1.5rem;
+}
+
 .nav-hamburger {
+    display: flex;
     width: 44px;
     height: 44px;
     background: transparent;
@@ -1210,6 +1220,16 @@ body, .mud-typography-body1, .mud-typography-body2, .mud-typography-button {
     justify-content: center;
     transition: background 0.2s ease, color 0.3s ease;
     -webkit-tap-highlight-color: transparent;
+}
+
+@media (min-width: 960px) {
+    .nav-desktop-links {
+        display: flex;
+    }
+
+    .nav-hamburger {
+        display: none;
+    }
 }
 
 .nav-hamburger:hover,
