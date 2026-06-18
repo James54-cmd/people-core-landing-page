@@ -1,8 +1,8 @@
 @using MudBlazor
 
-<MudDialog Class="contact-dialog-wrapper pa-0" Style="border-radius: 0 !important; background-color: #ffffff; box-shadow: none;">
+<MudDialog Class="contact-dialog-wrapper pa-0" Style="border-radius: 0 !important; background-color: transparent !important; box-shadow: none;">
     <DialogContent>
-        <div class="contact-page-container py-12 px-4 px-md-8" style="background-color: #ffffff; min-height: 100vh; position: relative; font-family: 'Figtree', sans-serif; padding-top: 48px !important;">
+        <div class="contact-page-container py-12 px-4 px-md-8 @(isClosing ? "dialog-closing" : "")" style="background-color: #ffffff; min-height: 100vh; position: relative; font-family: 'Figtree', sans-serif; padding-top: 48px !important;">
             <MudContainer MaxWidth="MaxWidth.Large">
                 <!-- Top Bar: Logo & Exit Button (aligned with container content) -->
                 <div class="d-flex justify-space-between align-center mb-8">
@@ -135,11 +135,50 @@
 </MudDialog>
 
 <style>
-    /* MudDialog Override */
     .contact-dialog-wrapper {
         max-width: 100% !important;
         width: 100% !important;
         margin: 0 !important;
+        background-color: transparent !important;
+        box-shadow: none !important;
+        transition: none !important;
+        animation: none !important;
+    }
+
+    .contact-page-container {
+        /* Slide-in Animation */
+        animation: slideInLeft 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .contact-page-container.dialog-closing {
+        /* Slide-out Animation */
+        animation: slideOutLeft 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+    }
+
+    @@keyframes slideInLeft {
+        from {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @@keyframes slideOutLeft {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+    }
+
+    .dialog-backdrop-transparent {
+        background-color: transparent !important;
     }
 
     .mud-dialog-content {
@@ -210,9 +249,13 @@
     private ContactFormModel model = new ContactFormModel();
     private bool isSubmitting = false;
     private bool isSubmitted = false;
+    private bool isClosing = false;
 
-    private void Close()
+    private async Task Close()
     {
+        isClosing = true;
+        StateHasChanged();
+        await Task.Delay(400); // Match CSS transition duration
         MudDialog.Close();
     }
 

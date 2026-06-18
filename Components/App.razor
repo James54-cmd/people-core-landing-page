@@ -15,13 +15,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet" />
-    <HeadOutlet />
+    <HeadOutlet @rendermode="InteractiveServer" />
 </head>
 
 <body>
 
 
-    <Routes />
+    <Routes @rendermode="InteractiveServer" />
     <script src="js/animations.js"></script>
     <script src="js/gradient-shader.js"></script>
     <script src="_framework/blazor.web.js"></script>

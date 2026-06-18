@@ -37,7 +37,14 @@
 @code {
     private void OpenContactDialog()
     {
-        var options = new DialogOptions { FullScreen = true, CloseButton = false, NoHeader = true };
+        var options = new DialogOptions 
+        { 
+            FullScreen = true, 
+            CloseButton = false, 
+            NoHeader = true, 
+            CloseOnEscapeKey = false,
+            BackgroundClass = "dialog-backdrop-transparent"
+        };
         _ = DialogService.ShowAsync<ContactDialog>("", options);
     }
 }
