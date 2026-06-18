@@ -1,0 +1,345 @@
+@page "/contact"
+@using MudBlazor
+
+<PageTitle>Contact Us - People Core</PageTitle>
+
+<div class="contact-page-container py-16 px-4 px-md-8" style="background: radial-gradient(circle at 80% 20%, #E8F4FB 0%, #F7F9FB 100%); min-height: calc(100vh - 80px); position: relative; overflow: hidden; font-family: 'Figtree', sans-serif; padding-top: 120px !important;">
+    <!-- Background Blur Blobs -->
+    <div class="contact-blob blob-1"></div>
+    <div class="contact-blob blob-2"></div>
+
+    <MudContainer MaxWidth="MaxWidth.Large" Style="position: relative; z-index: 2;">
+        
+        <!-- Page Header -->
+        <div class="text-center mb-12 animate-fade-in">
+            <MudText Typo="Typo.h3" Style="font-weight: 800; color: #111827; font-family: 'Figtree', sans-serif;" Class="mb-3">
+                Let's Build Something Great Together
+            </MudText>
+            <MudText Typo="Typo.body1" Style="color: #4b5563; font-size: 1.15rem; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                Have questions about People Core, want a personalized demo, or need assistance? Reach out and our team will get back to you shortly.
+            </MudText>
+        </div>
+
+        <MudGrid Spacing="6" Class="mt-4">
+            
+            <!-- Left Column: Contact Cards -->
+            <MudItem xs="12" md="5" Class="d-flex flex-column gap-6">
+                
+                <!-- Email Info Card -->
+                <div class="contact-info-card d-flex align-center gap-4 pa-6">
+                    <div class="info-icon-wrapper d-flex align-center justify-center">
+                        <MudIcon Icon="@Icons.Material.Filled.Email" Style="color: #1E9FE0; font-size: 2rem;" />
+                    </div>
+                    <div>
+                        <MudText Typo="Typo.overline" Style="font-weight: 700; color: #1E9FE0; letter-spacing: 0.1em;">EMAIL US</MudText>
+                        <MudText Typo="Typo.body1" Style="font-weight: 600; color: #111827;">info@peoplecore.com</MudText>
+                        <MudText Typo="Typo.body2" Style="color: #6b7280; font-size: 0.85rem;">Expect a response within 24 business hours.</MudText>
+                    </div>
+                </div>
+
+                <!-- Phone Info Card -->
+                <div class="contact-info-card d-flex align-center gap-4 pa-6">
+                    <div class="info-icon-wrapper d-flex align-center justify-center">
+                        <MudIcon Icon="@Icons.Material.Filled.Phone" Style="color: #1E9FE0; font-size: 2rem;" />
+                    </div>
+                    <div>
+                        <MudText Typo="Typo.overline" Style="font-weight: 700; color: #1E9FE0; letter-spacing: 0.1em;">CALL US</MudText>
+                        <MudText Typo="Typo.body1" Style="font-weight: 600; color: #111827;">+1 (555) 019-2834</MudText>
+                        <MudText Typo="Typo.body2" Style="color: #6b7280; font-size: 0.85rem;">Mon-Fri from 9:00 AM to 6:00 PM EST.</MudText>
+                    </div>
+                </div>
+
+                <!-- Office Info Card -->
+                <div class="contact-info-card d-flex align-center gap-4 pa-6">
+                    <div class="info-icon-wrapper d-flex align-center justify-center">
+                        <MudIcon Icon="@Icons.Material.Filled.LocationOn" Style="color: #1E9FE0; font-size: 2rem;" />
+                    </div>
+                    <div>
+                        <MudText Typo="Typo.overline" Style="font-weight: 700; color: #1E9FE0; letter-spacing: 0.1em;">HEADQUARTERS</MudText>
+                        <MudText Typo="Typo.body1" Style="font-weight: 600; color: #111827;">100 Enterprise Way, Suite 500</MudText>
+                        <MudText Typo="Typo.body2" Style="color: #6b7280; font-size: 0.85rem;">Silicon Valley, CA 94025</MudText>
+                    </div>
+                </div>
+
+                <!-- Social Links Card -->
+                <div class="contact-info-card pa-6">
+                    <MudText Typo="Typo.overline" Style="font-weight: 700; color: #1E9FE0; letter-spacing: 0.1em;" Class="mb-3 d-block">CONNECT WITH US</MudText>
+                    <div class="d-flex gap-4">
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="contact-social-btn d-flex align-center justify-center">
+                            <MudIcon Icon="@Icons.Custom.Brands.LinkedIn" Style="font-size: 1.5rem;" />
+                        </a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="contact-social-btn d-flex align-center justify-center">
+                            <MudIcon Icon="@Icons.Custom.Brands.Twitter" Style="font-size: 1.5rem;" />
+                        </a>
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="contact-social-btn d-flex align-center justify-center">
+                            <MudIcon Icon="@Icons.Custom.Brands.Facebook" Style="font-size: 1.5rem;" />
+                        </a>
+                    </div>
+                </div>
+
+            </MudItem>
+
+            <!-- Right Column: Glassmorphic Contact Form -->
+            <MudItem xs="12" md="7">
+                <div class="contact-form-glass-card pa-8 pa-md-10">
+                    @if (isSubmitted)
+                    {
+                        <div class="d-flex flex-column align-center justify-center text-center py-12 success-state-animation">
+                            <div class="success-icon-badge mb-6 d-flex align-center justify-center">
+                                <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Style="font-size: 4.5rem; color: #10b981;" />
+                            </div>
+                            <MudText Typo="Typo.h4" Style="font-weight: 800; color: #111827;" Class="mb-3">
+                                Thank You!
+                            </MudText>
+                            <MudText Typo="Typo.body1" Style="color: #4b5563; max-width: 420px; margin: 0 auto; line-height: 1.6;" Class="mb-8">
+                                Your message has been received successfully. A People Core representative will contact you at <strong>@model.Email</strong> shortly.
+                            </MudText>
+                            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="ResetForm" Style="text-transform: none; border-radius: 8px; font-weight: 600; font-family: 'Figtree', sans-serif;" Class="px-8 py-3">
+                                Send Another Message
+                            </MudButton>
+                        </div>
+                    }
+                    else
+                    {
+                        <MudText Typo="Typo.h5" Style="font-weight: 800; color: #111827;" Class="mb-2">
+                            Send a Message
+                        </MudText>
+                        <MudText Typo="Typo.body2" Style="color: #6b7280; font-size: 0.95rem;" Class="mb-8">
+                            Fill out the form below and we will customize a plan matching your business requirements.
+                        </MudText>
+
+                        <EditForm Model="@model" OnValidSubmit="HandleSubmit">
+                            <DataAnnotationsValidator />
+
+                            <MudGrid Spacing="3">
+                                <MudItem xs="12" sm="6">
+                                    <label class="form-label-premium">Full Name</label>
+                                    <MudTextField @bind-Value="model.Name" For="@(() => model.Name)" Placeholder="John Doe" Variant="Variant.Outlined" Class="mt-1 custom-field" Style="background: white;" />
+                                </MudItem>
+                                
+                                <MudItem xs="12" sm="6">
+                                    <label class="form-label-premium">Work Email</label>
+                                    <MudTextField @bind-Value="model.Email" For="@(() => model.Email)" Placeholder="john@company.com" Variant="Variant.Outlined" Class="mt-1 custom-field" Style="background: white;" />
+                                </MudItem>
+
+                                <MudItem xs="12" sm="6">
+                                    <label class="form-label-premium">Company Name</label>
+                                    <MudTextField @bind-Value="model.Company" For="@(() => model.Company)" Placeholder="Acme Corp" Variant="Variant.Outlined" Class="mt-1 custom-field" Style="background: white;" />
+                                </MudItem>
+
+                                <MudItem xs="12" sm="6">
+                                    <label class="form-label-premium">Phone Number (Optional)</label>
+                                    <MudTextField @bind-Value="model.Phone" For="@(() => model.Phone)" Placeholder="+1 (555) 000-0000" Variant="Variant.Outlined" Class="mt-1 custom-field" Style="background: white;" />
+                                </MudItem>
+
+                                <MudItem xs="12">
+                                    <label class="form-label-premium">How Can We Help?</label>
+                                    <MudTextField @bind-Value="model.Message" For="@(() => model.Message)" Placeholder="Tell us about your organization's needs..." Lines="5" Variant="Variant.Outlined" Class="mt-1 custom-field" Style="background: white;" />
+                                </MudItem>
+
+                                <MudItem xs="12" Class="mt-4">
+                                    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Disabled="isSubmitting" Style="text-transform: none; border-radius: 8px; font-weight: 700; font-family: 'Figtree', sans-serif; width: 100%;" Class="py-3 shadow-none">
+                                        @if (isSubmitting)
+                                        {
+                                            <MudProgressCircular Size="Size.Small" Indeterminate="true" Class="mr-2" />
+                                            <span>Submitting...</span>
+                                        }
+                                        else
+                                        {
+                                            <span>Get in Touch</span>
+                                        }
+                                    </MudButton>
+                                </MudItem>
+                            </MudGrid>
+                        </EditForm>
+                    }
+                </div>
+            </MudItem>
+
+        </MudGrid>
+    </MudContainer>
+</div>
+
+<style>
+    /* Info Cards styling */
+    .contact-info-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+        transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .contact-info-card:hover {
+        transform: translateY(-2px);
+        border-color: rgba(30, 159, 224, 0.3);
+    }
+
+    .info-icon-wrapper {
+        width: 56px;
+        height: 56px;
+        background: #E8F4FB;
+        border-radius: 12px;
+        flex-shrink: 0;
+    }
+
+    /* Social buttons */
+    .contact-social-btn {
+        width: 44px;
+        height: 44px;
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        border-radius: 10px;
+        color: #4b5563;
+        transition: all 0.2s ease;
+        text-decoration: none;
+    }
+
+    .contact-social-btn:hover {
+        background: #1E9FE0;
+        color: #ffffff;
+        border-color: #1E9FE0;
+        transform: translateY(-2px);
+    }
+
+    /* Glassmorphic Contact Form */
+    .contact-form-glass-card {
+        background: rgba(255, 255, 255, 0.65);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        border-radius: 24px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+    }
+
+    .form-label-premium {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #374151;
+        display: inline-block;
+        margin-left: 2px;
+    }
+
+    /* Custom Input Fields */
+    .custom-field .mud-input {
+        border-radius: 8px !important;
+    }
+
+    .custom-field .mud-input-outlined-border {
+        border-color: rgba(0, 0, 0, 0.1) !important;
+        transition: border-color 0.2s ease;
+    }
+
+    .custom-field:hover .mud-input-outlined-border {
+        border-color: rgba(30, 159, 224, 0.4) !important;
+    }
+
+    .custom-field.mud-input-focus .mud-input-outlined-border {
+        border-color: #1E9FE0 !important;
+    }
+
+    /* Background Blur Blobs */
+    .contact-blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        z-index: 1;
+        opacity: 0.6;
+    }
+
+    .blob-1 {
+        top: -10%;
+        left: -10%;
+        width: 40vw;
+        height: 40vw;
+        background: radial-gradient(circle, rgba(30, 159, 224, 0.15) 0%, rgba(30, 159, 224, 0) 70%);
+    }
+
+    .blob-2 {
+        bottom: -10%;
+        right: -10%;
+        width: 35vw;
+        height: 35vw;
+        background: radial-gradient(circle, rgba(255, 180, 0, 0.1) 0%, rgba(255, 180, 0, 0) 70%);
+    }
+
+    /* Success Badge */
+    .success-icon-badge {
+        width: 96px;
+        height: 96px;
+        background: #ecfdf5;
+        border-radius: 50%;
+    }
+
+    /* Animations */
+    .animate-fade-in {
+        animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .success-state-animation {
+        animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @@keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @@keyframes scaleIn {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+</style>
+
+@code {
+    private ContactFormModel model = new ContactFormModel();
+    private bool isSubmitting = false;
+    private bool isSubmitted = false;
+
+    private async Task HandleSubmit()
+    {
+        isSubmitting = true;
+        // Simulate API post
+        await Task.Delay(1500);
+        isSubmitting = false;
+        isSubmitted = true;
+    }
+
+    private void ResetForm()
+    {
+        model = new ContactFormModel();
+        isSubmitted = false;
+    }
+
+    public class ContactFormModel
+    {
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Full Name is required.")]
+        public string Name { get; set; } = string.Empty;
+
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Work Email is required.")]
+        [System.ComponentModel.DataAnnotations.EmailAddress(ErrorMessage = "Please enter a valid email address.")]
+        public string Email { get; set; } = string.Empty;
+
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Company Name is required.")]
+        public string Company { get; set; } = string.Empty;
+
+        public string Phone { get; set; } = string.Empty;
+
+        [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Please tell us how we can help.")]
+        [System.ComponentModel.DataAnnotations.StringLength(2000, MinimumLength = 10, ErrorMessage = "Message must be between 10 and 2000 characters.")]
+        public string Message { get; set; } = string.Empty;
+    }
+}
