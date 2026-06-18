@@ -177,8 +177,33 @@
         }
     }
 
-    .dialog-backdrop-transparent {
-        background-color: transparent !important;
+    /* Backdrop animations specific to this dialog */
+    .mud-dialog-container:has(.contact-dialog-wrapper) .mud-overlay {
+        animation: fadeInBackdrop 0.4s ease forwards;
+        transition: none !important;
+    }
+
+    .mud-dialog-container:has(.dialog-closing) .mud-overlay {
+        animation: fadeOutBackdrop 0.4s ease forwards !important;
+        transition: none !important;
+    }
+
+    @@keyframes fadeInBackdrop {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @@keyframes fadeOutBackdrop {
+        from {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
     }
 
     .mud-dialog-content {
