@@ -1,3 +1,6 @@
+@inject IDialogService DialogService
+@rendermode InteractiveServer
+
 <section class="py-16" style="background-color: #EFF1F3;">
     <MudContainer MaxWidth="MaxWidth.Large">
         <MudPaper Elevation="0" Class="pa-8 pa-md-12 rounded-xl relative overflow-hidden" Style="background-color: #122656; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);">
@@ -13,11 +16,11 @@
                         We want to help you succeed.
                     </MudText>
                     <MudText Typo="Typo.body1" Style="font-family: 'Figtree', sans-serif; color: #CBD5E1; font-size: 1.125rem; line-height: 1.8; max-width: 800px;">
-                        Get in touch today to learn more about how our customized IT solutions and comprehensive HRIS can seamlessly integrate into your growing business. Let us help you ensure efficiency, reduce manual labor, and achieve sustainable success for years to come.
+                        Get in touch today to learn how our customized IT solutions and HRIS can seamlessly integrate into your business to streamline operations and drive efficiency.
                     </MudText>
                 </div>
                 <div>
-                    <MudButton Variant="Variant.Filled" Size="Size.Large" Style="background-color: #ffffff; color: #122656; font-family: 'Figtree', sans-serif; font-weight: 600; border-radius: 8px; text-transform: none; padding: 14px 40px; box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.1); white-space: nowrap;" Href="/contact-us">
+                    <MudButton OnClick="OpenContactDialog" Variant="Variant.Filled" Size="Size.Large" Style="background-color: #ffffff; color: #122656; font-family: 'Figtree', sans-serif; font-weight: 600; border-radius: 8px; text-transform: none; padding: 14px 40px; box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.1); white-space: nowrap;">
                         Contact Us
                     </MudButton>
                 </div>
@@ -25,3 +28,17 @@
         </MudPaper>
     </MudContainer>
 </section>
+
+@code {
+    private void OpenContactDialog()
+    {
+        var options = new DialogOptions 
+        { 
+            FullScreen = true, 
+            CloseButton = false, 
+            NoHeader = true, 
+            CloseOnEscapeKey = false
+        };
+        _ = DialogService.ShowAsync<ContactDialog>("", options);
+    }
+}
