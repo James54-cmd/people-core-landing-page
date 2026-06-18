@@ -1199,3 +1199,115 @@ body, .mud-typography-body1, .mud-typography-body2, .mud-typography-button {
 .mud-layout:has(.saas-page) .nav-logo {
     filter: brightness(0) invert(1);
 }
+
+/* ---- Mobile hamburger + menu ---- */
+.nav-hamburger {
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+    color: #122656;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, color 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.nav-hamburger:hover,
+.nav-hamburger:focus-visible {
+    background: rgba(18, 38, 86, 0.08);
+    outline: none;
+}
+
+.mud-layout:has(.saas-page) .nav-hamburger {
+    color: #ffffff;
+}
+
+.mud-layout:has(.saas-page) .nav-hamburger:hover,
+.mud-layout:has(.saas-page) .nav-hamburger:focus-visible {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.nav-mobile-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 20, 45, 0.35);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.nav-mobile-backdrop.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.nav-mobile-menu {
+    position: fixed;
+    top: 104px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-12px);
+    width: calc(100% - 48px);
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.9);
+    -webkit-backdrop-filter: blur(21px) saturate(200%);
+    backdrop-filter: blur(21px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+                visibility 0.28s;
+}
+
+.nav-mobile-menu.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+.mud-layout:has(.saas-page) .nav-mobile-menu {
+    background: rgba(18, 38, 86, 0.92);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+.nav-mobile-link {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #122656;
+    text-decoration: none;
+    padding: 14px 16px;
+    border-radius: 10px;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nav-mobile-link:hover {
+    background: rgba(30, 159, 224, 0.1);
+    color: #1E9FE0;
+}
+
+.mud-layout:has(.saas-page) .nav-mobile-link {
+    color: #ffffff;
+}
+
+.mud-layout:has(.saas-page) .nav-mobile-link:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #1E9FE0;
+}

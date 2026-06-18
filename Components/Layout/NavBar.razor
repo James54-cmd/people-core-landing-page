@@ -15,5 +15,25 @@
 
     <MudSpacer />
     <MudSpacer />
-    <MudIconButton Icon="@Icons.Material.Filled.Menu" Style="color: white;" Edge="Edge.End" Class="d-flex d-md-none adaptive-blend" />
+
+    <button type="button" class="nav-hamburger d-flex d-md-none" @onclick="ToggleMenu"
+            aria-label="Toggle navigation menu" aria-expanded="@(_menuOpen ? "true" : "false")">
+        <MudIcon Icon="@(_menuOpen ? Icons.Material.Filled.Close : Icons.Material.Filled.Menu)" Color="Color.Inherit" />
+    </button>
 </MudPaper>
+
+<!-- Mobile menu -->
+<div class="nav-mobile-backdrop d-md-none @(_menuOpen ? "open" : "")" @onclick="CloseMenu"></div>
+
+<nav class="nav-mobile-menu d-md-none @(_menuOpen ? "open" : "")">
+    <a href="/services" class="nav-mobile-link" @onclick="CloseMenu">Services</a>
+    <a href="/saas" class="nav-mobile-link" @onclick="CloseMenu">Software as a Service</a>
+    <a href="/contact" class="nav-mobile-link" @onclick="CloseMenu">Contact Us</a>
+</nav>
+
+@code {
+    private bool _menuOpen;
+
+    private void ToggleMenu() => _menuOpen = !_menuOpen;
+    private void CloseMenu() => _menuOpen = false;
+}
