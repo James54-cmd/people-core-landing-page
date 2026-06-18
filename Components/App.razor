@@ -26,6 +26,27 @@
     <script src="js/gradient-shader.js"></script>
     <script src="_framework/blazor.web.js"></script>
     <script src="_content/MudBlazor/MudBlazor.min.js"></script>
+    <script>
+        Blazor.addEventListener('enhancedload', () => {
+            // Unhide the navbar on page navigation
+            const navbar = document.querySelector('.custom-nav');
+            if (navbar) {
+                navbar.classList.remove('nav-hidden');
+            }
+            window.lastScrollY = 0;
+
+            // Handle hash anchors or scroll to top
+            if (window.location.hash) {
+                const id = decodeURIComponent(window.location.hash.substring(1));
+                const element = document.getElementById(id);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'instant' });
+                    return;
+                }
+            }
+            window.scrollTo({ top: 0, behavior: 'instant' });
+        });
+    </script>
 </body>
 
 </html>

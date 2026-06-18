@@ -1,4 +1,9 @@
 window.initProcessScrollObserver = (dotnetHelper, elementsSelector) => {
+    // If there was a previous observer, clean it up first
+    if (window._processScrollCleanup) {
+        window._processScrollCleanup();
+    }
+
     const elements = document.querySelectorAll(elementsSelector);
     if (!elements || elements.length === 0) return;
 
@@ -9,6 +14,13 @@ window.initProcessScrollObserver = (dotnetHelper, elementsSelector) => {
         window._currentActiveStep = -1;
 
         const updateProgress = () => {
+            // Self-cleanup if the elements are no longer in the DOM
+            if (!document.body.contains(elements[0])) {
+                window.removeEventListener('scroll', updateProgress);
+                window.removeEventListener('resize', updateProgress);
+                return;
+            }
+
             const firstElement = elements[0];
             const lastElement = elements[elements.length - 1];
             
@@ -51,6 +63,12 @@ window.initProcessScrollObserver = (dotnetHelper, elementsSelector) => {
 
         window.addEventListener('scroll', updateProgress, { passive: true });
         window.addEventListener('resize', updateProgress, { passive: true });
+        
+        window._processScrollCleanup = () => {
+            window.removeEventListener('scroll', updateProgress);
+            window.removeEventListener('resize', updateProgress);
+        };
+
         updateProgress();
     }
 };
