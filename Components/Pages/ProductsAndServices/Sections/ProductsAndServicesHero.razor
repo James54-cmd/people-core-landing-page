@@ -1,17 +1,38 @@
-<section class="ps-hero pb-16 pb-md-24 relative overflow-hidden" style="background: linear-gradient(135deg, #f8faff 0%, #eef3ff 100%); padding-top: 160px; min-height: 400px; display: flex; align-items: center;">
+<section class="ps-hero pb-16 pb-md-24 relative overflow-hidden" style="background-color: #f8fafc; padding-top: 160px; min-height: 500px; display: flex; align-items: center; isolation: isolate;">
+    <!-- Abstract mesh gradient background -->
+    <div style="position: absolute; inset: 0; z-index: -1; overflow: hidden;">
+        <div style="position: absolute; top: -10%; left: -10%; width: 50%; height: 50%; background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%); filter: blur(60px);"></div>
+        <div style="position: absolute; bottom: -20%; right: -10%; width: 60%; height: 60%; background: radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%); filter: blur(60px);"></div>
+        <div style="position: absolute; top: 20%; right: 20%; width: 30%; height: 30%; background: radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 70%); filter: blur(60px);"></div>
+    </div>
+
     <MudContainer MaxWidth="MaxWidth.Large" Class="relative z-10 text-center">
-        <MudText Typo="Typo.h1" Style="font-family: 'Figtree', sans-serif; font-weight: 800; color: #111928; font-size: 3.5rem; line-height: 1.2; letter-spacing: -0.02em;" Class="mb-4">
-            PEOPLECORE HRIS
+        <!-- Badge -->
+        <div class="mb-8">
+            <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; font-weight: 700; color: #2563EB; letter-spacing: 0.05em; text-transform: uppercase;">
+                Intelligent IT Solutions
+            </MudText>
+        </div>
+
+        <!-- Main Heading -->
+        <MudText Typo="Typo.h1" Style="font-family: 'Figtree', sans-serif; font-weight: 800; color: #0f172a; font-size: clamp(3rem, 5vw, 4.5rem); line-height: 1.1; letter-spacing: -0.03em;" Class="mb-6">
+            PEOPLECORE <span style="color: #3B82F6; position: relative; display: inline-block;">HRIS
+                <svg width="100%" height="16" viewBox="0 0 100 16" preserveAspectRatio="none" style="position: absolute; bottom: -4px; left: 0; z-index: -1;">
+                    <path d="M0,12 Q50,0 100,12" stroke="#DBEAFE" stroke-width="8" fill="none" stroke-linecap="round"/>
+                </svg>
+            </span>
         </MudText>
-        <MudText Typo="Typo.h4" Style="font-family: 'Figtree', sans-serif; font-weight: 600; color: #3B82F6; margin-bottom: 1.5rem;">
-            Intelligent IT Solutions
+        
+        <!-- Description -->
+        <MudText Typo="Typo.h5" Style="font-family: 'Figtree', sans-serif; color: #475569; font-weight: 400; max-width: 700px; margin: 0 auto; line-height: 1.7; font-size: 1.25rem;" Class="mb-10">
+            With a comprehensive range of services, Cycore Technology Solutions Co. Inc can guarantee your technology needs are not just met, but exceeded. We work closely with our clients to create customized plans that are seamlessly integrated, effective, and sustainable for many years to come.
         </MudText>
-        <MudText Typo="Typo.h5" Style="font-family: 'Figtree', sans-serif; color: #4B5563; font-weight: 400; max-width: 800px; margin: 0 auto; line-height: 1.6;" Class="mb-8">
-            With a comprehensive range of services, Cycore Technology Solutions Co. Inc can guarantee your technology needs are not just met, but exceeded. We work closely with our clients to create customized plans that are seamlessly integrated, effective, and sustainable for many years to come. Reach out today to see how we can help.
-        </MudText>
+
+        <!-- CTA Buttons -->
+        <div class="d-flex justify-center gap-4 flex-wrap">
+            <MudButton Variant="Variant.Filled" Size="Size.Large" Style="background-color: #3B82F6; color: white; font-family: 'Figtree', sans-serif; font-weight: 600; border-radius: 8px; text-transform: none; padding: 14px 36px; box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);" Href="/contact-us">
+                Reach Out Today
+            </MudButton>
+        </div>
     </MudContainer>
-    
-    <!-- Decorative background elements -->
-    <div style="position: absolute; top: -100px; left: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, rgba(255,255,255,0) 70%); border-radius: 50%;"></div>
-    <div style="position: absolute; bottom: -150px; right: -50px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(16,185,129,0.08) 0%, rgba(255,255,255,0) 70%); border-radius: 50%;"></div>
 </section>
