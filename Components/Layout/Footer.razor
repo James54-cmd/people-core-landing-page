@@ -21,26 +21,26 @@
 
             <!-- Columns Area -->
             <MudItem xs="12" md="8">
-                <MudGrid Spacing="4">
-                    <!-- Product Column -->
-                    <MudItem xs="6" sm="6" md="3" Class="d-flex flex-column">
-                        <MudText Typo="Typo.overline" Style="font-weight: 700; color: #ffffff; letter-spacing: 0.1em; opacity: 0.8;" Class="mb-4">NAV</MudText>
+                <div class="footer-links-container">
+                    <!-- NAV Column -->
+                    <div class="footer-links-col">
+                        <p style="font-weight: 700; color: #ffffff; letter-spacing: 0.1em; opacity: 0.8; font-size: 0.75rem; text-transform: uppercase; margin-bottom: 16px;">NAV</p>
                         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px;">
                             <li><a href="/services" class="footer-link-premium">Services</a></li>
                             <li><a href="/contact" class="footer-link-premium">Contact Us</a></li>
                         </ul>
-                    </MudItem>
+                    </div>
 
                     <!-- Legal Column -->
-                    <MudItem xs="6" sm="6" md="3" Class="d-flex flex-column">
-                        <MudText Typo="Typo.overline" Style="font-weight: 700; color: #ffffff; letter-spacing: 0.1em; opacity: 0.8;" Class="mb-4">LEGAL</MudText>
+                    <div class="footer-links-col">
+                        <p style="font-weight: 700; color: #ffffff; letter-spacing: 0.1em; opacity: 0.8; font-size: 0.75rem; text-transform: uppercase; margin-bottom: 16px;">LEGAL</p>
                         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px;">
                             <li><a href="/privacy-notice" class="footer-link-premium" target="_blank" rel="noopener noreferrer">Privacy Notice</a></li>
                             <li><a href="/privacy-policy" class="footer-link-premium" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
                             <li><a href="/terms-of-service" class="footer-link-premium" target="_blank" rel="noopener noreferrer">Terms of Service</a></li>
                         </ul>
-                    </MudItem>
-                </MudGrid>
+                    </div>
+                </div>
             </MudItem>
         </MudGrid>
 
@@ -71,5 +71,16 @@
     .social-btn:hover {
         color: #ffffff !important;
         background-color: rgba(255,255,255,0.1);
+    }
+
+    .footer-links-container {
+        display: flex;
+        gap: 3rem;
+    }
+
+    @@media (min-width: 960px) {
+        .footer-links-container {
+            justify-content: flex-end;
+        }
     }
 </style>
