@@ -1338,6 +1338,14 @@ body, .mud-typography-body1, .mud-typography-body2, .mud-typography-button {
     }
 }
 
+/* Lock background scroll while the mobile menu is open (mobile/tablet only). */
+@media (max-width: 959px) {
+    html:has(.nav-mobile-menu.open),
+    body:has(.nav-mobile-menu.open) {
+        overflow: hidden;
+    }
+}
+
 /* ============================================================
    Responsive typography — Services page + Contact (page & dialog)
    These areas used MudBlazor's fixed default heading sizes (and a
