@@ -224,6 +224,24 @@ body, .mud-typography-body1, .mud-typography-body2, .mud-typography-button {
     transition: filter 0.3s ease;
 }
 
+.logo-desktop {
+    display: none;
+}
+
+.logo-mobile {
+    display: block;
+}
+
+@media (min-width: 960px) {
+    .logo-desktop {
+        display: block;
+    }
+    .logo-mobile {
+        display: none;
+    }
+}
+
+
 /* Adapt the floating nav + logo to the dark SaaS page only */
 .mud-layout:has(.saas-page) .custom-nav .nav-link-item {
     color: #ffffff !important;
