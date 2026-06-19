@@ -3,53 +3,48 @@
 @implements IAsyncDisposable
 @rendermode InteractiveServer
 
-<section class="differentiators-section py-16 py-md-24" style="background-color: #ffffff;">
-    <MudContainer MaxWidth="MaxWidth.Large">
+<section class="differentiators-section">
+    <div class="container-lg">
         
-        <!-- Gradient Card Container -->
-        <div style="position: relative; border-radius: 32px; overflow: hidden; padding: 4rem 2rem;">
+        <div class="differentiators-card">
             
-            <!-- WebGL Gradient Background -->
-            <canvas id="gradient-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></canvas>
+            <canvas id="gradient-canvas" class="gradient-canvas"></canvas>
             
-            <!-- Content overlay -->
-            <div style="position: relative; z-index: 1; max-width: 1000px; margin: 0 auto;">
+            <div class="content-overlay">
                 
-                <!-- Top: Headline -->
-                <div class="text-center mb-16 framer-animate">
-                    <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; font-weight: 700; color: rgba(255,255,255,0.85); text-transform: uppercase; letter-spacing: 1px;" Class="mb-4">
+                <div class="text-center mb-5 framer-animate">
+                    <h6 class="diff-eyebrow mb-3">
                         The PeopleCore Difference
-                    </MudText>
-                    <MudText Typo="Typo.h2" Style="font-family: 'Gilroy', sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -1px; line-height: 1.1; color: #ffffff;">
+                    </h6>
+                    <h2 class="diff-title">
                         Why we're not just another HR tool
-                    </MudText>
+                    </h2>
                 </div>
 
-                <!-- Bottom: Horizontal Checklist -->
-                <MudGrid Spacing="6" Class="align-start justify-center">
+                <div class="row g-4 align-items-start justify-content-center">
                     @for (int i = 0; i < Differentiators.Count; i++)
                     {
                         var item = Differentiators[i];
-                        <MudItem xs="12" sm="6" md="4" Class="framer-animate fade-in-up" Style="@($"animation-delay: {i * 100}ms;")">
-                            <div class="d-flex align-start gap-3">
-                                <MudIcon Icon="@item.Icon" Style="color: rgba(255,255,255,0.9); font-size: 1.5rem; margin-top: 2px; flex-shrink: 0;" />
+                        <div class="col-12 col-sm-6 col-md-4 framer-animate fade-in-up" style="animation-delay: @(i * 100)ms;">
+                            <div class="d-flex align-items-start gap-3">
+                                <MudIcon Icon="@item.Icon" Class="diff-icon" />
                                 <div>
-                                    <MudText Typo="Typo.subtitle1" Style="font-family: 'Gilroy', sans-serif; font-weight: 700; color: #ffffff; margin-bottom: 4px; font-size: 1.1rem; line-height: 1.2;">
+                                    <h3 class="diff-item-title">
                                         @item.Title
-                                    </MudText>
-                                    <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; color: rgba(255,255,255,0.75); line-height: 1.5; font-size: 0.9rem;">
+                                    </h3>
+                                    <p class="diff-item-desc">
                                         @item.Description
-                                    </MudText>
+                                    </p>
                                 </div>
                             </div>
-                        </MudItem>
+                        </div>
                     }
-                </MudGrid>
+                </div>
 
             </div>
         </div>
 
-    </MudContainer>
+    </div>
 </section>
 
 @code {

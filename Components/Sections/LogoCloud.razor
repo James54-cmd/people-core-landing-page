@@ -3,10 +3,10 @@
 @rendermode InteractiveServer
 
 <section class="logo-cloud-section fade-in-up">
-    <MudContainer MaxWidth="MaxWidth.Large">
-        <MudText Typo="Typo.subtitle1" Align="Align.Center" Style="font-family: 'Figtree', sans-serif; font-weight: 600; color: #424242; letter-spacing: 0.5px;" Class="mb-8">
+    <div class="container-lg">
+        <h5 class="logo-cloud-title text-center mb-4">
             Trusted by leading organizations across industries
-        </MudText>
+        </h5>
 
         <div class="custom-carousel scale-up">
             <!-- Slides -->
@@ -26,20 +26,21 @@
 
             <!-- Navigation Arrows (Hidden on Mobile) -->
             <button class="carousel-arrow carousel-arrow-left" @onclick="PrevSlide">
-                <MudIcon Icon="@Icons.Material.Filled.ChevronLeft" Size="Size.Large" />
+                <MudIcon Icon="@Icons.Material.Filled.ChevronLeft" Class="arrow-icon" />
             </button>
             <button class="carousel-arrow carousel-arrow-right" @onclick="NextSlide">
-                <MudIcon Icon="@Icons.Material.Filled.ChevronRight" Size="Size.Large" />
+                <MudIcon Icon="@Icons.Material.Filled.ChevronRight" Class="arrow-icon" />
             </button>
 
             <!-- Swipe Hint (Mobile Only) -->
             <div class="swipe-hint">
-                <MudIcon Icon="@Icons.Material.Filled.Swipe" Size="Size.Small" />
+                <MudIcon Icon="@Icons.Material.Filled.Swipe" Class="swipe-icon" />
                 <span>Swipe to explore</span>
             </div>
         </div>
-    </MudContainer>
+    </div>
 </section>
+
 
 @code {
     private int activeIndex = 0;

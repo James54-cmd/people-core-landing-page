@@ -1,0 +1,235 @@
+.role-section {
+    background: linear-gradient(135deg, #F7F9FB 0%, #E8F4FB 100%);
+    position: relative;
+    overflow: hidden;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+    .role-section {
+        padding-top: 8rem;
+        padding-bottom: 8rem;
+    }
+}
+
+.role-bg-shape {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    opacity: 0.05;
+    pointer-events: none;
+    filter: blur(80px);
+}
+
+.role-bg-shape-top-left {
+    top: -10%;
+    left: -5%;
+    background-color: #1E9FE0;
+}
+
+.role-bg-shape-bottom-right {
+    bottom: -10%;
+    right: -5%;
+    background-color: #122656;
+}
+
+.role-subtitle {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 700;
+    color: #1E9FE0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.875rem;
+}
+
+.role-title {
+    font-family: 'Gilroy', sans-serif;
+    font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+}
+
+.role-header-desc {
+    font-family: 'Figtree', sans-serif;
+    color: #4b5563;
+    font-size: 1.15rem;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+.role-card {
+    position: relative;
+    background: #111827;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    height: 520px !important;
+}
+
+.role-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px -15px rgba(18, 38, 86, 0.35);
+}
+
+.role-card-image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.role-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.role-card:hover .role-card-image {
+    transform: scale(1.05);
+}
+
+.role-card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    background: linear-gradient(to top, 
+        rgba(17, 24, 39, 0.95) 0%, 
+        rgba(17, 24, 39, 0.85) 45%, 
+        rgba(17, 24, 39, 0.3) 75%, 
+        rgba(17, 24, 39, 0) 100%
+    );
+    pointer-events: none;
+    z-index: 2;
+}
+
+.role-badge {
+    display: inline-block;
+    align-self: flex-start;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-family: 'Figtree', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+    text-transform: uppercase;
+    z-index: 2;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    overflow: hidden;
+    transform: translateZ(0);
+    margin-bottom: 16px;
+}
+
+.badge-admin {
+    background-color: rgba(30, 159, 224, 0.4);
+}
+
+.badge-manager {
+    background-color: rgba(18, 38, 86, 0.65);
+}
+
+.badge-employee {
+    background-color: rgba(16, 185, 129, 0.45);
+}
+
+.role-icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.box-admin {
+    background-color: rgba(30, 159, 224, 0.15);
+}
+
+.box-manager {
+    background-color: rgba(18, 38, 86, 0.2);
+}
+
+.box-employee {
+    background-color: rgba(16, 185, 129, 0.15);
+}
+
+.role-card-content {
+    position: relative;
+    margin-top: auto;
+    height: 390px !important;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+.role-card-desc {
+    height: 85px;
+    margin-bottom: 24px !important;
+    font-family: 'Figtree', sans-serif;
+    color: #e5e7eb;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.role-card-title {
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 800;
+    color: #ffffff;
+    font-size: 1.25rem;
+}
+
+.role-benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.role-benefits-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Figtree', sans-serif;
+    font-size: 0.95rem;
+    color: #f3f4f6;
+    font-weight: 500;
+}
+
+::deep .role-card-icon {
+    font-size: 1.5rem !important;
+}
+
+::deep .box-admin .role-card-icon {
+    color: #1E9FE0 !important;
+}
+
+::deep .box-manager .role-card-icon {
+    color: #122656 !important;
+}
+
+::deep .box-employee .role-card-icon {
+    color: #10B981 !important;
+}
+
+::deep .role-benefit-check {
+    color: #10B981 !important;
+    font-size: 1.2rem !important;
+    flex-shrink: 0;
+}

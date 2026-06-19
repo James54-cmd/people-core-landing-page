@@ -1,0 +1,55 @@
+.what-sets-us-apart-section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.eyebrow-text {
+    color: #0B5C8C;
+    letter-spacing: 1px;
+}
+
+.title-text {
+    font-family: 'Figtree', sans-serif !important;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+}
+
+.desc-text {
+    font-family: 'Figtree', sans-serif !important;
+    max-width: 900px;
+    line-height: 1.7;
+}
+
+.image-container {
+    border-radius: 2px;
+    margin-bottom: 5rem;
+}
+
+.hero-image {
+    max-height: 600px;
+}
+
+.feature-card {
+    background: linear-gradient(to top, #f4f8fb 0%, #ffffff 100%);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.02);
+}
+
+.feature-title {
+    font-family: 'Figtree', sans-serif !important;
+}
+
+.feature-desc {
+    color: #475569;
+    line-height: 1.6;
+}
+
+.object-position-center {
+    object-position: center;
+}
+
+.delay-500 {
+    animation-delay: 500ms;
+}
+
+.delay-600 {
+    animation-delay: 600ms;
+}

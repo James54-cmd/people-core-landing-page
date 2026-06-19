@@ -1,62 +1,60 @@
 @using MudBlazor
 
-<section class="role-section py-20 py-md-32" style="background: linear-gradient(135deg, #F7F9FB 0%, #E8F4FB 100%); position: relative; overflow: hidden;">
-    <!-- Background subtle shapes for premium design -->
-    <div class="absolute" style="top: -10%; left: -5%; opacity: 0.05; pointer-events: none; width: 400px; height: 400px; border-radius: 50%; background: #1E9FE0; filter: blur(80px);"></div>
-    <div class="absolute" style="bottom: -10%; right: -5%; opacity: 0.05; pointer-events: none; width: 400px; height: 400px; border-radius: 50%; background: #122656; filter: blur(80px);"></div>
+<section class="role-section">
+    <div class="role-bg-shape role-bg-shape-top-left"></div>
+    <div class="role-bg-shape role-bg-shape-bottom-right"></div>
 
-    <MudContainer MaxWidth="MaxWidth.Large">
-        <!-- Section Header -->
-        <div class="text-center mb-16">
-            <MudText Typo="Typo.subtitle2" Style="font-family: 'Figtree', sans-serif; font-weight: 700; color: #1E9FE0; text-transform: uppercase; letter-spacing: 2px;" Class="mb-3 fade-in-up">
+    <div class="container-lg">
+        <div class="text-center mb-5">
+            <h6 class="role-subtitle mb-3 fade-in-up">
                 Made for Every Role
-            </MudText>
-            <MudText Typo="Typo.h2" Color="Color.Dark" Style="font-family: 'Gilroy', sans-serif; font-size: clamp(2.25rem, 4.5vw, 3.5rem); font-weight: 800; letter-spacing: -1.5px; line-height: 1.1;" Class="mb-4 fade-in-up delay-100">
+            </h6>
+            <h2 class="role-title text-dark mb-4 fade-in-up delay-100">
                 Why teams choose PeopleCore
-            </MudText>
-            <MudText Typo="Typo.body1" Style="font-family: 'Figtree', sans-serif; color: #4b5563; font-size: 1.15rem; max-width: 600px; margin: 0 auto; line-height: 1.6;" Class="fade-in-up delay-200">
+            </h2>
+            <p class="role-header-desc mx-auto fade-in-up delay-200">
                 A unified platform engineered to serve administrators, managers, and employees with tailored workflows.
-            </MudText>
+            </p>
         </div>
 
         <!-- 3-Column Grid for Roles -->
-        <MudGrid Spacing="6" Class="justify-center">
+        <div class="row g-4 justify-content-center">
             @foreach (var role in Roles)
             {
-                <MudItem xs="12" sm="6" md="4" Class="@($"framer-animate {role.DelayClass}")">
+                <div class="col-12 col-sm-6 col-md-4 framer-animate @role.DelayClass">
                     <div class="role-card h-100">
                         <div class="role-card-image-wrapper">
                             <img src="@role.ImagePath" alt="@role.RoleName" class="role-card-image" style="object-position: @role.ObjectPosition;" />
                             <div class="role-card-overlay"></div>
                         </div>
-                        <div class="role-card-content pa-8">
+                        <div class="role-card-content">
                             <span class="role-badge @role.BadgeClass">@role.RoleName</span>
-                            <div class="d-flex align-center gap-3 mb-4">
+                            <div class="d-flex align-items-center gap-3 mb-4">
                                 <div class="role-icon-box @role.IconBoxClass">
-                                    <MudIcon Icon="@role.Icon" Style="@($"color: {role.IconColor}; font-size: 1.5rem;")" />
+                                    <MudIcon Icon="@role.Icon" Class="role-card-icon" />
                                 </div>
-                                <MudText Typo="Typo.h5" Style="font-family: 'Gilroy', sans-serif; font-weight: 800; color: #ffffff;">
+                                <h3 class="role-card-title m-0">
                                     @role.Title
-                                </MudText>
+                                </h3>
                             </div>
-                            <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; color: #e5e7eb; line-height: 1.6; font-size: 0.95rem;" Class="role-card-desc">
+                            <p class="role-card-desc">
                                 @role.Description
-                            </MudText>
+                            </p>
                             <ul class="role-benefits-list">
                                 @foreach (var benefit in role.Benefits)
                                 {
                                     <li>
-                                        <MudIcon Icon="@Icons.Material.Filled.Check" Style="color: #10B981; font-size: 1.2rem; flex-shrink: 0;" />
+                                        <MudIcon Icon="@Icons.Material.Filled.Check" Class="role-benefit-check" />
                                         <span>@benefit</span>
                                     </li>
                                 }
                             </ul>
                         </div>
                     </div>
-                </MudItem>
+                </div>
             }
-        </MudGrid>
-    </MudContainer>
+        </div>
+    </div>
 </section>
 
 

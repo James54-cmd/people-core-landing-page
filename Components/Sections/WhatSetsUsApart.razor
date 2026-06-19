@@ -1,66 +1,60 @@
-@using MudBlazor
-
-<section class="what-sets-us-apart-section pt-16 pb-16" style="background-color: #ffffff; border-top: 1px solid rgba(0,0,0,0.05); border-bottom: 1px solid rgba(0,0,0,0.05);">
-    <MudContainer MaxWidth="MaxWidth.Large">
-        <MudGrid Spacing="6" Class="mb-12">
-            <!-- Eyebrow Column -->
-            <MudItem xs="12" md="3" Class="fade-in-up">
-                <MudText Typo="Typo.subtitle2" Style="color: #0B5C8C; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-top: 0.5rem;">
+<section class="what-sets-us-apart-section bg-white border-top border-bottom">
+    <div class="container-lg">
+        <div class="row g-4 mb-5">
+            <div class="col-12 col-md-3 fade-in-up">
+                <h6 class="eyebrow-text fw-bold text-uppercase mt-2 fs-6">
                     WHAT SETS US APART
-                </MudText>
-            </MudItem>
+                </h6>
+            </div>
 
-            <!-- Content Column -->
-            <MudItem xs="12" md="9">
-                <MudText Typo="Typo.h2" Color="Color.Dark" Style="font-family: 'Figtree', sans-serif !important; font-style: italic; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem;" Class="fade-in-up delay-100">
+            <div class="col-12 col-md-9">
+                <h2 class="title-text text-dark fst-italic fw-bold lh-sm mb-4 fade-in-up delay-100">
                     Efficient. Secure. Reliable.
-                </MudText>
+                </h2>
                 
-                <MudText Typo="Typo.body1" Style="font-family: 'Figtree', sans-serif !important; font-size: 1.125rem; line-height: 1.7; max-width: 900px;" Class="fade-in-up delay-200">
+                <p class="desc-text fs-6 fade-in-up delay-200">
                     Cycore Technology Solutions is a premier Philippine-based IT provider serving government and private enterprises. We take pride in our service flexibility and our experienced team of consultants and specialists, ensuring the timely delivery of superior, reliable solutions to drive your success.
-                </MudText>
-            </MudItem>
-        </MudGrid>
-
-        <!-- Image -->
-        <div class="fade-in-up delay-300" style="width: 100%; border-radius: 2px; overflow: hidden; box-shadow: 0 24px 48px rgba(0,0,0,0.08); margin-bottom: 5rem;">
-            <img src="image/bg/what-set-us-apart.jpg" alt="What Sets Us Apart" style="width: 100%; height: auto; display: block; object-fit: cover; max-height: 600px; object-position: center;" />
+                </p>
+            </div>
         </div>
 
-        <!-- Features Grid -->
-        <MudGrid Spacing="6">
-            <MudItem xs="12" md="4" Class="fade-in-up" Style="animation-delay: 400ms;">
-                <div style="background: linear-gradient(to top, #f4f8fb 0%, #ffffff 100%); border-radius: 16px; padding: 2.5rem; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02);">
-                    <MudText Typo="Typo.h4" Color="Color.Dark" Style="font-family: 'Figtree', sans-serif !important; font-weight: 600; margin-bottom: 1rem;">
+        <div class="image-container w-100 overflow-hidden shadow-lg fade-in-up delay-300">
+            <img src="image/bg/what-set-us-apart.jpg" alt="What Sets Us Apart" class="hero-image img-fluid d-block w-100 object-fit-cover object-position-center" />
+        </div>
+
+        <div class="row g-4">
+            <div class="col-12 col-md-4 fade-in-up delay-400">
+                <div class="feature-card rounded-4 p-4 p-md-5 h-100">
+                    <h4 class="feature-title text-dark fw-semibold mb-3">
                         Efficient
-                    </MudText>
-                    <MudText Typo="Typo.body2" Style="color: #475569; font-size: 1rem; line-height: 1.6;">
+                    </h4>
+                    <p class="feature-desc fs-6 mb-0">
                         Ensuring timely delivery of superior services through our decades of experience and specialized IT competency.
-                    </MudText>
+                    </p>
                 </div>
-            </MudItem>
+            </div>
             
-            <MudItem xs="12" md="4" Class="fade-in-up" Style="animation-delay: 500ms;">
-                <div style="background: linear-gradient(to top, #f4f8fb 0%, #ffffff 100%); border-radius: 16px; padding: 2.5rem; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02);">
-                    <MudText Typo="Typo.h4" Color="Color.Dark" Style="font-family: 'Figtree', sans-serif !important; font-weight: 600; margin-bottom: 1rem;">
+            <div class="col-12 col-md-4 fade-in-up delay-500">
+                <div class="feature-card rounded-4 p-4 p-md-5 h-100">
+                    <h4 class="feature-title text-dark fw-semibold mb-3">
                         Secure
-                    </MudText>
-                    <MudText Typo="Typo.body2" Style="color: #475569; font-size: 1rem; line-height: 1.6;">
+                    </h4>
+                    <p class="feature-desc fs-6 mb-0">
                         Providing robust and compliant solutions trusted by Government, Private, and Foreign-owned enterprises.
-                    </MudText>
+                    </p>
                 </div>
-            </MudItem>
+            </div>
             
-            <MudItem xs="12" md="4" Class="fade-in-up" Style="animation-delay: 600ms;">
-                <div style="background: linear-gradient(to top, #f4f8fb 0%, #ffffff 100%); border-radius: 16px; padding: 2.5rem; height: 100%; box-shadow: 0 15px 35px rgba(0,0,0,0.02);">
-                    <MudText Typo="Typo.h4" Color="Color.Dark" Style="font-family: 'Figtree', sans-serif !important; font-weight: 600; margin-bottom: 1rem;">
+            <div class="col-12 col-md-4 fade-in-up delay-600">
+                <div class="feature-card rounded-4 p-4 p-md-5 h-100">
+                    <h4 class="feature-title text-dark fw-semibold mb-3">
                         Reliable
-                    </MudText>
-                    <MudText Typo="Typo.body2" Style="color: #475569; font-size: 1rem; line-height: 1.6;">
+                    </h4>
+                    <p class="feature-desc fs-6 mb-0">
                         Your excellent partner for service flexibility, backed by a dedicated team of consultants and technical specialists.
-                    </MudText>
+                    </p>
                 </div>
-            </MudItem>
-        </MudGrid>
-    </MudContainer>
+            </div>
+        </div>
+    </div>
 </section>

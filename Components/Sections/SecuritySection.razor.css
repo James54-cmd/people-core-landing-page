@@ -1,0 +1,94 @@
+.security-section {
+    background-color: #ffffff;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+    .security-section {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
+}
+
+.security-subtitle {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 700;
+    color: #1E9FE0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.875rem;
+}
+
+.security-title {
+    font-family: 'Gilroy', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+}
+
+.security-desc {
+    font-family: 'Figtree', sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #555;
+    max-width: 700px;
+}
+
+.security-card {
+    background: transparent;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 2rem;
+    height: 100%;
+    transition: border-color 0.3s ease;
+}
+
+.security-card:hover {
+    border-color: #94a3b8;
+}
+
+.security-feature-title {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 700;
+    color: #0b1121;
+    font-size: 1.1rem;
+}
+
+.security-feature-desc {
+    font-family: 'Figtree', sans-serif;
+    color: #64748b;
+    line-height: 1.5;
+    font-size: 0.9rem;
+}
+
+.btn-security {
+    border-radius: 8px;
+    padding: 12px 32px;
+    font-weight: 600;
+    font-family: 'Figtree', sans-serif;
+    background-color: #1E9FE0;
+    color: #ffffff;
+    text-transform: none;
+    border: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-security:hover {
+    background-color: #158bc5;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+::deep .security-shield-icon {
+    font-size: 4rem !important;
+    color: #1E9FE0;
+}
+
+::deep .security-feature-icon {
+    font-size: 2.5rem !important;
+    color: #1E9FE0;
+}

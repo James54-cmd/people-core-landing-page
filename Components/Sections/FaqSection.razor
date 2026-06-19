@@ -1,49 +1,46 @@
 @using MudBlazor
 @rendermode InteractiveServer
 
-<section class="faq-section py-16 py-md-24" style="background-color: #f8fafc;">
-    <MudContainer MaxWidth="MaxWidth.Large">
-        <MudGrid Spacing="6" Class="align-start">
+<section class="faq-section">
+    <div class="container-lg">
+        <div class="row g-4 align-items-start">
             
             <!-- Left: Headline -->
-            <MudItem xs="12" md="5" Class="framer-animate">
-                <MudText Typo="Typo.h2" Style="font-family: 'Gilroy', sans-serif; font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 800; color: #0b1121; line-height: 1.1; letter-spacing: -1px; position: sticky; top: 120px;">
+            <div class="col-12 col-md-5 framer-animate">
+                <h2 class="faq-headline">
                     All your questions,<br />answered
-                </MudText>
-            </MudItem>
+                </h2>
+            </div>
 
             <!-- Right: Accordion -->
-            <MudItem xs="12" md="7" Class="framer-animate delay-200">
-                <MudExpansionPanels Elevation="0" Style="background-color: transparent;" Class="faq-panels-container">
+            <div class="col-12 col-md-7 framer-animate delay-200">
+                <div class="faq-panels-container">
                     
                     @foreach(var item in FaqItems)
                     {
-                        <MudExpansionPanel Class="faq-panel" HideIcon="true" @bind-Expanded="item.IsExpanded">
-                            <TitleContent>
-                                <div class="d-flex align-center justify-space-between w-100 py-2">
-                                    <div class="d-flex align-center gap-4">
-                                        <div class="faq-number">@item.Number</div>
-                                        <MudText Typo="Typo.h6" Style="font-family: 'Figtree', sans-serif; font-weight: 600; color: #0b1121; font-size: 1.125rem;">
-                                            @item.Question
-                                        </MudText>
-                                    </div>
-                                    <MudIcon Icon="@Icons.Material.Filled.Add" Class="@($"faq-custom-icon {(item.IsExpanded ? "rotated" : "")}")" Style="color: #64748b; font-size: 1.5rem;" />
+                        <div class="faq-panel">
+                            <button class="faq-button" type="button" @onclick="() => item.IsExpanded = !item.IsExpanded">
+                                <div class="d-flex align-items-center gap-4">
+                                    <div class="faq-number">@item.Number</div>
+                                    <span class="faq-question">@item.Question</span>
                                 </div>
-                            </TitleContent>
-                            <ChildContent>
-                                <MudText Typo="Typo.body1" Style="font-family: 'Figtree', sans-serif; color: #64748b; line-height: 1.6; padding-left: 60px; padding-bottom: 24px; font-size: 1rem;">
+                                <MudIcon Icon="@Icons.Material.Filled.Add" Class="@($"faq-custom-icon {(item.IsExpanded ? "rotated" : "")}")" />
+                            </button>
+                            <div class="faq-answer-wrapper @(item.IsExpanded ? "show" : "")">
+                                <p class="faq-answer">
                                     @item.Answer
-                                </MudText>
-                            </ChildContent>
-                        </MudExpansionPanel>
+                                </p>
+                            </div>
+                        </div>
                     }
 
-                </MudExpansionPanels>
-            </MudItem>
+                </div>
+            </div>
             
-        </MudGrid>
-    </MudContainer>
+        </div>
+    </div>
 </section>
+
 
 @code {
     public class FaqItem 

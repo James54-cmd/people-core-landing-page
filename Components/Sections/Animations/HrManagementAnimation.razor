@@ -6,64 +6,55 @@
 
     <div class="hrm-canvas">
 
-        <!-- Employee profile header -->
+        <!-- Profile header -->
         <div class="hrm-profile">
             <div class="hrm-avatar">
-                <MudIcon Icon="@Icons.Material.Filled.Person" Style="font-size: 1.4rem; color: #ffffff;" />
+                <MudIcon Icon="@Icons.Material.Filled.Person" Class="hrm-profile-icon" />
             </div>
             <div class="hrm-profile-info">
                 <span class="hrm-name">Jane Doe</span>
-                <span class="hrm-meta">EMP-2024 · People Ops</span>
+                <span class="hrm-meta">Active Employee · Engineering</span>
             </div>
-            <div class="hrm-status">
-                <span class="hrm-status-dot"></span>
-                Active
-            </div>
+            <div class="hrm-status"><span class="hrm-status-dot"></span>Active</div>
         </div>
 
-        <!-- Record categories -->
+        <!-- Category tiles -->
         <div class="hrm-records">
             <div class="hrm-tile tile-1">
                 <div class="hrm-tile-icon">
-                    <MudIcon Icon="@Icons.Material.Filled.FolderShared" Style="font-size: 1.1rem;" />
+                    <MudIcon Icon="@Icons.Material.Filled.FolderShared" Class="hrm-folder-icon" />
                 </div>
-                <span class="hrm-tile-label">201 File</span>
-                <div class="hrm-tile-check">
-                    <MudIcon Icon="@Icons.Material.Filled.Check" Style="font-size: 0.7rem; color: #ffffff;" />
-                </div>
+                <span class="hrm-tile-label">201 Files</span>
+                <div class="hrm-tile-check"><MudIcon Icon="@Icons.Material.Filled.Check" Class="hrm-check-icon" /></div>
             </div>
             <div class="hrm-tile tile-2">
                 <div class="hrm-tile-icon">
-                    <MudIcon Icon="@Icons.Material.Filled.Description" Style="font-size: 1.1rem;" />
+                    <MudIcon Icon="@Icons.Material.Filled.Description" Class="hrm-desc-icon" />
                 </div>
                 <span class="hrm-tile-label">Contracts</span>
-                <div class="hrm-tile-check">
-                    <MudIcon Icon="@Icons.Material.Filled.Check" Style="font-size: 0.7rem; color: #ffffff;" />
-                </div>
+                <div class="hrm-tile-check"><MudIcon Icon="@Icons.Material.Filled.Check" Class="hrm-check-icon" /></div>
             </div>
             <div class="hrm-tile tile-3">
                 <div class="hrm-tile-icon">
-                    <MudIcon Icon="@Icons.Material.Filled.AssignmentTurnedIn" Style="font-size: 1.1rem;" />
+                    <MudIcon Icon="@Icons.Material.Filled.AssignmentTurnedIn" Class="hrm-assignment-icon" />
                 </div>
-                <span class="hrm-tile-label">Personnel</span>
-                <div class="hrm-tile-check">
-                    <MudIcon Icon="@Icons.Material.Filled.Check" Style="font-size: 0.7rem; color: #ffffff;" />
-                </div>
+                <span class="hrm-tile-label">Actions</span>
+                <div class="hrm-tile-check"><MudIcon Icon="@Icons.Material.Filled.Check" Class="hrm-check-icon" /></div>
             </div>
         </div>
 
-        <!-- Filing documents -->
-        <div class="hrm-doc doc-1"><MudIcon Icon="@Icons.Material.Filled.InsertDriveFile" Style="font-size: 0.9rem; color: #6366f1;" /></div>
-        <div class="hrm-doc doc-2"><MudIcon Icon="@Icons.Material.Filled.InsertDriveFile" Style="font-size: 0.9rem; color: #6366f1;" /></div>
-        <div class="hrm-doc doc-3"><MudIcon Icon="@Icons.Material.Filled.InsertDriveFile" Style="font-size: 0.9rem; color: #6366f1;" /></div>
+        <!-- Falling documents (filing animation) -->
+        <div class="hrm-doc doc-1"><MudIcon Icon="@Icons.Material.Filled.InsertDriveFile" Class="hrm-doc-icon" /></div>
+        <div class="hrm-doc doc-2"><MudIcon Icon="@Icons.Material.Filled.InsertDriveFile" Class="hrm-doc-icon" /></div>
+        <div class="hrm-doc doc-3"><MudIcon Icon="@Icons.Material.Filled.InsertDriveFile" Class="hrm-doc-icon" /></div>
 
         <!-- Lifecycle timeline -->
         <div class="hrm-timeline">
             <div class="hrm-tl-head">
-                <span class="hrm-tl-title">Employee Lifecycle</span>
+                <span class="hrm-tl-title">Employee Journey</span>
                 <span class="hrm-tl-stage-label">
-                    <span class="st st-1">Hired</span>
-                    <span class="st st-2">Onboarding</span>
+                    <span class="st st-1">Onboarding</span>
+                    <span class="st st-2">Training</span>
                     <span class="st st-3">Promotion</span>
                     <span class="st st-4">Transfer</span>
                     <span class="st st-5">Separation</span>
@@ -80,302 +71,32 @@
             </div>
         </div>
 
-        <!-- Recent activity / audit -->
+        <!-- Recent activity log -->
         <div class="hrm-activity">
             <div class="hrm-act-head">
                 <div class="hrm-act-title">
-                    <MudIcon Icon="@Icons.Material.Filled.History" Style="font-size: 0.95rem; color: #64748b;" />
-                    <span>Recent Activity</span>
+                    <MudIcon Icon="@Icons.Material.Filled.History" Class="hrm-history-icon" />
+                    <span>Recent Personnel Actions</span>
                 </div>
-                <span class="hrm-act-live"><span class="live-dot"></span>Live</span>
+                <div class="hrm-act-live"><span class="live-dot"></span>Live log</div>
             </div>
+            
             <div class="hrm-act-row ar1">
-                <span class="ar-time">09:15</span>
-                <span class="ar-desc">Department updated</span>
-                <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Style="font-size: 0.85rem; color: #10b981;" />
+                <span class="ar-time">10:24</span>
+                <span class="ar-desc">Jane Doe Onboarded successfully</span>
+                <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Class="hrm-checkcircle-icon" />
             </div>
             <div class="hrm-act-row ar2">
-                <span class="ar-time">09:17</span>
-                <span class="ar-desc">Contract renewed</span>
-                <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Style="font-size: 0.85rem; color: #10b981;" />
+                <span class="ar-time">11:15</span>
+                <span class="ar-desc">Completed cybersecurity training</span>
+                <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Class="hrm-checkcircle-icon" />
             </div>
             <div class="hrm-act-row ar3">
-                <span class="ar-time">09:21</span>
-                <span class="ar-desc">Promotion recorded</span>
-                <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Style="font-size: 0.85rem; color: #10b981;" />
+                <span class="ar-time">Yesterday</span>
+                <span class="ar-desc">Contract renewed for 12 months</span>
+                <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Class="hrm-checkcircle-icon" />
             </div>
         </div>
 
     </div>
 </div>
-
-<style>
-    :root {
-        --hrm-duration: 11s;
-        --hrm-indigo: #6366f1;
-        --hrm-blue: #3b82f6;
-        --hrm-green: #10b981;
-        --hrm-ink: #0f172a;
-        --hrm-muted: #64748b;
-        --hrm-line: rgba(15, 23, 42, 0.06);
-    }
-
-    .hrm-container {
-        position: relative; width: 100%; height: 100%; min-height: 540px; border-radius: 24px;
-        background: linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
-        overflow: hidden; display: flex; align-items: center; justify-content: center;
-        font-family: 'Figtree', sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
-    }
-    .hrm-glow {
-        position: absolute; top: -12%; left: 50%; width: 420px; height: 420px;
-        transform: translateX(-50%);
-        background: radial-gradient(circle, rgba(99, 102, 241, 0.10) 0%, rgba(99, 102, 241, 0) 68%);
-        pointer-events: none; z-index: 0;
-    }
-    .grid-bg {
-        position: absolute; inset: 0; pointer-events: none; z-index: 0;
-        background-image: radial-gradient(rgba(15, 23, 42, 0.035) 1.2px, transparent 1.2px);
-        background-size: 26px 26px;
-        -webkit-mask-image: radial-gradient(circle at 50% 45%, #000 55%, transparent 90%);
-        mask-image: radial-gradient(circle at 50% 45%, #000 55%, transparent 90%);
-    }
-    .hrm-canvas {
-        position: relative; width: 100%; height: 100%; max-width: 560px; z-index: 1;
-        animation: canvasFade var(--hrm-duration) cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    }
-    @@keyframes canvasFade {
-        0%, 2% { opacity: 0; transform: scale(0.98); }
-        6%, 94% { opacity: 1; transform: scale(1); }
-        98%, 100% { opacity: 0; transform: scale(0.98); }
-    }
-
-    /* Shared card surface */
-    .hrm-profile, .hrm-tile, .hrm-timeline, .hrm-activity {
-        background: #ffffff;
-        border: 1px solid var(--hrm-line);
-        box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 12px 28px -12px rgba(15, 23, 42, 0.18);
-    }
-
-    /* ---------- Profile header ---------- */
-    .hrm-profile {
-        position: absolute; left: 50%; top: 12%; width: 90%; max-width: 330px;
-        transform: translate(-50%, -50%);
-        display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 18px;
-        animation: profileIn var(--hrm-duration) cubic-bezier(0.16, 1, 0.3, 1) infinite;
-    }
-    .hrm-avatar {
-        width: 44px; height: 44px; flex-shrink: 0; border-radius: 13px;
-        background: linear-gradient(135deg, #6366f1 0%, #3b82f6 100%);
-        display: flex; align-items: center; justify-content: center;
-        box-shadow: 0 6px 16px -4px rgba(79, 70, 229, 0.5);
-    }
-    .hrm-profile-info { display: flex; flex-direction: column; flex-grow: 1; min-width: 0; }
-    .hrm-name { font-size: 0.95rem; font-weight: 800; color: var(--hrm-ink); line-height: 1.2; }
-    .hrm-meta { font-size: 0.72rem; font-weight: 600; color: var(--hrm-muted); margin-top: 1px; }
-    .hrm-status {
-        display: flex; align-items: center; gap: 5px; flex-shrink: 0;
-        background: #ecfdf5; color: #059669; font-size: 0.68rem; font-weight: 800;
-        padding: 4px 9px; border-radius: 999px;
-    }
-    .hrm-status-dot {
-        width: 6px; height: 6px; border-radius: 50%; background: #10b981;
-        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5);
-        animation: statusPulse 2s ease-in-out infinite;
-    }
-    @@keyframes statusPulse {
-        0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
-        50% { box-shadow: 0 0 0 4px rgba(16, 185, 129, 0); }
-    }
-    @@keyframes profileIn {
-        0%, 2% { opacity: 0; transform: translate(-50%, calc(-50% + 14px)) scale(0.96); }
-        7%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-    }
-
-    /* ---------- Record category tiles ---------- */
-    .hrm-records {
-        position: absolute; left: 50%; top: 33%; width: 90%; max-width: 330px;
-        transform: translate(-50%, -50%);
-        display: flex; gap: 10px; z-index: 4;
-    }
-    .hrm-tile {
-        position: relative; flex: 1; display: flex; flex-direction: column; align-items: center;
-        gap: 7px; padding: 12px 6px; border-radius: 16px;
-    }
-    .hrm-tile-icon {
-        width: 34px; height: 34px; border-radius: 10px; background: #f1f5f9; color: #64748b;
-        display: flex; align-items: center; justify-content: center; transition: all 0.3s;
-    }
-    .hrm-tile-label { font-size: 0.68rem; font-weight: 700; color: #334155; white-space: nowrap; }
-    .hrm-tile-check {
-        position: absolute; top: -7px; right: -7px; width: 18px; height: 18px; border-radius: 50%;
-        background: #10b981; display: flex; align-items: center; justify-content: center;
-        box-shadow: 0 4px 10px rgba(16, 185, 129, 0.35); opacity: 0; transform: scale(0);
-    }
-    .tile-1 { animation: tilePop1 var(--hrm-duration) cubic-bezier(0.16, 1, 0.3, 1) infinite; }
-    .tile-2 { animation: tilePop2 var(--hrm-duration) cubic-bezier(0.16, 1, 0.3, 1) infinite; }
-    .tile-3 { animation: tilePop3 var(--hrm-duration) cubic-bezier(0.16, 1, 0.3, 1) infinite; }
-    @@keyframes tilePop1 {
-        0%, 11% { opacity: 0; transform: translateY(12px) scale(0.94); }
-        16%, 25% { opacity: 1; transform: translateY(0) scale(1); border-color: var(--hrm-line); }
-        28%, 100% { opacity: 1; transform: translateY(0) scale(1); border-color: rgba(16, 185, 129, 0.35); box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 12px 26px -14px rgba(16, 185, 129, 0.5); }
-    }
-    @@keyframes tilePop2 {
-        0%, 14% { opacity: 0; transform: translateY(12px) scale(0.94); }
-        19%, 31% { opacity: 1; transform: translateY(0) scale(1); border-color: var(--hrm-line); }
-        34%, 100% { opacity: 1; transform: translateY(0) scale(1); border-color: rgba(16, 185, 129, 0.35); box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 12px 26px -14px rgba(16, 185, 129, 0.5); }
-    }
-    @@keyframes tilePop3 {
-        0%, 17% { opacity: 0; transform: translateY(12px) scale(0.94); }
-        22%, 37% { opacity: 1; transform: translateY(0) scale(1); border-color: var(--hrm-line); }
-        40%, 100% { opacity: 1; transform: translateY(0) scale(1); border-color: rgba(16, 185, 129, 0.35); box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 12px 26px -14px rgba(16, 185, 129, 0.5); }
-    }
-    .tile-1 .hrm-tile-icon { animation: iconFill1 var(--hrm-duration) ease infinite; }
-    .tile-2 .hrm-tile-icon { animation: iconFill2 var(--hrm-duration) ease infinite; }
-    .tile-3 .hrm-tile-icon { animation: iconFill3 var(--hrm-duration) ease infinite; }
-    @@keyframes iconFill1 { 0%, 26% { background: #f1f5f9; color: #64748b; } 30%, 100% { background: #eef2ff; color: var(--hrm-indigo); } }
-    @@keyframes iconFill2 { 0%, 32% { background: #f1f5f9; color: #64748b; } 36%, 100% { background: #eef2ff; color: var(--hrm-indigo); } }
-    @@keyframes iconFill3 { 0%, 38% { background: #f1f5f9; color: #64748b; } 42%, 100% { background: #eef2ff; color: var(--hrm-indigo); } }
-    .tile-1 .hrm-tile-check { animation: checkPop1 var(--hrm-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
-    .tile-2 .hrm-tile-check { animation: checkPop2 var(--hrm-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
-    .tile-3 .hrm-tile-check { animation: checkPop3 var(--hrm-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
-    @@keyframes checkPop1 { 0%, 26% { opacity: 0; transform: scale(0); } 30%, 100% { opacity: 1; transform: scale(1); } }
-    @@keyframes checkPop2 { 0%, 32% { opacity: 0; transform: scale(0); } 36%, 100% { opacity: 1; transform: scale(1); } }
-    @@keyframes checkPop3 { 0%, 38% { opacity: 0; transform: scale(0); } 42%, 100% { opacity: 1; transform: scale(1); } }
-
-    /* ---------- Filing documents ---------- */
-    .hrm-doc {
-        position: absolute; width: 26px; height: 26px; border-radius: 8px; z-index: 10;
-        background: #ffffff; border: 1px solid var(--hrm-line);
-        box-shadow: 0 8px 18px -6px rgba(99, 102, 241, 0.4);
-        display: flex; align-items: center; justify-content: center; opacity: 0;
-    }
-    .doc-1 { animation: fly1 var(--hrm-duration) cubic-bezier(0.5, 0, 0.5, 1) infinite; }
-    .doc-2 { animation: fly2 var(--hrm-duration) cubic-bezier(0.5, 0, 0.5, 1) infinite; }
-    .doc-3 { animation: fly3 var(--hrm-duration) cubic-bezier(0.5, 0, 0.5, 1) infinite; }
-    @@keyframes fly1 {
-        0%, 19% { opacity: 0; left: 50%; top: 18%; transform: translate(-50%, -50%) scale(0.4); }
-        21% { opacity: 1; left: 50%; top: 18%; transform: translate(-50%, -50%) scale(0.95); }
-        25% { opacity: 1; left: 19%; top: 31%; transform: translate(-50%, -50%) scale(0.7); }
-        27%, 100% { opacity: 0; left: 19%; top: 32%; transform: translate(-50%, -50%) scale(0.3); }
-    }
-    @@keyframes fly2 {
-        0%, 25% { opacity: 0; left: 50%; top: 18%; transform: translate(-50%, -50%) scale(0.4); }
-        27% { opacity: 1; left: 50%; top: 18%; transform: translate(-50%, -50%) scale(0.95); }
-        31% { opacity: 1; left: 50%; top: 31%; transform: translate(-50%, -50%) scale(0.7); }
-        33%, 100% { opacity: 0; left: 50%; top: 32%; transform: translate(-50%, -50%) scale(0.3); }
-    }
-    @@keyframes fly3 {
-        0%, 31% { opacity: 0; left: 50%; top: 18%; transform: translate(-50%, -50%) scale(0.4); }
-        33% { opacity: 1; left: 50%; top: 18%; transform: translate(-50%, -50%) scale(0.95); }
-        37% { opacity: 1; left: 81%; top: 31%; transform: translate(-50%, -50%) scale(0.7); }
-        39%, 100% { opacity: 0; left: 81%; top: 32%; transform: translate(-50%, -50%) scale(0.3); }
-    }
-
-    /* ---------- Lifecycle timeline ---------- */
-    .hrm-timeline {
-        position: absolute; left: 50%; top: 58%; width: 90%; max-width: 330px;
-        transform: translate(-50%, -50%);
-        padding: 14px 16px 18px; border-radius: 18px;
-        animation: timelineIn var(--hrm-duration) cubic-bezier(0.16, 1, 0.3, 1) infinite;
-    }
-    @@keyframes timelineIn {
-        0%, 40% { opacity: 0; transform: translate(-50%, calc(-50% + 12px)) scale(0.97); }
-        45%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-    }
-    .hrm-tl-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
-    .hrm-tl-title { font-size: 0.78rem; font-weight: 800; color: var(--hrm-ink); }
-    .hrm-tl-stage-label { position: relative; height: 18px; min-width: 78px; }
-    .st {
-        position: absolute; right: 0; top: 0; font-size: 0.68rem; font-weight: 800;
-        color: var(--hrm-indigo); white-space: nowrap; opacity: 0;
-    }
-    .st-1 { animation: stage1 var(--hrm-duration) ease infinite; }
-    .st-2 { animation: stage2 var(--hrm-duration) ease infinite; }
-    .st-3 { animation: stage3 var(--hrm-duration) ease infinite; }
-    .st-4 { animation: stage4 var(--hrm-duration) ease infinite; }
-    .st-5 { animation: stage5 var(--hrm-duration) ease infinite; }
-    @@keyframes stage1 { 0%, 44% { opacity: 0; } 46%, 49% { opacity: 1; } 51%, 100% { opacity: 0; } }
-    @@keyframes stage2 { 0%, 50% { opacity: 0; } 52%, 55% { opacity: 1; } 57%, 100% { opacity: 0; } }
-    @@keyframes stage3 { 0%, 56% { opacity: 0; } 58%, 61% { opacity: 1; } 63%, 100% { opacity: 0; } }
-    @@keyframes stage4 { 0%, 62% { opacity: 0; } 64%, 67% { opacity: 1; } 69%, 100% { opacity: 0; } }
-    @@keyframes stage5 { 0%, 68% { opacity: 0; } 70%, 100% { opacity: 1; color: var(--hrm-green); } }
-
-    .hrm-tl-track {
-        position: relative; height: 6px; margin: 0 8px; border-radius: 999px; background: #eef0f5;
-    }
-    .hrm-tl-fill {
-        position: absolute; left: 0; top: 0; height: 100%; width: 0; border-radius: 999px;
-        background: linear-gradient(90deg, #6366f1, #3b82f6 60%, #10b981);
-        animation: tlFill var(--hrm-duration) cubic-bezier(0.65, 0, 0.35, 1) infinite;
-    }
-    @@keyframes tlFill {
-        0%, 44% { width: 0%; }
-        50% { width: 25%; } 56% { width: 50%; } 62% { width: 75%; }
-        70%, 100% { width: 100%; }
-    }
-    .hrm-tl-node {
-        position: absolute; top: 50%; width: 11px; height: 11px; border-radius: 50%;
-        background: #ffffff; border: 2px solid #d8dce6; transform: translate(-50%, -50%);
-    }
-    .n1 { left: 0%; } .n2 { left: 25%; } .n3 { left: 50%; } .n4 { left: 75%; } .n5 { left: 100%; }
-    .n1 { animation: nodeOn1 var(--hrm-duration) ease infinite; }
-    .n2 { animation: nodeOn2 var(--hrm-duration) ease infinite; }
-    .n3 { animation: nodeOn3 var(--hrm-duration) ease infinite; }
-    .n4 { animation: nodeOn4 var(--hrm-duration) ease infinite; }
-    .n5 { animation: nodeOn5 var(--hrm-duration) ease infinite; }
-    @@keyframes nodeOn1 { 0%, 44% { border-color: #d8dce6; background: #fff; } 46%, 100% { border-color: var(--hrm-indigo); background: var(--hrm-indigo); } }
-    @@keyframes nodeOn2 { 0%, 50% { border-color: #d8dce6; background: #fff; } 52%, 100% { border-color: var(--hrm-indigo); background: var(--hrm-indigo); } }
-    @@keyframes nodeOn3 { 0%, 56% { border-color: #d8dce6; background: #fff; } 58%, 100% { border-color: var(--hrm-blue); background: var(--hrm-blue); } }
-    @@keyframes nodeOn4 { 0%, 62% { border-color: #d8dce6; background: #fff; } 64%, 100% { border-color: var(--hrm-blue); background: var(--hrm-blue); } }
-    @@keyframes nodeOn5 { 0%, 68% { border-color: #d8dce6; background: #fff; } 70%, 100% { border-color: var(--hrm-green); background: var(--hrm-green); } }
-    .hrm-tl-marker {
-        position: absolute; top: 50%; left: 0%; width: 16px; height: 16px; border-radius: 50%;
-        background: #ffffff; border: 3px solid var(--hrm-indigo); transform: translate(-50%, -50%);
-        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15), 0 4px 10px rgba(99, 102, 241, 0.3);
-        opacity: 0; z-index: 3; animation: tlMarker var(--hrm-duration) cubic-bezier(0.65, 0, 0.35, 1) infinite;
-    }
-    @@keyframes tlMarker {
-        0%, 44% { opacity: 0; left: 0%; }
-        46% { opacity: 1; left: 0%; }
-        50% { left: 25%; } 56% { left: 50%; border-color: var(--hrm-blue); } 62% { left: 75%; border-color: var(--hrm-blue); }
-        70% { opacity: 1; left: 100%; border-color: var(--hrm-green); box-shadow: 0 0 0 4px rgba(16,185,129,0.15), 0 4px 10px rgba(16,185,129,0.3); }
-        100% { opacity: 1; left: 100%; border-color: var(--hrm-green); }
-    }
-
-    /* ---------- Recent activity ---------- */
-    .hrm-activity {
-        position: absolute; left: 50%; top: 84%; width: 90%; max-width: 330px;
-        transform: translate(-50%, -50%);
-        padding: 12px 14px; border-radius: 18px;
-        animation: activityIn var(--hrm-duration) cubic-bezier(0.16, 1, 0.3, 1) infinite;
-    }
-    @@keyframes activityIn {
-        0%, 67% { opacity: 0; transform: translate(-50%, calc(-50% + 12px)) scale(0.97); }
-        72%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-    }
-    .hrm-act-head {
-        display: flex; align-items: center; justify-content: space-between;
-        padding-bottom: 9px; margin-bottom: 8px; border-bottom: 1px solid #f1f5f9;
-    }
-    .hrm-act-title { display: flex; align-items: center; gap: 6px; font-size: 0.74rem; font-weight: 800; color: #334155; }
-    .hrm-act-live { display: flex; align-items: center; gap: 5px; font-size: 0.62rem; font-weight: 800; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.4px; }
-    .live-dot { width: 6px; height: 6px; border-radius: 50%; background: #10b981; animation: statusPulse 1.6s ease-in-out infinite; }
-    .hrm-act-row {
-        display: flex; align-items: center; gap: 10px; padding: 7px 9px; border-radius: 10px;
-        background: #f8fafc; margin-bottom: 6px;
-    }
-    .hrm-act-row:last-child { margin-bottom: 0; }
-    .ar-time { font-size: 0.66rem; font-weight: 800; color: #94a3b8; font-variant-numeric: tabular-nums; }
-    .ar-desc { font-size: 0.72rem; font-weight: 600; color: #475569; flex-grow: 1; }
-    .ar1 { animation: rowIn1 var(--hrm-duration) cubic-bezier(0.16, 1, 0.3, 1) infinite; }
-    .ar2 { animation: rowIn2 var(--hrm-duration) cubic-bezier(0.16, 1, 0.3, 1) infinite; }
-    .ar3 { animation: rowIn3 var(--hrm-duration) cubic-bezier(0.16, 1, 0.3, 1) infinite; }
-    @@keyframes rowIn1 { 0%, 73% { opacity: 0; transform: translateX(-8px); } 76%, 100% { opacity: 1; transform: translateX(0); } }
-    @@keyframes rowIn2 { 0%, 78% { opacity: 0; transform: translateX(-8px); } 81%, 100% { opacity: 1; transform: translateX(0); } }
-    @@keyframes rowIn3 { 0%, 83% { opacity: 0; transform: translateX(-8px); } 86%, 100% { opacity: 1; transform: translateX(0); } }
-
-    @@media (max-width: 767px) {
-        .hrm-container { min-height: 540px; }
-        .hrm-tile-label { font-size: 0.62rem; }
-    }
-</style>

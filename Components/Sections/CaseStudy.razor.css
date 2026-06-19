@@ -1,0 +1,77 @@
+.differentiators-section {
+    background-color: #ffffff;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+    .differentiators-section {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
+}
+
+.differentiators-card {
+    position: relative;
+    border-radius: 32px;
+    overflow: hidden;
+    padding: 4rem 2rem;
+}
+
+.gradient-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.content-overlay {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.diff-eyebrow {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.85);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.875rem;
+}
+
+.diff-title {
+    font-family: 'Gilroy', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    color: #ffffff;
+}
+
+::deep .diff-icon {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 1.5rem !important;
+    margin-top: 2px !important;
+    flex-shrink: 0 !important;
+}
+
+.diff-item-title {
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 4px;
+    font-size: 1.1rem;
+    line-height: 1.2;
+}
+
+.diff-item-desc {
+    font-family: 'Figtree', sans-serif;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.5;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}

@@ -2,122 +2,68 @@
 @using PeopleCoreLandingPage.Components.Sections.Animations
 @rendermode InteractiveServer
 
-<style>
-    .center-showcase-container {
-        background-color: #f3f4f6;
-        aspect-ratio: 1;
-        min-height: 540px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        max-width: 560px;
-        margin: 0 auto;
-        border-radius: 24px;
-        transition: all 0.5s ease;
-        border: 1px solid rgba(0,0,0,0.08);
-        box-shadow: none !important;
-        overflow: hidden;
-    }
-
-    .mobile-anim-showcase {
-        width: 100%;
-        max-width: 560px;
-        height: 540px;
-        margin: 0 auto;
-        border-radius: 24px;
-        overflow: hidden;
-    }
-
-    .center-showcase-container.transparent-bg {
-        background-color: transparent !important;
-        border-color: transparent !important;
-        box-shadow: none !important;
-    }
-
-    .center-content-wrapper {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: opacity 400ms ease, transform 400ms ease;
-        opacity: 1;
-        transform: scale(1);
-    }
-
-    .center-content-wrapper.fade-out {
-        opacity: 0;
-        transform: scale(0.97);
-    }
-
-    .center-content-wrapper.fade-in {
-        opacity: 1;
-        transform: scale(1);
-    }
-</style>
-
-
-<section class="py-16 py-md-24" style="background-color: #ffffff;">
-    <MudContainer MaxWidth="MaxWidth.Large">
+<section class="core-functions-section">
+    <div class="container-lg">
         
         <!-- Header -->
-        <div class="d-flex flex-column align-center text-center mb-16 fade-in-up">
-            <MudText Typo="Typo.subtitle2" Style="font-weight: 700; text-transform: none; letter-spacing: 0.5px; color: #111;" Class="mb-4">
+        <div class="d-flex flex-column align-items-center text-center mb-5 fade-in-up">
+            <h6 class="features-subtitle mb-3">
                 HRIS Features
-            </MudText>
-            <MudText Typo="Typo.h2" Color="Color.Dark" Style="font-family: 'Gilroy', sans-serif; font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -1px; line-height: 1.1;" Class="mb-6">
+            </h6>
+            <h2 class="features-title mb-4">
                 PeopleCore HRIS Features
-            </MudText>
-            <MudText Typo="Typo.body1" Style="font-family: 'Figtree', sans-serif; font-size: 1.125rem; color: #444;">
+            </h2>
+            <p class="features-desc">
                 Each module works independently or together to streamline your HR operations
-            </MudText>
+            </p>
         </div>
 
         <!-- Content Grid -->
-        <MudGrid Spacing="6" Class="align-center justify-center">
+        <div class="row g-4 align-items-center justify-content-center">
             
             <!-- Left Column -->
-            <MudItem xs="12" md="3" Class="d-flex flex-column gap-8 fade-in-up delay-100">
+            <div class="col-12 col-md-3 d-flex flex-column gap-4 fade-in-up delay-100">
                 @for(int i = 0; i < 2; i++)
                 {
                     var index = i;
-                    <div class="text-center d-flex flex-column align-center cursor-pointer feature-item @(SelectedIndex == index ? "selected" : "")" @onclick="() => SelectFeature(index)">
-                        <MudIcon Icon="@Features[index].Icon" Style="font-size: 2.5rem; color: #000;" Class="mb-6" />
-                        <MudText Typo="Typo.h5" Style="font-family: 'Gilroy', sans-serif; font-weight: 800; line-height: 1.3;" Class="mb-3">
+                    <div class="text-center d-flex flex-column align-items-center cursor-pointer feature-item @(SelectedIndex == index ? "selected" : "")" @onclick="() => SelectFeature(index)">
+                        <MudIcon Icon="@Features[index].Icon" Class="feature-icon mb-4" />
+                        <h5 class="feature-title mb-2">
                             @((MarkupString)Features[index].Title.Replace("\n", "<br />"))
-                        </MudText>
-                        <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; color: #555; line-height: 1.6;" Class="mb-2">
+                        </h5>
+                        <p class="feature-desc mb-2">
                             @Features[index].Description
-                        </MudText>
+                        </p>
                         <div class="d-block d-md-none w-100 mt-4">
-                            <MudCollapse Expanded="@(SelectedIndex == index)">
-                                @if (index == 0)
-                                {
-                                    <div class="mobile-anim-showcase">
-                                        <ApplicantServiceAnimation @key="index" />
-                                    </div>
-                                }
-                                else if (index == 1)
-                                {
-                                    <div class="mobile-anim-showcase">
-                                        <HrManagementAnimation @key="index" />
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div style="background-color: #f3f4f6; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; width: 100%; max-width: 560px; margin: 0 auto; border-radius: 24px; transition: all 0.5s ease; border: 1px solid rgba(0,0,0,0.08); box-shadow: none !important;">
-                                        <MudIcon Icon="@Features[index].Image" Style="font-size: 6rem; color: #94a3b8; transition: all 0.5s ease;" />
-                                    </div>
-                                }
-                            </MudCollapse>
+                            <div class="mobile-collapse @(SelectedIndex == index ? "show" : "")">
+                                <div class="mobile-collapse-inner">
+                                    @if (index == 0)
+                                    {
+                                        <div class="mobile-anim-showcase">
+                                            <ApplicantServiceAnimation @key="index" />
+                                        </div>
+                                    }
+                                    else if (index == 1)
+                                    {
+                                        <div class="mobile-anim-showcase">
+                                            <HrManagementAnimation @key="index" />
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="mobile-fallback-showcase">
+                                            <MudIcon Icon="@Features[index].Image" Class="mobile-fallback-icon" />
+                                        </div>
+                                    }
+                                </div>
+                            </div>
                         </div>
                     </div>
                 }
-            </MudItem>
+            </div>
 
             <!-- Center Column (Image / Animation) -->
-            <MudItem xs="12" md="6" Class="d-none d-md-block fade-in-up delay-200">
+            <div class="col-12 col-md-6 d-none d-md-block fade-in-up delay-200">
                 <div class="center-showcase-container @(SelectedIndex == 0 || SelectedIndex == 1 || SelectedIndex == 2 || SelectedIndex == 3 ? "transparent-bg" : "")">
                     <div class="center-content-wrapper @(IsTransitioning ? "fade-out" : "fade-in")">
                         @if (DisplayedIndex == 0)
@@ -139,52 +85,54 @@
                         else
                         {
                             @* Display a different icon/picture based on selection *@
-                            <MudIcon Icon="@Features[DisplayedIndex].Image" Style="font-size: 8rem; color: #94a3b8; transition: all 0.5s ease;" />
+                            <MudIcon Icon="@Features[DisplayedIndex].Image" Class="center-fallback-icon" />
                         }
                     </div>
                 </div>
-            </MudItem>
+            </div>
 
             <!-- Right Column -->
-            <MudItem xs="12" md="3" Class="d-flex flex-column gap-8 fade-in-up delay-300">
+            <div class="col-12 col-md-3 d-flex flex-column gap-4 fade-in-up delay-300">
                 @for(int i = 2; i < 4; i++)
                 {
                     var index = i;
-                    <div class="text-center d-flex flex-column align-center cursor-pointer feature-item @(SelectedIndex == index ? "selected" : "")" @onclick="() => SelectFeature(index)">
-                        <MudIcon Icon="@Features[index].Icon" Style="font-size: 2.5rem; color: #000;" Class="mb-6" />
-                        <MudText Typo="Typo.h5" Style="font-family: 'Gilroy', sans-serif; font-weight: 800; line-height: 1.3;" Class="mb-3">
+                    <div class="text-center d-flex flex-column align-items-center cursor-pointer feature-item @(SelectedIndex == index ? "selected" : "")" @onclick="() => SelectFeature(index)">
+                        <MudIcon Icon="@Features[index].Icon" Class="feature-icon mb-4" />
+                        <h5 class="feature-title mb-2">
                             @((MarkupString)Features[index].Title.Replace("\n", "<br />"))
-                        </MudText>
-                        <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; color: #555; line-height: 1.6;" Class="mb-2">
+                        </h5>
+                        <p class="feature-desc mb-2">
                             @Features[index].Description
-                        </MudText>
+                        </p>
                         <div class="d-block d-md-none w-100 mt-4">
-                            <MudCollapse Expanded="@(SelectedIndex == index)">
-                                @if (index == 2)
-                                {
-                                    <div class="mobile-anim-showcase">
-                                        <EssAnimation @key="index" />
-                                    </div>
-                                }
-                                else if (index == 3)
-                                {
-                                    <div class="mobile-anim-showcase">
-                                        <ManagerialServiceAnimation @key="index" />
-                                    </div>
-                                }
-                                else
-                                {
-                                    <div style="background-color: #f3f4f6; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; width: 100%; max-width: 560px; margin: 0 auto; border-radius: 24px; transition: all 0.5s ease; border: 1px solid rgba(0,0,0,0.08); box-shadow: none !important;">
-                                        <MudIcon Icon="@Features[index].Image" Style="font-size: 6rem; color: #94a3b8; transition: all 0.5s ease;" />
-                                    </div>
-                                }
-                            </MudCollapse>
+                            <div class="mobile-collapse @(SelectedIndex == index ? "show" : "")">
+                                <div class="mobile-collapse-inner">
+                                    @if (index == 2)
+                                    {
+                                        <div class="mobile-anim-showcase">
+                                            <EssAnimation @key="index" />
+                                        </div>
+                                    }
+                                    else if (index == 3)
+                                    {
+                                        <div class="mobile-anim-showcase">
+                                            <ManagerialServiceAnimation @key="index" />
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="mobile-fallback-showcase">
+                                            <MudIcon Icon="@Features[index].Image" Class="mobile-fallback-icon" />
+                                        </div>
+                                    }
+                                </div>
+                            </div>
                         </div>
                     </div>
                 }
-            </MudItem>
-        </MudGrid>
-    </MudContainer>
+            </div>
+        </div>
+    </div>
 </section>
 
 @code {

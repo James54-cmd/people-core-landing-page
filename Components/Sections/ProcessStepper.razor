@@ -3,29 +3,27 @@
 @implements IDisposable
 @rendermode InteractiveServer
 
-<section class="py-16 py-md-32 process-section" style="background: radial-gradient(circle at -20% 50%, #E8F4FB 0%, #F7F9FB 60%); position: relative;">
-    <MudContainer MaxWidth="MaxWidth.Large">
-        <MudGrid Spacing="10">
+<section class="process-section">
+    <div class="container-lg">
+        <div class="row gx-lg-5 gy-4">
             
             <!-- Left Column: Sticky Header -->
-            <MudItem xs="12" md="5" Style="position: relative;">
-                <div class="sticky-header pt-md-16">
+            <div class="col-12 col-md-5 position-relative">
+                <div class="sticky-header pt-md-5">
                     <div class="huge-step-number">
                         0@(ActiveStep + 1)
                     </div>
-                    <MudText Typo="Typo.subtitle2" Style="font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: #FFB400;" Class="mb-4 fade-in-up position-relative z-index-2">
+                    <h6 class="process-subtitle mb-4 fade-in-up position-relative z-index-2">
                         Process
-                    </MudText>
-                    <MudText Typo="Typo.h2" Color="Color.Dark" Style="font-family: 'Gilroy', sans-serif; font-size: clamp(3.5rem, 6vw, 4.5rem); font-weight: 800; letter-spacing: -2px; line-height: 1.05;" Class="mb-10 fade-in-up delay-100 position-relative z-index-2">
+                    </h6>
+                    <h2 class="process-title text-dark mb-5 fade-in-up delay-100 position-relative z-index-2">
                         How it works
-                    </MudText>
-                    
-                    
+                    </h2>
                 </div>
-            </MudItem>
+            </div>
 
             <!-- Right Column: Timeline -->
-            <MudItem xs="12" md="7" Class="position-relative pt-md-16">
+            <div class="col-12 col-md-7 position-relative pt-md-5">
                 <div class="timeline-container fade-in-up delay-300">
                     <div class="timeline-line">
                         <div class="timeline-progress"></div>
@@ -45,22 +43,23 @@
                             </div>
                             <div class="timeline-content-wrapper">
                                 <div class="timeline-content-card @(isCurrent ? "active-card" : "")">
-                                    <MudText Typo="Typo.h4" Style="font-family: 'Gilroy', sans-serif; font-weight: 800; line-height: 1.2; letter-spacing: -0.5px;" Class="mb-3 step-title">
+                                    <h3 class="step-title mb-3">
                                         @step.Title
-                                    </MudText>
-                                    <MudText Typo="Typo.body1" Style="font-family: 'Figtree', sans-serif; font-size: 1.125rem; line-height: 1.6;" Class="step-desc">
+                                    </h3>
+                                    <p class="step-desc">
                                         @step.Description
-                                    </MudText>
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     }
                 </div>
-            </MudItem>
+            </div>
 
-        </MudGrid>
-    </MudContainer>
+        </div>
+    </div>
 </section>
+
 
 @code {
     private int ActiveStep = 0;

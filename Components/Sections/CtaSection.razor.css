@@ -1,0 +1,81 @@
+.cta-section {
+    position: relative;
+    background-color: #ffffff;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+    .cta-section {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
+}
+
+.cta-banner {
+    background: linear-gradient(rgba(18, 38, 86, 0.85), rgba(18, 38, 86, 0.85)), url('/image/group.png') no-repeat center center;
+    background-size: cover;
+    border-radius: 32px;
+    padding: 6rem 5rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 40px 100px -20px rgba(18, 38, 86, 0.4);
+}
+
+/* Subtle background pattern/blob for the CTA */
+.cta-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+@media (max-width: 960px) {
+    .cta-banner {
+        padding: 3rem 2rem;
+    }
+}
+
+.cta-title {
+    color: #ffffff;
+    font-family: 'Gilroy', sans-serif;
+    font-size: clamp(3rem, 6vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: -2px;
+    line-height: 1.1;
+    margin: 0;
+}
+
+.cta-desc {
+    color: rgba(255, 255, 255, 0.9);
+    font-family: 'Figtree', sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    max-width: 400px;
+}
+
+.btn-cta {
+    background-color: #1E9FE0;
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 14px 36px;
+    font-weight: 700;
+    font-family: 'Gilroy', sans-serif;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.cta-btn-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    background-color: #1a8cc7; /* subtle hover state adjustment */
+}

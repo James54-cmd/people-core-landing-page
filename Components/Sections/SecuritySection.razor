@@ -1,23 +1,22 @@
 @using MudBlazor
 
-<section class="py-16 py-md-24 text-center" style="background-color: #ffffff;">
-    <MudContainer MaxWidth="MaxWidth.Large">
+<section class="security-section text-center">
+    <div class="container-lg">
         
-        <div class="mb-16 framer-animate fade-in-up">
-            <MudIcon Icon="@Icons.Material.Outlined.Shield" Style="font-size: 4rem; color: #1E9FE0; margin-bottom: 1rem;" />
-            <MudText Typo="Typo.subtitle2" Style="font-family: 'Figtree', sans-serif; font-weight: 700; color: #1E9FE0; text-transform: uppercase; letter-spacing: 2px;" Class="mb-4">
+        <div class="mb-5 framer-animate fade-in-up">
+            <MudIcon Icon="@Icons.Material.Outlined.Shield" Class="security-shield-icon mb-3" />
+            <h6 class="security-subtitle mb-4">
                 Enterprise-Grade Security
-            </MudText>
-            <MudText Typo="Typo.h2" Color="Color.Dark" Style="font-family: 'Gilroy', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; letter-spacing: -1.5px; line-height: 1.1;" Class="mb-6">
+            </h6>
+            <h2 class="security-title text-dark mb-4">
                 Your data, protected by design.
-            </MudText>
-            <MudText Typo="Typo.body1" Style="font-family: 'Figtree', sans-serif; font-size: 1.125rem; line-height: 1.6; color: #555; max-width: 700px; margin: 0 auto;">
+            </h2>
+            <p class="security-desc mx-auto mb-0">
                 We take security as seriously as you do. PeopleCore is built from the ground up with military-grade encryption and full compliance with the Data Privacy Act of 2012.
-            </MudText>
+            </p>
         </div>
 
-        <!-- Security Features Grid -->
-        <MudGrid Spacing="6" Class="justify-center mb-16">
+        <div class="row g-4 justify-content-center mb-5">
             @{
                 var features = new[] {
                     new { Icon = Icons.Material.Outlined.Lock, Title = "256-bit Encryption", Desc = "All data is encrypted at rest and in transit using industry-standard AES-256." },
@@ -29,27 +28,27 @@
                 for (int i = 0; i < features.Length; i++)
                 {
                     var feature = features[i];
-                    <MudItem xs="12" sm="6" md="3" Class="framer-animate fade-in-up" Style="@($"animation-delay: {(i+1)*100}ms;")">
-                        <div class="d-flex flex-column align-center text-center p-6" style="background: transparent; border: 1px solid #e2e8f0; border-radius: 16px; padding: 2rem; height: 100%; transition: border-color 0.3s ease;" onmouseover="this.style.borderColor='#94a3b8';" onmouseout="this.style.borderColor='#e2e8f0';">
-                            <MudIcon Icon="@feature.Icon" Style="font-size: 2.5rem; color: #1E9FE0; margin-bottom: 1rem;" />
-                            <MudText Typo="Typo.h6" Style="font-family: 'Figtree', sans-serif; font-weight: 700; color: #0b1121; margin-bottom: 0.5rem; font-size: 1.1rem;">
+                    <div class="col-12 col-sm-6 col-md-3 framer-animate fade-in-up" style="animation-delay: @((i + 1) * 100)ms;">
+                        <div class="security-card d-flex flex-column align-items-center text-center">
+                            <MudIcon Icon="@feature.Icon" Class="security-feature-icon mb-3" />
+                            <h4 class="security-feature-title mb-2">
                                 @feature.Title
-                            </MudText>
-                            <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; color: #64748b; line-height: 1.5; font-size: 0.9rem;">
+                            </h4>
+                            <p class="security-feature-desc mb-0">
                                 @feature.Desc
-                            </MudText>
+                            </p>
                         </div>
-                    </MudItem>
+                    </div>
                 }
             }
-        </MudGrid>
-
-        <!-- Buttons -->
-        <div class="d-flex justify-center align-center gap-4 framer-animate fade-in-up" style="animation-delay: 500ms;">
-            <MudButton Href="/privacy-policy" Target="_blank" Variant="Variant.Filled" Size="Size.Large" Style="border-radius: 8px; padding: 12px 32px; font-weight: 600; font-family: 'Figtree', sans-serif; background-color: #1E9FE0; color: #ffffff; text-transform: none;">
-                Review Privacy Policy
-            </MudButton>
         </div>
 
-    </MudContainer>
+        <div class="d-flex justify-content-center align-items-center gap-4 framer-animate fade-in-up" style="animation-delay: 500ms;">
+            <a href="/privacy-policy" target="_blank" class="btn btn-security">
+                Review Privacy Policy
+            </a>
+        </div>
+
+    </div>
 </section>
+

@@ -1,0 +1,148 @@
+.logo-cloud-section {
+    position: relative;
+    width: 100%;
+    background: #ffffff;
+    padding: 5rem 0 4rem;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.logo-cloud-title {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 600;
+    color: #424242;
+    letter-spacing: 0.5px;
+    font-size: 1.25rem;
+}
+
+.custom-carousel {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 3rem;
+}
+
+.carousel-viewport {
+    position: relative;
+    width: 100%;
+    min-height: 460px;
+    overflow: hidden;
+    touch-action: pan-y;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 2rem;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.carousel-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    font-family: 'Figtree', sans-serif;
+    font-weight: 600;
+    font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+    color: #424242;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    text-align: center;
+}
+
+.carousel-slide img {
+    width: 100%;
+    max-width: 960px;
+    height: auto;
+    object-fit: contain;
+    max-height: 380px;
+}
+
+/* Arrows */
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(245,247,250,0.95);
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #64748b;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.carousel-arrow:hover {
+    color: #1E9FE0;
+    background: #fff;
+    border-color: #1E9FE0;
+}
+
+.carousel-arrow-left { left: 0; }
+.carousel-arrow-right { right: 0; }
+
+/* Swipe Hint */
+.swipe-hint {
+    display: none; /* hidden on desktop */
+}
+
+/* Mobile and Tablet responsiveness for Carousel */
+@media (max-width: 1024px) {
+    .logo-cloud-section {
+        padding: 3rem 0 2rem;
+    }
+    .custom-carousel {
+        padding: 0 1rem;
+    }
+    .carousel-viewport {
+        min-height: 280px;
+    }
+    .carousel-slide {
+        padding: 1rem;
+    }
+    .carousel-label {
+        margin-bottom: 1.5rem;
+    }
+    .carousel-arrow {
+        display: none !important; /* Hide chevrons on mobile */
+    }
+    .swipe-hint {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        color: #94a3b8;
+        font-family: 'Figtree', sans-serif;
+        font-size: 0.85rem;
+        margin-top: 1rem;
+    }
+}
+
+/* Deep isolated selectors for nested MudIcons */
+::deep .arrow-icon {
+    font-size: 2.5rem !important; /* Size.Large equivalent */
+}
+
+::deep .swipe-icon {
+    font-size: 1.125rem !important; /* Size.Small equivalent */
+}

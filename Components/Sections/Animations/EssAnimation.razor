@@ -9,7 +9,7 @@
         <!-- Employee header -->
         <div class="ess-header">
             <div class="ess-avatar">
-                <MudIcon Icon="@Icons.Material.Filled.Person" Style="font-size: 1.4rem; color: #ffffff;" />
+                <MudIcon Icon="@Icons.Material.Filled.Person" Class="ess-av-icon" />
             </div>
             <div class="ess-header-info">
                 <span class="ess-name">Jane Doe</span>
@@ -22,25 +22,25 @@
         <div class="ess-actions">
             <div class="ess-tile etile-1">
                 <div class="ess-tile-icon">
-                    <MudIcon Icon="@Icons.Material.Filled.Fingerprint" Style="font-size: 1.2rem;" />
+                    <MudIcon Icon="@Icons.Material.Filled.Fingerprint" Class="ess-tile-icon-img" />
                     <div class="scan-ring"></div>
                 </div>
                 <span class="ess-tile-label">Attendance</span>
-                <div class="ess-tile-check"><MudIcon Icon="@Icons.Material.Filled.Check" Style="font-size: 0.7rem; color: #ffffff;" /></div>
+                <div class="ess-tile-check"><MudIcon Icon="@Icons.Material.Filled.Check" Class="ess-tile-check-icon" /></div>
             </div>
             <div class="ess-tile etile-2">
                 <div class="ess-tile-icon">
-                    <MudIcon Icon="@Icons.Material.Filled.EventAvailable" Style="font-size: 1.2rem;" />
+                    <MudIcon Icon="@Icons.Material.Filled.EventAvailable" Class="ess-tile-icon-img" />
                 </div>
                 <span class="ess-tile-label">Leave</span>
-                <div class="ess-tile-check"><MudIcon Icon="@Icons.Material.Filled.Check" Style="font-size: 0.7rem; color: #ffffff;" /></div>
+                <div class="ess-tile-check"><MudIcon Icon="@Icons.Material.Filled.Check" Class="ess-tile-check-icon" /></div>
             </div>
             <div class="ess-tile etile-3">
                 <div class="ess-tile-icon">
-                    <MudIcon Icon="@Icons.Material.Filled.ReceiptLong" Style="font-size: 1.2rem;" />
+                    <MudIcon Icon="@Icons.Material.Filled.ReceiptLong" Class="ess-tile-icon-img" />
                 </div>
                 <span class="ess-tile-label">Payslip</span>
-                <div class="ess-tile-check"><MudIcon Icon="@Icons.Material.Filled.Check" Style="font-size: 0.7rem; color: #ffffff;" /></div>
+                <div class="ess-tile-check"><MudIcon Icon="@Icons.Material.Filled.Check" Class="ess-tile-check-icon" /></div>
             </div>
         </div>
 
@@ -48,7 +48,7 @@
         <div class="ess-leave">
             <div class="ess-leave-head">
                 <div class="ess-leave-title">
-                    <div class="ess-leave-ic"><MudIcon Icon="@Icons.Material.Filled.EventAvailable" Style="font-size: 0.95rem; color: #6366f1;" /></div>
+                    <div class="ess-leave-ic"><MudIcon Icon="@Icons.Material.Filled.EventAvailable" Class="ess-leave-ic-icon" /></div>
                     <span>Leave Request</span>
                 </div>
                 <div class="ess-badge-wrap">
@@ -62,193 +62,15 @@
             </div>
             <div class="ess-leave-foot">
                 <span>Submit Request</span>
-                <MudIcon Icon="@Icons.Material.Filled.ArrowForward" Style="font-size: 0.85rem;" />
+                <MudIcon Icon="@Icons.Material.Filled.ArrowForward" Class="ess-arrow-icon" />
             </div>
         </div>
 
         <!-- Approval toast -->
         <div class="ess-toast">
-            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Style="font-size: 1rem; color: #10b981;" />
+            <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Class="ess-toast-icon" />
             <span>Leave approved · synced to HR</span>
         </div>
 
     </div>
 </div>
-
-<style>
-    :root {
-        --ess-duration: 11s;
-        --ess-indigo: #6366f1;
-        --ess-blue: #3b82f6;
-        --ess-green: #10b981;
-        --ess-ink: #0f172a;
-        --ess-muted: #64748b;
-        --ess-line: rgba(15, 23, 42, 0.06);
-    }
-    .ess-container {
-        position: relative; width: 100%; height: 100%; min-height: 540px; border-radius: 24px;
-        background: linear-gradient(180deg, #ffffff 0%, #f7f8fc 100%);
-        overflow: hidden; display: flex; align-items: center; justify-content: center;
-        font-family: 'Figtree', sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
-    }
-    .ess-glow {
-        position: absolute; top: -12%; left: 50%; width: 420px; height: 420px; transform: translateX(-50%);
-        background: radial-gradient(circle, rgba(99, 102, 241, 0.10) 0%, rgba(99, 102, 241, 0) 68%);
-        pointer-events: none; z-index: 0;
-    }
-    .grid-bg {
-        position: absolute; inset: 0; pointer-events: none; z-index: 0;
-        background-image: radial-gradient(rgba(15, 23, 42, 0.035) 1.2px, transparent 1.2px);
-        background-size: 26px 26px;
-        -webkit-mask-image: radial-gradient(circle at 50% 45%, #000 55%, transparent 90%);
-        mask-image: radial-gradient(circle at 50% 45%, #000 55%, transparent 90%);
-    }
-    .ess-canvas {
-        position: relative; width: 100%; height: 100%; max-width: 560px; z-index: 1;
-        animation: canvasFade var(--ess-duration) cubic-bezier(0.4, 0, 0.2, 1) infinite;
-    }
-    @@keyframes canvasFade {
-        0%, 2% { opacity: 0; transform: scale(0.98); }
-        6%, 94% { opacity: 1; transform: scale(1); }
-        98%, 100% { opacity: 0; transform: scale(0.98); }
-    }
-
-    .ess-header, .ess-tile, .ess-leave, .ess-toast {
-        background: #ffffff; border: 1px solid var(--ess-line);
-        box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 12px 28px -12px rgba(15, 23, 42, 0.18);
-    }
-
-    /* Header */
-    .ess-header {
-        position: absolute; left: 50%; top: 12%; width: 90%; max-width: 330px; transform: translate(-50%, -50%);
-        display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 18px;
-        animation: fadeUp var(--ess-duration) cubic-bezier(0.16, 1, 0.3, 1) infinite;
-    }
-    .ess-avatar {
-        width: 44px; height: 44px; flex-shrink: 0; border-radius: 13px;
-        background: linear-gradient(135deg, #6366f1 0%, #3b82f6 100%);
-        display: flex; align-items: center; justify-content: center;
-        box-shadow: 0 6px 16px -4px rgba(79, 70, 229, 0.5);
-    }
-    .ess-header-info { display: flex; flex-direction: column; flex-grow: 1; min-width: 0; }
-    .ess-name { font-size: 0.95rem; font-weight: 800; color: var(--ess-ink); line-height: 1.2; }
-    .ess-meta { font-size: 0.72rem; font-weight: 600; color: var(--ess-muted); margin-top: 1px; }
-    .ess-online {
-        display: flex; align-items: center; gap: 5px; flex-shrink: 0;
-        background: #ecfdf5; color: #059669; font-size: 0.68rem; font-weight: 800; padding: 4px 9px; border-radius: 999px;
-    }
-    .ess-online-dot { width: 6px; height: 6px; border-radius: 50%; background: #10b981; animation: pulseDot 2s ease-in-out infinite; }
-    @@keyframes pulseDot { 0%, 100% { box-shadow: 0 0 0 0 rgba(16,185,129,0.5); } 50% { box-shadow: 0 0 0 4px rgba(16,185,129,0); } }
-    @@keyframes fadeUp {
-        0%, 2% { opacity: 0; transform: translate(-50%, calc(-50% + 14px)) scale(0.96); }
-        7%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-    }
-
-    /* Quick action tiles */
-    .ess-actions {
-        position: absolute; left: 50%; top: 32%; width: 90%; max-width: 330px; transform: translate(-50%, -50%);
-        display: flex; gap: 10px;
-    }
-    .ess-tile {
-        position: relative; flex: 1; display: flex; flex-direction: column; align-items: center; gap: 7px;
-        padding: 13px 6px; border-radius: 16px;
-    }
-    .ess-tile-icon {
-        position: relative; width: 36px; height: 36px; border-radius: 11px; background: #f1f5f9; color: #64748b;
-        display: flex; align-items: center; justify-content: center; transition: all 0.3s;
-    }
-    .ess-tile-label { font-size: 0.68rem; font-weight: 700; color: #334155; }
-    .ess-tile-check {
-        position: absolute; top: -7px; right: -7px; width: 18px; height: 18px; border-radius: 50%; background: #10b981;
-        display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(16,185,129,0.35);
-        opacity: 0; transform: scale(0);
-    }
-    .scan-ring {
-        position: absolute; inset: -5px; border-radius: 14px; border: 2px solid var(--ess-indigo); opacity: 0;
-        animation: scanRing var(--ess-duration) ease-out infinite;
-    }
-    @@keyframes scanRing {
-        0%, 23% { opacity: 0; transform: scale(0.7); }
-        25% { opacity: 0.9; transform: scale(0.9); }
-        29% { opacity: 0; transform: scale(1.25); }
-        30% { opacity: 0.9; transform: scale(0.9); }
-        33%, 100% { opacity: 0; transform: scale(1.25); }
-    }
-    .etile-1 { animation: tile1 var(--ess-duration) cubic-bezier(0.16, 1, 0.3, 1) infinite; }
-    .etile-2 { animation: tile2 var(--ess-duration) cubic-bezier(0.16, 1, 0.3, 1) infinite; }
-    .etile-3 { animation: tile3 var(--ess-duration) cubic-bezier(0.16, 1, 0.3, 1) infinite; }
-    @@keyframes tile1 { 0%, 11% { opacity: 0; transform: translateY(12px) scale(0.94); } 16%, 100% { opacity: 1; transform: translateY(0) scale(1); } }
-    @@keyframes tile2 { 0%, 14% { opacity: 0; transform: translateY(12px) scale(0.94); } 19%, 100% { opacity: 1; transform: translateY(0) scale(1); } }
-    @@keyframes tile3 { 0%, 17% { opacity: 0; transform: translateY(12px) scale(0.94); } 22%, 100% { opacity: 1; transform: translateY(0) scale(1); } }
-
-    .etile-1 .ess-tile-icon { animation: ic1 var(--ess-duration) ease infinite; }
-    .etile-2 .ess-tile-icon { animation: ic2 var(--ess-duration) ease infinite; }
-    .etile-3 .ess-tile-icon { animation: ic3 var(--ess-duration) ease infinite; }
-    @@keyframes ic1 { 0%, 30% { background: #f1f5f9; color: #64748b; } 33%, 100% { background: #ecfdf5; color: var(--ess-green); } }
-    @@keyframes ic2 { 0%, 64% { background: #f1f5f9; color: #64748b; } 67%, 100% { background: #ecfdf5; color: var(--ess-green); } }
-    @@keyframes ic3 { 0%, 76% { background: #f1f5f9; color: #64748b; } 79%, 100% { background: #ecfdf5; color: var(--ess-green); } }
-    .etile-1 .ess-tile-check { animation: ch1 var(--ess-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
-    .etile-2 .ess-tile-check { animation: ch2 var(--ess-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
-    .etile-3 .ess-tile-check { animation: ch3 var(--ess-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
-    @@keyframes ch1 { 0%, 30% { opacity: 0; transform: scale(0); } 34%, 100% { opacity: 1; transform: scale(1); } }
-    @@keyframes ch2 { 0%, 64% { opacity: 0; transform: scale(0); } 68%, 100% { opacity: 1; transform: scale(1); } }
-    @@keyframes ch3 { 0%, 76% { opacity: 0; transform: scale(0); } 80%, 100% { opacity: 1; transform: scale(1); } }
-
-    /* Featured leave request */
-    .ess-leave {
-        position: absolute; left: 50%; top: 58%; width: 90%; max-width: 320px; transform: translate(-50%, -50%);
-        padding: 14px; border-radius: 18px; display: flex; flex-direction: column; gap: 11px;
-        animation: leaveIn var(--ess-duration) cubic-bezier(0.16, 1, 0.3, 1) infinite;
-    }
-    @@keyframes leaveIn {
-        0%, 38% { opacity: 0; transform: translate(-50%, calc(-50% + 12px)) scale(0.97); }
-        43%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-    }
-    .ess-leave-head { display: flex; align-items: center; justify-content: space-between; }
-    .ess-leave-title { display: flex; align-items: center; gap: 9px; font-size: 0.82rem; font-weight: 800; color: var(--ess-ink); }
-    .ess-leave-ic { width: 28px; height: 28px; border-radius: 8px; background: #eef2ff; display: flex; align-items: center; justify-content: center; }
-    .ess-badge-wrap { position: relative; height: 20px; min-width: 70px; }
-    .ess-badge {
-        position: absolute; right: 0; top: 0; font-size: 0.6rem; font-weight: 800; text-transform: uppercase;
-        padding: 3px 9px; border-radius: 999px; letter-spacing: 0.3px;
-    }
-    .b-pending { background: #fff7ed; color: #ea580c; animation: bp var(--ess-duration) step-end infinite; }
-    .b-approved { background: #ecfdf5; color: #059669; opacity: 0; animation: ba var(--ess-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
-    @@keyframes bp { 0%, 56% { opacity: 1; } 57%, 100% { opacity: 0; } }
-    @@keyframes ba { 0%, 56% { opacity: 0; transform: scale(0.6); } 59%, 100% { opacity: 1; transform: scale(1); } }
-    .ess-leave-body {
-        display: flex; flex-direction: column; gap: 2px; background: #f8fafc; border-radius: 10px; padding: 9px 11px;
-    }
-    .ess-leave-type { font-size: 0.78rem; font-weight: 800; color: #334155; }
-    .ess-leave-date { font-size: 0.68rem; font-weight: 600; color: var(--ess-muted); }
-    .ess-leave-foot {
-        display: flex; align-items: center; justify-content: center; gap: 7px; padding: 9px;
-        border-radius: 10px; font-size: 0.74rem; font-weight: 800; color: #ffffff;
-        background: linear-gradient(135deg, #6366f1, #3b82f6);
-        animation: submitFlow var(--ess-duration) ease infinite;
-    }
-    @@keyframes submitFlow {
-        0%, 53% { transform: scale(1); filter: brightness(1); }
-        55% { transform: scale(0.96); filter: brightness(0.92); }
-        58%, 100% { transform: scale(1); filter: brightness(1); }
-    }
-
-    /* Toast */
-    .ess-toast {
-        position: absolute; left: 50%; top: 82%; transform: translate(-50%, -50%);
-        display: flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 999px;
-        font-size: 0.74rem; font-weight: 800; color: var(--ess-ink); white-space: nowrap;
-        border-color: rgba(16,185,129,0.25);
-        animation: toastPop var(--ess-duration) cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
-    }
-    @@keyframes toastPop {
-        0%, 60% { opacity: 0; transform: translate(-50%, calc(-50% + 12px)) scale(0.9); }
-        64%, 90% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-        95%, 100% { opacity: 0; transform: translate(-50%, calc(-50% - 8px)) scale(0.95); }
-    }
-
-    @@media (max-width: 767px) {
-        .ess-container { min-height: 540px; }
-        .ess-tile-label { font-size: 0.62rem; }
-    }
-</style>
