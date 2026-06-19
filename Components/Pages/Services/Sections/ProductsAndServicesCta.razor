@@ -1,32 +1,32 @@
 @inject IDialogService DialogService
 @rendermode InteractiveServer
 
-<section class="py-16" style="background-color: #EFF1F3;">
-    <MudContainer MaxWidth="MaxWidth.Large">
-        <MudPaper Elevation="0" Class="pa-8 pa-md-12 rounded-xl relative overflow-hidden" Style="background-color: #122656; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);">
+<section class="ps-cta">
+    <div class="container-lg">
+        <div class="ps-cta-banner">
             
             <!-- Background Image Watermark -->
-            <div class="absolute" style="top: 50%; right: -5%; transform: translateY(-50%); opacity: 0.1; pointer-events: none;">
-                <img src="image/logo_withou_words.png" alt="PeopleCore" style="height: 350px; width: auto; object-fit: contain;" />
+            <div class="ps-cta-watermark">
+                <img src="image/logo_withou_words.png" alt="PeopleCore" class="ps-watermark-img" />
             </div>
 
-            <div class="d-flex flex-column flex-md-row align-center justify-space-between relative z-10">
-                <div class="mb-8 mb-md-0 pe-md-12" style="flex: 1;">
-                    <MudText Typo="Typo.h3" Style="font-family: 'Figtree', sans-serif; font-weight: 700; color: #ffffff;" Class="mb-4">
+            <div class="d-flex flex-column flex-md-row align-items-center justify-content-between ps-cta-content">
+                <div class="mb-4 mb-md-0 pe-md-5 flex-grow-1">
+                    <h2 class="ps-cta-title mb-3">
                         We want to help you succeed.
-                    </MudText>
-                    <MudText Typo="Typo.body1" Style="font-family: 'Figtree', sans-serif; color: #CBD5E1; font-size: 1.125rem; line-height: 1.8; max-width: 800px;">
+                    </h2>
+                    <p class="ps-cta-desc mb-0">
                         Get in touch today to learn how our customized IT solutions and HRIS can seamlessly integrate into your business to streamline operations and drive efficiency.
-                    </MudText>
+                    </p>
                 </div>
                 <div>
-                    <MudButton OnClick="OpenContactDialog" Variant="Variant.Filled" Size="Size.Large" Style="background-color: #ffffff; color: #122656; font-family: 'Figtree', sans-serif; font-weight: 600; border-radius: 8px; text-transform: none; padding: 14px 40px; box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.1); white-space: nowrap;">
+                    <button type="button" @onclick="OpenContactDialog" class="btn btn-ps-cta">
                         Contact Us
-                    </MudButton>
+                    </button>
                 </div>
             </div>
-        </MudPaper>
-    </MudContainer>
+        </div>
+    </div>
 </section>
 
 @code {

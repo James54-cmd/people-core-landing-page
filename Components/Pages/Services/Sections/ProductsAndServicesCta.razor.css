@@ -1,0 +1,76 @@
+.ps-cta {
+    background-color: #EFF1F3;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.ps-cta-banner {
+    background-color: #122656;
+    border-radius: 1rem;
+    position: relative;
+    overflow: hidden;
+    padding: 2rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+}
+
+@media (min-width: 768px) {
+    .ps-cta-banner {
+        padding: 3rem;
+    }
+}
+
+.ps-cta-watermark {
+    position: absolute;
+    top: 50%;
+    right: -5%;
+    transform: translateY(-50%);
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.ps-watermark-img {
+    height: 350px;
+    width: auto;
+    object-fit: contain;
+}
+
+.ps-cta-content {
+    position: relative;
+    z-index: 10;
+}
+
+.ps-cta-title {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 1.875rem;
+}
+
+.ps-cta-desc {
+    font-family: 'Figtree', sans-serif;
+    color: #CBD5E1;
+    font-size: 1.125rem;
+    line-height: 1.8;
+    max-width: 800px;
+}
+
+.btn-ps-cta {
+    background-color: #ffffff;
+    color: #122656;
+    font-family: 'Figtree', sans-serif;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 14px 40px;
+    box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.1);
+    white-space: nowrap;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-ps-cta:hover {
+    background-color: #f1f5f9;
+    color: #122656;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.15);
+}

@@ -1,0 +1,92 @@
+.ps-hero {
+    background-color: #f8fafc;
+    padding-top: 160px;
+    padding-bottom: 4rem;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    isolation: isolate;
+}
+
+@media (min-width: 768px) {
+    .ps-hero {
+        padding-bottom: 6rem;
+    }
+}
+
+.mesh-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.mesh-blob {
+    position: absolute;
+    filter: blur(60px);
+}
+
+.blob-1 {
+    top: -10%;
+    left: -10%;
+    width: 50%;
+    height: 50%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+}
+
+.blob-2 {
+    bottom: -20%;
+    right: -10%;
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+}
+
+.blob-3 {
+    top: 20%;
+    right: 20%;
+    width: 30%;
+    height: 30%;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+}
+
+.ps-badge {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 400;
+    color: #2563EB;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+}
+
+.ps-title {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 800;
+    color: #0f172a;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+}
+
+.ps-highlight {
+    color: #3B82F6;
+    position: relative;
+    display: inline-block;
+}
+
+.ps-underline-svg {
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    z-index: -1;
+}
+
+.ps-desc {
+    font-family: 'Figtree', sans-serif;
+    color: #475569;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+    font-size: 1rem;
+}

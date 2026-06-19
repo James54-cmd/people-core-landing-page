@@ -1,31 +1,31 @@
-<section class="ps-hero pb-16 pb-md-24 relative overflow-hidden" style="background-color: #f8fafc; padding-top: 160px; min-height: 500px; display: flex; align-items: center; isolation: isolate;">
+<section class="ps-hero position-relative overflow-hidden">
     <!-- Abstract mesh gradient background -->
-    <div style="position: absolute; inset: 0; z-index: -1; overflow: hidden;">
-        <div style="position: absolute; top: -10%; left: -10%; width: 50%; height: 50%; background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%); filter: blur(60px);"></div>
-        <div style="position: absolute; bottom: -20%; right: -10%; width: 60%; height: 60%; background: radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%); filter: blur(60px);"></div>
-        <div style="position: absolute; top: 20%; right: 20%; width: 30%; height: 30%; background: radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 70%); filter: blur(60px);"></div>
+    <div class="mesh-bg">
+        <div class="mesh-blob blob-1"></div>
+        <div class="mesh-blob blob-2"></div>
+        <div class="mesh-blob blob-3"></div>
     </div>
 
-    <MudContainer MaxWidth="MaxWidth.Large" Class="relative z-10 text-center">
+    <div class="container-lg position-relative z-10 text-center">
         <!-- Badge -->
         <div class="mb-8">
-            <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; font-weight: 400; color: #2563EB; letter-spacing: 0.05em; text-transform: uppercase;">
+            <span class="ps-badge">
                 Intelligent IT Solutions
-            </MudText>
+            </span>
         </div>
 
         <!-- Main Heading -->
-        <MudText Typo="Typo.h1" Style="font-family: 'Figtree', sans-serif; font-weight: 800; color: #0f172a; font-size: clamp(3rem, 5vw, 4.5rem); line-height: 1.1; letter-spacing: -0.03em;" Class="mb-6">
-            PEOPLECORE <span style="color: #3B82F6; position: relative; display: inline-block;">HRIS
-                <svg width="100%" height="16" viewBox="0 0 100 16" preserveAspectRatio="none" style="position: absolute; bottom: -4px; left: 0; z-index: -1;">
+        <h1 class="ps-title mb-6">
+            PEOPLECORE <span class="ps-highlight">HRIS
+                <svg class="ps-underline-svg" width="100%" height="16" viewBox="0 0 100 16" preserveAspectRatio="none">
                     <path d="M0,12 Q50,0 100,12" stroke="#DBEAFE" stroke-width="8" fill="none" stroke-linecap="round"/>
                 </svg>
             </span>
-        </MudText>
+        </h1>
         
         <!-- Description -->
-        <MudText Typo="Typo.body1" Style="font-family: 'Figtree', sans-serif; color: #475569; font-weight: 400; max-width: 600px; margin: 0 auto; line-height: 1.7; font-size: 1rem;" Class="mb-10">
+        <p class="ps-desc mb-5">
             Cycore Technology Solutions Co. Inc guarantees your technology needs are exceeded. We deliver customized, seamlessly integrated, and sustainable plans for your business.
-        </MudText>
-    </MudContainer>
+        </p>
+    </div>
 </section>

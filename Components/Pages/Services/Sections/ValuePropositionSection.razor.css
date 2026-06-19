@@ -1,0 +1,58 @@
+.value-prop-section {
+    background-color: #ffffff;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+    .value-prop-section {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
+}
+
+.eyebrow-text {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 600;
+    font-style: italic;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+}
+
+.eyebrow-blue {
+    color: #3B82F6;
+}
+
+.eyebrow-green {
+    color: #10B981;
+}
+
+.eyebrow-purple {
+    color: #8B5CF6;
+}
+
+.val-title {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 700;
+    color: #111928;
+}
+
+.val-desc {
+    font-family: 'Figtree', sans-serif;
+    color: #4B5563;
+    font-size: 1.125rem;
+    line-height: 1.8;
+}
+
+.val-img-card {
+    border-radius: 1.5rem;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+}
+
+.val-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

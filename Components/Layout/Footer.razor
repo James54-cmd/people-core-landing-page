@@ -1,31 +1,29 @@
-@using MudBlazor
-
-<footer class="footer-section pt-16 pb-8 d-flex flex-column" style="background-color: #122656; font-family: 'Figtree', sans-serif;">
-    <MudContainer MaxWidth="MaxWidth.Large" Class="d-flex flex-column flex-grow-1">
+<footer class="footer-section d-flex flex-column">
+    <div class="container-lg d-flex flex-column flex-grow-1">
         
         <!-- Top Row: Logo & Slogan -->
-        <div class="d-flex flex-column flex-md-row justify-space-between align-start align-md-center mb-8">
-            <img src="image/logo_with_words.png" alt="People Core" style="height: 80px; max-width: 100%; object-fit: contain; filter: brightness(0) invert(1);" />
-            <MudText Typo="Typo.h5" Style="color: #ffffff; font-weight: 400; font-style: italic; letter-spacing: 0.05em; font-size: 1.75rem;" Class="mt-4 mt-md-0">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-4">
+            <img src="image/logo_with_words.png" alt="People Core" class="footer-logo" />
+            <h3 class="footer-slogan mt-4 mt-md-0">
                 Efficient. Secure. Reliable.
-            </MudText>
+            </h3>
         </div>
 
-        <MudGrid Spacing="6" Class="mb-12">
+        <div class="row g-4 mb-5">
             <!-- Left Side: Description -->
-            <MudItem xs="12" md="4" Class="d-flex flex-column pe-md-8">
-                <MudText Typo="Typo.body2" Style="color: #94a3b8; line-height: 1.7; font-size: 0.95rem; max-width: 320px;">
+            <div class="col-12 col-md-4 d-flex flex-column pe-md-5">
+                <p class="footer-desc">
                     Empowering organizations through innovative enterprise HR technology and seamless automation. Simplified for your people.
-                </MudText>
-            </MudItem>
+                </p>
+            </div>
 
             <!-- Columns Area -->
-            <MudItem xs="12" md="8">
+            <div class="col-12 col-md-8">
                 <div class="footer-links-container">
                     <!-- NAV Column -->
                     <div class="footer-links-col">
-                        <p style="font-weight: 700; color: #ffffff; letter-spacing: 0.1em; opacity: 0.8; font-size: 0.75rem; text-transform: uppercase; margin-bottom: 16px;">NAV</p>
-                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px;">
+                        <h6 class="footer-col-header">NAV</h6>
+                        <ul class="footer-links-list">
                             <li><a href="/services" class="footer-link-premium">Services</a></li>
                             <li><a href="/saas" class="footer-link-premium">Software as a Service</a></li>
                             <li><a href="/contact" class="footer-link-premium">Contact Us</a></li>
@@ -34,54 +32,24 @@
 
                     <!-- Legal Column -->
                     <div class="footer-links-col">
-                        <p style="font-weight: 700; color: #ffffff; letter-spacing: 0.1em; opacity: 0.8; font-size: 0.75rem; text-transform: uppercase; margin-bottom: 16px;">LEGAL</p>
-                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 14px;">
+                        <h6 class="footer-col-header">LEGAL</h6>
+                        <ul class="footer-links-list">
                             <li><a href="/privacy-notice" class="footer-link-premium" target="_blank" rel="noopener noreferrer">Privacy Notice</a></li>
                             <li><a href="/privacy-policy" class="footer-link-premium" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
                             <li><a href="/terms-of-service" class="footer-link-premium" target="_blank" rel="noopener noreferrer">Terms of Service</a></li>
                         </ul>
                     </div>
                 </div>
-            </MudItem>
-        </MudGrid>
-
-        <!-- Bottom Row -->
-        <div class="d-flex flex-column flex-md-row justify-space-between align-center pt-8 mt-auto" style="border-top: 1px solid rgba(255,255,255,0.08);">
-            <MudText Typo="Typo.body2" Style="color: #64748b;">
-                © 2026 People Core. All rights reserved.
-            </MudText>
+            </div>
         </div>
 
-    </MudContainer>
+        <!-- Bottom Row -->
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center pt-4 mt-auto footer-bottom">
+            <span class="footer-copyright">
+                © 2026 People Core. All rights reserved.
+            </span>
+        </div>
+
+    </div>
 </footer>
 
-<style>
-    .footer-link-premium {
-        color: #94a3b8;
-        text-decoration: none;
-        font-size: 0.95rem;
-        transition: color 0.2s ease;
-        display: inline-block;
-    }
-    .footer-link-premium:hover {
-        color: #ffffff;
-    }
-    .social-btn {
-        transition: all 0.2s ease;
-    }
-    .social-btn:hover {
-        color: #ffffff !important;
-        background-color: rgba(255,255,255,0.1);
-    }
-
-    .footer-links-container {
-        display: flex;
-        gap: 3rem;
-    }
-
-    @@media (min-width: 960px) {
-        .footer-links-container {
-            justify-content: flex-end;
-        }
-    }
-</style>

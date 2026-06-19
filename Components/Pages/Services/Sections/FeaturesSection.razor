@@ -1,21 +1,21 @@
 @rendermode InteractiveServer
 
-<section class="py-16 py-md-24" style="background-color: #f4f6f8;">
-    <MudContainer MaxWidth="MaxWidth.Large">
+<section class="features-sec">
+    <div class="container-lg">
         <!-- Top Section -->
-        <div class="mb-16">
-            <MudText Typo="Typo.h2" Style="font-family: 'Figtree', sans-serif; font-weight: 700; color: #0f172a; font-size: 3rem; line-height: 1.1; max-width: 800px;" Class="mb-6">
+        <div class="mb-5">
+            <h2 class="features-main-title mb-4">
                 What part of your HR operation do you want to upgrade next?
-            </MudText>
-            <MudText Typo="Typo.body1" Style="font-family: 'Figtree', sans-serif; color: #475569; max-width: 600px; font-size: 1.125rem;">
+            </h2>
+            <p class="features-main-desc mb-0">
                 Find the right tools based on what HR challenge you need to solve. Choose one or multiple features. Scale fast either way.
-            </MudText>
+            </p>
         </div>
 
-        <MudGrid Spacing="6">
+        <div class="row g-4">
             <!-- Left Sidebar Menu -->
-            <MudItem xs="12" md="3">
-                <div class="category-menu-container sticky-top" style="top: 100px;">
+            <div class="col-12 col-md-3">
+                <div class="category-menu-container sticky-top">
                     @foreach (var category in categories)
                     {
                         <div @onclick="() => SetCategory(category)" class="@GetMenuClass(category)">
@@ -23,125 +23,45 @@
                         </div>
                     }
                 </div>
-            </MudItem>
+            </div>
 
             <!-- Right Content Area -->
-            <MudItem xs="12" md="9">
-                <div class="mb-10">
-                    <MudText Typo="Typo.h4" Style="font-family: 'Figtree', sans-serif; font-weight: 600; color: #0f172a;" Class="mb-3">
+            <div class="col-12 col-md-9">
+                <div class="mb-4">
+                    <h3 class="category-title mb-2">
                         @GetCategoryTitle()
-                    </MudText>
-                    <MudText Typo="Typo.body1" Style="font-family: 'Figtree', sans-serif; color: #475569; font-size: 1.125rem;">
+                    </h3>
+                    <p class="category-subtitle mb-0">
                         @GetCategorySubtitle()
-                    </MudText>
+                    </p>
                 </div>
 
-                <MudGrid Spacing="4">
+                <div class="row g-4">
                     @foreach (var feature in GetVisibleFeatures())
                     {
-                        <MudItem xs="12" sm="6">
-                            <MudPaper Elevation="0" Class="pa-8 h-100 d-flex flex-column feature-card-ui" Style="border-radius: 16px; background: #ffffff;">
+                        <div class="col-12 col-sm-6">
+                            <div class="feature-card-ui d-flex flex-column h-100">
                                 <div class="mb-4">
-                                    <MudIcon Icon="@feature.Icon" Size="Size.Large" Style="color: #3B82F6;" />
+                                    <MudIcon Icon="@feature.Icon" Class="feature-icon" />
                                 </div>
-                                <MudText Typo="Typo.h5" Style="font-family: 'Figtree', sans-serif; font-weight: 700; color: #0f172a;" Class="mb-3">@feature.Title</MudText>
-                                <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; color: #475569; line-height: 1.6; flex-grow: 1;" Class="mb-8">
+                                <h4 class="feature-title mb-2">@feature.Title</h4>
+                                <p class="feature-desc mb-4">
                                     @feature.Description
-                                </MudText>
+                                </p>
                                 
-                                <div class="d-flex align-center justify-space-between mt-auto pt-4" style="border-top: 1px solid #f1f5f9;">
-                                    <MudText Typo="Typo.caption" Style="font-family: 'Figtree', sans-serif; font-weight: 600; color: #94a3b8; letter-spacing: 0.05em; text-transform: uppercase;">
+                                <div class="feature-card-footer">
+                                    <span class="feature-category">
                                         @feature.Category
-                                    </MudText>
+                                    </span>
                                 </div>
-                            </MudPaper>
-                        </MudItem>
+                            </div>
+                        </div>
                     }
-                </MudGrid>
-            </MudItem>
-        </MudGrid>
-    </MudContainer>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
-
-<style>
-    .feature-card-ui {
-        transition: all 0.3s ease;
-    }
-    .feature-card-ui:hover {
-        box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.05), 0 4px 12px -4px rgba(0, 0, 0, 0.02);
-        transform: translateY(-4px);
-    }
-    .sticky-top {
-        position: sticky;
-        top: 100px;
-        z-index: 10; /* Ensure it stays above cards when scrolling on mobile */
-    }
-    
-    .category-menu-container {
-        display: flex;
-        flex-direction: row;
-        overflow-x: auto;
-        padding-bottom: 12px;
-        margin-bottom: 8px;
-        gap: 8px;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-    }
-    .category-menu-container::-webkit-scrollbar {
-        display: none;
-    }
-    
-    .menu-item {
-        cursor: pointer;
-        padding: 8px 16px;
-        transition: all 0.2s ease;
-        font-family: 'Figtree', sans-serif;
-        font-weight: 500;
-        color: #475569;
-        font-size: 0.95rem;
-        white-space: nowrap;
-        border-radius: 100px;
-        background-color: #e2e8f0;
-        user-select: none;
-    }
-    
-    .menu-item.active {
-        font-weight: 600;
-        color: #ffffff;
-        background-color: #3B82F6;
-        box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
-    }
-
-    @@media (min-width: 960px) {
-        .category-menu-container {
-            flex-direction: column;
-            overflow-x: visible;
-            padding-bottom: 0;
-            margin-bottom: 0;
-            gap: 8px;
-        }
-        .menu-item {
-            border-radius: 0;
-            background-color: transparent;
-            border-left: 2px solid transparent;
-            font-size: 1.125rem;
-            padding: 12px 16px;
-            font-weight: 400;
-            color: #64748b;
-        }
-        .menu-item.active {
-            font-weight: 700;
-            color: #3B82F6;
-            background-color: transparent;
-            border-left: 2px solid #3B82F6;
-            box-shadow: none;
-        }
-        .menu-item:hover {
-            background-color: #eff6ff;
-            color: #3B82F6 !important;
-        }
-    }
-</style>
 
 @code {
     private string activeCategory = "All";
