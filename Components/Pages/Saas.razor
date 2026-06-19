@@ -1,79 +1,78 @@
 @page "/saas"
-@using MudBlazor
 
 <PageTitle>Software as a Service - People Core</PageTitle>
 
 <div class="saas-page">
-    <section style="position: relative; z-index: 1; padding: 160px 0 70px;">
-        <MudContainer MaxWidth="MaxWidth.Large">
-            <div style="max-width: 840px;">
-                <MudText Typo="Typo.subtitle2" Class="fade-in-up" Style="font-family: 'Figtree', sans-serif; font-weight: 700; color: #1E9FE0; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem;">
+    <section class="saas-hero-section">
+        <div class="container-lg">
+            <div class="saas-hero-text">
+                <span class="eyebrow-text fw-bold text-uppercase d-block mb-3 fade-in-up">
                     PeopleCore SaaS
-                </MudText>
-                <MudText Typo="Typo.h1" Class="fade-in-up delay-100" Style="font-family: 'Gilroy', 'Figtree', sans-serif; font-weight: 800; color: #ffffff; font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 1.75rem;">
-                    Software as a <span style="color: #1E9FE0;">Service</span>
-                </MudText>
-                <MudText Typo="Typo.body1" Class="fade-in-up delay-200" Style="font-family: 'Figtree', sans-serif; color: #cbd5e1; font-size: 1.15rem; line-height: 1.8; max-width: 760px;">
+                </span>
+                <h1 class="saas-hero-title fw-extrabold text-white lh-sm mb-4 fade-in-up delay-100">
+                    Software as a <span class="text-accent">Service</span>
+                </h1>
+                <p class="saas-hero-desc mb-0 fade-in-up delay-200">
                     PeopleCore SaaS is a web-based application with fully integrated components and functions that allow organizations to fully automate critical Human Resource Management functions. PeopleCore SaaS consists of the following three major components:
-                </MudText>
+                </p>
             </div>
-        </MudContainer>
+        </div>
     </section>
 
-    <section style="position: relative; z-index: 1; padding: 30px 0 70px;">
-        <MudContainer MaxWidth="MaxWidth.Large">
-            <MudGrid Spacing="6">
+    <section class="saas-components-section">
+        <div class="container-lg">
+            <div class="row g-4">
                 @for (int i = 0; i < Components.Count; i++)
                 {
                     var component = Components[i];
-                    <MudItem xs="12" md="4" Class="@($"framer-animate delay-{i * 100}")">
+                    <div class="col-12 col-md-4 framer-animate delay-@(i * 100)">
                         <div class="saas-card">
-                            <div class="saas-icon-box" style="@($"background-color: {component.IconBg};")">
-                                <MudIcon Icon="@component.Icon" Style="@($"color: {component.IconColor}; font-size: 1.75rem;")" />
+                            <div class="saas-icon-box" style="background-color: @component.IconBg;">
+                                <MudIcon Icon="@component.Icon" Class="saas-icon" Style="@($"color: {component.IconColor};")" />
                             </div>
-                            <MudText Typo="Typo.h5" Style="font-family: 'Gilroy', 'Figtree', sans-serif; font-weight: 800; color: #ffffff; margin-bottom: 0.85rem;">
+                            <h3 class="saas-card-title fw-extrabold text-white mb-3">
                                 @component.Title
-                            </MudText>
-                            <MudText Typo="Typo.body2" Style="font-family: 'Figtree', sans-serif; color: #94a3b8; line-height: 1.75; font-size: 0.95rem;">
+                            </h3>
+                            <p class="saas-card-desc mb-0">
                                 @component.Description
-                            </MudText>
+                            </p>
                         </div>
-                    </MudItem>
+                    </div>
                 }
-            </MudGrid>
-        </MudContainer>
+            </div>
+        </div>
     </section>
 
-    <section style="position: relative; z-index: 1; padding: 30px 0 120px;">
-        <MudContainer MaxWidth="MaxWidth.Large">
-            <div class="text-center mb-12" style="max-width: 620px; margin-left: auto; margin-right: auto;">
-                <MudText Typo="Typo.subtitle2" Class="fade-in-up" Style="font-family: 'Figtree', sans-serif; font-weight: 700; color: #1E9FE0; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.75rem;">
+    <section class="saas-modules-section">
+        <div class="container-lg">
+            <div class="text-center saas-modules-header mx-auto mb-5">
+                <span class="eyebrow-text fw-bold text-uppercase d-block mb-2 fade-in-up">
                     Add-ons
-                </MudText>
-                <MudText Typo="Typo.h2" Class="fade-in-up delay-100" Style="font-family: 'Gilroy', 'Figtree', sans-serif; font-weight: 800; color: #ffffff; font-size: clamp(1.75rem, 3.5vw, 2.5rem); letter-spacing: -1px;">
+                </span>
+                <h2 class="saas-modules-title fw-extrabold text-white fade-in-up delay-100">
                     Optional SaaS Modules
-                </MudText>
-                <MudText Typo="Typo.body1" Class="fade-in-up delay-200" Style="font-family: 'Figtree', sans-serif; color: #94a3b8; font-size: 1.05rem; line-height: 1.7; margin-top: 0.85rem;">
+                </h2>
+                <p class="saas-modules-desc mt-2 mb-0 fade-in-up delay-200">
                     Extend PeopleCore with specialized modules tailored to your operational needs.
-                </MudText>
+                </p>
             </div>
-            <MudGrid Spacing="4" Class="justify-center">
+            <div class="row g-4 justify-content-center">
                 @for (int i = 0; i < Modules.Count; i++)
                 {
                     var module = Modules[i];
-                    <MudItem xs="12" sm="6" md="4" Class="@($"framer-animate delay-{i * 100}")">
+                    <div class="col-12 col-sm-6 col-md-4 framer-animate delay-@(i * 100)">
                         <div class="saas-module-card">
                             <div class="saas-module-icon">
-                                <MudIcon Icon="@module.Icon" Style="color: #1E9FE0; font-size: 1.5rem;" />
+                                <MudIcon Icon="@module.Icon" Class="saas-module-icon-element" />
                             </div>
-                            <MudText Typo="Typo.body1" Style="font-family: 'Figtree', sans-serif; font-weight: 600; color: #e2e8f0; font-size: 1rem;">
+                            <span class="saas-module-name fw-semibold">
                                 @module.Name
-                            </MudText>
+                            </span>
                         </div>
-                    </MudItem>
+                    </div>
                 }
-            </MudGrid>
-        </MudContainer>
+            </div>
+        </div>
     </section>
 </div>
 

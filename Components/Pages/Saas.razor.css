@@ -1,0 +1,150 @@
+.saas-page {
+    position: relative;
+    overflow: hidden;
+    background-color: #122656;
+    font-family: 'Figtree', sans-serif;
+}
+
+.text-accent {
+    color: #1E9FE0;
+}
+
+.saas-hero-section {
+    position: relative;
+    z-index: 1;
+    padding: 160px 0 70px;
+}
+
+.saas-hero-text {
+    max-width: 840px;
+}
+
+.eyebrow-text {
+    font-family: 'Figtree', sans-serif;
+    color: #1E9FE0;
+    letter-spacing: 2px;
+}
+
+.saas-hero-title {
+    font-family: 'Gilroy', 'Figtree', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: -1.5px;
+}
+
+.saas-hero-desc {
+    font-family: 'Figtree', sans-serif;
+    color: #cbd5e1;
+    line-height: 1.8;
+    max-width: 760px;
+}
+
+.saas-components-section {
+    position: relative;
+    z-index: 1;
+    padding: 30px 0 70px;
+}
+
+/* Major component cards (glassmorphism on dark) */
+.saas-card {
+    height: 100%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, background 0.4s ease, box-shadow 0.4s ease;
+}
+
+.saas-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(30, 159, 224, 0.45);
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 24px 48px -16px rgba(0, 0, 0, 0.45);
+}
+
+.saas-icon-box {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+::deep .saas-icon {
+    font-size: 1.75rem !important;
+}
+
+.saas-card-title {
+    font-family: 'Gilroy', 'Figtree', sans-serif;
+}
+
+.saas-card-desc {
+    font-family: 'Figtree', sans-serif;
+    color: #94a3b8;
+    line-height: 1.75;
+}
+
+/* ---- Modules section ---- */
+.saas-modules-section {
+    position: relative;
+    z-index: 1;
+    padding: 30px 0 120px;
+}
+
+.saas-modules-header {
+    max-width: 620px;
+}
+
+.saas-modules-title {
+    font-family: 'Gilroy', 'Figtree', sans-serif;
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    letter-spacing: -1px;
+}
+
+.saas-modules-desc {
+    font-family: 'Figtree', sans-serif;
+    color: #94a3b8;
+}
+
+/* Optional module cards */
+.saas-module-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+
+.saas-module-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(30, 159, 224, 0.35);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.saas-module-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(30, 159, 224, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+::deep .saas-module-icon-element {
+    color: #1E9FE0 !important;
+    font-size: 1.5rem !important;
+}
+
+.saas-module-name {
+    font-family: 'Figtree', sans-serif;
+    color: #e2e8f0;
+}
