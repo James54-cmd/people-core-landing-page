@@ -2,7 +2,7 @@ using Bunit;
 using Microsoft.Extensions.DependencyInjection;
 using MudBlazor.Services;
 using PeopleCoreLandingPage.Components.Layout;
-using PeopleCoreLandingPage.Components.Sections;
+using PeopleCoreLandingPage.Components.Pages.Home.Sections.Hero;
 using PeopleCoreLandingPage.Components.Shared;
 
 namespace PeopleCoreLandingPage.Tests;
