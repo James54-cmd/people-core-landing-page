@@ -4,58 +4,122 @@
 <section class="faq-section">
     <div class="container-lg">
         <div class="row g-4 align-items-start">
-            
-            <!-- Left: Headline -->
-            <div class="col-12 col-md-5 framer-animate">
+
+            <!-- Left -->
+            <div class="col-12 col-lg-5 framer-animate">
                 <h2 class="faq-headline">
                     All your questions,<br />answered
                 </h2>
             </div>
 
-            <!-- Right: Accordion -->
-            <div class="col-12 col-md-7 framer-animate delay-200">
+            <!-- Right -->
+            <div class="col-12 col-lg-7 framer-animate delay-200">
                 <div class="faq-panels-container">
-                    
-                    @foreach(var item in FaqItems)
+
+                    @for (int i = 0; i < FaqItems.Count; i++)
                     {
-                        <div class="faq-panel">
-                            <button class="faq-button" type="button" @onclick="() => item.IsExpanded = !item.IsExpanded">
-                                <div class="d-flex align-items-center gap-4">
+                        var item = FaqItems[i];
+                        var index = i;
+                        var isOpen = ActiveFaqIndex == index;
+
+                        <div class="@GetPanelClass(isOpen)">
+                            <button type="button"
+                                    class="faq-button"
+                                    aria-expanded="@isOpen"
+                                    aria-controls="faq-answer-@index"
+                                    @onclick="() => ToggleFaq(index)">
+
+                                <div class="faq-question-group">
                                     <div class="faq-number">@item.Number</div>
-                                    <span class="faq-question">@item.Question</span>
+
+                                    <span class="faq-question">
+                                        @item.Question
+                                    </span>
                                 </div>
-                                <MudIcon Icon="@Icons.Material.Filled.Add" Class="@($"faq-custom-icon {(item.IsExpanded ? "rotated" : "")}")" />
+
+                                <MudIcon Icon="@Icons.Material.Filled.Add"
+                                         Class="@GetIconClass(isOpen)" />
                             </button>
-                            <div class="faq-answer-wrapper @(item.IsExpanded ? "show" : "")">
-                                <p class="faq-answer">
-                                    @item.Answer
-                                </p>
+
+                            <div id="faq-answer-@index"
+                                 class="@GetAnswerClass(isOpen)">
+                                <div class="faq-answer-inner">
+                                    <p class="faq-answer">
+                                        @item.Answer
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     }
 
                 </div>
             </div>
-            
+
         </div>
     </div>
 </section>
 
-
 @code {
-    public class FaqItem 
+    private int? ActiveFaqIndex = null;
+
+    private void ToggleFaq(int index)
+    {
+        ActiveFaqIndex = ActiveFaqIndex == index
+            ? null
+            : index;
+    }
+
+    private string GetPanelClass(bool isOpen)
+    {
+        return isOpen ? "faq-panel open" : "faq-panel";
+    }
+
+    private string GetAnswerClass(bool isOpen)
+    {
+        return isOpen
+            ? "faq-answer-wrapper show"
+            : "faq-answer-wrapper";
+    }
+
+    private string GetIconClass(bool isOpen)
+    {
+        return isOpen
+            ? "faq-custom-icon rotated"
+            : "faq-custom-icon";
+    }
+
+    public class FaqItem
     {
         public string Number { get; set; } = "";
         public string Question { get; set; } = "";
         public string Answer { get; set; } = "";
-        public bool IsExpanded { get; set; }
     }
 
     private List<FaqItem> FaqItems = new()
     {
-        new FaqItem { Number = "01", Question = "Can I manage multiple branches?", Answer = "Yes. View all your locations from your People Core admin dashboard, allowing centralized control over payroll and HR policies across different regions." },
-        new FaqItem { Number = "02", Question = "Is there a free trial?", Answer = "Absolutely. We offer a 14-day free trial so you can explore all features before committing. No credit card required." },
-        new FaqItem { Number = "03", Question = "Does People Core work with GCash or Maya?", Answer = "Yes, we integrate seamlessly with major local payment providers including GCash and Maya to make payroll disbursements instant and hassle-free." },
-        new FaqItem { Number = "04", Question = "Can my staff access it too?", Answer = "Yes! Every employee gets access to a self-service portal where they can view payslips, request time off, and update their personal information." }
+        new FaqItem
+        {
+            Number = "01",
+            Question = "Can I manage multiple branches?",
+            Answer = "Yes. PeopleCore lets HR teams manage employee records, policies, approvals, and workforce information across multiple locations from one centralized platform."
+        },
+        new FaqItem
+        {
+            Number = "02",
+            Question = "Is there a free trial?",
+            Answer = "Yes. You can explore the platform before making a long-term commitment, giving your team time to review the features and workflow fit."
+        },
+        new FaqItem
+        {
+            Number = "03",
+            Question = "Can PeopleCore support local payroll processes?",
+            Answer = "PeopleCore supports configurable payroll schedules, attendance rules, benefits, deductions, and approval workflows based on your organization’s requirements."
+        },
+        new FaqItem
+        {
+            Number = "04",
+            Question = "Can employees access the platform too?",
+            Answer = "Yes. Employees can use Employee Self-Service to view personal information, submit requests, check attendance details, access payslips, and follow approval updates."
+        }
     };
 }

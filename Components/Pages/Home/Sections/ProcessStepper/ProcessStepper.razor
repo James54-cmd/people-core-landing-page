@@ -5,27 +5,49 @@
 
 <section class="process-section">
     <div class="container-lg">
-        <div class="row gx-lg-5 gy-4">
-            
-            <!-- Left Column: Sticky Header -->
-            <div class="col-12 col-md-5 position-relative">
-                <div class="sticky-header pt-md-5">
-                    <div class="huge-step-number">
-                        0@(ActiveStep + 1)
+        <div class="row gx-xl-5 gy-5">
+
+            <!-- Left Content -->
+            <div class="col-12 col-lg-5">
+                <div class="sticky-header">
+
+                    <div class="process-eyebrow">
+                        <span class="eyebrow-dot"></span>
+                        Implementation journey
                     </div>
-                    <h6 class="process-subtitle mb-4 fade-in-up position-relative z-index-2">
-                        Process
-                    </h6>
-                    <h2 class="process-title text-dark mb-5 fade-in-up delay-100 position-relative z-index-2">
-                        How it works
+
+                    <h2 class="process-title">
+                        From setup to<br />
+                        confident launch.
                     </h2>
+
+                    <p class="process-intro">
+                        A guided rollout designed to help your team move from existing processes
+                        into one connected HR platform.
+                    </p>
+
+                    <div class="process-status">
+                        <div class="process-count">
+                            <span class="current-step">@((ActiveStep + 1).ToString("D2"))</span>
+                            <span class="count-divider"></span>
+                            <span class="total-step">@Steps.Count.ToString("D2")</span>
+                        </div>
+
+                        <div class="process-status-content">
+                            <span class="status-label">Current phase</span>
+                            <strong>@Steps[ActiveStep].Title</strong>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
-            <!-- Right Column: Timeline -->
-            <div class="col-12 col-md-7 position-relative pt-md-5">
-                <div class="timeline-container fade-in-up delay-300">
-                    <div class="timeline-line">
+            <!-- Right Timeline -->
+            <div class="col-12 col-lg-7">
+                <div class="timeline-container"
+                     style="@($"--progress: {(Steps.Count > 1 ? ActiveStep * 100 / (Steps.Count - 1) : 0)}%;")">
+
+                    <div class="timeline-track">
                         <div class="timeline-progress"></div>
                     </div>
 
@@ -36,22 +58,37 @@
                         bool isActive = index <= ActiveStep;
                         bool isCurrent = index == ActiveStep;
 
-                        <div class="timeline-item timeline-item-scroll @(isActive ? "active" : "") @(isCurrent ? "current" : "")" data-index="@index" @onclick="() => SetStep(index)">
-                            <div class="timeline-icon-wrapper">
-                                <div class="pulse-ring @(isCurrent ? "active-pulse" : "")"></div>
-                                <MudIcon Icon="@step.Icon" Class="timeline-icon" />
+                        <button type="button"
+                                class="timeline-item timeline-item-scroll @(isActive ? "active" : "") @(isCurrent ? "current" : "")"
+                                data-index="@index"
+                                @onclick="() => SetStep(index)"
+                                aria-current="@(isCurrent ? "step" : null)">
+
+                            <div class="timeline-marker">
+                                <span>@((index + 1).ToString("D2"))</span>
                             </div>
-                            <div class="timeline-content-wrapper">
-                                <div class="timeline-content-card @(isCurrent ? "active-card" : "")">
-                                    <h3 class="step-title mb-3">
-                                        @step.Title
-                                    </h3>
-                                    <p class="step-desc">
-                                        @step.Description
-                                    </p>
+
+                            <div class="timeline-content">
+                                <div class="timeline-heading">
+                                    <MudIcon Icon="@step.Icon" Class="timeline-icon" />
+                                    <span class="timeline-label">Phase @((index + 1).ToString("D2"))</span>
                                 </div>
+
+                                <h3 class="step-title">@step.Title</h3>
+
+                                <p class="step-desc">
+                                    @step.Description
+                                </p>
+
+                                @if (isCurrent)
+                                {
+                                    <span class="active-indicator">
+                                        Currently in focus
+                                    </span>
+                                }
                             </div>
-                        </div>
+
+                        </button>
                     }
                 </div>
             </div>
@@ -120,25 +157,25 @@
 
     private List<ProcessStep> Steps = new()
     {
-        new ProcessStep { 
-            Title = "Connect your data", 
-            Description = "Securely import employee records and sync seamlessly with your existing HR and IT systems, instantly removing manual data entry.", 
-            Icon = Icons.Material.Rounded.CloudSync 
+        new ProcessStep {
+            Title = "Bring your people data together",
+            Description = "Import employee records and organize essential workforce information in one secure place.",
+            Icon = Icons.Material.Rounded.CloudSync
         },
-        new ProcessStep { 
-            Title = "Configure your workflows", 
-            Description = "Customize payroll schedules, attendance rules, and benefits packages perfectly tailored to your company's unique policies.", 
-            Icon = Icons.Material.Rounded.SettingsSuggest 
+        new ProcessStep {
+            Title = "Shape the workflows around your team",
+            Description = "Set up attendance rules, leave policies, approval paths, payroll schedules, and access levels.",
+            Icon = Icons.Material.Rounded.SettingsSuggest
         },
-        new ProcessStep { 
-            Title = "Train your team", 
-            Description = "Get staff up to speed quickly with our guided onboarding, interactive platform tutorials, and dedicated hands-on support.", 
-            Icon = Icons.Material.Rounded.ModelTraining 
+        new ProcessStep {
+            Title = "Prepare everyone for launch",
+            Description = "Give employees, managers, and HR teams a clear onboarding experience built around their daily tasks.",
+            Icon = Icons.Material.Rounded.ModelTraining
         },
-        new ProcessStep { 
-            Title = "Go live and scale", 
-            Description = "Launch your new operations smoothly and effortlessly grow your workforce with total confidence and automated compliance.", 
-            Icon = Icons.Material.Rounded.RocketLaunch 
+        new ProcessStep {
+            Title = "Launch with confidence",
+            Description = "Move into live operations with a connected platform that can grow with your organization.",
+            Icon = Icons.Material.Rounded.RocketLaunch
         }
     };
 
